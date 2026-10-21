@@ -70,6 +70,6 @@ cd web && pnpm install && pnpm dev         # web UI on :5173
 images only) or `both`. `rules` is the no-LLM baseline, and `ollama:qwen2.5vl:7b@both` keeps all the data
 on your machine.
 
-And here's a short demo video of it running:
+And here's a short demo video (Voiced over by ElevenLabs) of it running:
 
 [![Demo video](https://img.youtube.com/vi/LZuj11_8ink/hqdefault.jpg)](https://youtu.be/LZuj11_8ink)
