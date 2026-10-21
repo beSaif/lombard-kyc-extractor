@@ -2,3 +2,13 @@ cases/
 __pycache__/
 .pytest_cache/
 .venv/
+.env
+runs/
+
+web/node_modules/
+web/dist/
+web/*.tsbuildinfo
+
+.DS_Store
+demo/
+Lombard Odier AI Engineer Interview Playbook.md

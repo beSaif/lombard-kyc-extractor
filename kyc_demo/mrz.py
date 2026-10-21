@@ -1,9 +1,12 @@
 """ICAO Doc 9303 TD3 (passport) machine-readable zone: check digits, building and parsing."""
 
+import re
 import unicodedata
 from datetime import date
 
 WEIGHTS = (7, 3, 1)
+ISSUING_STATES = {"UTO", "CHE", "FRA", "ITA", "DEU", "AUT", "GBR", "ESP", "PRT", "NLD", "BEL", "SWE", "HRV",
+                  "IND", "NGA", "BRA", "LBN", "USA", "D<<"}  # a demo subset of ICAO codes
 GERMAN = {"Ä": "AE", "Ö": "OE", "Ü": "UE", "ß": "SS"}
 
 
@@ -86,3 +89,65 @@ def parse_td3(line1: str, line2: str, today: date | None = None) -> dict:
             "composite": _safe_check(l2[0:10] + l2[13:20] + l2[21:43], l2[43]),
         },
     }
+
+
+def repair_filler(line: str | None, which: int) -> str | None:
+    """Fix filler ('<') errors, the commonest MRZ misreads, without touching a real letter or digit.
+
+    - Models read text as tokens, and a run like '<<<<<<<<<<<<' is a few tokens of unknown length, so
+      they miscount it: the line comes back 43 or 46 characters long.
+    - OCR reads chevrons as K, E, S, L or 6, so the filler tail fills up with letters.
+    Line 1 has no check digit, so it is repaired structurally: no name contains '<<<', so everything after
+    the first '<<<' in the name field is filler. Line 2's only filler is the 14-character personal-number
+    field; a real error elsewhere still fails its check digit.
+    """
+    if not line:
+        return line
+    line = re.sub(r"\s+", "", line).upper()
+    if which == 1:
+        head, name = line[:5], line[5:]
+        cut = name.find("<<<")
+        if cut >= 0:
+            name = name[:cut]
+        return (head + name)[:44].ljust(44, "<")
+    if len(line) != 44 and re.fullmatch(r".{28}<+..", line):
+        return line[:28] + "<" * 14 + line[-2:]
+    return line
+
+
+def _valid(l1: str | None, l2: str | None) -> bool:
+    try:
+        return bool(l1 and l2) and all(parse_td3(l1, l2, today=date(2000, 1, 1))["checks"].values())
+    except ValueError:
+        return False
+
+
+def reconcile(model_lines: tuple[str | None, str | None], ocr_lines: list[str] | None) -> dict:
+    """Choose the MRZ to trust: deterministic where possible.
+
+    Candidates in order of trust: the dedicated OCR pass, the same filler-repaired, the model's reading
+    filler-repaired. The first whose check digits all pass wins. If none passes, the model's reading is kept
+    and will fail validation, as it should.
+    """
+    ocr = tuple(ocr_lines) if ocr_lines else (None, None)
+    candidates = {
+        "ocr_pass": ocr,
+        "ocr_repaired": (repair_filler(ocr[0], 1), repair_filler(ocr[1], 2)),
+        "model": tuple(model_lines),
+        "model_repaired": (repair_filler(model_lines[0], 1), repair_filler(model_lines[1], 2)),
+    }
+    valid = {k: _valid(*v) for k, v in candidates.items()}
+    for key in ("ocr_pass", "ocr_repaired", "model_repaired"):
+        if valid[key]:
+            chosen, source = candidates[key], f"{key.replace('_', ' ')}: all check digits valid"
+            break
+    else:
+        chosen, source = candidates["model_repaired"], "model reading: check digits fail on every candidate"
+    # Line 1 has no check digit: clean its tail, and take it from a candidate whose document type and
+    # issuing-state code are well-formed ('PKLUTO...' is OCR noise for 'P<UTO...')
+    line1s = [chosen[0]] + [c[0] for c in candidates.values()]
+    line1s = [repair_filler(l, 1) for l in line1s if l]
+    chosen = (next((l for l in line1s if re.match(r"P[<A-Z](UTO|[A-Z]{3})", l) and l[2:5] in ISSUING_STATES),
+                   line1s[0] if line1s else None), chosen[1])
+    return {"lines": chosen, "source": source, "candidates": {k: list(v) for k, v in candidates.items()},
+            "valid": valid}
