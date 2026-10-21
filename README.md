@@ -69,3 +69,7 @@ cd web && pnpm install && pnpm dev         # web UI on :5173
 `-e` picks the model as `provider:model@input`, where input is `text` (OCR text only), `vision` (page
 images only) or `both`. `rules` is the no-LLM baseline, and `ollama:qwen2.5vl:7b@both` keeps all the data
 on your machine.
+
+And here's a short demo video of it running:
+
+[![Demo video](https://img.youtube.com/vi/LZuj11_8ink/hqdefault.jpg)](https://youtu.be/LZuj11_8ink)
