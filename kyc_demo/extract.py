@@ -34,7 +34,8 @@ from .trace import Trace
 PROMPT_VERSION = "2026-10-20.5"
 DATE_FIELDS = {"date_of_birth", "expiry_date", "beneficial_owner_date_of_birth", "issue_date"}
 COUNTRY_FIELDS = {"nationality", "beneficial_owner_nationality"}
-LLM_CACHE = Path("runs/cache/llm")
+ROOT = Path(__file__).resolve().parent.parent
+LLM_CACHE = ROOT / "runs" / "cache" / "llm"
 IMAGE_MAX_SIDE = int(os.getenv("KYC_IMAGE_MAX_SIDE", "1600"))
 
 # USD per 1M tokens (input, output), standard tier, from developers.openai.com/api/docs/pricing on
@@ -150,7 +151,7 @@ class RulesExtractor:
 # --- LLM ------------------------------------------------------------------------------------
 
 def _api_key() -> str:
-    env = dotenv_values(".env")
+    env = dotenv_values(ROOT / ".env")
     return os.getenv("OPENAI_API_KEY") or env.get("OPENAI_API_KEY") or env.get("openai_key") or ""
 
 
@@ -172,6 +173,8 @@ def build_user_prompt(doc_type: str, doc: Document, mode: str) -> str:
     if mode == "vision":
         return head + "\nThe document is in the attached page images. Quote text exactly as printed."
     body = "\n".join(f"--- page {i} ---\n{t}" for i, t in enumerate(doc.texts, start=1))
+    # A page that prints '</document>' must not be able to close the wrapper and speak outside it.
+    body = re.sub(r"<(/?)document>", r"[\1document]", body, flags=re.IGNORECASE)
     if mode == "both":
         head += ("\nThe page images are attached. The OCR text below may contain recognition errors: "
                  "trust the image, and quote what is printed on it.\n")
@@ -219,6 +222,8 @@ class LLMExtractor:
         cached = LLM_CACHE / f"{key}.json"
         if cached.exists():
             return {**json.loads(cached.read_text()), "cached": True}
+        if os.getenv("KYC_OFFLINE") == "1":  # replay mode: re-score saved runs, never pay for a call
+            raise RuntimeError(f"KYC_OFFLINE=1 and no cached response for this {self.provider} request")
         start = time.perf_counter()
         r = requests.post(url, json=body, headers=headers, timeout=600)
         if not r.ok:

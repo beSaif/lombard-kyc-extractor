@@ -1,7 +1,8 @@
 """Deterministic checks on extracted data. The model proposes; these rules decide what a human must look at.
 
 Every check is recorded, passed or failed, with the inputs it compared, so a reviewer (or the UI) can see
-why a file was routed the way it was. A failed check raises its flag code.
+why a file was routed the way it was. A failed check raises its flag code, and so does a skipped one
+(CHECK_SKIPPED): a check that could not run has not passed, so it must never let a file through.
 """
 
 import os
@@ -10,21 +11,25 @@ from dataclasses import asdict, dataclass, field
 from datetime import date
 
 from pydantic import BaseModel
+from rapidfuzz import fuzz
 
-from .ground import locate, locate_in_mrz
+from .ground import FUZZY_MIN, MRZ_ZONE, Match, locate, locate_in_mrz
 from .mrz import parse_td3, transliterate
-from .normalise import address_key, names_match, parse_date, strip_accents, text_key
+from .normalise import (ADDRESS_FIELDS, address_key, country_code, find_date, names_match, parse_date,
+                        person_matches, strip_accents, text_key)
 from .read import Document
+from .signature import MIN_INK, signature_band
 from .schemas import FieldValue
 
 REQUIRED = {
     "passport": ["surname", "given_names", "nationality", "date_of_birth", "document_number",
                  "expiry_date", "mrz_line1", "mrz_line2"],
-    "form_a": ["beneficial_owner_name", "beneficial_owner_date_of_birth",
+    "form_a": ["contracting_partner", "beneficial_owner_name", "beneficial_owner_date_of_birth",
                "beneficial_owner_nationality", "beneficial_owner_address"],
     "proof_of_address": ["name", "address", "issue_date"],
 }
 DATE_FIELDS = {"date_of_birth", "expiry_date", "beneficial_owner_date_of_birth", "issue_date"}
+COUNTRY_FIELDS = {"nationality", "beneficial_owner_nationality"}
 MAX_PROOF_AGE_DAYS = 90  # assumed bank policy: proof of address under three months old
 INJECTION_PATTERNS = re.compile("|".join([
     r"ignor\w*\s+(?:\w+\s+){0,3}(?:instructions|anweisungen|istruzioni)",
@@ -55,28 +60,81 @@ def _v(data: BaseModel | None, name: str) -> str | None:
 
 # --- per document ------------------------------------------------------------------------------
 
-def ground_fields(doc_type: str, data: BaseModel, doc: Document) -> dict:
-    """Locate every quote on the page and give each value an evidence status:
+def quote_says(name: str, value: str, quote: str | None) -> str | None:
+    """Does the quote say the value? 'yes', 'close', 'no', or None when the text alone cannot tell.
 
-    verified      the quote was found in the OCR words (exact or fuzzy) or in the MRZ pass
-    unverified    not found, e.g. handwriting OCR could not read. Kept, but a human must check it
-                  unless another document corroborates it (see corroborate)
-    dropped       the quote contradicts the value (says another date): the model is inconsistent
+    Finding the quote on the page proves only that the quote is there. Without this, a value of
+    'Hans Muster' next to a real quote 'Anna Müller' would count as verified.
+
+    'close' is OCR noise: shown the OCR text, models often copy its errors into the quote ('Cuca
+    Bernasconi') while reading the right value off the image ('Luca'). Every letter-word of the value
+    is then within one or two characters of a word in the quote, and the numbers are identical.
+    """
+    if not quote or name.startswith("mrz_line"):  # MRZ lines are chosen by check digits, see reconcile
+        return None
+    if name in DATE_FIELDS:
+        d = find_date(quote)
+        return None if d is None else "yes" if d.isoformat() == value else "no"
+    if name in COUNTRY_FIELDS:
+        code = country_code(quote)
+        return None if code is None else "yes" if code == value else "no"
+    key = address_key if name in ADDRESS_FIELDS else text_key
+    want, got = key(value).split(), set(key(quote).split())
+    missing = [t for t in want if t not in got]
+    if not missing:
+        return "yes"
+    if any(t.isdigit() for t in missing):  # '51' is not '57', whatever the letters around it say
+        return "no"
+    near = lambda t: any(fuzz.ratio(t, g) >= 75 for g in got if not g.isdigit())
+    return "close" if all(near(t) for t in missing) else "no"
+
+
+def mrz_line2_valid(data: BaseModel) -> bool:
+    try:
+        return all(parse_td3(_v(data, "mrz_line1") or "", _v(data, "mrz_line2") or "")["checks"].values())
+    except ValueError:
+        return False
+
+
+def ground_fields(doc_type: str, data: BaseModel, doc: Document) -> dict:
+    """Give each value an evidence status, and say what the evidence rests on (its basis):
+
+    verified      the quote says the value, and the quote was found on the page
+    unverified    the quote was not found (e.g. handwriting OCR could not read), or it is only close to the
+                  value (see quote_says). Kept, but a human must check it unless another document
+                  corroborates it (see corroborate)
+    dropped       the quote does not say the value (another date, another name): the value is removed
+
+    basis         text_layer: the PDF's own text, exact
+                  ocr: Tesseract read the same thing. In 'text' and 'both' mode the model was shown that
+                       OCR text, so this is agreement with OCR, not an independent second reading
+                  checksum: the MRZ's ICAO check digits pass, which neither OCR nor the model can fake
     """
     evidence = {}
+    sources = {p.number: p.source for p in doc.pages}
     for name in type(data).model_fields:
         fv: FieldValue = getattr(data, name)
         if fv.value is None:
             continue
+        if name == "mrz_line2" and mrz_line2_valid(data):
+            evidence[name] = {**Match("checksum", 100.0, fv.page, MRZ_ZONE, fv.value).to_dict(),
+                              "status": "verified", "basis": "checksum", "value": fv.value}
+            continue
         m = locate(fv.quote, doc.pages)
         if m.method == "not_found" and doc_type == "passport":
             m = locate_in_mrz(name, fv.value, doc.pages) or m
-        ev = {**m.to_dict(), "status": "verified" if m.method != "not_found" else "unverified", "value": fv.value}
-        if name in DATE_FIELDS and parse_date(fv.quote) and parse_date(fv.quote).isoformat() != fv.value:
-            ev["status"], ev["why"] = "dropped", f"quote {fv.quote!r} does not say {fv.value}"
+        basis = None if m.method == "not_found" else "checksum" if m.matched_text and m.matched_text.startswith(
+            "MRZ line") else sources.get(m.page, "ocr")
+        ev = {**m.to_dict(), "status": "verified" if basis else "unverified", "basis": basis, "value": fv.value}
+        says = quote_says(name, fv.value, fv.quote)
+        if says == "no":
+            ev["status"], ev["why"] = "dropped", f"the quote {fv.quote!r} does not say {fv.value!r}"
             fv.value = None
+        elif says == "close":
+            ev["status"], ev["basis"] = "unverified", None
+            ev["why"] = f"the quote {fv.quote!r} is close to {fv.value!r} but does not say it (OCR noise or a misreading)"
         elif m.method == "not_found":
-            ev["why"] = f"best match on the page scored {m.score} (< 85)"
+            ev["why"] = f"best match on the page scored {m.score} (< {FUZZY_MIN}, or other digits)"
         evidence[name] = ev
     return evidence
 
@@ -87,6 +145,7 @@ CORROBORATION = {
     "passport.mrz_vs_visual": ([("passport", "mrz_line1"), ("passport", "mrz_line2")],
                                [("passport", f) for f in ("document_number", "date_of_birth", "expiry_date",
                                                           "surname", "sex", "nationality")]),
+    "cross.name_passport_partner": (PASSPORT_NAME, [("form_a", "contracting_partner")]),
     "cross.name_passport_form_a": (PASSPORT_NAME, [("form_a", "beneficial_owner_name")]),
     "cross.name_passport_bill": (PASSPORT_NAME, [("proof_of_address", "name")]),
     "cross.dob": ([("passport", "date_of_birth")], [("form_a", "beneficial_owner_date_of_birth")]),
@@ -141,8 +200,8 @@ def check_required(doc_type: str, data: BaseModel | None) -> list[Check]:
                   {"required": REQUIRED[doc_type]})]
 
 
-def check_injection(doc_type: str, doc: Document, model_report: FieldValue | None) -> list[Check]:
-    """Two independent detectors: a multilingual regex over the OCR text, and the model itself."""
+def check_injection(doc_type: str, doc: Document, model_reports: list[FieldValue | None]) -> list[Check]:
+    """Independent detectors: a multilingual regex over the OCR text, and each model that read the document."""
     hit = None
     for page in doc.texts:
         m = INJECTION_PATTERNS.search(" ".join(page.split()))
@@ -151,14 +210,15 @@ def check_injection(doc_type: str, doc: Document, model_report: FieldValue | Non
             break
     # The model as a detector must be validated per model: Qwen 2.5-VL 7B reports every legal warning.
     use_model = os.getenv("KYC_MODEL_INJECTION_DETECTOR", "on") != "off"
-    model_quote = (model_report.quote or model_report.value) if model_report and use_model else None
-    model_hit, grounded = None, False
-    if model_quote:
-        grounded = locate(model_quote, doc.pages).method != "not_found"
+    quotes = [r.quote or r.value for r in model_reports if r and use_model and (r.quote or r.value)]
+    model_quote, model_hit, grounded = (quotes[0] if quotes else None), None, False
+    for quote in quotes:
+        grounded = locate(quote, doc.pages).method != "not_found"
         # Faint print can be readable to a vision model and lost to OCR. An ungrounded report still counts when
         # the quote itself reads as an instruction: a false alarm costs a manual review, a miss lets it through.
-        if grounded or INJECTION_PATTERNS.search(model_quote):
-            model_hit = model_quote
+        if grounded or INJECTION_PATTERNS.search(quote):
+            model_quote = model_hit = quote
+            break
     passed = not hit and not model_hit
     detail = "no instruction-like text" if passed else "; ".join(
         x for x in [f"regex matched {hit!r}" if hit else "",
@@ -167,6 +227,18 @@ def check_injection(doc_type: str, doc: Document, model_report: FieldValue | Non
     return [Check(f"{doc_type}.injection", "No text addressed to an AI system", passed, detail,
                   "SUSPICIOUS_INSTRUCTIONS", "high",
                   {"regex_match": hit, "model_report": model_quote, "model_report_grounded": grounded})]
+
+
+def check_signature(doc: Document) -> list[Check]:
+    band = signature_band(doc)
+    if band is None:
+        return [Check("form_a.signed", "Form A is signed", None, "skipped: the signature line was not found",
+                      "FORM_A_UNSIGNED")]
+    signed = band["ink"] >= MIN_INK
+    return [Check("form_a.signed", "Form A is signed", signed,
+                  f"ink covers {band['ink']:.2%} of the signature band (signed from {MIN_INK:.2%})"
+                  if signed else f"nothing written above '{band['label']}' ({band['ink']:.2%} ink)",
+                  "FORM_A_UNSIGNED", inputs=band)]
 
 
 # --- passport ----------------------------------------------------------------------------------
@@ -225,8 +297,13 @@ def check_passport(p: BaseModel | None, as_of: date) -> list[Check]:
 # --- across documents ------------------------------------------------------------------------------
 
 def check_cross_document(p, fa, poa, as_of: date) -> list[Check]:
+    """The passport identifies the contracting partner (the account holder). Form A names the beneficial
+    owner. Only when they are the same person can the Form A person be checked against the passport."""
     checks = []
-    passport_name = f"{_v(p, 'given_names') or ''} {_v(p, 'surname') or ''}".strip() or None
+    surname, given = _v(p, "surname"), _v(p, "given_names")
+    passport_name = f"{given or ''} {surname or ''}".strip() or None
+    is_holder = lambda _, other: person_matches(surname, given, other)
+    name_rule = "surname and first given name present, nothing that is not on the passport; any order"
 
     def compare(name, label, flag, a, b, same, how):
         if not (a and b):
@@ -236,33 +313,62 @@ def check_cross_document(p, fa, poa, as_of: date) -> list[Check]:
         checks.append(Check(name, label, ok, f"match ({how})" if ok else f"{a!r} vs {b!r}", flag,
                             inputs={"a": a, "b": b, "rule": how}))
 
-    compare("cross.name_passport_form_a", "Passport name = Form A beneficial owner", "NAME_MISMATCH",
-            passport_name, _v(fa, "beneficial_owner_name"), names_match,
-            "same name tokens in any order; a missing middle name is allowed")
+    partner, owner = _v(fa, "contracting_partner"), _v(fa, "beneficial_owner_name")
+    compare("cross.name_passport_partner", "Passport name = Form A contracting partner", "NAME_MISMATCH",
+            passport_name, partner, is_holder, name_rule)
     compare("cross.name_passport_bill", "Passport name = name on proof of address", "NAME_MISMATCH",
-            passport_name, _v(poa, "name"), names_match,
-            "same name tokens in any order; a missing middle name is allowed")
-    compare("cross.dob", "Passport date of birth = Form A date of birth", "DOB_MISMATCH",
-            _v(p, "date_of_birth"), _v(fa, "beneficial_owner_date_of_birth"), lambda a, b: a == b, "same ISO date")
-    compare("cross.nationality", "Passport nationality = Form A nationality", "NATIONALITY_MISMATCH",
-            _v(p, "nationality"), _v(fa, "beneficial_owner_nationality"), lambda a, b: a == b, "same ISO code")
-    compare("cross.address", "Form A address = proof of address", "ADDRESS_MISMATCH",
-            _v(fa, "beneficial_owner_address"), _v(poa, "address"),
-            lambda a, b: address_key(a) == address_key(b),
-            "same tokens after expanding abbreviations, city aliases, dropping country and CH-")
-    issued = parse_date(_v(poa, "issue_date"))
+            passport_name, _v(poa, "name"), is_holder, name_rule)
+    # Neither the passport holder nor the contracting partner, nor a misspelling of either ('Maximillian'):
+    # those are checked in full, and the name checks flag the difference.
+    same_person = lambda a, b: names_match(a, b) or fuzz.token_sort_ratio(text_key(a), text_key(b)) >= 85
+    third_party = bool(partner and owner and not person_matches(surname, given, owner)
+                       and not same_person(partner, owner) and not same_person(passport_name, owner))
+    if fa is not None and partner and owner:
+        checks.append(Check("form_a.owner_is_client", "The beneficial owner is the client", not third_party,
+                            "the beneficial owner is the passport holder or the contracting partner"
+                            if not third_party else
+                            f"Form A names {owner!r} as beneficial owner of {partner!r}'s assets: that person "
+                            "must be identified on their own, and the Form A details cannot be checked against "
+                            "this passport", "THIRD_PARTY_OWNER", "medium", {"partner": partner, "owner": owner}))
+    if not third_party:
+        compare("cross.name_passport_form_a", "Passport name = Form A beneficial owner", "NAME_MISMATCH",
+                passport_name, owner, is_holder, name_rule)
+        compare("cross.dob", "Passport date of birth = Form A date of birth", "DOB_MISMATCH",
+                _v(p, "date_of_birth"), _v(fa, "beneficial_owner_date_of_birth"), lambda a, b: a == b,
+                "same ISO date")
+        compare("cross.nationality", "Passport nationality = Form A nationality", "NATIONALITY_MISMATCH",
+                _v(p, "nationality"), _v(fa, "beneficial_owner_nationality"), lambda a, b: a == b, "same ISO code")
+        compare("cross.address", "Form A address = proof of address", "ADDRESS_MISMATCH",
+                _v(fa, "beneficial_owner_address"), _v(poa, "address"),
+                lambda a, b: address_key(a) == address_key(b),
+                "same tokens after expanding abbreviations, city aliases, dropping a trailing country and CH-")
+    raw = _v(poa, "issue_date")
+    issued = parse_date(raw)
+    label = f"Proof of address at most {MAX_PROOF_AGE_DAYS} days old"
     if issued:
         age = (as_of - issued).days
-        checks.append(Check("poa.age", f"Proof of address at most {MAX_PROOF_AGE_DAYS} days old",
-                            age <= MAX_PROOF_AGE_DAYS, f"issued {issued.isoformat()}, {age} days before review",
-                            "PROOF_OF_ADDRESS_TOO_OLD", "medium",
-                            {"issue_date": issued.isoformat(), "as_of": as_of.isoformat(), "max_days": MAX_PROOF_AGE_DAYS}))
+        inputs = {"issue_date": issued.isoformat(), "as_of": as_of.isoformat(), "max_days": MAX_PROOF_AGE_DAYS}
+        if age < 0:
+            checks.append(Check("poa.age", label, False, f"dated {issued.isoformat()}, {-age} days after the review",
+                                "IMPLAUSIBLE_DATE", "high", inputs))
+        else:
+            checks.append(Check("poa.age", label, age <= MAX_PROOF_AGE_DAYS,
+                                f"issued {issued.isoformat()}, {age} days before review",
+                                "PROOF_OF_ADDRESS_TOO_OLD", "medium", inputs))
     else:
-        checks.append(Check("poa.age", f"Proof of address at most {MAX_PROOF_AGE_DAYS} days old", None,
-                            "skipped: no issue date", "PROOF_OF_ADDRESS_TOO_OLD", "medium"))
+        checks.append(Check("poa.age", label, None,
+                            f"skipped: issue date {raw!r} could not be read" if raw else "skipped: no issue date",
+                            "PROOF_OF_ADDRESS_TOO_OLD", "medium"))
     return checks
 
 
 def flags_from(checks: list[Check]) -> list[dict]:
-    return [{"code": c.flag, "severity": c.severity, "message": f"{c.label}: {c.detail}", "check": c.name}
-            for c in checks if c.passed is False and c.flag]
+    """Failed checks raise their own flag; skipped ones raise CHECK_SKIPPED. Either way a human looks."""
+    flags = []
+    for c in checks:
+        if c.passed is False and c.flag:
+            flags.append({"code": c.flag, "severity": c.severity, "message": f"{c.label}: {c.detail}", "check": c.name})
+        elif c.passed is None:
+            flags.append({"code": "CHECK_SKIPPED", "severity": "medium", "message": f"{c.label}: {c.detail}",
+                          "check": c.name})
+    return flags

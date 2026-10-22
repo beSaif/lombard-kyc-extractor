@@ -1,6 +1,9 @@
 // Types derived from the live API and a real run (runs/<id>/result.json).
 
 export type Tier = "clean" | "scan" | "photo";
+/** Where a case lives: a quality tier of the synthetic set, or "upload" for your own documents. */
+export type CaseTier = Tier | "upload";
+export type Suite = "standard" | "hard";
 export type DocType = "passport" | "form_a" | "proof_of_address";
 export type EvidenceStatus = "verified" | "unverified" | "corroborated" | "dropped";
 export type Decision = "pre_filled_review" | "manual_review";
@@ -8,6 +11,7 @@ export type Decision = "pre_filled_review" | "manual_review";
 export interface CaseSummary {
   tier: Tier;
   case: string;
+  suite?: Suite;
   defects: string[];
   traps: string[];
   layouts: Record<string, string>;
@@ -19,6 +23,8 @@ export interface Truth {
   tier: Tier;
   defects: string[];
   expected_flags: string[];
+  expected_checks?: string[];
+  suite?: Suite;
   traps: string[];
   layouts: Record<string, string>;
   as_of?: string;
@@ -26,7 +32,7 @@ export interface Truth {
 }
 
 export interface CaseDetail {
-  truth: Truth;
+  truth: Truth | null; // null for an upload
   files: string[];
 }
 
@@ -46,7 +52,8 @@ export interface FieldValue {
 }
 
 export interface Evidence {
-  method: "exact" | "fuzzy" | "mrz_pass" | "not_found" | string;
+  method: "exact" | "fuzzy" | "mrz_pass" | "checksum" | "not_found" | string;
+  basis?: "text_layer" | "ocr" | "checksum" | null; // what the evidence rests on
   score: number | null;
   page: number | null;
   bbox: [number, number, number, number] | null;
@@ -92,6 +99,7 @@ export type StepKind =
   | "cross_model"
   | "validate"
   | "corroborate"
+  | "signature"
   | "route";
 
 export interface Step {
@@ -150,7 +158,7 @@ export interface CaseError {
 }
 
 export interface RunRequest {
-  tier: Tier;
+  tier: CaseTier;
   case: string;
   extractor: string;
   second?: string | null;
@@ -160,7 +168,7 @@ export interface RunRequest {
 
 export interface Result {
   case: string;
-  tier: Tier;
+  tier: CaseTier | string;
   extractor: string;
   second: string | null;
   reader: string;
@@ -172,7 +180,7 @@ export interface Result {
   evidence: Record<DocType, Record<string, Evidence>>;
   usage: Record<string, Usage>;
   totals: Totals;
-  score: CaseScore;
+  score?: CaseScore; // absent for uploads: there is no truth to score against
   steps: Step[];
   run_id: string;
   request: RunRequest;
@@ -190,13 +198,46 @@ export interface RunState {
 
 export interface RunListItem {
   run_id: string;
-  tier: Tier;
+  tier: CaseTier;
   case: string;
   extractor: string;
   second: string | null;
   decision: Decision;
   flags: string[];
   totals: Totals;
+  review?: ReviewStatus;
+}
+
+export type ReviewStatus = "open" | "awaiting_second_approval" | "approved" | "rejected" | "info_requested";
+
+export interface AuditEntry {
+  seq: number;
+  at: string;
+  kind: "field" | "decision";
+  run_id: string;
+  reviewer: string;
+  doc?: string;
+  field?: string;
+  action?: "accept" | "correct" | "reject";
+  value?: string | null;
+  model_value?: string | null;
+  reason?: string | null;
+  decision?: "approve" | "reject" | "request_info";
+  note?: string | null;
+  documents?: Record<string, string>;
+  prompt_version?: string | null;
+  prev: string;
+  hash: string;
+}
+
+export interface ReviewState {
+  status: ReviewStatus;
+  approved_by: string[];
+  fields: Record<string, AuditEntry>; // "doc.field" -> the latest decision on it
+  needs_eyes: Record<string, "unverified" | "dropped" | "missing">;
+  pending: string[];
+  rejected_fields: string[];
+  entries: AuditEntry[];
 }
 
 export interface CodeRef {
@@ -221,8 +262,13 @@ export interface Summary {
   field_accuracy: number | null;
   critical_field_accuracy: number | null;
   defect_recall: number | null;
+  defect_recall_ci?: [number, number] | null;
+  defect_recall_n?: [number, number];
+  defects_not_flagged?: number | null;
+  right_check_rate?: number | null;
   defect_precision: number | null;
   missed_defect_files: number | null;
+  errors?: number;
   defect_files: number | null;
   straight_through_rate: number | null;
   routing_accuracy: number | null;
@@ -237,6 +283,7 @@ export interface Summary {
 
 export interface EvalReport {
   extractor: string;
+  suite?: Suite;
   as_of: string;
   tiers: Partial<Record<Tier, Summary>>;
   cases: Partial<Record<Tier, (CaseScore | CaseError)[]>>;

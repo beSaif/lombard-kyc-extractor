@@ -6,6 +6,7 @@ import type {
   EvalReport,
   Extractor,
   ModuleSource,
+  ReviewState,
   RunListItem,
   RunRequest,
   RunState,
@@ -14,6 +15,21 @@ import type {
 async function getJSON<T>(url: string): Promise<T> {
   const r = await fetch(url);
   if (!r.ok) throw new Error(`${r.status} ${r.statusText} for ${url}`);
+  return r.json() as Promise<T>;
+}
+
+async function send<T>(url: string, body: unknown): Promise<T> {
+  const r = await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+  if (!r.ok) {
+    const text = await r.text();
+    let detail = text;
+    try {
+      detail = JSON.parse(text).detail ?? text;
+    } catch {
+      /* not JSON */
+    }
+    throw new Error(typeof detail === "string" ? detail : JSON.stringify(detail));
+  }
   return r.json() as Promise<T>;
 }
 
@@ -26,15 +42,20 @@ export const api = {
   modules: () => getJSON<ModuleSource[]>("/api/modules"),
   evals: () => getJSON<EvalReport[]>("/api/evals"),
   code: (ref: string) => getJSON<CodeRef>(`/api/code?ref=${encodeURIComponent(ref)}`),
-  startRun: async (req: RunRequest): Promise<{ run_id: string }> => {
-    const r = await fetch("/api/runs", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(req),
-    });
-    if (!r.ok) throw new Error(`${r.status}: ${await r.text()}`);
+  startRun: (req: RunRequest) => send<{ run_id: string }>("/api/runs", req),
+  upload: async (files: Record<string, File>): Promise<{ tier: "upload"; case: string; files: string[] }> => {
+    const form = new FormData();
+    for (const [doc, f] of Object.entries(files)) form.append(doc, f);
+    const r = await fetch("/api/uploads", { method: "POST", body: form });
+    if (!r.ok) throw new Error((await r.json().catch(() => ({}))).detail ?? `${r.status} ${r.statusText}`);
     return r.json();
   },
+  review: (runId: string) => getJSON<ReviewState>(`/api/runs/${runId}/review`),
+  reviewField: (runId: string, body: { reviewer: string; doc: string; field: string; action: string; value?: string; reason?: string }) =>
+    send<ReviewState>(`/api/runs/${runId}/review/field`, body),
+  reviewDecision: (runId: string, body: { reviewer: string; decision: string; note?: string }) =>
+    send<ReviewState>(`/api/runs/${runId}/review/decision`, body),
+  verifyAudit: () => getJSON<{ ok: boolean; entries: number; broken_at?: number; head?: string }>("/api/audit/verify"),
 };
 
 export const previewUrl = (tier: string, c: string, doc: string, w = 900) =>

@@ -23,13 +23,16 @@ export const MODE_INFO: Record<string, string> = {
 export const DEFECTS: Record<string, string> = {
   PASSPORT_EXPIRED: "Passport expired before the review date.",
   MRZ_CHECK_FAILED: "One MRZ check digit is wrong (ICAO 9303 7-3-1 checksum fails).",
-  MRZ_VISUAL_MISMATCH: "Printed date of birth altered; the MRZ was left alone, so they disagree.",
-  NAME_MISMATCH: "Bill is in a family member's name, not the passport holder's.",
+  MRZ_VISUAL_MISMATCH: "The printed page and the MRZ disagree (an altered date of birth or passport number).",
+  NAME_MISMATCH: "A name that should be the passport holder's is not: the bill, or Form A's contracting partner.",
   ADDRESS_MISMATCH: "Form A address and the bill's address are different places.",
-  DOB_MISMATCH: "Day and month swapped on Form A versus the passport.",
+  DOB_MISMATCH: "Form A date of birth differs from the passport (day and month swapped, or one digit off).",
   NATIONALITY_MISMATCH: "Form A nationality differs from the passport.",
   PROOF_OF_ADDRESS_TOO_OLD: "Bill is more than 90 days old on the review date.",
   SUSPICIOUS_INSTRUCTIONS: "Prompt injection hidden in the Form A remarks or the bill's fine print.",
+  THIRD_PARTY_OWNER: "Form A names someone else as beneficial owner: that person must be identified on their own.",
+  FORM_A_UNSIGNED: "Nothing written on the Form A signature line.",
+  IMPLAUSIBLE_DATE: "The bill is dated after the review date.",
 };
 
 export const TRAPS: Record<string, string> = {
@@ -41,6 +44,10 @@ export const TRAPS: Record<string, string> = {
   ADDR_NUMBER_FIRST: '"12, rue des Exemples" (number before street).',
   POA_NEAR_LIMIT: "Bill is 80–89 days old; the limit is 90.",
   PASSPORT_EXPIRES_SOON: "Passport is valid but expires within 30 days.",
+  POA_AT_LIMIT: "Bill is exactly 90 days old: still inside the limit.",
+  PASSPORT_EXPIRES_TODAY: "Passport expires on the review date: still valid that day.",
+  UNSEEN_NATIONALITY: "A nationality the normaliser was never given (held out: expected to fail).",
+  UNSEEN_CITY_ALIAS: "Luzern written as Lucerne, a city the alias table lacks (held out: expected to fail).",
 };
 
 export const PROCESS_FLAGS: Record<string, string> = {
@@ -48,6 +55,13 @@ export const PROCESS_FLAGS: Record<string, string> = {
   MISSING_FIELD: "A required field was not extracted.",
   MISSING_DOCUMENT: "One of the three documents is missing.",
   MODEL_DISAGREEMENT: "Primary and second model disagree on a field.",
+  CHECK_SKIPPED: "A check could not run (e.g. a date it could not read). A check that did not run has not passed.",
+};
+
+export const BASIS_INFO: Record<string, string> = {
+  text_layer: "found in the PDF's own text layer: exact",
+  ocr: "found in the OCR text. In text/both mode the model was shown that OCR, so this is agreement with OCR, not a second reading",
+  checksum: "the MRZ's ICAO check digits pass",
 };
 
 export const isDefect = (code: string) => code in DEFECTS;

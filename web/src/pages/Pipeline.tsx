@@ -5,9 +5,10 @@ import { Figure } from "../Figure";
 import { DEFECTS, DOCS, DOC_LABEL, MODE_INFO, TIERS, TIER_INFO, TRAPS, cx, ms, usd } from "../lib";
 import { navigate, setParams, type Route } from "../router";
 import { DecisionBadge } from "../steps/ChecksView";
+import { ReviewBadge, ReviewView } from "../steps/ReviewView";
 import { KIND_ICON, StepDetail } from "../steps/StepDetail";
 import { SummaryView } from "../steps/SummaryView";
-import type { CaseSummary, Extractor, RunListItem, RunState, Step, Tier } from "../types";
+import type { CaseSummary, CaseTier, Extractor, RunListItem, RunState, Step, Tier } from "../types";
 import { Badge, Empty, ErrorBox, Section, Spinner, Tabs } from "../ui";
 
 const LS_EXTRACTOR = "kyc.extractor";
@@ -128,6 +129,11 @@ function CasePicker({ cases, value, onChange }: { cases: CaseSummary[]; value: s
               >
                 <span className="mono w-20 shrink-0 pt-0.5 font-medium">{c.case}</span>
                 <span className="flex-1">
+                  {c.suite === "hard" && (
+                    <Badge tone="accent" className="mr-1" title="Hard suite: built to break the system">
+                      hard
+                    </Badge>
+                  )}
                   <CaseBadges c={c} />
                 </span>
                 <span className="mono shrink-0 pt-0.5 text-[11px] text-faint">
@@ -142,15 +148,28 @@ function CasePicker({ cases, value, onChange }: { cases: CaseSummary[]; value: s
   );
 }
 
-function PreRun({ tier, caseId }: { tier: Tier; caseId: string }) {
+function PreRun({ tier, caseId }: { tier: CaseTier; caseId: string }) {
   const det = useFetch(`case:${tier}/${caseId}`, () => api.caseDetail(tier, caseId));
-  const t = det.data?.truth;
+  const t = det.data?.truth ?? undefined;
+  const present = (d: string) => !det.data || det.data.files.some((f) => f.startsWith(`${d}.`));
   return (
     <div className="flex flex-col gap-3 p-4">
+      {tier === "upload" && (
+        <div className="rounded border-l-2 border-accent bg-accent-weak px-3 py-2 text-[12px]">
+          Your own documents. There is no truth to score against: run them, then open <b>Review</b> to check every value by eye and sign off.
+          They stay on this machine unless you pick a cloud model.
+        </div>
+      )}
       <div className="grid grid-cols-3 gap-3">
-        {DOCS.map((d) => (
-          <Figure key={`${tier}${caseId}${d}`} src={previewUrl(tier, caseId, d, 900)} caption={`${DOC_LABEL[d]} · ${tier}/${caseId}${t?.layouts[d] ? ` · layout ${t.layouts[d]}` : ""}`} maxH={460} />
-        ))}
+        {DOCS.map((d) =>
+          present(d) ? (
+            <Figure key={`${tier}${caseId}${d}`} src={previewUrl(tier, caseId, d, 900)} caption={`${DOC_LABEL[d]} · ${tier}/${caseId}${t?.layouts[d] ? ` · layout ${t.layouts[d]}` : ""}`} maxH={460} />
+          ) : (
+            <div key={d} className="rounded border border-dashed border-line p-6 text-center text-[12px] text-faint">
+              no {DOC_LABEL[d].toLowerCase()} uploaded: it will be flagged MISSING_DOCUMENT
+            </div>
+          ),
+        )}
       </div>
       {det.error && <ErrorBox>{det.error}</ErrorBox>}
       {t && (
@@ -220,7 +239,7 @@ function PreRun({ tier, caseId }: { tier: Tier; caseId: string }) {
 
 // ---------------------------------------------------------------- run view
 
-type Sel = number | "summary";
+type Sel = number | "summary" | "review";
 
 function groupSteps(steps: Step[]) {
   const groups: { key: string; label: string; steps: Step[] }[] = [
@@ -276,6 +295,20 @@ function Timeline({
           <span className="w-4 text-center text-accent">Σ</span>
           <span className="flex-1 font-medium">Summary</span>
           <span className="text-[11px] text-muted">vs truth</span>
+        </button>
+      )}
+      {done && (
+        <button
+          onClick={() => onSelect("review")}
+          className={cx(
+            "flex items-center gap-2 rounded-md border px-2 py-1.5 text-left",
+            sel === "review" ? "border-accent bg-accent-weak" : "border-line bg-panel hover:bg-sunk",
+            animate && "step-in",
+          )}
+        >
+          <span className="w-4 text-center text-accent">✎</span>
+          <span className="flex-1 font-medium">Review</span>
+          <span className="text-[11px] text-muted">human sign-off</span>
         </button>
       )}
       {groups.map((g) => {
@@ -343,7 +376,9 @@ function Timeline({
 function RunView({ runId, initialStep, showCode, setShowCode }: { runId: string; initialStep?: string; showCode: boolean; setShowCode: (v: boolean) => void }) {
   const [run, setRun] = useState<RunState | null>(null);
   const [err, setErr] = useState<string | null>(null);
-  const [sel, setSel] = useState<Sel | null>(initialStep ? (initialStep === "summary" ? "summary" : +initialStep) : null);
+  const [sel, setSel] = useState<Sel | null>(
+    initialStep ? (initialStep === "summary" || initialStep === "review" ? initialStep : +initialStep) : null,
+  );
   const [follow, setFollow] = useState(!initialStep);
   const [wasRunning, setWasRunning] = useState(false);
   const [clock, setClock] = useState<{ base: number; at: number } | null>(null);
@@ -402,7 +437,12 @@ function RunView({ runId, initialStep, showCode, setShowCode }: { runId: string;
   const second = useMemo(() => secondModelIds(steps), [steps]);
   const step = typeof sel === "number" ? steps.find((s) => s.id === sel) : undefined;
   const elapsed = running && clock ? clock.base + (Date.now() - clock.at) / 1000 : run?.elapsed ?? result?.totals.seconds;
-  const codeRefs = sel === "summary" ? ["kyc_demo.pipeline.run_case", "kyc_demo.evaluate.score_case"] : step?.code ?? [];
+  const codeRefs =
+    sel === "summary"
+      ? ["kyc_demo.pipeline.run_case", "kyc_demo.evaluate.score_case"]
+      : sel === "review"
+        ? ["kyc_demo.review.review_state", "kyc_demo.review.refuse_decision", "kyc_demo.review.AuditLog.append"]
+        : step?.code ?? [];
   const req = run?.request ?? result?.request;
 
   if (err) return <div className="p-4"><ErrorBox>{err}</ErrorBox></div>;
@@ -441,6 +481,8 @@ function RunView({ runId, initialStep, showCode, setShowCode }: { runId: string;
         {run.status === "error" && <ErrorBox>{run.error}</ErrorBox>}
         {sel === "summary" && result ? (
           <SummaryView result={result} />
+        ) : sel === "review" && result ? (
+          <ReviewView result={result} steps={steps} />
         ) : step ? (
           <StepDetail key={step.id} step={step} ctx={{ steps, result, request: req }} secondModel={second.has(step.id)} />
         ) : (
@@ -509,6 +551,7 @@ function RecentRuns({ onClose }: { onClose: () => void }) {
                   {r.tier}/{r.case}
                 </span>
                 <DecisionBadge decision={r.decision} />
+                {r.review && r.review !== "open" && <ReviewBadge status={r.review} />}
                 <span className="mono ml-auto text-[11px] text-faint">{r.run_id}</span>
               </div>
               <div className="mono truncate text-[11px] text-muted">
@@ -532,22 +575,85 @@ function RecentRuns({ onClose }: { onClose: () => void }) {
   );
 }
 
+// ---------------------------------------------------------------- upload
+
+function UploadDialog({ onClose, onDone }: { onClose: () => void; onDone: (caseId: string) => void }) {
+  const [files, setFiles] = useState<Record<string, File>>({});
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+  const submit = async () => {
+    setBusy(true);
+    setErr(null);
+    try {
+      onDone((await api.upload(files)).case);
+    } catch (e) {
+      setErr((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  };
+  return (
+    <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/30" onClick={onClose}>
+      <div className="flex w-[520px] max-w-[calc(100vw-32px)] flex-col gap-3 rounded-md border border-line bg-panel p-4 shadow-xl" onClick={(e) => e.stopPropagation()}>
+        <h3 className="font-semibold">Upload a client file</h3>
+        <p className="text-[12px] text-muted">
+          PDF, JPEG or PNG, up to 20 MB each. A missing document is flagged, not guessed. Files are stored under runs/uploads on this machine and only
+          leave it if you run a cloud model on them.
+        </p>
+        {DOCS.map((d) => (
+          <label key={d} className="flex items-center gap-3 text-[12px]">
+            <span className="w-32 font-medium">{DOC_LABEL[d]}</span>
+            <input
+              type="file"
+              accept=".pdf,.jpg,.jpeg,.png"
+              onChange={(e) => {
+                const f = e.target.files?.[0];
+                setFiles((cur) => {
+                  const next = { ...cur };
+                  if (f) next[d] = f;
+                  else delete next[d];
+                  return next;
+                });
+              }}
+            />
+          </label>
+        ))}
+        {err && <ErrorBox>{err}</ErrorBox>}
+        <div className="flex justify-end gap-2">
+          <button className="h-8 rounded-md border border-line px-3 text-[12px] hover:bg-sunk" onClick={onClose}>
+            Cancel
+          </button>
+          <button
+            disabled={busy || Object.keys(files).length === 0}
+            onClick={submit}
+            className="h-8 rounded-md bg-accent px-4 text-[12px] font-semibold text-white disabled:opacity-50 dark:text-black"
+          >
+            {busy ? "Uploading…" : "Upload"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ---------------------------------------------------------------- page
 
 export function PipelinePage({ route }: { route: Route }) {
   const p = route.params;
-  const tier = (TIERS.includes(p.tier as Tier) ? p.tier : "scan") as Tier;
+  const tier = (TIERS.includes(p.tier as Tier) || p.tier === "upload" ? p.tier : "scan") as CaseTier;
   const caseId = p.case || "case_001";
-  const extractor = p.extractor || lsGet(LS_EXTRACTOR) || "rules";
+  const cases = useFetch("cases", api.cases);
+  const extractors = useFetch("extractors", api.extractors);
+  // Local first: nothing leaves the machine unless someone picks a cloud model.
+  const localDefault = extractors.data?.find((e) => e.provider === "ollama" && e.mode === "both")?.spec ?? "rules";
+  const extractor = p.extractor || lsGet(LS_EXTRACTOR) || localDefault;
   const second = p.second || "";
   const reader = (p.reader || "auto") as "auto" | "text" | "ocr";
   const runId = p.run;
-
-  const cases = useFetch("cases", api.cases);
-  const extractors = useFetch("extractors", api.extractors);
   const [starting, setStarting] = useState(false);
   const [startErr, setStartErr] = useState<string | null>(null);
   const [showRuns, setShowRuns] = useState(false);
+  const [showUpload, setShowUpload] = useState(false);
   const [showCode, setShowCodeState] = useState(() => lsGet("kyc.showCode") !== "0");
   const setShowCode = (v: boolean) => {
     setShowCodeState(v);
@@ -577,9 +683,22 @@ export function PipelinePage({ route }: { route: Route }) {
       <div className="flex flex-col gap-2 border-b border-line bg-panel px-4 py-2.5">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           <div className="flex items-center gap-2">
-            <Tabs tabs={TIERS.map((t) => ({ id: t, label: t, title: TIER_INFO[t] }))} value={tier} onChange={(t) => change({ tier: t })} />
+            <Tabs
+              tabs={[...TIERS.map((t) => ({ id: t as CaseTier, label: t, title: TIER_INFO[t] })), ...(tier === "upload" ? [{ id: "upload" as CaseTier, label: "upload" }] : [])]}
+              value={tier}
+              onChange={(t) => change({ tier: t, case: t === "upload" ? caseId : tier === "upload" ? "case_001" : caseId })}
+            />
           </div>
-          {cases.data && <CasePicker cases={tierCases} value={caseId} onChange={(c) => change({ case: c })} />}
+          {tier === "upload" ? (
+            <Badge mono tone="accent">
+              your upload {caseId}
+            </Badge>
+          ) : (
+            cases.data && <CasePicker cases={tierCases} value={caseId} onChange={(c) => change({ case: c })} />
+          )}
+          <button onClick={() => setShowUpload(true)} className="h-8 rounded-md border border-line px-3 text-[12px] text-muted hover:bg-sunk hover:text-fg">
+            Upload your own…
+          </button>
           <label className="flex items-center gap-1.5 text-[12px] text-muted">
             extractor
             {extractors.data && (
@@ -623,7 +742,7 @@ export function PipelinePage({ route }: { route: Route }) {
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-0.5 text-[12px] text-muted">
           <span>
-            <b className="font-medium text-fg">{tier}</b>: {TIER_INFO[tier]}
+            <b className="font-medium text-fg">{tier}</b>: {tier === "upload" ? "your own documents, read as they are" : TIER_INFO[tier]}
           </span>
           <span>
             {ex ? (ex.provider === "rules" ? "rules: hand-written regexes over the OCR text, no model. The baseline." : MODE_INFO[ex.mode]) : ""}
@@ -642,6 +761,15 @@ export function PipelinePage({ route }: { route: Route }) {
         </div>
       )}
       {showRuns && <RecentRuns onClose={() => setShowRuns(false)} />}
+      {showUpload && (
+        <UploadDialog
+          onClose={() => setShowUpload(false)}
+          onDone={(c) => {
+            setShowUpload(false);
+            setParams({ tier: "upload", case: c, run: null, step: null }, false);
+          }}
+        />
+      )}
     </div>
   );
 }

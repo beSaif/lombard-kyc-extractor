@@ -71,9 +71,9 @@ def name_key(s: str | None) -> str:
 
 
 def names_match(a: str | None, b: str | None) -> bool:
-    """Equal, or one is the other minus middle names ('Anna Müller' vs 'Anna Maria Müller').
-
-    Both first and last tokens must still be present, so 'Marco Müller' never matches 'Anna Maria Müller'.
+    """Two free-text names: equal tokens, or one is the other minus middle names ('Anna Müller' vs
+    'Anna Maria Müller'). Neither side says which token is the surname, so when one side is a passport,
+    use person_matches instead: it knows the surname and is stricter.
     """
     ta, tb = name_tokens(a), name_tokens(b)
     if not ta or not tb:
@@ -84,20 +84,34 @@ def names_match(a: str | None, b: str | None) -> bool:
     return len(small) >= 2 and small <= big
 
 
+def person_matches(surname: str | None, given_names: str | None, other: str | None) -> bool:
+    """Does a free-text name refer to the passport holder?
+
+    Every surname token and the first given name must be there, and nothing that is not on the passport.
+    Order does not matter ('MÜLLER Anna Maria'), a missing middle name is allowed ('Anna Müller'), but
+    'Anna Maria' (no surname), 'Maria Müller' (a relative?) and 'Marco Müller' are not the holder.
+    """
+    sur, given, got = name_tokens(surname), text_key(given_names).split(), name_tokens(other)
+    if not sur or not given or not got:
+        return False
+    return sur <= got and given[0] in got and got <= sur | set(given)
+
+
 def address_key(s: str | None) -> str:
-    """Order-free address tokens with abbreviations expanded and country names and 'CH-' dropped."""
+    """Order-free address tokens with abbreviations expanded, city aliases unified, and 'CH-' and a
+    trailing country name dropped ('Avenue de France 10' keeps its 'France')."""
     if not s:
         return ""
     s = re.sub(r"\bCH-(?=\d{4}\b)", "", s)
     s = re.sub(r"(\w)str\.", r"\1strasse", s)  # Beispielstr. -> Beispielstrasse
-    tokens = []
-    for t in text_key(s).split():
-        t = STREET_ABBREVIATIONS.get(t, t)
-        t = CITY_ALIASES.get(t, t)
-        if t in COUNTRY_WORDS:
-            continue
-        tokens.append(t)
+    tokens = [CITY_ALIASES.get(t, STREET_ABBREVIATIONS.get(t, t)) for t in text_key(s).split()]
+    while tokens and tokens[-1] in COUNTRY_WORDS:
+        tokens.pop()
     return " ".join(sorted(tokens))
+
+
+def digits(s: str | None) -> str:
+    return re.sub(r"\D", "", s or "")
 
 
 def parse_date(s: str | None) -> date | None:
@@ -118,6 +132,23 @@ def parse_date(s: str | None) -> date | None:
         day, year = (int(nums[0]), int(nums[1])) if len(nums[1]) == 4 else (int(nums[1]), int(nums[0]))
         try:
             return date(year, months[0], day)
+        except ValueError:
+            return None
+    return None
+
+
+NUMERIC_DATE = re.compile(r"\b(\d{1,2})[./-](\d{1,2})[./-](\d{4})\b")
+
+
+def find_date(s: str | None) -> date | None:
+    """A date that is the whole string, or one written inside it ('Bern, 12.10.2026')."""
+    d = parse_date(s)
+    if d or not s:
+        return d
+    m = NUMERIC_DATE.search(s)
+    if m:
+        try:
+            return date(int(m.group(3)), int(m.group(2)), int(m.group(1)))
         except ValueError:
             return None
     return None

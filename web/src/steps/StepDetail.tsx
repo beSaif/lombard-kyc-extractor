@@ -20,6 +20,7 @@ export const KIND_ICON: Record<string, string> = {
   cross_model: "⇆",
   validate: "✓",
   corroborate: "⛓",
+  signature: "✍",
   route: "➜",
 };
 
@@ -32,7 +33,7 @@ export interface StepCtx {
 function LoadView({ step, ctx }: { step: Step; ctx: StepCtx }) {
   const d = step.data;
   const req = ctx.request ?? ctx.result?.request;
-  const fileUrl = req ? `/files/${req.tier}/${req.case}/${d.file}` : undefined;
+  const fileUrl = req && req.tier !== "upload" ? `/files/${req.tier}/${req.case}/${d.file}` : undefined;
   const willUseLayer = d.reader_mode === "text" || (d.reader_mode === "auto" && d.has_text_layer);
   return (
     <div className="grid gap-3 @3xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
@@ -290,6 +291,35 @@ function ExtractView({ step }: { step: Step }) {
   );
 }
 
+function SignatureView({ step, ctx }: { step: Step; ctx: StepCtx }) {
+  const check = step.data.check;
+  const band = check?.inputs ?? {};
+  const read = ctx.steps.find((s) => s.kind === "read" && s.doc === step.doc && s.data.page === (band.page ?? 1));
+  const box = band.bbox as [number, number, number, number] | undefined;
+  return (
+    <div className="grid gap-3 @3xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      <Figure
+        src={read?.data.image}
+        caption="The band above the signature label, where the ink is measured (printed lines removed first)."
+        overlay={
+          box ? (
+            <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1 1" preserveAspectRatio="none">
+              <rect x={box[0]} y={box[1]} width={box[2] - box[0]} height={box[3] - box[1]} fill="var(--accent)" fillOpacity={0.12} stroke="var(--accent)" strokeWidth={2} vectorEffect="non-scaling-stroke" />
+            </svg>
+          ) : undefined
+        }
+      />
+      <div className="flex flex-col gap-3">
+        {check && <ChecksList checks={[check]} />}
+        <div className="text-[12px] text-muted">
+          A pixel test, not a model's opinion: is anything written where the signature goes? It cannot tell whose signature it is. Under CDB 20
+          art. 63(b) an incomplete Form A is a minor breach only if it is signed, so this is the Form A field that matters most.
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Body({ step, ctx }: { step: Step; ctx: StepCtx }) {
   switch (step.kind) {
     case "load":
@@ -318,6 +348,8 @@ function Body({ step, ctx }: { step: Step; ctx: StepCtx }) {
       return <CorroborateView step={step} />;
     case "route":
       return <RouteView step={step} />;
+    case "signature":
+      return <SignatureView step={step} ctx={ctx} />;
     default:
       return Array.isArray(step.data.checks) ? <ChecksList checks={step.data.checks} /> : <JsonBox value={step.data} />;
   }

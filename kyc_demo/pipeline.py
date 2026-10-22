@@ -12,7 +12,7 @@ from .mrz import reconcile
 from .normalise import same
 from .read import find_file, read_document
 from .trace import Trace
-from .validate import (Check, check_cross_document, check_injection, check_passport, check_required,
+from .validate import (Check, check_cross_document, check_injection, check_passport, check_required, check_signature,
                        corroborate, flags_from, ground_fields)
 
 DOC_TYPES = ("passport", "form_a", "proof_of_address")
@@ -64,12 +64,16 @@ def run_case(case_dir: Path, extractor, as_of: date, reader: str = "auto", secon
             reconcile_passport_mrz(ex.data, doc, trace)
         with trace.step("ground", "Ground every value in the page", doc=doc_type,
                         code=("kyc_demo.validate.ground_fields", "kyc_demo.ground.locate"),
-                        explain="Each quote is fuzzy-matched against the OCR words. A value whose quote is not "
-                                "on the page (or contradicts it) is dropped: the hallucination guard.") as d:
+                        explain="Two tests per value. Does its own quote say it (same name tokens, same date, same "
+                                "digits)? If not, it is dropped. Is the quote on the page (fuzzy for OCR noise, "
+                                "exact for digits)? If not, it is unverified and a human checks it unless another "
+                                "document corroborates it. The MRZ is verified by its check digits instead.") as d:
             ev = ground_fields(doc_type, ex.data, doc)
             d.update(evidence=ev, fields=ex.data.model_dump())
+        reports = [ex.embedded_instructions]
         if second is not None:
             ex2 = second.extract(doc_type, doc, trace)
+            reports.append(ex2.embedded_instructions)
             if doc_type == "passport":  # compare like with like: both MRZs go through the same reconciliation
                 reconcile_passport_mrz(ex2.data, doc, trace)
             ground_fields(doc_type, ex2.data, doc)
@@ -81,12 +85,21 @@ def run_case(case_dir: Path, extractor, as_of: date, reader: str = "auto", secon
                 d.update(check=c.to_dict())
             checks.append(c)
             usage[f"{doc_type}:second"] = ex2.usage
-        checks += check_injection(doc_type, doc, ex.embedded_instructions)
+        checks += check_injection(doc_type, doc, reports)
+        if doc_type == "form_a":
+            with trace.step("signature", "Look for a signature", doc=doc_type,
+                            code=("kyc_demo.validate.check_signature", "kyc_demo.signature.signature_band",
+                                  "kyc_demo.signature.ink_ratio"),
+                            explain="Pixels, not the model: find the signature label, measure the ink in the band "
+                                    "above it after removing the printed line. An empty band is an unsigned form.") as d:
+                sig = check_signature(doc)
+                d.update(check=sig[0].to_dict())
+            checks += sig
         extracted[doc_type], evidence[doc_type], usage[doc_type] = ex.data, ev, ex.usage
 
     with trace.step("validate", "Run the validation rules", code=(
             "kyc_demo.validate.check_required", "kyc_demo.validate.check_passport", "kyc_demo.mrz.parse_td3",
-            "kyc_demo.mrz.check_digit", "kyc_demo.validate.check_cross_document", "kyc_demo.normalise.names_match",
+            "kyc_demo.mrz.check_digit", "kyc_demo.validate.check_cross_document", "kyc_demo.normalise.person_matches",
             "kyc_demo.normalise.address_key", "kyc_demo.validate.check_injection"),
             explain="Deterministic rules: required fields, MRZ checksums, MRZ vs printed page, expiry, and "
                     "consistency across the three documents. Every check is listed, passed or not.") as d:

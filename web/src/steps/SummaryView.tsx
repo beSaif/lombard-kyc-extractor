@@ -3,7 +3,35 @@ import type { Result } from "../types";
 import { Badge, PassMark, Section, StatusBadge } from "../ui";
 import { DecisionBadge, FlagList } from "./ChecksView";
 
+/** An uploaded file has no truth.json: show what the pipeline decided and why, and point to Review. */
+function UploadSummary({ result }: { result: Result }) {
+  return (
+    <div className="flex flex-col gap-3">
+      <header className="flex flex-wrap items-center gap-2">
+        <h2 className="text-[16px] font-semibold">Run summary</h2>
+        <Badge mono>{result.run_id}</Badge>
+        <Badge mono tone="accent">
+          {result.extractor}
+        </Badge>
+        <Badge>review date {result.as_of}</Badge>
+      </header>
+      <Section title="Decision">
+        <DecisionBadge decision={result.decision} big />
+        <div className="mt-2 text-[12px] text-muted">
+          Your own documents: there is no truth to score against. Open <b>Review</b> to check each value against the page and sign off.
+        </div>
+      </Section>
+      <Section title="Flags raised (reasons for manual review)" pad={false}>
+        <div className="p-2">
+          <FlagList flags={result.flags} />
+        </div>
+      </Section>
+    </div>
+  );
+}
+
 export function SummaryView({ result }: { result: Result }) {
+  if (!result.score) return <UploadSummary result={result} />;
   const s = result.score;
   const expected = new Set(s?.expected ?? []);
   const raised = new Set(s?.raised ?? result.flags.map((f) => f.code));

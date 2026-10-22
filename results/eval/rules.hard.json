@@ -1,0 +1,7040 @@
+{
+ "extractor": "rules",
+ "suite": "hard",
+ "as_of": "2026-10-21",
+ "tiers": {
+  "clean": {
+   "files": 16,
+   "field_accuracy": 0.542,
+   "critical_field_accuracy": 0.479,
+   "defect_recall": 0.333,
+   "defect_recall_ci": [
+    0.138,
+    0.609
+   ],
+   "defect_recall_n": [
+    4,
+    12
+   ],
+   "defects_not_flagged": 8,
+   "right_check_rate": 0.333,
+   "defect_precision": 0.25,
+   "missed_defect_files": 0,
+   "missed_defect_files_ci": [
+    0.0,
+    0.243
+   ],
+   "defect_files": 12,
+   "errors": 0,
+   "straight_through_rate": 0.0,
+   "routing_accuracy": 0.75,
+   "trap_false_alarm_rate": 0.25,
+   "process_flags_per_file": 2.19,
+   "seconds_per_file": 0.0,
+   "cost_per_file_usd": 0.0,
+   "fields": {
+    "form_a.beneficial_owner_address": 0.125,
+    "form_a.beneficial_owner_date_of_birth": 0.125,
+    "form_a.beneficial_owner_name": 0.25,
+    "form_a.beneficial_owner_nationality": 0.062,
+    "form_a.contracting_partner": 0.188,
+    "passport.date_of_birth": 0.938,
+    "passport.document_number": 1.0,
+    "passport.expiry_date": 0.938,
+    "passport.given_names": 1.0,
+    "passport.mrz_line1": 1.0,
+    "passport.mrz_line2": 0.875,
+    "passport.nationality": 0.938,
+    "passport.sex": 0.0,
+    "passport.surname": 1.0,
+    "proof_of_address.address": 0.062,
+    "proof_of_address.issue_date": 0.125,
+    "proof_of_address.issuer": 1.0,
+    "proof_of_address.name": 0.125
+   },
+   "per_defect": {
+    "ADDRESS_MISMATCH": 0.0,
+    "DOB_MISMATCH": 0.0,
+    "FORM_A_UNSIGNED": 1.0,
+    "IMPLAUSIBLE_DATE": 1.0,
+    "MRZ_VISUAL_MISMATCH": 1.0,
+    "NAME_MISMATCH": 0.0,
+    "PASSPORT_EXPIRED": 1.0,
+    "PROOF_OF_ADDRESS_TOO_OLD": 0.0,
+    "SUSPICIOUS_INSTRUCTIONS": 0.0,
+    "THIRD_PARTY_OWNER": 0.0
+   },
+   "per_trap": {
+    "PASSPORT_EXPIRES_TODAY": 0.0,
+    "POA_AT_LIMIT": 0.0,
+    "UNSEEN_CITY_ALIAS": 0.0,
+    "UNSEEN_NATIONALITY": 1.0
+   }
+  },
+  "scan": {
+   "files": 16,
+   "field_accuracy": 0.181,
+   "critical_field_accuracy": 0.036,
+   "defect_recall": 0.25,
+   "defect_recall_ci": [
+    0.089,
+    0.532
+   ],
+   "defect_recall_n": [
+    3,
+    12
+   ],
+   "defects_not_flagged": 9,
+   "right_check_rate": 0.25,
+   "defect_precision": 0.333,
+   "missed_defect_files": 0,
+   "missed_defect_files_ci": [
+    0.0,
+    0.243
+   ],
+   "defect_files": 12,
+   "errors": 0,
+   "straight_through_rate": 0.0,
+   "routing_accuracy": 0.75,
+   "trap_false_alarm_rate": 0.0,
+   "process_flags_per_file": 2.25,
+   "seconds_per_file": 0.0,
+   "cost_per_file_usd": 0.0,
+   "fields": {
+    "form_a.beneficial_owner_address": 0.062,
+    "form_a.beneficial_owner_date_of_birth": 0.125,
+    "form_a.beneficial_owner_name": 0.0,
+    "form_a.beneficial_owner_nationality": 0.0,
+    "form_a.contracting_partner": 0.25,
+    "passport.date_of_birth": 0.0,
+    "passport.document_number": 0.062,
+    "passport.expiry_date": 0.0,
+    "passport.given_names": 0.0,
+    "passport.mrz_line1": 0.812,
+    "passport.mrz_line2": 0.812,
+    "passport.nationality": 0.0,
+    "passport.sex": 0.188,
+    "passport.surname": 0.0,
+    "proof_of_address.address": 0.062,
+    "proof_of_address.issue_date": 0.125,
+    "proof_of_address.issuer": 0.75,
+    "proof_of_address.name": 0.0
+   },
+   "per_defect": {
+    "ADDRESS_MISMATCH": 0.0,
+    "DOB_MISMATCH": 0.0,
+    "FORM_A_UNSIGNED": 1.0,
+    "IMPLAUSIBLE_DATE": 1.0,
+    "MRZ_VISUAL_MISMATCH": 0.0,
+    "NAME_MISMATCH": 0.0,
+    "PASSPORT_EXPIRED": 1.0,
+    "PROOF_OF_ADDRESS_TOO_OLD": 0.0,
+    "SUSPICIOUS_INSTRUCTIONS": 0.0,
+    "THIRD_PARTY_OWNER": 0.0
+   },
+   "per_trap": {
+    "PASSPORT_EXPIRES_TODAY": 0.0,
+    "POA_AT_LIMIT": 0.0,
+    "UNSEEN_CITY_ALIAS": 0.0,
+    "UNSEEN_NATIONALITY": 0.0
+   }
+  },
+  "photo": {
+   "files": 16,
+   "field_accuracy": 0.33,
+   "critical_field_accuracy": 0.229,
+   "defect_recall": 0.167,
+   "defect_recall_ci": [
+    0.047,
+    0.448
+   ],
+   "defect_recall_n": [
+    2,
+    12
+   ],
+   "defects_not_flagged": 10,
+   "right_check_rate": 0.167,
+   "defect_precision": 0.222,
+   "missed_defect_files": 0,
+   "missed_defect_files_ci": [
+    0.0,
+    0.243
+   ],
+   "defect_files": 12,
+   "errors": 0,
+   "straight_through_rate": 0.0,
+   "routing_accuracy": 0.75,
+   "trap_false_alarm_rate": 0.0,
+   "process_flags_per_file": 2.12,
+   "seconds_per_file": 0.0,
+   "cost_per_file_usd": 0.0,
+   "fields": {
+    "form_a.beneficial_owner_address": 0.062,
+    "form_a.beneficial_owner_date_of_birth": 0.0,
+    "form_a.beneficial_owner_name": 0.062,
+    "form_a.beneficial_owner_nationality": 0.062,
+    "form_a.contracting_partner": 0.25,
+    "passport.date_of_birth": 0.562,
+    "passport.document_number": 0.188,
+    "passport.expiry_date": 0.5,
+    "passport.given_names": 0.688,
+    "passport.mrz_line1": 0.938,
+    "passport.mrz_line2": 0.938,
+    "passport.nationality": 0.188,
+    "passport.sex": 0.25,
+    "passport.surname": 0.5,
+    "proof_of_address.address": 0.062,
+    "proof_of_address.issue_date": 0.062,
+    "proof_of_address.issuer": 0.625,
+    "proof_of_address.name": 0.0
+   },
+   "per_defect": {
+    "ADDRESS_MISMATCH": 0.0,
+    "DOB_MISMATCH": 0.0,
+    "FORM_A_UNSIGNED": 1.0,
+    "IMPLAUSIBLE_DATE": 0.0,
+    "MRZ_VISUAL_MISMATCH": 0.0,
+    "NAME_MISMATCH": 0.0,
+    "PASSPORT_EXPIRED": 1.0,
+    "PROOF_OF_ADDRESS_TOO_OLD": 0.0,
+    "SUSPICIOUS_INSTRUCTIONS": 0.0,
+    "THIRD_PARTY_OWNER": 0.0
+   },
+   "per_trap": {
+    "PASSPORT_EXPIRES_TODAY": 0.0,
+    "POA_AT_LIMIT": 0.0,
+    "UNSEEN_CITY_ALIAS": 0.0,
+    "UNSEEN_NATIONALITY": 0.0
+   }
+  }
+ },
+ "cases": {
+  "clean": [
+   {
+    "case": "hard_001",
+    "tier": "clean",
+    "defects": [
+     "ADDRESS_MISMATCH"
+    ],
+    "traps": [
+     "ADDR_ABBREVIATED"
+    ],
+    "layouts": {
+     "form_a": "de/lines",
+     "proof_of_address": "fr/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "ADDRESS_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.address"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "MULLER",
+      "want": "MÜLLER"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "ANNA MARIA",
+      "want": "ANNA MARIA"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "CHE",
+      "want": "CHE"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1988-01-21",
+      "want": "1988-01-21"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "E1896664",
+      "want": "E1896664"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2029-07-21",
+      "want": "2029-07-21"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOMUELLER<<ANNA<MARIA<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOMUELLER<<ANNA<MARIA<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "E1896664<0CHE8801214F2907217<<<<<<<<<<<<<<<2",
+      "want": "E1896664<0CHE8801214F2907217<<<<<<<<<<<<<<<2"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Anna Maria Müller"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Müller, Anna Maria"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1988-01-21"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "CHE"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Boulevard Imaginaire 23, 1204 Genève"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Anna Maria Müller"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Bd Imaginaire 53, 1204 Genève"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-12"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Énergie Lémanique Exemple SA",
+      "want": "Énergie Lémanique Exemple SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.46,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_002",
+    "tier": "clean",
+    "defects": [
+     "NAME_MISMATCH"
+    ],
+    "traps": [
+     "NAME_SURNAME_FIRST"
+    ],
+    "layouts": {
+     "form_a": "it/table",
+     "proof_of_address": "fr/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "NAME_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.name_passport_bill"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "DUBOIS-LEGER",
+      "want": "DUBOIS-LÉGER"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "CAMILLE",
+      "want": "CAMILLE"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "FRA",
+      "want": "FRA"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1987-12-09"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "E8992798",
+      "want": "E8992798"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2034-03-19"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTODUBOIS<LEGER<<CAMILLE<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTODUBOIS<LEGER<<CAMILLE<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "E8992798<4FRA8712091F3403196<<<<<<<<<<<<<<<6",
+      "want": "E8992798<4FRA8712091F3403196<<<<<<<<<<<<<<<6"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Camille Dubois-Léger"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Dubois-Léger, Camille"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1987-12-09"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "FRA"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Rue des Exemples 110, 1003 Lausanne"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "DUBOIS-LÉGER Marco"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Rue des Exemples 110, 1003 Lausanne"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-25"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Énergie Lémanique Exemple SA",
+      "want": "Énergie Lémanique Exemple SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "document_number": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.45,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_003",
+    "tier": "clean",
+    "defects": [],
+    "traps": [
+     "POA_AT_LIMIT"
+    ],
+    "layouts": {
+     "form_a": "de/table",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [],
+    "expected_checks": [],
+    "failed_checks": [
+     "form_a.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "ROSSI",
+      "want": "ROSSI"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "MARCO ANTONIO",
+      "want": "MARCO ANTONIO"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "ITA",
+      "want": "ITA"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1969-10-18",
+      "want": "1969-10-18"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "X6003320",
+      "want": "X6003320"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2033-05-08",
+      "want": "2033-05-08"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOROSSI<<MARCO<ANTONIO<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOROSSI<<MARCO<ANTONIO<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "X6003320<5ITA6910181M3305083<<<<<<<<<<<<<<<0",
+      "want": "X6003320<5ITA6910181M3305083<<<<<<<<<<<<<<<0"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Marco Antonio Rossi"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Rossi, Marco Antonio"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1969-10-18"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "ITA"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 101, 3011 Bern"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Marco Antonio Rossi"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 101, 3011 Bern"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-07-23"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Stadtwerke Beispiel AG",
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.47,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_004",
+    "tier": "clean",
+    "defects": [
+     "PROOF_OF_ADDRESS_TOO_OLD"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "it/table",
+     "proof_of_address": "fr/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "PROOF_OF_ADDRESS_TOO_OLD"
+    ],
+    "expected_checks": [
+     "poa.age"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "NAIR",
+      "want": "NAIR"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "PRIYA",
+      "want": "PRIYA"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "IND",
+      "want": "IND"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1996-06-11",
+      "want": "1996-06-11"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "K3615267",
+      "want": "K3615267"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2033-01-04",
+      "want": "2033-01-04"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTONAIR<<PRIYA<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTONAIR<<PRIYA<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "K3615267<2IND9606117F3301041<<<<<<<<<<<<<<<4",
+      "want": "K3615267<2IND9606117F3301041<<<<<<<<<<<<<<<4"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Priya Nair"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Nair, Priya"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1996-06-11"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "IND"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Quai de la Démo 25, 1260 Nyon"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Priya Nair"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Quai de la Démo 25, 1260 Nyon"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-07-22"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Énergie Lémanique Exemple SA",
+      "want": "Énergie Lémanique Exemple SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.47,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_005",
+    "tier": "clean",
+    "defects": [],
+    "traps": [
+     "PASSPORT_EXPIRES_TODAY"
+    ],
+    "layouts": {
+     "form_a": "de/lines",
+     "proof_of_address": "de/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "MRZ_CHECK_FAILED",
+     "MRZ_VISUAL_MISMATCH"
+    ],
+    "expected": [],
+    "expected_checks": [],
+    "failed_checks": [
+     "form_a.required",
+     "passport.mrz_check_digits",
+     "passport.mrz_vs_visual",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "SCHAFER",
+      "want": "SCHÄFER"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "JONAS PETER",
+      "want": "JONAS PETER"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "DEU",
+      "want": "DEU"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "2000-10-05",
+      "want": "2000-10-05"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "P3521989",
+      "want": "P3521989"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2026-10-21",
+      "want": "2026-10-21"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOSCHAEFER<<JONAS<PETER<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOSCHAEFER<<JONAS<PETER<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": false,
+      "got": "P3521989<8DEU0N010056M2610210<<<<<<<<<<<<<<<",
+      "want": "P3521989<8DEU0010056M2610210<<<<<<<<<<<<<<<8"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Jonas Peter Schäfer"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Schäfer, Jonas Peter"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2000-10-05"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "DEU"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Demoplatz 84, 8001 Zürich"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Jonas Peter Schäfer"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Demoplatz 84, 8001 Zürich"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-08-31"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Stadtwerke Beispiel AG",
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.46,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_006",
+    "tier": "clean",
+    "defects": [
+     "PASSPORT_EXPIRED"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "it/lines",
+     "proof_of_address": "de/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "PASSPORT_EXPIRED"
+    ],
+    "expected": [
+     "PASSPORT_EXPIRED"
+    ],
+    "expected_checks": [
+     "passport.not_expired"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.not_expired",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "FERREIRA",
+      "want": "FERREIRA"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "INES",
+      "want": "INÊS"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "PRT",
+      "want": "PRT"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "2003-03-02",
+      "want": "2003-03-02"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "C2307287",
+      "want": "C2307287"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2026-10-20",
+      "want": "2026-10-20"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOFERREIRA<<INES<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOFERREIRA<<INES<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "C2307287<3PRT0303022F2610209<<<<<<<<<<<<<<<6",
+      "want": "C2307287<3PRT0303022F2610209<<<<<<<<<<<<<<<6"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Inês Ferreira"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Ferreira, Inês"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2003-03-02"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "PRT"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Beispielstrasse 28, 3011 Bern"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Inês Ferreira"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Beispielstrasse 28, 3011 Bern"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-16"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Stadtwerke Beispiel AG",
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.46,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_007",
+    "tier": "clean",
+    "defects": [
+     "DOB_MISMATCH"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "en/lines",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "EVIDENCE_NOT_FOUND",
+     "MISSING_FIELD",
+     "NAME_MISMATCH",
+     "THIRD_PARTY_OWNER"
+    ],
+    "expected": [
+     "DOB_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.dob"
+    ],
+    "failed_checks": [
+     "cross.name_passport_partner",
+     "form_a.evidence",
+     "form_a.owner_is_client",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "BERNASCONI",
+      "want": "BERNASCONI"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "LUCA",
+      "want": "LUCA"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "CHE",
+      "want": "CHE"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1963-03-16",
+      "want": "1963-03-16"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "C4991933",
+      "want": "C4991933"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2029-05-06",
+      "want": "2029-05-06"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOBERNASCONI<<LUCA<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOBERNASCONI<<LUCA<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "C4991933<0CHE6303161M2905062<<<<<<<<<<<<<<<6",
+      "want": "C4991933<0CHE6303161M2905062<<<<<<<<<<<<<<<6"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": "Luca Berwascont",
+      "want": "Luca Bernasconi"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": "BER Bernmasceond. Bermasennd,. Luca iene ei",
+      "want": "Bernasconi, Luca"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": true,
+      "got": "1963-03-13",
+      "want": "1963-03-13"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": true,
+      "got": "CHE",
+      "want": "CHE"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": ",",
+      "want": "Quai de la Démo 5, 1260 Nyon"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Luca Bernasconi"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Quai de la Démo 5, 1260 Nyon"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-28"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Stadtwerke Beispiel AG",
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified",
+      "beneficial_owner_name": "unverified",
+      "beneficial_owner_date_of_birth": "verified",
+      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_address": "unverified"
+     },
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.46,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_008",
+    "tier": "clean",
+    "defects": [
+     "MRZ_VISUAL_MISMATCH"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "de/table",
+     "proof_of_address": "fr/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "MRZ_VISUAL_MISMATCH"
+    ],
+    "expected": [
+     "MRZ_VISUAL_MISMATCH"
+    ],
+    "expected_checks": [
+     "passport.mrz_vs_visual"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.mrz_vs_visual",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "OKAFOR",
+      "want": "OKAFOR"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "DANIEL CHUKWUEMEKA",
+      "want": "DANIEL CHUKWUEMEKA"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "NGA",
+      "want": "NGA"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1983-06-18",
+      "want": "1983-06-18"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "P2864607",
+      "want": "P2864607"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2029-09-02",
+      "want": "2029-09-02"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOOKAFOR<<DANIEL<CHUKWUEMEKA<<<<<<<<<<<<<",
+      "want": "P<UTOOKAFOR<<DANIEL<CHUKWUEMEKA<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "P2864601<2NGA8306188M2909026<<<<<<<<<<<<<<<8",
+      "want": "P2864601<2NGA8306188M2909026<<<<<<<<<<<<<<<8"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Daniel Chukwuemeka Okafor"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Okafor, Daniel Chukwuemeka"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1983-06-18"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "NGA"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Avenue Fictive 18, 1260 Nyon"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Daniel Chukwuemeka Okafor"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Avenue Fictive 18, 1260 Nyon"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-11"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Énergie Lémanique Exemple SA",
+      "want": "Énergie Lémanique Exemple SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.46,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_009",
+    "tier": "clean",
+    "defects": [
+     "SUSPICIOUS_INSTRUCTIONS"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "en/table",
+     "proof_of_address": "de/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "NAME_MISMATCH",
+     "NATIONALITY_MISMATCH"
+    ],
+    "expected": [
+     "SUSPICIOUS_INSTRUCTIONS"
+    ],
+    "expected_checks": [
+     "proof_of_address.injection"
+    ],
+    "failed_checks": [
+     "cross.name_passport_partner",
+     "cross.nationality",
+     "form_a.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "GARCIA LOPEZ",
+      "want": "GARCÍA LÓPEZ"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "SOFIA",
+      "want": "SOFÍA"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "ESP",
+      "want": "ESP"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1995-08-11",
+      "want": "1995-08-11"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "X7746400",
+      "want": "X7746400"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2034-08-30",
+      "want": "2034-08-30"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOGARCIA<LOPEZ<<SOFIA<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOGARCIA<LOPEZ<<SOFIA<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "X7746400<9ESP9508118F3408308<<<<<<<<<<<<<<<8",
+      "want": "X7746400<9ESP9508118F3408308<<<<<<<<<<<<<<<8"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": "Sofa Garcia Lopez",
+      "want": "Sofía García López"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": true,
+      "got": "Garcia Lopez, Sofia",
+      "want": "García López, Sofía"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1995-08-11"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": "y ,",
+      "want": "ESP"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": "Testgasse 59, 4051 Basel, Switzerland nd",
+      "want": "Testgasse 59, 4051 Basel"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Sofía García López"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 59, 4051 Basel"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-03"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Stadtwerke Beispiel AG",
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified",
+      "beneficial_owner_name": "verified",
+      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_address": "verified"
+     },
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.46,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_010",
+    "tier": "clean",
+    "defects": [
+     "SUSPICIOUS_INSTRUCTIONS"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "fr/table",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "SUSPICIOUS_INSTRUCTIONS"
+    ],
+    "expected_checks": [
+     "form_a.injection"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "KELLER",
+      "want": "KELLER"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "THOMAS",
+      "want": "THOMAS"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "CHE",
+      "want": "CHE"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1974-10-05",
+      "want": "1974-10-05"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "X4944715",
+      "want": "X4944715"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2032-01-13",
+      "want": "2032-01-13"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOKELLER<<THOMAS<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOKELLER<<THOMAS<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "X4944715<1CHE7410057M3201130<<<<<<<<<<<<<<<0",
+      "want": "X4944715<1CHE7410057M3201130<<<<<<<<<<<<<<<0"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Thomas Keller"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Keller, Thomas"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1974-10-05"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "CHE"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Demoplatz 66, 4051 Basel"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Thomas Keller"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Demoplatz 66, 4051 Basel"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-10"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Stadtwerke Beispiel AG",
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.46,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_011",
+    "tier": "clean",
+    "defects": [
+     "THIRD_PARTY_OWNER"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "de/lines",
+     "proof_of_address": "en/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "THIRD_PARTY_OWNER"
+    ],
+    "expected_checks": [
+     "form_a.owner_is_client"
+    ],
+    "failed_checks": [
+     "form_a.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "MOREAU",
+      "want": "MOREAU"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "ELODIE CLAIRE",
+      "want": "ÉLODIE CLAIRE"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "FRA",
+      "want": "FRA"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1980-05-04",
+      "want": "1980-05-04"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "K9457434",
+      "want": "K9457434"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2030-11-18",
+      "want": "2030-11-18"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOMOREAU<<ELODIE<CLAIRE<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOMOREAU<<ELODIE<CLAIRE<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "K9457434<4FRA8005045F3011180<<<<<<<<<<<<<<<2",
+      "want": "K9457434<4FRA8005045F3011180<<<<<<<<<<<<<<<2"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Élodie Claire Moreau"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Lefèvre, Mathilde"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1967-03-28"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "BEL"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Avenue Fictive 104, 1204 Genève"
+     },
+     "proof_of_address.name": {
+      "ok": true,
+      "got": "Élodie Claire Moreau",
+      "want": "Élodie Claire Moreau"
+     },
+     "proof_of_address.address": {
+      "ok": true,
+      "got": "Boulevard Imaginaire 84, 1260 Nyon",
+      "want": "Boulevard Imaginaire 84, 1260 Nyon"
+     },
+     "proof_of_address.issue_date": {
+      "ok": true,
+      "got": "2026-10-06",
+      "want": "2026-10-06"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Lemanic Energy Example Ltd",
+      "want": "Lemanic Energy Example Ltd"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "name": "verified",
+      "address": "verified",
+      "issue_date": "verified",
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.53,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_012",
+    "tier": "clean",
+    "defects": [
+     "FORM_A_UNSIGNED"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "fr/lines",
+     "proof_of_address": "de/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "FORM_A_UNSIGNED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "FORM_A_UNSIGNED"
+    ],
+    "expected_checks": [
+     "form_a.signed"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "form_a.signed",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "IYER",
+      "want": "IYER"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "ARJUN",
+      "want": "ARJUN"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "IND",
+      "want": "IND"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1970-02-21",
+      "want": "1970-02-21"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "C5928772",
+      "want": "C5928772"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2029-10-03",
+      "want": "2029-10-03"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOIYER<<ARJUN<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOIYER<<ARJUN<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "C5928772<8IND7002210M2910035<<<<<<<<<<<<<<<2",
+      "want": "C5928772<8IND7002210M2910035<<<<<<<<<<<<<<<2"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Arjun Iyer"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Iyer, Arjun"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1970-02-21"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "IND"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 66, 8001 Zürich"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Arjun Iyer"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 66, 8001 Zürich"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-12"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Telekom Muster AG",
+      "want": "Telekom Muster AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.49,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_013",
+    "tier": "clean",
+    "defects": [
+     "NAME_MISMATCH"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "fr/table",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "MRZ_CHECK_FAILED",
+     "MRZ_VISUAL_MISMATCH"
+    ],
+    "expected": [
+     "NAME_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.name_passport_partner"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.mrz_check_digits",
+     "passport.mrz_vs_visual",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "D'AMICO",
+      "want": "D'AMICO"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "GIULIA",
+      "want": "GIULIA"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "ITA",
+      "want": "ITA"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "2000-03-13",
+      "want": "2000-03-13"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "X9605994",
+      "want": "X9605994"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2027-08-29",
+      "want": "2027-08-29"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOD<AMICO<<GIULIA<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOD<AMICO<<GIULIA<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": false,
+      "got": "X9605994<3ITAN003137F2708296<<<<<<<<<<<<<<<2",
+      "want": "X9605994<3ITA0003137F2708296<<<<<<<<<<<<<<<2"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Olivia Rose Brown"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "D'Amico, Giulia"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2000-03-13"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "ITA"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Beispielstrasse 12, 4051 Basel"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Giulia D'Amico"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Beispielstrasse 12, 4051 Basel"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-12"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Telekom Muster AG",
+      "want": "Telekom Muster AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.44,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_014",
+    "tier": "clean",
+    "defects": [
+     "IMPLAUSIBLE_DATE"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "en/table",
+     "proof_of_address": "en/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "IMPLAUSIBLE_DATE",
+     "MISSING_FIELD",
+     "NATIONALITY_MISMATCH"
+    ],
+    "expected": [
+     "IMPLAUSIBLE_DATE"
+    ],
+    "expected_checks": [
+     "poa.age"
+    ],
+    "failed_checks": [
+     "cross.nationality",
+     "form_a.required",
+     "poa.age",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "WEBER",
+      "want": "WEBER"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "LUKAS",
+      "want": "LUKAS"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "DEU",
+      "want": "DEU"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1962-05-10",
+      "want": "1962-05-10"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "X6873375",
+      "want": "X6873375"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2032-10-09",
+      "want": "2032-10-09"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOWEBER<<LUKAS<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOWEBER<<LUKAS<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "X6873375<2DEU6205106M3210097<<<<<<<<<<<<<<<4",
+      "want": "X6873375<2DEU6205106M3210097<<<<<<<<<<<<<<<4"
+     },
+     "form_a.contracting_partner": {
+      "ok": true,
+      "got": "Lukas Weber",
+      "want": "Lukas Weber"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": true,
+      "got": "Weber, Lukas",
+      "want": "Weber, Lukas"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1962-05-10"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": "Germa ny",
+      "want": "DEU"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": true,
+      "got": "Quai de La Demo 69, 1227 Carouge, Switzerland",
+      "want": "Quai de la Démo 69, 1227 Carouge"
+     },
+     "proof_of_address.name": {
+      "ok": true,
+      "got": "Lukas Weber",
+      "want": "Lukas Weber"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Quai de la Démo 69, 1227 Carouge"
+     },
+     "proof_of_address.issue_date": {
+      "ok": true,
+      "got": "2026-10-26",
+      "want": "2026-10-26"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Lemanic Energy Example Ltd",
+      "want": "Lemanic Energy Example Ltd"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified",
+      "beneficial_owner_name": "verified",
+      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_address": "verified"
+     },
+     "proof_of_address": {
+      "name": "verified",
+      "issue_date": "verified",
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.48,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_015",
+    "tier": "clean",
+    "defects": [],
+    "traps": [
+     "UNSEEN_NATIONALITY"
+    ],
+    "layouts": {
+     "form_a": "en/lines",
+     "proof_of_address": "fr/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "EVIDENCE_NOT_FOUND",
+     "MISSING_FIELD",
+     "MRZ_VISUAL_MISMATCH",
+     "NATIONALITY_MISMATCH"
+    ],
+    "expected": [],
+    "expected_checks": [],
+    "failed_checks": [
+     "cross.nationality",
+     "form_a.evidence",
+     "form_a.required",
+     "passport.mrz_vs_visual",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "TREMBLAY",
+      "want": "TREMBLAY"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "EMILIE",
+      "want": "ÉMILIE"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": "CANADIAN",
+      "want": "CAN"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1990-07-02",
+      "want": "1990-07-02"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "C7208081",
+      "want": "C7208081"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2029-10-21",
+      "want": "2029-10-21"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOTREMBLAY<<EMILIE<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOTREMBLAY<<EMILIE<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "C7208081<0CAN9007024F2910219<<<<<<<<<<<<<<<8",
+      "want": "C7208081<0CAN9007024F2910219<<<<<<<<<<<<<<<8"
+     },
+     "form_a.contracting_partner": {
+      "ok": true,
+      "got": "Emilie Tremblay",
+      "want": "Émilie Tremblay"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": true,
+      "got": "Tremblay, Émilie",
+      "want": "Tremblay, Émilie"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1990-07-02"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": "Actual address of domicile (incl. country):",
+      "want": "CAN"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": "\\",
+      "want": "Chemin du Test 33, 1003 Lausanne"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Émilie Tremblay"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Chemin du Test 33, 1003 Lausanne"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-05"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Services Industriels Fictifs SA",
+      "want": "Services Industriels Fictifs SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified",
+      "beneficial_owner_name": "verified",
+      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_address": "unverified"
+     },
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.47,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_016",
+    "tier": "clean",
+    "defects": [],
+    "traps": [
+     "UNSEEN_CITY_ALIAS"
+    ],
+    "layouts": {
+     "form_a": "en/table",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "EVIDENCE_NOT_FOUND",
+     "MISSING_FIELD",
+     "NATIONALITY_MISMATCH"
+    ],
+    "expected": [],
+    "expected_checks": [],
+    "failed_checks": [
+     "cross.nationality",
+     "form_a.evidence",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "HUBER",
+      "want": "HUBER"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "VERENA",
+      "want": "VERENA"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "AUT",
+      "want": "AUT"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1967-09-13",
+      "want": "1967-09-13"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "C9701578",
+      "want": "C9701578"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2032-03-01",
+      "want": "2032-03-01"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOHUBER<<VERENA<<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOHUBER<<VERENA<<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "C9701578<9AUT6709132F3203019<<<<<<<<<<<<<<<4",
+      "want": "C9701578<9AUT6709132F3203019<<<<<<<<<<<<<<<4"
+     },
+     "form_a.contracting_partner": {
+      "ok": true,
+      "got": "Verena Huber",
+      "want": "Verena Huber"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": true,
+      "got": "Huber, Verena",
+      "want": "Huber, Verena"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": true,
+      "got": "1967-09-13",
+      "want": "1967-09-13"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": "Aus! Austria tria",
+      "want": "AUT"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": true,
+      "got": "Testgasse 6, 6003 Luzern, Switzerland",
+      "want": "Testgasse 6, 6003 Luzern"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Verena Huber"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 6, CH-6003 Lucerne"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-03"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Telekom Muster AG",
+      "want": "Telekom Muster AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified",
+      "beneficial_owner_name": "verified",
+      "beneficial_owner_date_of_birth": "verified",
+      "beneficial_owner_nationality": "unverified",
+      "beneficial_owner_address": "verified"
+     },
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.51,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   }
+  ],
+  "scan": [
+   {
+    "case": "hard_001",
+    "tier": "scan",
+    "defects": [
+     "ADDRESS_MISMATCH"
+    ],
+    "traps": [
+     "ADDR_ABBREVIATED"
+    ],
+    "layouts": {
+     "form_a": "de/lines",
+     "proof_of_address": "fr/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "EVIDENCE_NOT_FOUND",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "ADDRESS_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.address"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.evidence",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "MÜLLER"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "ANNA MARIA"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "CHE"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1988-01-21"
+     },
+     "passport.sex": {
+      "ok": true,
+      "got": "F",
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "E1896664"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2029-07-21"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOMUELLER<<ANNA<MARIA<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOMUELLER<<ANNA<MARIA<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "E1896664<0CHE8801214F2907217<<<<<<<<<<<<<<<2",
+      "want": "E1896664<0CHE8801214F2907217<<<<<<<<<<<<<<<2"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Anna Maria Müller"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Müller, Anna Maria"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1988-01-21"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "CHE"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Boulevard Imaginaire 23, 1204 Genève"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Anna Maria Müller"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Bd Imaginaire 53, 1204 Genève"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-12"
+     },
+     "proof_of_address.issuer": {
+      "ok": false,
+      "got": "E Case Energie postale 100, Lémanique Zürich - SPE Exemple SA",
+      "want": "Énergie Lémanique Exemple SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "sex": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "unverified"
+     }
+    },
+    "totals": {
+     "seconds": 4.33,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_002",
+    "tier": "scan",
+    "defects": [
+     "NAME_MISMATCH"
+    ],
+    "traps": [
+     "NAME_SURNAME_FIRST"
+    ],
+    "layouts": {
+     "form_a": "it/table",
+     "proof_of_address": "fr/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "NAME_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.name_passport_bill"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "DUBOIS-LÉGER"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "CAMILLE"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "FRA"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1987-12-09"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "E8992798"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2034-03-19"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTODUBOIS<LEGER<<CAMILLE<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTODUBOIS<LEGER<<CAMILLE<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "E8992798<4FRA8712091F3403196<<<<<<<<<<<<<<<6",
+      "want": "E8992798<4FRA8712091F3403196<<<<<<<<<<<<<<<6"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Camille Dubois-Léger"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Dubois-Léger, Camille"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1987-12-09"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "FRA"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Rue des Exemples 110, 1003 Lausanne"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "DUBOIS-LÉGER Marco"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Rue des Exemples 110, 1003 Lausanne"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-25"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Energie Lémanique Exemple SA",
+      "want": "Énergie Lémanique Exemple SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 4.31,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_003",
+    "tier": "scan",
+    "defects": [],
+    "traps": [
+     "POA_AT_LIMIT"
+    ],
+    "layouts": {
+     "form_a": "de/table",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "MRZ_CHECK_FAILED"
+    ],
+    "expected": [],
+    "expected_checks": [],
+    "failed_checks": [
+     "form_a.required",
+     "passport.mrz_check_digits",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "ROSSI"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "MARCO ANTONIO"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "ITA"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1969-10-18"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "X6003320"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2033-05-08"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOROSSI<<MARCO<ANTONIO<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOROSSI<<MARCO<ANTONIO<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": false,
+      "got": "6003320<51TA6910181M3305083<<<<<<<<<<<<<<<<0",
+      "want": "X6003320<5ITA6910181M3305083<<<<<<<<<<<<<<<0"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Marco Antonio Rossi"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Rossi, Marco Antonio"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1969-10-18"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "ITA"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 101, 3011 Bern"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Marco Antonio Rossi"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 101, 3011 Bern"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-07-23"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Stadtwerke Beispiel AG",
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 4.74,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_004",
+    "tier": "scan",
+    "defects": [
+     "PROOF_OF_ADDRESS_TOO_OLD"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "it/table",
+     "proof_of_address": "fr/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "PROOF_OF_ADDRESS_TOO_OLD"
+    ],
+    "expected_checks": [
+     "poa.age"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "NAIR"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "PRIYA"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "IND"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1996-06-11"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "K3615267"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2033-01-04"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTONAIR<<PRIYA<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTONAIR<<PRIYA<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "K3615267<2IND9606117F3301041<<<<<<<<<<<<<<<4",
+      "want": "K3615267<2IND9606117F3301041<<<<<<<<<<<<<<<4"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Priya Nair"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Nair, Priya"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1996-06-11"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "IND"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Quai de la Démo 25, 1260 Nyon"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Priya Nair"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Quai de la Démo 25, 1260 Nyon"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-07-22"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Énergie Lémanique Exemple SA",
+      "want": "Énergie Lémanique Exemple SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 5.27,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_005",
+    "tier": "scan",
+    "defects": [],
+    "traps": [
+     "PASSPORT_EXPIRES_TODAY"
+    ],
+    "layouts": {
+     "form_a": "de/lines",
+     "proof_of_address": "de/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [],
+    "expected_checks": [],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "SCHÄFER"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "JONAS PETER"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "DEU"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2000-10-05"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "P3521989"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-21"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOSCHAEFER<<JONAS<PETER<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOSCHAEFER<<JONAS<PETER<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "P3521989<8DEU0010056M2610210<<<<<<<<<<<<<<<8",
+      "want": "P3521989<8DEU0010056M2610210<<<<<<<<<<<<<<<8"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Jonas Peter Schäfer"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Schäfer, Jonas Peter"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2000-10-05"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "DEU"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Demoplatz 84, 8001 Zürich"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Jonas Peter Schäfer"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Demoplatz 84, 8001 Zürich"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-08-31"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Stadtwerke Beispiel AG",
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 5.31,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_006",
+    "tier": "scan",
+    "defects": [
+     "PASSPORT_EXPIRED"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "it/lines",
+     "proof_of_address": "de/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "PASSPORT_EXPIRED"
+    ],
+    "expected": [
+     "PASSPORT_EXPIRED"
+    ],
+    "expected_checks": [
+     "passport.not_expired"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.not_expired",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "FERREIRA"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "INÊS"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "PRT"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2003-03-02"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "C2307287"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-20"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOFERREIRA<<INES<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOFERREIRA<<INES<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "C2307287<3PRT0303022F2610209<<<<<<<<<<<<<<<6",
+      "want": "C2307287<3PRT0303022F2610209<<<<<<<<<<<<<<<6"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Inês Ferreira"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Ferreira, Inês"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2003-03-02"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "PRT"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Beispielstrasse 28, 3011 Bern"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Inês Ferreira"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Beispielstrasse 28, 3011 Bern"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-16"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Stadtwerke Beispiel AG",
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 5.0,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_007",
+    "tier": "scan",
+    "defects": [
+     "DOB_MISMATCH"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "en/lines",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "THIRD_PARTY_OWNER"
+    ],
+    "expected": [
+     "DOB_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.dob"
+    ],
+    "failed_checks": [
+     "form_a.owner_is_client",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "BERNASCONI"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "LUCA"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "CHE"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1963-03-16"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "C4991933"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2029-05-06"
+     },
+     "passport.mrz_line1": {
+      "ok": false,
+      "got": "P<UTOBERNASCONI<<LUCAK<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOBERNASCONI<<LUCA<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "C4991933<0CHE6303161M2905062<<<<<<<<<<<<<<<6",
+      "want": "C4991933<0CHE6303161M2905062<<<<<<<<<<<<<<<6"
+     },
+     "form_a.contracting_partner": {
+      "ok": true,
+      "got": "Luca Bernasconi",
+      "want": "Luca Bernasconi"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": "pate Berwascond,.Luca",
+      "want": "Bernasconi, Luca"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": true,
+      "got": "1963-03-13",
+      "want": "1963-03-13"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": "switzerland o ndr taneenene dansasioneset dan cereerzneee nera azenicnezare",
+      "want": "CHE"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": "Quai de La Demo 5, 10] Nyon, Switzerland res",
+      "want": "Quai de la Démo 5, 1260 Nyon"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Luca Bernasconi"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Quai de la Démo 5, 1260 Nyon"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-28"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Stadtwerke Beispiel AG",
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified",
+      "beneficial_owner_name": "verified",
+      "beneficial_owner_date_of_birth": "verified",
+      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_address": "verified"
+     },
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 4.82,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_008",
+    "tier": "scan",
+    "defects": [
+     "MRZ_VISUAL_MISMATCH"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "de/table",
+     "proof_of_address": "fr/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "MRZ_VISUAL_MISMATCH"
+    ],
+    "expected_checks": [
+     "passport.mrz_vs_visual"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "OKAFOR"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "DANIEL CHUKWUEMEKA"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "NGA"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1983-06-18"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "P2864607"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2029-09-02"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOOKAFOR<<DANIEL<CHUKWUEMEKA<<<<<<<<<<<<<",
+      "want": "P<UTOOKAFOR<<DANIEL<CHUKWUEMEKA<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "P2864601<2NGA8306188M2909026<<<<<<<<<<<<<<<8",
+      "want": "P2864601<2NGA8306188M2909026<<<<<<<<<<<<<<<8"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Daniel Chukwuemeka Okafor"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Okafor, Daniel Chukwuemeka"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1983-06-18"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "NGA"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Avenue Fictive 18, 1260 Nyon"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Daniel Chukwuemeka Okafor"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Avenue Fictive 18, 1260 Nyon"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-11"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Energie Lémanique Exemple SA",
+      "want": "Énergie Lémanique Exemple SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 4.86,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_009",
+    "tier": "scan",
+    "defects": [
+     "SUSPICIOUS_INSTRUCTIONS"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "en/table",
+     "proof_of_address": "de/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "EVIDENCE_NOT_FOUND",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "SUSPICIOUS_INSTRUCTIONS"
+    ],
+    "expected_checks": [
+     "proof_of_address.injection"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.evidence",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "GARCÍA LÓPEZ"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "SOFÍA"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "ESP"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1995-08-11"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "X7746400"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2034-08-30"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOGARCIA<LOPEZ<<SOFIA<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOGARCIA<LOPEZ<<SOFIA<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "X7746400<9ESP9508118F3408308<<<<<<<<<<<<<<<8",
+      "want": "X7746400<9ESP9508118F3408308<<<<<<<<<<<<<<<8"
+     },
+     "form_a.contracting_partner": {
+      "ok": true,
+      "got": "Sofia Garcia Lopez",
+      "want": "Sofía García López"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "García López, Sofía"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": true,
+      "got": "1995-08-11",
+      "want": "1995-08-11"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": "Actual address of domicile (incl. country) Testgasse 59, 4051 Basel, BAS el, Switzerland",
+      "want": "ESP"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": "Testgasse 59, 4051 Basel, BAS el, Switzerland",
+      "want": "Testgasse 59, 4051 Basel"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Sofía García López"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 59, 4051 Basel"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-03"
+     },
+     "proof_of_address.issuer": {
+      "ok": false,
+      "got": "Stadtwerke Beispiel Beispiel AG",
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified",
+      "beneficial_owner_date_of_birth": "verified",
+      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_address": "verified"
+     },
+     "proof_of_address": {
+      "issuer": "unverified"
+     }
+    },
+    "totals": {
+     "seconds": 4.62,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_010",
+    "tier": "scan",
+    "defects": [
+     "SUSPICIOUS_INSTRUCTIONS"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "fr/table",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "MRZ_CHECK_FAILED"
+    ],
+    "expected": [
+     "SUSPICIOUS_INSTRUCTIONS"
+    ],
+    "expected_checks": [
+     "form_a.injection"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.mrz_check_digits",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "KELLER"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "THOMAS"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "CHE"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1974-10-05"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "X4944715"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2032-01-13"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOKELLER<<THOMAS<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOKELLER<<THOMAS<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": false,
+      "got": "X4944715<1CHE7410057M3201130<<<<<<<<<<<<<<<<",
+      "want": "X4944715<1CHE7410057M3201130<<<<<<<<<<<<<<<0"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Thomas Keller"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Keller, Thomas"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1974-10-05"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "CHE"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Demoplatz 66, 4051 Basel"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Thomas Keller"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Demoplatz 66, 4051 Basel"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-10"
+     },
+     "proof_of_address.issuer": {
+      "ok": false,
+      "got": null,
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {}
+    },
+    "totals": {
+     "seconds": 4.6,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_011",
+    "tier": "scan",
+    "defects": [
+     "THIRD_PARTY_OWNER"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "de/lines",
+     "proof_of_address": "en/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "THIRD_PARTY_OWNER"
+    ],
+    "expected_checks": [
+     "form_a.owner_is_client"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "MOREAU"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "ÉLODIE CLAIRE"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "FRA"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1980-05-04"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "K9457434"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2030-11-18"
+     },
+     "passport.mrz_line1": {
+      "ok": false,
+      "got": "P<UTOMOREAU<<ELODIE<XCLAIRE<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOMOREAU<<ELODIE<CLAIRE<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "K9457434<4FRA8005045F3011180<<<<<<<<<<<<<<<2",
+      "want": "K9457434<4FRA8005045F3011180<<<<<<<<<<<<<<<2"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Élodie Claire Moreau"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Lefèvre, Mathilde"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1967-03-28"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "BEL"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Avenue Fictive 104, 1204 Genève"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Élodie Claire Moreau"
+     },
+     "proof_of_address.address": {
+      "ok": true,
+      "got": "Boulevard Imaginaire 84, 1260 Nyon",
+      "want": "Boulevard Imaginaire 84, 1260 Nyon"
+     },
+     "proof_of_address.issue_date": {
+      "ok": true,
+      "got": "2026-10-06",
+      "want": "2026-10-06"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Lemanic Energy Example Ltd",
+      "want": "Lemanic Energy Example Ltd"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "address": "verified",
+      "issue_date": "verified",
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 4.95,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_012",
+    "tier": "scan",
+    "defects": [
+     "FORM_A_UNSIGNED"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "fr/lines",
+     "proof_of_address": "de/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "FORM_A_UNSIGNED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "FORM_A_UNSIGNED"
+    ],
+    "expected_checks": [
+     "form_a.signed"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "form_a.signed",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "IYER"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "ARJUN"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "IND"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1970-02-21"
+     },
+     "passport.sex": {
+      "ok": true,
+      "got": "M",
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "C5928772",
+      "want": "C5928772"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2029-10-03"
+     },
+     "passport.mrz_line1": {
+      "ok": false,
+      "got": "P<UTOLYER<<ARIUN<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOIYER<<ARJUN<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "C5928772<8IND7002210M2910035<<<<<<<<<<<<<<<2",
+      "want": "C5928772<8IND7002210M2910035<<<<<<<<<<<<<<<2"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Arjun Iyer"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Iyer, Arjun"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1970-02-21"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "IND"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 66, 8001 Zürich"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Arjun Iyer"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 66, 8001 Zürich"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-12"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Telekom Muster AG",
+      "want": "Telekom Muster AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "sex": "verified",
+      "document_number": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 5.16,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_013",
+    "tier": "scan",
+    "defects": [
+     "NAME_MISMATCH"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "fr/table",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "MRZ_CHECK_FAILED"
+    ],
+    "expected": [
+     "NAME_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.name_passport_partner"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.mrz_check_digits",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "D'AMICO"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "GIULIA"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "ITA"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2000-03-13"
+     },
+     "passport.sex": {
+      "ok": true,
+      "got": "F",
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "X9605994"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2027-08-29"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOD<AMICO<<GIULIA<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOD<AMICO<<GIULIA<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": false,
+      "got": "X9605994<3ITA0003137F2708296<<<<<<<<<<K<<<<2",
+      "want": "X9605994<3ITA0003137F2708296<<<<<<<<<<<<<<<2"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Olivia Rose Brown"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "D'Amico, Giulia"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2000-03-13"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "ITA"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Beispielstrasse 12, 4051 Basel"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Giulia D'Amico"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Beispielstrasse 12, 4051 Basel"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-12"
+     },
+     "proof_of_address.issuer": {
+      "ok": false,
+      "got": null,
+      "want": "Telekom Muster AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "sex": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {}
+    },
+    "totals": {
+     "seconds": 4.39,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_014",
+    "tier": "scan",
+    "defects": [
+     "IMPLAUSIBLE_DATE"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "en/table",
+     "proof_of_address": "en/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "EVIDENCE_NOT_FOUND",
+     "IMPLAUSIBLE_DATE",
+     "MISSING_FIELD",
+     "THIRD_PARTY_OWNER"
+    ],
+    "expected": [
+     "IMPLAUSIBLE_DATE"
+    ],
+    "expected_checks": [
+     "poa.age"
+    ],
+    "failed_checks": [
+     "form_a.evidence",
+     "form_a.owner_is_client",
+     "form_a.required",
+     "passport.required",
+     "poa.age",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "WEBER"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "LUKAS"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "DEU"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1962-05-10"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "X6873375"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2032-10-09"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOWEBER<<LUKAS<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOWEBER<<LUKAS<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "X6873375<2DEU6205106M3210097<<<<<<<<<<<<<<<4",
+      "want": "X6873375<2DEU6205106M3210097<<<<<<<<<<<<<<<4"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": "Weber___m____6——_—_—_—____ LURAE",
+      "want": "Lukas Weber"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": "Date tn of of birth",
+      "want": "Weber, Lukas"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1962-05-10"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": "Actual address of domicile (incl. country) Quai de La Démo 69, 1227 Carouge, Switzerla",
+      "want": "DEU"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": "Quai de La Démo 69, 1227 Carouge, Switzerla",
+      "want": "Quai de la Démo 69, 1227 Carouge"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Lukas Weber"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Quai de la Démo 69, 1227 Carouge"
+     },
+     "proof_of_address.issue_date": {
+      "ok": true,
+      "got": "2026-10-26",
+      "want": "2026-10-26"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Lemanic Energy Example Ltd",
+      "want": "Lemanic Energy Example Ltd"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "unverified",
+      "beneficial_owner_name": "unverified",
+      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_address": "verified"
+     },
+     "proof_of_address": {
+      "issue_date": "verified",
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 4.94,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_015",
+    "tier": "scan",
+    "defects": [],
+    "traps": [
+     "UNSEEN_NATIONALITY"
+    ],
+    "layouts": {
+     "form_a": "en/lines",
+     "proof_of_address": "fr/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "EVIDENCE_NOT_FOUND",
+     "MISSING_FIELD",
+     "THIRD_PARTY_OWNER"
+    ],
+    "expected": [],
+    "expected_checks": [],
+    "failed_checks": [
+     "form_a.evidence",
+     "form_a.owner_is_client",
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "TREMBLAY"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "ÉMILIE"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "CAN"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1990-07-02"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "C7208081"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2029-10-21"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOTREMBLAY<<EMILIE<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOTREMBLAY<<EMILIE<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "C7208081<0CAN9007024F2910219<<<<<<<<<<<<<<<8",
+      "want": "C7208081<0CAN9007024F2910219<<<<<<<<<<<<<<<8"
+     },
+     "form_a.contracting_partner": {
+      "ok": true,
+      "got": "Emilie Tremblay",
+      "want": "Émilie Tremblay"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": "Emilie ne AU Petra eee ene",
+      "want": "Tremblay, Émilie"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1990-07-02"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": "A CAMBIA A aio elio uuacasbdasearerzianeezeoranaliazeeeeeoeosezeosereonecsaese0e",
+      "want": "CAN"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": "sasesezianettso Chemin nvesaronee ROLE du TE Test ECC CET 33, CET ÉCE 1003 EEE EEE anbeneeeee usanne, unsrtbnesenesszazieeiazenessonenesensoseoseonee switzerland senbenesepeceeceeeeseeeedeneeeuens",
+      "want": "Chemin du Test 33, 1003 Lausanne"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Émilie Tremblay"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Chemin du Test 33, 1003 Lausanne"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-05"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Services Industriels Fictifs SA",
+      "want": "Services Industriels Fictifs SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified",
+      "beneficial_owner_name": "unverified",
+      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_address": "unverified"
+     },
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 4.48,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_016",
+    "tier": "scan",
+    "defects": [],
+    "traps": [
+     "UNSEEN_CITY_ALIAS"
+    ],
+    "layouts": {
+     "form_a": "en/table",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [],
+    "expected_checks": [],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "HUBER"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "VERENA"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "AUT"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1967-09-13"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "C9701578"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2032-03-01"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOHUBER<<VERENA<<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOHUBER<<VERENA<<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "C9701578<9AUT6709132F3203019<<<<<<<<<<<<<<<4",
+      "want": "C9701578<9AUT6709132F3203019<<<<<<<<<<<<<<<4"
+     },
+     "form_a.contracting_partner": {
+      "ok": true,
+      "got": "Verena Huber",
+      "want": "Verena Huber"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Huber, Verena"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1967-09-13"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": "i er VA",
+      "want": "AUT"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": true,
+      "got": "Testgasse 6, 6003 Luzern, Switzerland",
+      "want": "Testgasse 6, 6003 Luzern"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Verena Huber"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 6, CH-6003 Lucerne"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-03"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Telekom Muster AG",
+      "want": "Telekom Muster AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified",
+      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_address": "verified"
+     },
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 4.31,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   }
+  ],
+  "photo": [
+   {
+    "case": "hard_001",
+    "tier": "photo",
+    "defects": [
+     "ADDRESS_MISMATCH"
+    ],
+    "traps": [
+     "ADDR_ABBREVIATED"
+    ],
+    "layouts": {
+     "form_a": "de/lines",
+     "proof_of_address": "fr/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "ADDRESS_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.address"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "MULLER",
+      "want": "MÜLLER"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "ANNA MARIA",
+      "want": "ANNA MARIA"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "CHE"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1988-01-21",
+      "want": "1988-01-21"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "E1896664"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2029-07-21",
+      "want": "2029-07-21"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOMUELLER<<ANNA<MARIA<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOMUELLER<<ANNA<MARIA<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "E1896664<0CHE8801214F2907217<<<<<<<<<<<<<<<2",
+      "want": "E1896664<0CHE8801214F2907217<<<<<<<<<<<<<<<2"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Anna Maria Müller"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Müller, Anna Maria"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1988-01-21"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "CHE"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Boulevard Imaginaire 23, 1204 Genève"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Anna Maria Müller"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Bd Imaginaire 53, 1204 Genève"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-12"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Energie Lémanique Exemple SA",
+      "want": "Énergie Lémanique Exemple SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "date_of_birth": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 3.95,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_002",
+    "tier": "photo",
+    "defects": [
+     "NAME_MISMATCH"
+    ],
+    "traps": [
+     "NAME_SURNAME_FIRST"
+    ],
+    "layouts": {
+     "form_a": "it/table",
+     "proof_of_address": "fr/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "EVIDENCE_NOT_FOUND",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "NAME_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.name_passport_bill"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.evidence",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "DUBOIS-LEGER",
+      "want": "DUBOIS-LÉGER"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "CAMILLE",
+      "want": "CAMILLE"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "FRA",
+      "want": "FRA"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1987-12-09",
+      "want": "1987-12-09"
+     },
+     "passport.sex": {
+      "ok": true,
+      "got": "F",
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "E8992798"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2034-03-19",
+      "want": "2034-03-19"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTODUBOIS<LEGER<<CAMILLE<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTODUBOIS<LEGER<<CAMILLE<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "E8992798<4FRA8712091F3403196<<<<<<<<<<<<<<<6",
+      "want": "E8992798<4FRA8712091F3403196<<<<<<<<<<<<<<<6"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Camille Dubois-Léger"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Dubois-Léger, Camille"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1987-12-09"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "FRA"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Rue des Exemples 110, 1003 Lausanne"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "DUBOIS-LÉGER Marco"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Rue des Exemples 110, 1003 Lausanne"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-25"
+     },
+     "proof_of_address.issuer": {
+      "ok": false,
+      "got": "© Case Energie postaie 100. Lémanique Genève è - SPECIMEN, SPE MEN, Exemple synthetic test document SA",
+      "want": "Énergie Lémanique Exemple SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "sex": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "unverified"
+     }
+    },
+    "totals": {
+     "seconds": 4.15,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_003",
+    "tier": "photo",
+    "defects": [],
+    "traps": [
+     "POA_AT_LIMIT"
+    ],
+    "layouts": {
+     "form_a": "de/table",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "MRZ_CHECK_FAILED"
+    ],
+    "expected": [],
+    "expected_checks": [],
+    "failed_checks": [
+     "form_a.required",
+     "passport.mrz_check_digits",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "ROSSI"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "MARCO ANTONIO",
+      "want": "MARCO ANTONIO"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "ITA"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1969-10-18"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "X6003320"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2033-05-08"
+     },
+     "passport.mrz_line1": {
+      "ok": false,
+      "got": "P<UTOROSSI<<MARCO<KANTONIO<K<<<<<<<<<<<<<<<<",
+      "want": "P<UTOROSSI<<MARCO<ANTONIO<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": false,
+      "got": "X6003320<55SITA6910181M3305083<<<<<<<<<<<<<<",
+      "want": "X6003320<5ITA6910181M3305083<<<<<<<<<<<<<<<0"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Marco Antonio Rossi"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Rossi, Marco Antonio"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1969-10-18"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "ITA"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 101, 3011 Bern"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Marco Antonio Rossi"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 101, 3011 Bern"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-07-23"
+     },
+     "proof_of_address.issuer": {
+      "ok": false,
+      "got": null,
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "given_names": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {}
+    },
+    "totals": {
+     "seconds": 4.18,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_004",
+    "tier": "photo",
+    "defects": [
+     "PROOF_OF_ADDRESS_TOO_OLD"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "it/table",
+     "proof_of_address": "fr/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "PROOF_OF_ADDRESS_TOO_OLD"
+    ],
+    "expected_checks": [
+     "poa.age"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "NAIR",
+      "want": "NAIR"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "PRIYA",
+      "want": "PRIYA"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "IND",
+      "want": "IND"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1996-06-11",
+      "want": "1996-06-11"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "K3615267",
+      "want": "K3615267"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2033-01-04",
+      "want": "2033-01-04"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTONAIR<<PRIYA<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTONAIR<<PRIYA<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "K3615267<2IND9606117F3301041<<<<<<<<<<<<<<<4",
+      "want": "K3615267<2IND9606117F3301041<<<<<<<<<<<<<<<4"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Priya Nair"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Nair, Priya"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1996-06-11"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "IND"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Quai de la Démo 25, 1260 Nyon"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Priya Nair"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Quai de la Démo 25, 1260 Nyon"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-07-22"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Energie Lémanique Exemple SA",
+      "want": "Énergie Lémanique Exemple SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 3.77,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_005",
+    "tier": "photo",
+    "defects": [],
+    "traps": [
+     "PASSPORT_EXPIRES_TODAY"
+    ],
+    "layouts": {
+     "form_a": "de/lines",
+     "proof_of_address": "de/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [],
+    "expected_checks": [],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "SCHÄFER"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "JONAS PETER"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "DEU"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2000-10-05"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "P3521989"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-21"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOSCHAEFER<<JONAS<PETER<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOSCHAEFER<<JONAS<PETER<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "P3521989<8DEU0010056M2610210<<<<<<<<<<<<<<<8",
+      "want": "P3521989<8DEU0010056M2610210<<<<<<<<<<<<<<<8"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Jonas Peter Schäfer"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Schäfer, Jonas Peter"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2000-10-05"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "DEU"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Demoplatz 84, 8001 Zürich"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Jonas Peter Schäfer"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Demoplatz 84, 8001 Zürich"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-08-31"
+     },
+     "proof_of_address.issuer": {
+      "ok": false,
+      "got": null,
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {}
+    },
+    "totals": {
+     "seconds": 4.45,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_006",
+    "tier": "photo",
+    "defects": [
+     "PASSPORT_EXPIRED"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "it/lines",
+     "proof_of_address": "de/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "PASSPORT_EXPIRED"
+    ],
+    "expected": [
+     "PASSPORT_EXPIRED"
+    ],
+    "expected_checks": [
+     "passport.not_expired"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.not_expired",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "FERREIRA",
+      "want": "FERREIRA"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "INES",
+      "want": "INÊS"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "PRT"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2003-03-02"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "C2307287"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2026-10-20",
+      "want": "2026-10-20"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOFERREIRA<<INES<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOFERREIRA<<INES<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "C2307287<3PRT0303022F2610209<<<<<<<<<<<<<<<6",
+      "want": "C2307287<3PRT0303022F2610209<<<<<<<<<<<<<<<6"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Inês Ferreira"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Ferreira, Inês"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2003-03-02"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "PRT"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Beispielstrasse 28, 3011 Bern"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Inês Ferreira"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Beispielstrasse 28, 3011 Bern"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-16"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Stadtwerke Beispiel AG",
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 4.22,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_007",
+    "tier": "photo",
+    "defects": [
+     "DOB_MISMATCH"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "en/lines",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "NAME_MISMATCH"
+    ],
+    "expected": [
+     "DOB_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.dob"
+    ],
+    "failed_checks": [
+     "cross.name_passport_partner",
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "BERNASCONI"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "LUCA",
+      "want": "LUCA"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "CHE"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1963-03-16",
+      "want": "1963-03-16"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "C4991933",
+      "want": "C4991933"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2029-05-06",
+      "want": "2029-05-06"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOBERNASCONI<<LUCA<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOBERNASCONI<<LUCA<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "C4991933<0CHE6303161M2905062<<<<<<<<<<<<<<<6",
+      "want": "C4991933<0CHE6303161M2905062<<<<<<<<<<<<<<<6"
+     },
+     "form_a.contracting_partner": {
+      "ok": true,
+      "got": "Luca Bernasconi",
+      "want": "Luca Bernasconi"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Bernasconi, Luca"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1963-03-13"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": true,
+      "got": "CHE",
+      "want": "CHE"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": "Quai de La Demo 5, 1260 Nyon, Switzerla",
+      "want": "Quai de la Démo 5, 1260 Nyon"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Luca Bernasconi"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Quai de la Démo 5, 1260 Nyon"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-28"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Stadtwerke Beispiel AG",
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "given_names": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified",
+      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_address": "verified"
+     },
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 4.12,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_008",
+    "tier": "photo",
+    "defects": [
+     "MRZ_VISUAL_MISMATCH"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "de/table",
+     "proof_of_address": "fr/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "EVIDENCE_NOT_FOUND",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "MRZ_VISUAL_MISMATCH"
+    ],
+    "expected_checks": [
+     "passport.mrz_vs_visual"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.evidence",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "OKAFOR"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "DANIEL CHUKWUEMEKA"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "NGA"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1983-06-18"
+     },
+     "passport.sex": {
+      "ok": true,
+      "got": "M",
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "P2864607"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2029-09-02"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOOKAFOR<<DANIEL<CHUKWUEMEKA<<<<<<<<<<<<<",
+      "want": "P<UTOOKAFOR<<DANIEL<CHUKWUEMEKA<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "P2864601<2NGA8306188M2909026<<<<<<<<<<<<<<<8",
+      "want": "P2864601<2NGA8306188M2909026<<<<<<<<<<<<<<<8"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Daniel Chukwuemeka Okafor"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Okafor, Daniel Chukwuemeka"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1983-06-18"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "NGA"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Avenue Fictive 18, 1260 Nyon"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Daniel Chukwuemeka Okafor"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Avenue Fictive 18, 1260 Nyon"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-11"
+     },
+     "proof_of_address.issuer": {
+      "ok": false,
+      "got": "© Energie Case postale 100, Lémanique Genève - SPECIMEN, Exemple synthetc test document SA",
+      "want": "Énergie Lémanique Exemple SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "sex": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "unverified"
+     }
+    },
+    "totals": {
+     "seconds": 4.03,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_009",
+    "tier": "photo",
+    "defects": [
+     "SUSPICIOUS_INSTRUCTIONS"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "en/table",
+     "proof_of_address": "de/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "SUSPICIOUS_INSTRUCTIONS"
+    ],
+    "expected_checks": [
+     "proof_of_address.injection"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "GARCÍA LÓPEZ"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "SOFÍA"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "ESP"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1995-08-11"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "X7746400"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2034-08-30"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOGARCIA<LOPEZ<<SOFIA<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOGARCIA<LOPEZ<<SOFIA<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "X7746400<9ESP9508118F3408308<<<<<<<<<<<<<<<8",
+      "want": "X7746400<9ESP9508118F3408308<<<<<<<<<<<<<<<8"
+     },
+     "form_a.contracting_partner": {
+      "ok": true,
+      "got": "Sofia Garcia Löpez",
+      "want": "Sofía García López"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "García López, Sofía"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1995-08-11"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "ESP"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 59, 4051 Basel"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Sofía García López"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 59, 4051 Basel"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-03"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Stadtwerke Beispiel AG",
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified"
+     },
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 4.04,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_010",
+    "tier": "photo",
+    "defects": [
+     "SUSPICIOUS_INSTRUCTIONS"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "fr/table",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "MRZ_VISUAL_MISMATCH"
+    ],
+    "expected": [
+     "SUSPICIOUS_INSTRUCTIONS"
+    ],
+    "expected_checks": [
+     "form_a.injection"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.mrz_vs_visual",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": "KELLE",
+      "want": "KELLER"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "THOMAS",
+      "want": "THOMAS"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "CHE"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1974-10-05",
+      "want": "1974-10-05"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "X4944715"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2032-01-13",
+      "want": "2032-01-13"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOKELLER<<THOMAS<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOKELLER<<THOMAS<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "X4944715<1CHE7410057M3201130<<<<<<<<<<<<<<<0",
+      "want": "X4944715<1CHE7410057M3201130<<<<<<<<<<<<<<<0"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Thomas Keller"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Keller, Thomas"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1974-10-05"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "CHE"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Demoplatz 66, 4051 Basel"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Thomas Keller"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Demoplatz 66, 4051 Basel"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-10"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Stadtwerke Beispiel AG",
+      "want": "Stadtwerke Beispiel AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "date_of_birth": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 4.14,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_011",
+    "tier": "photo",
+    "defects": [
+     "THIRD_PARTY_OWNER"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "de/lines",
+     "proof_of_address": "en/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "NAME_MISMATCH"
+    ],
+    "expected": [
+     "THIRD_PARTY_OWNER"
+    ],
+    "expected_checks": [
+     "form_a.owner_is_client"
+    ],
+    "failed_checks": [
+     "cross.name_passport_bill",
+     "form_a.required",
+     "passport.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "MOREAU",
+      "want": "MOREAU"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "ELODIE CLAIRE",
+      "want": "ÉLODIE CLAIRE"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "FRA"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1980-05-04",
+      "want": "1980-05-04"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "K9457434"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2030-11-18",
+      "want": "2030-11-18"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOMOREAU<<ELODIE<CLAIRE<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOMOREAU<<ELODIE<CLAIRE<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "K9457434<4FRA8005045F3011180<<<<<<<<<<<<<<<2",
+      "want": "K9457434<4FRA8005045F3011180<<<<<<<<<<<<<<<2"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Élodie Claire Moreau"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Lefèvre, Mathilde"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1967-03-28"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "BEL"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Avenue Fictive 104, 1204 Genève"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": "Elodie Claire Moreau CELL",
+      "want": "Élodie Claire Moreau"
+     },
+     "proof_of_address.address": {
+      "ok": true,
+      "got": "Boulevard Imaginaire 84, 1260 Nyon",
+      "want": "Boulevard Imaginaire 84, 1260 Nyon"
+     },
+     "proof_of_address.issue_date": {
+      "ok": true,
+      "got": "2026-10-06",
+      "want": "2026-10-06"
+     },
+     "proof_of_address.issuer": {
+      "ok": false,
+      "got": null,
+      "want": "Lemanic Energy Example Ltd"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "date_of_birth": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "name": "verified",
+      "address": "verified",
+      "issue_date": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 3.85,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_012",
+    "tier": "photo",
+    "defects": [
+     "FORM_A_UNSIGNED"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "fr/lines",
+     "proof_of_address": "de/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "FORM_A_UNSIGNED",
+     "MISSING_FIELD",
+     "MRZ_VISUAL_MISMATCH"
+    ],
+    "expected": [
+     "FORM_A_UNSIGNED"
+    ],
+    "expected_checks": [
+     "form_a.signed"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "form_a.signed",
+     "passport.mrz_vs_visual",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "IYER",
+      "want": "IYER"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "ARJUN",
+      "want": "ARJUN"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "IND"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1970-02-21",
+      "want": "1970-02-21"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "C5928772",
+      "want": "C5928772"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": "4) 2 03 OCT/OCT 2029",
+      "want": "2029-10-03"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOIYER<<ARJUN<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOIYER<<ARJUN<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "C5928772<8IND7002210M2910035<<<<<<<<<<<<<<<2",
+      "want": "C5928772<8IND7002210M2910035<<<<<<<<<<<<<<<2"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Arjun Iyer"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Iyer, Arjun"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1970-02-21"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "IND"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 66, 8001 Zürich"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Arjun Iyer"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 66, 8001 Zürich"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-12"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Telekom Muster AG",
+      "want": "Telekom Muster AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 3.57,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_013",
+    "tier": "photo",
+    "defects": [
+     "NAME_MISMATCH"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "fr/table",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "NAME_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.name_passport_partner"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "D'AMICO",
+      "want": "D'AMICO"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "GIULIA",
+      "want": "GIULIA"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "ITA",
+      "want": "ITA"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "2000-03-13",
+      "want": "2000-03-13"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "X9605994"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2027-08-29",
+      "want": "2027-08-29"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOD<AMICO<<GIULIA<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOD<AMICO<<GIULIA<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "X9605994<3ITA0003137F2708296<<<<<<<<<<<<<<<2",
+      "want": "X9605994<3ITA0003137F2708296<<<<<<<<<<<<<<<2"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "Olivia Rose Brown"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "D'Amico, Giulia"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2000-03-13"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "ITA"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Beispielstrasse 12, 4051 Basel"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Giulia D'Amico"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Beispielstrasse 12, 4051 Basel"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-12"
+     },
+     "proof_of_address.issuer": {
+      "ok": false,
+      "got": "Telekom Muster er AG",
+      "want": "Telekom Muster AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 4.02,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_014",
+    "tier": "photo",
+    "defects": [
+     "IMPLAUSIBLE_DATE"
+    ],
+    "traps": [],
+    "layouts": {
+     "form_a": "en/table",
+     "proof_of_address": "en/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "NAME_MISMATCH"
+    ],
+    "expected": [
+     "IMPLAUSIBLE_DATE"
+    ],
+    "expected_checks": [
+     "poa.age"
+    ],
+    "failed_checks": [
+     "cross.name_passport_partner",
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "WEBER"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "LUKAS",
+      "want": "LUKAS"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "DEU"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1962-05-10"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "X6873375"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2032-10-09"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOWEBER<<LUKAS<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOWEBER<<LUKAS<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "X6873375<2DEU6205106M3210097<<<<<<<<<<<<<<<4",
+      "want": "X6873375<2DEU6205106M3210097<<<<<<<<<<<<<<<4"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": "“Ras Weber",
+      "want": "Lukas Weber"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Weber, Lukas"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1962-05-10"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "DEU"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Quai de la Démo 69, 1227 Carouge"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Lukas Weber"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Quai de la Démo 69, 1227 Carouge"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-26"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Lemanic Energy Example Ltd",
+      "want": "Lemanic Energy Example Ltd"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "given_names": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified"
+     },
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 4.21,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_015",
+    "tier": "photo",
+    "defects": [],
+    "traps": [
+     "UNSEEN_NATIONALITY"
+    ],
+    "layouts": {
+     "form_a": "en/lines",
+     "proof_of_address": "fr/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [],
+    "expected_checks": [],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "TREMBLAY"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "ÉMILIE"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "CAN"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1990-07-02",
+      "want": "1990-07-02"
+     },
+     "passport.sex": {
+      "ok": true,
+      "got": "F",
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "C7208081"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2029-10-21"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOTREMBLAY<<EMILIE<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOTREMBLAY<<EMILIE<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "C7208081<0CAN9007024F2910219<<<<<<<<<<<<<<<8",
+      "want": "C7208081<0CAN9007024F2910219<<<<<<<<<<<<<<<8"
+     },
+     "form_a.contracting_partner": {
+      "ok": true,
+      "got": "Emilie Tremblay",
+      "want": "Émilie Tremblay"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Tremblay, Émilie"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1990-07-02"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": "ee Canada (1! TT OE SIL, ini tS. Ci oh nn",
+      "want": "CAN"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Chemin du Test 33, 1003 Lausanne"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Émilie Tremblay"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Chemin du Test 33, 1003 Lausanne"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-05"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Services Industriels Fictifs SA",
+      "want": "Services Industriels Fictifs SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "date_of_birth": "verified",
+      "sex": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified",
+      "beneficial_owner_nationality": "verified"
+     },
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 3.9,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_016",
+    "tier": "photo",
+    "defects": [],
+    "traps": [
+     "UNSEEN_CITY_ALIAS"
+    ],
+    "layouts": {
+     "form_a": "en/table",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "NAME_MISMATCH"
+    ],
+    "expected": [],
+    "expected_checks": [],
+    "failed_checks": [
+     "cross.name_passport_form_a",
+     "cross.name_passport_partner",
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "HUBER",
+      "want": "HUBER"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "VERENA"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "AUT"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1967-09-13"
+     },
+     "passport.sex": {
+      "ok": true,
+      "got": "F",
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "C9701578"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2032-03-01"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOHUBER<<VERENA<<<<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOHUBER<<VERENA<<<<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "C9701578<9AUT6709132F3203019<<<<<<<<<<<<<<<4",
+      "want": "C9701578<9AUT6709132F3203019<<<<<<<<<<<<<<<4"
+     },
+     "form_a.contracting_partner": {
+      "ok": true,
+      "got": "Verena Huber",
+      "want": "Verena Huber"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": true,
+      "got": "Huber, Verena",
+      "want": "Huber, Verena"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1967-09-13"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "AUT"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": true,
+      "got": "| Testgasse 6, 6003 Luzern, Switzerland",
+      "want": "Testgasse 6, 6003 Luzern"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Verena Huber"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Testgasse 6, CH-6003 Lucerne"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-10-03"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Telekom Muster AG",
+      "want": "Telekom Muster AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "sex": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified",
+      "beneficial_owner_name": "verified",
+      "beneficial_owner_address": "verified"
+     },
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 4.03,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   }
+  ]
+ }
+}

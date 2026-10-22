@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Figure } from "../Figure";
-import { STATUS_COLOR, cx } from "../lib";
+import { BASIS_INFO, STATUS_COLOR, cx } from "../lib";
 import type { Evidence, Result, Step } from "../types";
 import { Badge, Bar, StatusBadge, Tabs } from "../ui";
 
@@ -132,9 +132,14 @@ export function GroundView({ step, steps, result }: { step: Step; steps: Step[];
                     </div>
                   </td>
                   <td>
-                    <Badge mono tone={e.method === "not_found" ? "warn" : e.method === "exact" ? "ok" : "info"}>
+                    <Badge mono tone={e.method === "not_found" ? "warn" : e.method === "exact" || e.method === "checksum" ? "ok" : "info"}>
                       {e.method}
                     </Badge>
+                    {e.basis && (
+                      <div className="mt-0.5 text-[10.5px] text-faint" title={BASIS_INFO[e.basis]}>
+                        basis: {e.basis}
+                      </div>
+                    )}
                   </td>
                   <td>
                     <div className="flex items-center gap-1.5 whitespace-nowrap">
@@ -166,9 +171,12 @@ export function GroundView({ step, steps, result }: { step: Step; steps: Step[];
         </table>
       </div>
       <p className="text-[11px] text-muted">
-        Score = fuzzy match (0–100) of the model's quote against the OCR words; ≥ {THRESHOLD} counts as found. The black tick on each bar marks {THRESHOLD}.
-        Values whose quote contradicts the page are <b>dropped</b>; values not found stay <b>unverified</b> until a passing cross-document check
-        corroborates them.
+        Two tests per value. Does its own quote say it? A quote that says something else (another name, date or number) gets the value{" "}
+        <b>dropped</b>; one that is only close (OCR noise copied into the quote) leaves it <b>unverified</b>. Is the quote on the page? Score = fuzzy
+        match (0–100) against the OCR words, ≥ {THRESHOLD} counts as found, but digits must match exactly: one digit off is another house or date,
+        not noise. Unverified values wait for a passing cross-document check to corroborate them, or for a person. <b>basis</b> says what a
+        verification rests on: in text/both mode the model was shown the OCR, so <span className="mono">ocr</span> means it agrees with OCR, not
+        that two readers did; <span className="mono">checksum</span> (the MRZ) is the only check neither can fake.
       </p>
     </div>
   );

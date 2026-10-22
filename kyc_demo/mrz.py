@@ -143,11 +143,11 @@ def reconcile(model_lines: tuple[str | None, str | None], ocr_lines: list[str] |
             break
     else:
         chosen, source = candidates["model_repaired"], "model reading: check digits fail on every candidate"
-    # Line 1 has no check digit: clean its tail, and take it from a candidate whose document type and
-    # issuing-state code are well-formed ('PKLUTO...' is OCR noise for 'P<UTO...')
-    line1s = [chosen[0]] + [c[0] for c in candidates.values()]
-    line1s = [repair_filler(l, 1) for l in line1s if l]
-    chosen = (next((l for l in line1s if re.match(r"P[<A-Z](UTO|[A-Z]{3})", l) and l[2:5] in ISSUING_STATES),
-                   line1s[0] if line1s else None), chosen[1])
+    # Line 1 has no check digit, so no candidate can prove itself. Take the first well-formed one: a known
+    # document type and issuing state ('PKLUTO...' is OCR noise for 'P<UTO...') and a name of letters and
+    # filler only ('JOA0' is not). The model comes first: Tesseract's MRZ pass reads chevrons as letters.
+    line1s = [repair_filler(l, 1) for l in (model_lines[0], ocr[0], chosen[0]) if l]
+    well_formed = lambda l: (re.match(r"P[<A-Z][A-Z<]{3}[A-Z<]{39}$", l) is not None and l[2:5] in ISSUING_STATES)
+    chosen = (next((l for l in line1s if well_formed(l)), line1s[0] if line1s else None), chosen[1])
     return {"lines": chosen, "source": source, "candidates": {k: list(v) for k, v in candidates.items()},
             "valid": valid}

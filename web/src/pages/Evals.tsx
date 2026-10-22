@@ -3,13 +3,15 @@ import { api, useFetch } from "../api";
 import { DEFECTS, TIERS, TIER_INFO, TRAPS, cx, isDefect, pct } from "../lib";
 import { navigate, setParams, type Route } from "../router";
 import { DecisionBadge } from "../steps/ChecksView";
-import type { CaseError, CaseScore, EvalReport, Summary, Tier } from "../types";
+import type { CaseError, CaseScore, EvalReport, Suite, Summary, Tier } from "../types";
 import { Badge, Empty, ErrorBox, Section, Spinner, Tabs } from "../ui";
 
 type Kind = "%" | "n" | "$" | "s";
 const METRICS: { key: keyof Summary; label: string; kind: Kind; better: "high" | "low"; legend: string }[] = [
-  { key: "missed_defect_files", label: "Defect files sent to the quick queue", kind: "n", better: "low", legend: "The dangerous error: a file with a real problem that skipped manual review." },
-  { key: "defect_recall", label: "Defect recall", kind: "%", better: "high", legend: "Planted defects that were flagged. Missing one is the expensive error." },
+  { key: "missed_defect_files", label: "Defect files sent to the quick queue", kind: "n", better: "low", legend: "The dangerous error: a file with a real problem that skipped manual review. Read it next to straight-through: flagging everything scores 0 here and saves nothing." },
+  { key: "defect_recall", label: "Defect recall", kind: "%", better: "high", legend: "Planted defects that were flagged, with a 95% interval: with this few defects, 100% only shows recall is probably above the lower bound." },
+  { key: "defects_not_flagged", label: "Defects not flagged", kind: "n", better: "low", legend: "Defects whose flag was never raised. The file may still reach manual review for another reason, but then nobody is told what is wrong." },
+  { key: "right_check_rate", label: "Defects caught by the right check", kind: "%", better: "high", legend: "Raised by the check meant to catch them, not by another that shares the flag code." },
   { key: "defect_precision", label: "Defect precision", kind: "%", better: "high", legend: "Defect flags raised that were real (process flags not counted)." },
   { key: "trap_false_alarm_rate", label: "Trap false-alarm rate", kind: "%", better: "low", legend: "Harmless variations (Av./Avenue, no middle name) wrongly flagged as a defect." },
   { key: "straight_through_rate", label: "Straight-through (clean files)", kind: "%", better: "high", legend: "Clean files that reached the pre-filled queue. This is the time saved." },
@@ -17,6 +19,7 @@ const METRICS: { key: keyof Summary; label: string; kind: Kind; better: "high" |
   { key: "field_accuracy", label: "Field accuracy", kind: "%", better: "high", legend: "Truth values extracted correctly, after normalisation (dates, ISO codes, names)." },
   { key: "critical_field_accuracy", label: "Critical-field accuracy", kind: "%", better: "high", legend: "Same, over the 12 identity fields (names, DOB, doc number, expiry, addresses, bill date)." },
   { key: "process_flags_per_file", label: "Process flags per file", kind: "n", better: "low", legend: "EVIDENCE_NOT_FOUND, MISSING_FIELD, MODEL_DISAGREEMENT: send clean files to manual review." },
+  { key: "errors", label: "Errors", kind: "n", better: "low", legend: "Files whose run crashed. They are left out of every other metric." },
   { key: "seconds_per_file", label: "Seconds per file", kind: "s", better: "low", legend: "Wall time for the three documents, OCR included (cached model calls show original latency)." },
   { key: "cost_per_file_usd", label: "$ per file", kind: "$", better: "low", legend: "API cost for the three documents. Local models and rules are free." },
 ];
@@ -221,11 +224,15 @@ function CaseTable({ report, tier }: { report: EvalReport; tier: Tier }) {
 export function EvalsPage({ route }: { route: Route }) {
   const evals = useFetch<EvalReport[]>("evals", api.evals, false);
   const tier = (TIERS.includes(route.params.tier as Tier) ? route.params.tier : "scan") as Tier;
+  const suite = (route.params.suite === "hard" ? "hard" : "standard") as Suite;
   useEffect(() => {
     const i = window.setInterval(() => evals.reload(), 60000);
     return () => window.clearInterval(i);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  const reports = useMemo(() => (evals.data ?? []).filter((r) => r.tiers[tier] && Object.keys(r.tiers[tier]!).length), [evals.data, tier]);
+  const reports = useMemo(
+    () => (evals.data ?? []).filter((r) => (r.suite ?? "standard") === suite && r.tiers[tier] && Object.keys(r.tiers[tier]!).length),
+    [evals.data, tier, suite],
+  );
   const chosen = route.params.ex && reports.find((r) => r.extractor === route.params.ex) ? route.params.ex : reports[0]?.extractor;
   const chosenReport = reports.find((r) => r.extractor === chosen);
 
@@ -235,8 +242,20 @@ export function EvalsPage({ route }: { route: Route }) {
   return (
     <div className="flex min-h-0 flex-1 flex-col overflow-auto">
       <div className="flex flex-wrap items-center gap-3 border-b border-line bg-panel px-4 py-2.5">
+        <Tabs
+          tabs={[
+            { id: "standard" as Suite, label: "standard suite", title: "case_NNN: shows the system working" },
+            { id: "hard" as Suite, label: "hard suite", title: "hard_NNN: built to break it" },
+          ]}
+          value={suite}
+          onChange={(v) => setParams({ suite: v, ex: null }, false)}
+        />
         <Tabs tabs={TIERS.map((t) => ({ id: t, label: t }))} value={tier} onChange={(t) => setParams({ tier: t }, false)} />
-        <span className="text-[12px] text-muted">{TIER_INFO[tier]}</span>
+        <span className="text-[12px] text-muted">
+          {suite === "hard"
+            ? "Defects inside traps, thresholds at their edge, one-digit changes, new injection wordings, Form A cases the standard suite lacks, and two held-out cases expected to fail."
+            : TIER_INFO[tier]}
+        </span>
         <span className="ml-auto text-[12px] text-muted">
           {evals.data ? `${evals.data.length} eval report(s)` : ""} · refreshes every 60 s
         </span>
@@ -246,7 +265,11 @@ export function EvalsPage({ route }: { route: Route }) {
       </div>
       <div className="flex flex-col gap-3 p-4">
         {evals.error && <ErrorBox>{evals.error}</ErrorBox>}
-        {evals.data && reports.length === 0 && <Empty>No eval reports for this tier yet.</Empty>}
+        {evals.data && reports.length === 0 && (
+          <Empty>
+            No {suite} eval reports for this tier yet{suite === "hard" ? ": python -m kyc_demo eval --suite hard -e <extractor>" : ""}.
+          </Empty>
+        )}
         {reports.length > 0 && (
           <>
             <Section title={`Metrics · ${tier} · ${reports[0].tiers[tier]!.files} files`} pad={false}>
@@ -280,6 +303,12 @@ export function EvalsPage({ route }: { route: Route }) {
                           {vals.map((v, i) => (
                             <td key={i} className={cx("mono tabular", v === best && "bg-accent-weak font-semibold text-accent")}>
                               {fmt(v, m.kind)}
+                              {m.key === "defect_recall" && reports[i].tiers[tier]!.defect_recall_ci && (
+                                <span className="font-normal text-faint">
+                                  {" "}
+                                  ({pct(reports[i].tiers[tier]!.defect_recall_ci![0])}–{pct(reports[i].tiers[tier]!.defect_recall_ci![1])})
+                                </span>
+                              )}
                               {m.key === "missed_defect_files" && v !== null && (
                                 <span className="font-normal text-faint"> / {reports[i].tiers[tier]!.defect_files}</span>
                               )}

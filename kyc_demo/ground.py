@@ -6,9 +6,12 @@ So we slide a window over the page's OCR words and take the best fuzzy match:
 
 - score 100       exact (after case/accent/punctuation folding)
 - score >= 85     fuzzy: accept, the difference is OCR noise
-- below 85        not found: the value is dropped, because nothing on the page supports it
+- below 85        not found: nothing on the page supports the quote
 
 The threshold is the trade-off: lower lets hallucinations through, higher rejects true values on bad scans.
+Digits are exempt from it: "Musterweg 51" scores 92 against "Musterweg 57", and one digit is a different
+house, date or passport. A quote with digits only matches text with exactly the same digits, in order;
+when OCR misread a digit, the quote is not found and a human (or another document) has to confirm it.
 """
 
 from dataclasses import asdict, dataclass
@@ -16,7 +19,7 @@ from dataclasses import asdict, dataclass
 from rapidfuzz import fuzz
 
 from .mrz import parse_td3
-from .normalise import text_key
+from .normalise import digits, text_key
 from .read import Page
 
 FUZZY_MIN = 85
@@ -43,24 +46,26 @@ def locate(quote: str | None, pages: list[Page]) -> Match:
     q = text_key(quote)
     if not q:
         return Match("not_found", 0.0)
-    q_tokens = q.split()
+    q_tokens, q_digits = q.split(), digits(q)
     best = Match("not_found", 0.0)
     for page in pages:
         if page.mrz:  # MRZ lines come from their own OCR pass and have no word boxes
             for line in page.mrz:
-                s = fuzz.ratio(q.replace(" ", ""), text_key(line).replace(" ", ""))
-                if s > best.score:
+                line_key = text_key(line).replace(" ", "")
+                s = fuzz.ratio(q.replace(" ", ""), line_key)
+                if s > best.score and (not q_digits or digits(line_key) == q_digits):
                     best = Match("mrz_pass", round(s, 1), page.number, MRZ_ZONE, line)
         keyed = [(text_key(w.text), w) for w in page.words]
         keyed = [(k, w) for k, w in keyed if k]
         # One OCR word can hold several tokens ("25.08.2026") and vice versa, so try every window size.
-        for size in range(1, min(len(q_tokens) + 3, 14)):
+        for size in range(1, len(q_tokens) + 3):
             for i in range(0, max(0, len(keyed) - size) + 1):
                 window = keyed[i:i + size]
                 if not window:
                     continue
-                s = fuzz.ratio(q, " ".join(k for k, _ in window))
-                if s > best.score:
+                text = " ".join(k for k, _ in window)
+                s = fuzz.ratio(q, text)
+                if s > best.score and (not q_digits or digits(text) == q_digits):
                     ws = [w for _, w in window]
                     bbox = (min(w.bbox[0] for w in ws), min(w.bbox[1] for w in ws),
                             max(w.bbox[2] for w in ws), max(w.bbox[3] for w in ws))

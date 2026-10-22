@@ -25,7 +25,7 @@ from .trace import Trace
 RENDER_DPI = 200
 OCR_LANGS_WANTED = ["eng", "fra", "deu", "ita"]
 MRZ_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<"
-CACHE = Path("runs/cache/ocr")
+CACHE = Path(__file__).resolve().parent.parent / "runs" / "cache" / "ocr"
 
 
 @dataclass
