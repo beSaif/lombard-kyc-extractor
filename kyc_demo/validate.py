@@ -13,7 +13,8 @@ from datetime import date
 from pydantic import BaseModel
 from rapidfuzz import fuzz
 
-from .ground import FUZZY_MIN, MRZ_ZONE, Match, locate, locate_in_mrz
+from .anchor import place
+from .ground import FUZZY_MIN, MRZ_ZONE, Match, locate, locate_all, locate_in_mrz
 from .mrz import parse_td3, transliterate
 from .normalise import (ADDRESS_FIELDS, address_key, country_code, find_date, names_match, parse_date,
                         person_matches, strip_accents, text_key)
@@ -79,6 +80,8 @@ def quote_says(name: str, value: str, quote: str | None) -> str | None:
         code = country_code(quote)
         return None if code is None else "yes" if code == value else "no"
     key = address_key if name in ADDRESS_FIELDS else text_key
+    if text_key(value).replace(" ", "") == text_key(quote).replace(" ", ""):
+        return "yes"  # 'R 00000' says 'R00000': passport numbers are printed in groups
     want, got = key(value).split(), set(key(quote).split())
     missing = [t for t in want if t not in got]
     if not missing:
@@ -104,6 +107,10 @@ def ground_fields(doc_type: str, data: BaseModel, doc: Document) -> dict:
                   value (see quote_says). Kept, but a human must check it unless another document
                   corroborates it (see corroborate)
     dropped       the quote does not say the value (another date, another name): the value is removed
+    out_of_place  the quote is on the page but not where this field is printed: in fine print, or under the
+                  label of something we do not extract, such as a remarks box or a due date (see anchor.py).
+                  Kept, a human must check it, and no other document can vouch for it: a planted decoy is
+                  made to agree with them. Found only under another extracted field's label, it is unverified
 
     basis         text_layer: the PDF's own text, exact
                   ocr: Tesseract read the same thing. In 'text' and 'both' mode the model was shown that
@@ -112,6 +119,7 @@ def ground_fields(doc_type: str, data: BaseModel, doc: Document) -> dict:
     """
     evidence = {}
     sources = {p.number: p.source for p in doc.pages}
+    pages = {p.number: p for p in doc.pages}
     for name in type(data).model_fields:
         fv: FieldValue = getattr(data, name)
         if fv.value is None:
@@ -127,9 +135,28 @@ def ground_fields(doc_type: str, data: BaseModel, doc: Document) -> dict:
             "MRZ line") else sources.get(m.page, "ocr")
         ev = {**m.to_dict(), "status": "verified" if basis else "unverified", "basis": basis, "value": fv.value}
         says = quote_says(name, fv.value, fv.quote)
+        where = (place(doc_type, name, m.bbox, pages[m.page]) if m.method in {"exact", "fuzzy"} and m.page in pages
+                 else None)
+        if where is not None and where.misplaced:  # out of place only if every place that prints it is wrong
+            for alt in locate_all(fv.quote, doc.pages):
+                alt_where = place(doc_type, name, alt.bbox, pages[alt.page])
+                if not alt_where.misplaced:
+                    m, where = alt, alt_where
+                    ev.update(m.to_dict())
+                    break
+        if where is not None:
+            ev["place"] = where.to_dict()
         if says == "no":
             ev["status"], ev["why"] = "dropped", f"the quote {fv.quote!r} does not say {fv.value!r}"
             fv.value = None
+        elif where is not None and where.misplaced:
+            ev["status"], ev["basis"] = "out_of_place", None
+            ev["why"] = (f"the quote is in fine print ({where.height_ratio:.0%} of the page's body text height)"
+                         if where.verdict == "fine_print" else
+                         f"the quote sits under or beside {where.label!r}, which is not this field")
+        elif where is not None and where.verdict == "other_field":
+            ev["status"], ev["basis"] = "unverified", None
+            ev["why"] = f"the quote was only found under {where.label!r}, the label of {where.label_field}"
         elif says == "close":
             ev["status"], ev["basis"] = "unverified", None
             ev["why"] = f"the quote {fv.quote!r} is close to {fv.value!r} but does not say it (OCR noise or a misreading)"
@@ -159,6 +186,8 @@ def corroborate(evidence: dict, checks: list[Check]) -> tuple[list[dict], list[C
 
     Safe because each document is extracted on its own: the model cannot copy a value from the passport
     into the Form A. Runs until nothing changes, so MRZ -> passport date of birth -> Form A date of birth chains.
+    An out-of-place value is never corroborated: a decoy in a footnote is planted to agree with the other
+    documents, so their agreement is no evidence for it.
     """
     passed = {c.name for c in checks if c.passed}
     trusted = lambda d, f: evidence.get(d, {}).get(f, {}).get("status") in {"verified", "corroborated"}
@@ -186,7 +215,12 @@ def corroborate(evidence: dict, checks: list[Check]) -> tuple[list[dict], list[C
                          "all values verified or corroborated" if not bad else "check by eye: " + "; ".join(bad),
                          "EVIDENCE_NOT_FOUND", "medium",
                          {s: sum(e["status"] == s for e in fields.values())
-                          for s in ("verified", "corroborated", "unverified", "dropped")}))
+                          for s in ("verified", "corroborated", "unverified", "dropped", "out_of_place")}))
+        misplaced = [f"{f} ({e['why']})" for f, e in fields.items() if e["status"] == "out_of_place"]
+        out.append(Check(f"{doc_type}.evidence_place", "Every value is printed where its field is", not misplaced,
+                         "no value comes from fine print or another field's label" if not misplaced
+                         else "check by eye: " + "; ".join(misplaced), "EVIDENCE_OUT_OF_PLACE", "high",
+                         {"place": {f: e["place"]["verdict"] for f, e in fields.items() if e.get("place")}}))
     return log, out
 
 

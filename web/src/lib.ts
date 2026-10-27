@@ -110,6 +110,7 @@ export const STATUS_COLOR: Record<string, string> = {
   corroborated: "var(--info)",
   unverified: "var(--warn)",
   dropped: "var(--bad)",
+  out_of_place: "var(--bad)",
 };
 
 export function confColor(c: number | null): string {

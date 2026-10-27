@@ -43,11 +43,23 @@ class Match:
 
 
 def locate(quote: str | None, pages: list[Page]) -> Match:
+    """The best place on the pages that says the quote (see the module docstring)."""
+    return _search(quote, pages)[0]
+
+
+def locate_all(quote: str | None, pages: list[Page]) -> list[Match]:
+    """Every word window that says the quote well enough (score >= FUZZY_MIN, same digits), best first.
+    The same text is often printed twice ('Svizzera' as the nationality and at the end of the address)."""
+    return _search(quote, pages)[1]
+
+
+def _search(quote: str | None, pages: list[Page]) -> tuple[Match, list[Match]]:
     q = text_key(quote)
     if not q:
-        return Match("not_found", 0.0)
+        return Match("not_found", 0.0), []
     q_tokens, q_digits = q.split(), digits(q)
     best = Match("not_found", 0.0)
+    found: list[Match] = []
     for page in pages:
         if page.mrz:  # MRZ lines come from their own OCR pass and have no word boxes
             for line in page.mrz:
@@ -65,15 +77,19 @@ def locate(quote: str | None, pages: list[Page]) -> Match:
                     continue
                 text = " ".join(k for k, _ in window)
                 s = fuzz.ratio(q, text)
-                if s > best.score and (not q_digits or digits(text) == q_digits):
+                if (s > best.score or s >= FUZZY_MIN) and (not q_digits or digits(text) == q_digits):
                     ws = [w for _, w in window]
                     bbox = (min(w.bbox[0] for w in ws), min(w.bbox[1] for w in ws),
                             max(w.bbox[2] for w in ws), max(w.bbox[3] for w in ws))
-                    best = Match("exact" if s == 100 else "fuzzy", round(s, 1), page.number, bbox,
-                                 " ".join(w.text for w in ws))
+                    m = Match("exact" if s == 100 else "fuzzy", round(s, 1), page.number, bbox,
+                              " ".join(w.text for w in ws))
+                    if s >= FUZZY_MIN:
+                        found.append(m)
+                    if s > best.score:
+                        best = m
     if best.score < FUZZY_MIN:
-        best.method = "not_found"
-    return best
+        best = Match("not_found", best.score, best.page, best.bbox, best.matched_text)
+    return best, sorted(found, key=lambda m: -m.score)
 
 
 def locate_in_mrz(field: str, value: str | None, pages: list[Page]) -> Match | None:

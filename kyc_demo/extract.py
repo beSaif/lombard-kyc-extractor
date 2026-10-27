@@ -3,6 +3,8 @@
 An extractor is named by a spec string, so switching model is one flag:
 
     rules                          regexes on the text, English labels only. The brittle baseline.
+    oracle                         no model: the true values from truth.json (the pipeline's ceiling)
+    azure:prebuilt                 Azure Document Intelligence (ID model + query fields), see azure.py
     ollama:qwen2.5vl:7b@vision     local model via Ollama (data never leaves the machine)
     openai:gpt-5.4-mini@both       OpenAI API
 
@@ -146,6 +148,46 @@ class RulesExtractor:
             d["changes"] = postprocess(doc_type, data)
             d["fields"] = data.model_dump()
         return Extraction(data)
+
+
+# --- oracle ---------------------------------------------------------------------------------
+
+class OracleExtractor:
+    """A perfect reader: the true values, each quoted with the exact text printed for it (truth.json).
+
+    It measures everything after the model (OCR, grounding, the location check, the rules, routing) as if
+    the model made no mistake, for free and on any machine. What it still gets wrong is the ceiling the
+    rest of the pipeline puts on every model. 'oracle:decoy' is a perfectly fooled reader instead: where a
+    case plants a decoy (hard_017, hard_018), it quotes the decoy, as a steered model would.
+    """
+
+    def __init__(self, decoy: bool = False):
+        self.decoy = decoy
+        self.name = "oracle:decoy" if decoy else "oracle"
+
+    def extract(self, doc_type: str, doc: Document, trace: Trace) -> Extraction:
+        truth = json.loads((doc.path.parent / "truth.json").read_text())
+        printed = (truth.get("printed") or {}).get(doc_type)
+        if printed is None:
+            raise ValueError(f"{doc.path.parent / 'truth.json'} has no printed text: regenerate the cases")
+        decoys = (truth.get("decoys") or {}).get(doc_type, {}) if self.decoy else {}
+        with trace.step("extract", "Read the true values", doc=doc_type,
+                        code=("kyc_demo.extract.OracleExtractor.extract",),
+                        explain="No model: the values and printed text come from truth.json.") as d:
+            fields = {}
+            for name, value in truth["fields"][doc_type].items():
+                quote = printed.get(name)
+                if name in decoys:
+                    value = quote = decoys[name]
+                fields[name] = FieldValue(value=value, quote=quote, page=1)
+            data = DOC_SCHEMAS[doc_type](**fields)
+            report = printed.get(INJECTION_FIELD)
+            injection = FieldValue(value=report, quote=report, page=1) if report else FieldValue()
+            d.update(fields=data.model_dump(), decoys=decoys)
+        with trace.step("normalise", "Normalise values", doc=doc_type, code=("kyc_demo.extract.postprocess",),
+                        explain="Dates to YYYY-MM-DD, countries to ISO alpha-3, whatever the source format.") as d:
+            d["changes"] = postprocess(doc_type, data)
+        return Extraction(data, injection)
 
 
 # --- LLM ------------------------------------------------------------------------------------
@@ -307,9 +349,15 @@ def _redact(body: dict) -> dict:
 
 
 def make_extractor(spec: str):
-    """'rules' | '<provider>:<model>@<text|vision|both>' (model may contain ':')."""
+    """'rules' | 'oracle' | 'oracle:decoy' | 'azure:prebuilt' | '<provider>:<model>@<text|vision|both>'
+    (model may contain ':')."""
     if spec == "rules":
         return RulesExtractor()
+    if spec in {"oracle", "oracle:decoy"}:
+        return OracleExtractor(decoy=spec == "oracle:decoy")
+    if spec.startswith("azure:"):
+        from .azure import AzureExtractor
+        return AzureExtractor(spec.partition(":")[2] or "prebuilt")
     provider, _, rest = spec.partition(":")
     model, _, mode = rest.rpartition("@") if "@" in rest else (rest, "", "text")
     return LLMExtractor(provider, model, mode or "text")

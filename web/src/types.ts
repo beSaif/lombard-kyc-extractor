@@ -3,9 +3,9 @@
 export type Tier = "clean" | "scan" | "photo";
 /** Where a case lives: a quality tier of the synthetic set, or "upload" for your own documents. */
 export type CaseTier = Tier | "upload";
-export type Suite = "standard" | "hard";
+export type Suite = "standard" | "hard" | "blind" | "real";
 export type DocType = "passport" | "form_a" | "proof_of_address";
-export type EvidenceStatus = "verified" | "unverified" | "corroborated" | "dropped";
+export type EvidenceStatus = "verified" | "unverified" | "corroborated" | "dropped" | "out_of_place";
 export type Decision = "pre_filled_review" | "manual_review";
 
 export interface CaseSummary {
@@ -62,6 +62,14 @@ export interface Evidence {
   value: string | null;
   why?: string;
   corroborated_by?: string;
+  // where the quote sits on the page (kyc_demo/anchor.py)
+  place?: {
+    verdict: "anchored" | "no_label" | "other_field" | "other_section" | "fine_print";
+    label: string | null;
+    label_field: string | null;
+    label_bbox: [number, number, number, number] | null;
+    height_ratio: number | null;
+  };
 }
 
 export interface Check {
@@ -234,7 +242,7 @@ export interface ReviewState {
   status: ReviewStatus;
   approved_by: string[];
   fields: Record<string, AuditEntry>; // "doc.field" -> the latest decision on it
-  needs_eyes: Record<string, "unverified" | "dropped" | "missing">;
+  needs_eyes: Record<string, "unverified" | "dropped" | "out_of_place" | "missing">;
   pending: string[];
   rejected_fields: string[];
   entries: AuditEntry[];

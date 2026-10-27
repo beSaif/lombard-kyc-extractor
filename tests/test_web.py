@@ -95,8 +95,16 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(set(decision["documents"]), {"passport", "form_a", "proof_of_address"})
         self.assertEqual(approve("Carol Third").status_code, 409)  # closed
 
-        self.assertTrue(self.client.get("/api/audit/verify").json()["ok"])
+        head = self.client.get("/api/audit/verify").json()
+        self.assertTrue(head["ok"])
         lines = web.AUDIT.path.read_text().splitlines()
+        # Cutting the last line off leaves a valid chain: only the head saved elsewhere shows it.
+        web.AUDIT.path.write_text("\n".join(lines[:-1]) + "\n")
+        self.assertTrue(self.client.get("/api/audit/verify").json()["ok"])
+        cut = self.client.get("/api/audit/verify", params={"seq": head["seq"], "head": head["head"]}).json()
+        self.assertFalse(cut["ok"])
+        self.assertIn("cut off", cut["why"])
+        web.AUDIT.path.write_text("\n".join(lines) + "\n")
         first = json.loads(lines[0])
         first["reviewer"] = "Mallory"
         web.AUDIT.path.write_text("\n".join([json.dumps(first, sort_keys=True), *lines[1:]]) + "\n")

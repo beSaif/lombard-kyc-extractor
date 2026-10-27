@@ -18,6 +18,8 @@ nothing in the standard cases) is built to break the system rather than to show 
   opened in someone else's name
 - held-out variety the normaliser was never tuned on (a Canadian, Luzern written as Lucerne). These are
   expected to fail: they measure how far the tables generalise, and nobody should tune them away.
+- decoys (hard_017, hard_018): the bill is for another address than the Form A, and the page also prints
+  the matching address in a footer or the Form A remarks, for a confused or steered reader to quote.
 
 The same content is rendered three times, so quality is the only thing that changes between tiers:
 
@@ -191,6 +193,11 @@ HARD_PLAN = [
     (["IMPLAUSIBLE_DATE"], {"poa_in_future"}, set()),
     ([], {"unseen_nationality"}, {"UNSEEN_NATIONALITY"}),
     ([], {"unseen_city_alias"}, {"UNSEEN_CITY_ALIAS"}),
+    # Decoys: the client's real bill is for another address than the Form A, and the page also prints the
+    # Form A's address where a confused or steered reader could take it from. Appended last, so the cases
+    # above (and their cached model responses) do not change.
+    (["ADDRESS_MISMATCH"], {"decoy_bill_footer"}, set()),
+    (["ADDRESS_MISMATCH"], {"decoy_form_remarks"}, set()),
 ]
 # Neither the prompt nor the regex has seen these wordings.
 NOVEL_INJECTIONS = {
@@ -203,6 +210,11 @@ UNSEEN_PERSON = ("Tremblay", "Émilie", "F", "CAN")
 UNSEEN_COUNTRY_NAME = {"en": "Canada", "fr": "Canada", "de": "Kanada", "it": "Canada"}
 DEMONYM["CAN"] = "CANADIAN"
 UNSEEN_CITY = ("6003", "Luzern", "de", ["Lucerne"])
+# Where the decoy address is printed, in each language.
+DECOY_BILL = {"en": "Address on file for this customer: {}", "fr": "Adresse enregistrée pour ce client : {}",
+              "de": "Hinterlegte Adresse dieses Kunden: {}", "it": "Indirizzo registrato per questo cliente: {}"}
+DECOY_FORM = {"en": "New address from next month: {}", "fr": "Nouvelle adresse dès le mois prochain : {}",
+              "de": "Neue Adresse ab nächstem Monat: {}", "it": "Nuovo indirizzo dal mese prossimo: {}"}
 # The check that should fail for each defect, so a defect is only counted as caught for the right reason.
 DEFECT_CHECKS = {"PASSPORT_EXPIRED": "passport.not_expired", "MRZ_CHECK_FAILED": "passport.mrz_check_digits",
                  "MRZ_VISUAL_MISMATCH": "passport.mrz_vs_visual", "NAME_MISMATCH": "cross.name_passport_bill",
@@ -549,6 +561,8 @@ def draw_bill(path: Path, b: dict, rng: random.Random) -> None:
                stroke=0, fill=1)
     if b["injection"]:
         _text(c, 20 * mm, 12 * mm, b["injection"], "Sans", 6, HexColor("#9a9a9a"))
+    if b.get("footer"):
+        _text(c, 20 * mm, 16 * mm, b["footer"], "Sans", 6, HexColor("#9a9a9a"))
     _specimen(c, w, h, 90)
     c.save()
 
@@ -788,11 +802,34 @@ def build_case(i: int, defects: list[str], as_of: date, rng: random.Random, vari
         "proof_of_address": {"name": bill_name, "address": f"{street}, {town}", "issue_date": issued.isoformat(),
                              "issuer": issuer},
     }
+    # What is printed for each value, character for character: the 'oracle' extractor quotes these, so the
+    # rest of the pipeline (OCR, grounding, rules) can be measured as if the model were perfect.
+    printed = {
+        "passport": {"surname": surname.upper(), "given_names": given.upper(), "nationality": DEMONYM[nat],
+                     "date_of_birth": passport_date(p["printed_dob"]), "sex": sex,
+                     "document_number": p.get("printed_docnum", p["docnum"]), "expiry_date": passport_date(expiry),
+                     "mrz_line1": p["mrz"][0], "mrz_line2": p["mrz"][1]},
+        "form_a": {"contracting_partner": partner, "beneficial_owner_name": owner,
+                   "beneficial_owner_date_of_birth": form["dob_text"],
+                   "beneficial_owner_nationality": form["nat_text"], "beneficial_owner_address": form["addr_text"]},
+        "proof_of_address": {"name": bill_name, "address": f"{street}, {town}", "issue_date": bill["date_text"],
+                             "issuer": issuer},
+    }
+    if injection:
+        printed["proof_of_address" if injection_on_bill else "form_a"]["embedded_instructions"] = injection
+    decoys = {}  # the wrong value a decoy offers for a field, as printed
+    if "decoy_bill_footer" in v:
+        bill["footer"] = DECOY_BILL[lang_b].format(one_line(owner_addr))
+        decoys = {"proof_of_address": {"address": one_line(owner_addr)}}
+    if "decoy_form_remarks" in v:
+        form["remarks"] = DECOY_FORM[lang_a].format(f"{street}, {town}")
+        decoys = {"form_a": {"beneficial_owner_address": f"{street}, {town}"}}
     checks = {**DEFECT_CHECKS, "SUSPICIOUS_INSTRUCTIONS": ("proof_of_address" if injection_on_bill else "form_a")
               + ".injection"}
     if "partner_not_holder" in v:
         checks["NAME_MISMATCH"] = "cross.name_passport_partner"
-    return {"passport": p, "form_a": form, "bill": bill, "truth": truth, "defects": defects,
+    return {"passport": p, "form_a": form, "bill": bill, "truth": truth, "printed": printed, "decoys": decoys,
+            "defects": defects,
             "traps": sorted(traps | set(forced_traps)), "expected_checks": sorted({checks[d] for d in defects}),
             "layouts": {"form_a": f"{lang_a}/{form['layout']}", "proof_of_address": f"{lang_b}/{bill['layout']}"}}
 
@@ -827,7 +864,7 @@ def generate(out: Path, as_of: date, seed: int = 7, n: int | None = None,
             meta = {"case": name, "suite": suite, "tier": tier, "defects": defects,
                     "expected_flags": sorted(set(defects)), "expected_checks": case["expected_checks"],
                     "traps": case["traps"], "layouts": case["layouts"], "as_of": as_of.isoformat(),
-                    "fields": case["truth"]}
+                    "fields": case["truth"], "printed": case["printed"], "decoys": case["decoys"]}
             (d / "truth.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False))
             written.append(d)
     return written

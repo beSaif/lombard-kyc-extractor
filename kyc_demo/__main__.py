@@ -1,4 +1,4 @@
-"""CLI: python -m kyc_demo {generate,run,eval,compare,serve}"""
+"""CLI: python -m kyc_demo {generate,fetch-real,run,eval,compare,serve}"""
 
 import argparse
 import json
@@ -16,12 +16,18 @@ def main() -> None:
     g.add_argument("--out", type=Path, default=Path("cases"))
     g.add_argument("--seed", type=int, default=7)
     g.add_argument("--n", type=int, help="only the first N cases")
-    g.add_argument("--suite", choices=["standard", "hard", "all"], default="all")
+    g.add_argument("--suite", choices=["standard", "hard", "blind", "all"], default="all",
+                   help="all = standard + hard; the blind suite is generated on its own (see kyc_demo/blind.py)")
     g.add_argument("--as-of", default=GENERATED_AS_OF, help="date the cases are drawn relative to (YYYY-MM-DD)")
+
+    f = sub.add_parser("fetch-real", help="download the public specimen passports (kyc_demo/real.py) into cases/real/")
+    f.add_argument("--out", type=Path, default=Path("cases"))
+    f.add_argument("--as-of", default=GENERATED_AS_OF)
 
     r = sub.add_parser("run", help="process one client file and print the result")
     r.add_argument("case", type=Path)
-    r.add_argument("-e", "--extractor", default="rules", help="rules | openai:<model>@<text|vision|both> | ollama:<model>@...")
+    r.add_argument("-e", "--extractor", default="rules",
+                   help="rules | oracle | azure:prebuilt | openai:<model>@<text|vision|both> | ollama:<model>@...")
     r.add_argument("--second", help="a second extractor to cross-check against")
     r.add_argument("--reader", choices=["auto", "text", "ocr"], default="auto")
     r.add_argument("--steps", action="store_true", help="include the full step trace")
@@ -35,7 +41,7 @@ def main() -> None:
     e.add_argument("--tiers", default="clean,scan,photo")
     e.add_argument("--limit", type=int, help="first N cases per tier")
     e.add_argument("--workers", type=int, help="parallel files (default: 6 for openai, else 1)")
-    e.add_argument("--suite", choices=["standard", "hard"], default="standard")
+    e.add_argument("--suite", choices=["standard", "hard", "blind", "real"], default="standard")
     e.add_argument("--as-of", help="review date for every case (YYYY-MM-DD); default: each case's own")
 
     c = sub.add_parser("compare", help="write results/comparison.md from every saved eval")
@@ -47,11 +53,18 @@ def main() -> None:
     args = ap.parse_args()
 
     if args.cmd == "generate":
-        from .synth import generate
         dirs = []
-        for suite in (["standard", "hard"] if args.suite == "all" else [args.suite]):
+        if args.suite == "blind":
+            from .blind import generate as generate_blind
+            dirs = generate_blind(args.out, date.fromisoformat(args.as_of))
+        for suite in (["standard", "hard"] if args.suite == "all" else [] if args.suite == "blind" else [args.suite]):
+            from .synth import generate
             dirs += generate(args.out, date.fromisoformat(args.as_of), args.seed, args.n, suite=suite)
         print(f"wrote {len(dirs)} case folders to {args.out}/{{clean,scan,photo}}/")
+    elif args.cmd == "fetch-real":
+        from .real import fetch
+        dirs = fetch(args.out, date.fromisoformat(args.as_of))
+        print(f"wrote {len(dirs)} specimen passports to {args.out}/real/")
     elif args.cmd == "run":
         from .extract import make_extractor
         from .pipeline import run_case

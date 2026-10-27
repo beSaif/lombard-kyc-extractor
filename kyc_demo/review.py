@@ -2,11 +2,12 @@
 
 The model proposes and the rules route, but a compliance officer decides. Every action is one line in
 runs/audit.jsonl, and every line carries the sha256 of the line before it, so editing or deleting a past
-entry breaks the chain and verify() says where. What the file was (document hashes, extractor, prompt
+entry breaks the chain and verify() says where. Cutting lines off the end, or rewriting the whole chain,
+is only caught against a copy of the head kept elsewhere (see verify). What the file was (document hashes, extractor, prompt
 version) is recorded with each sign-off, so a decision can be traced to the exact bytes and model behind it.
 
 Rules a reviewer cannot skip:
-- a value the system could not verify (unverified, dropped, or a required field it never found) must be
+- a value the system could not verify (unverified, dropped, out of place, or a required field it never found) must be
   accepted or corrected by eye before the file can be approved
 - a file with flags needs a note on approval: why the flags do not stand in the way
 - approval takes two different reviewers (four eyes); one rejection or request for information closes it
@@ -24,7 +25,7 @@ from .validate import REQUIRED
 
 FIELD_ACTIONS = {"accept", "correct", "reject"}
 DECISIONS = {"approve", "reject", "request_info"}
-NEEDS_EYES = {"unverified", "dropped"}
+NEEDS_EYES = {"unverified", "dropped", "out_of_place"}
 CLOSED = {"approved", "rejected", "info_requested"}
 GENESIS = "0" * 64
 
@@ -56,14 +57,28 @@ class AuditLog:
                 f.write(json.dumps(entry, ensure_ascii=False, sort_keys=True) + "\n")
             return entry
 
-    def verify(self) -> dict:
-        """Walk the chain. Any edited, reordered or deleted line shows up as the first entry that breaks it."""
+    def verify(self, anchor: dict | None = None) -> dict:
+        """Walk the chain. An edited, reordered or deleted line shows up as the first entry that breaks it.
+
+        The chain alone cannot see two things: lines cut off the end, and a chain rewritten from the edit
+        onwards with fresh hashes (anyone who can write the file can do that). Both need a copy of the
+        head kept somewhere the writer cannot change (a ticket, an e-mail, a WORM store). Pass that copy as
+        `anchor` ({"seq": n, "hash": h}) and the chain must still contain it, unchanged.
+        """
         prev, rows = GENESIS, self.entries()
         for i, r in enumerate(rows, start=1):
             if r.get("seq") != i or r.get("prev") != prev or _hash(r) != r.get("hash"):
                 return {"ok": False, "entries": len(rows), "broken_at": i}
             prev = r["hash"]
-        return {"ok": True, "entries": len(rows), "head": prev}
+        if anchor:
+            n = anchor.get("seq", 0)
+            if n > len(rows):
+                return {"ok": False, "entries": len(rows), "broken_at": len(rows) + 1,
+                        "why": f"the anchor is entry {n}, the log ends at {len(rows)}: lines were cut off"}
+            if n and rows[n - 1]["hash"] != anchor.get("hash"):
+                return {"ok": False, "entries": len(rows), "broken_at": n,
+                        "why": f"entry {n} is not the one anchored: the chain was rewritten"}
+        return {"ok": True, "entries": len(rows), "head": prev, "seq": len(rows)}
 
 
 def review_state(result: dict, entries: list[dict]) -> dict:

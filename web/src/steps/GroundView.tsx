@@ -69,7 +69,7 @@ export function GroundView({ step, steps, result }: { step: Step; steps: Step[];
     <div className="flex flex-col gap-3">
       <div className="flex flex-wrap items-center gap-2 text-[12px]">
         <span className="text-muted">Box colour:</span>
-        {(["verified", "corroborated", "unverified", "dropped"] as const).map((s) => (
+        {(["verified", "corroborated", "unverified", "dropped", "out_of_place"] as const).map((s) => (
           <span key={s} className="flex items-center gap-1">
             <span className="inline-block h-2.5 w-2.5 rounded-sm" style={{ background: STATUS_COLOR[s] }} />
             {s}
@@ -158,6 +158,11 @@ export function GroundView({ step, steps, result }: { step: Step; steps: Step[];
                   </td>
                   <td className="text-[11px] text-muted">
                     {e.why && <div>{e.why}</div>}
+                    {e.place && e.place.verdict !== "no_label" && e.status !== "out_of_place" && (
+                      <div className="text-faint">
+                        {e.place.verdict === "anchored" ? <>under its label <span className="mono">{e.place.label}</span></> : e.place.verdict}
+                      </div>
+                    )}
                     {(fin?.corroborated_by ?? e.corroborated_by) && (
                       <div className="text-info">
                         corroborated by <span className="mono">{fin?.corroborated_by ?? e.corroborated_by}</span>
@@ -174,7 +179,9 @@ export function GroundView({ step, steps, result }: { step: Step; steps: Step[];
         Two tests per value. Does its own quote say it? A quote that says something else (another name, date or number) gets the value{" "}
         <b>dropped</b>; one that is only close (OCR noise copied into the quote) leaves it <b>unverified</b>. Is the quote on the page? Score = fuzzy
         match (0–100) against the OCR words, ≥ {THRESHOLD} counts as found, but digits must match exactly: one digit off is another house or date,
-        not noise. Unverified values wait for a passing cross-document check to corroborate them, or for a person. <b>basis</b> says what a
+        not noise. Is the quote where that field is printed? One in fine print, or under another field&apos;s label or a remarks box, is{" "}
+        <b>out_of_place</b>: a person must look, and no other document can vouch for it, since a planted decoy is made to agree with them.
+        Unverified values wait for a passing cross-document check to corroborate them, or for a person. <b>basis</b> says what a
         verification rests on: in text/both mode the model was shown the OCR, so <span className="mono">ocr</span> means it agrees with OCR, not
         that two readers did; <span className="mono">checksum</span> (the MRZ) is the only check neither can fake.
       </p>

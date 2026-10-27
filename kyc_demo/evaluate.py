@@ -16,13 +16,18 @@ What is measured, and why:
 - errors                  files whose run crashed. They are left out of every other metric, so watch this
 - seconds and $ per file
 
-Two suites: "standard" (case_NNN) shows the system works; "hard" (hard_NNN) is built to break it. Report
-them apart. Each case is scored at its own review date (truth.json as_of).
+Four suites, reported apart: "standard" (case_NNN) shows the system works; "hard" (hard_NNN) is built to
+break it; "blind" (blind_NNN) was written by someone who never saw the rules, tables or prompt; "real"
+(real_NNN) is public specimen passports, passport only. Each case is scored at its own review date
+(truth.json as_of). A blind case may name its own traps, with the flag each one must not raise
+(truth.json trap_guards).
 """
 
 import json
 import math
 import os
+import subprocess
+import sys
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date
@@ -40,12 +45,14 @@ TRAP_GUARDS = {"NAME_NO_MIDDLE": "NAME_MISMATCH", "NAME_SURNAME_FIRST": "NAME_MI
                "POA_NEAR_LIMIT": "PROOF_OF_ADDRESS_TOO_OLD", "PASSPORT_EXPIRES_SOON": "PASSPORT_EXPIRED",
                "POA_AT_LIMIT": "PROOF_OF_ADDRESS_TOO_OLD", "PASSPORT_EXPIRES_TODAY": "PASSPORT_EXPIRED",
                "UNSEEN_NATIONALITY": "NATIONALITY_MISMATCH", "UNSEEN_CITY_ALIAS": "ADDRESS_MISMATCH"}
-SUITE_PREFIX = {"standard": "case_", "hard": "hard_"}
+SUITE_PREFIX = {"standard": "case_", "hard": "hard_", "blind": "blind_", "real": "real_"}
 CRITICAL_FIELDS = {"passport.surname", "passport.given_names", "passport.date_of_birth", "passport.document_number",
                    "passport.expiry_date", "form_a.beneficial_owner_name", "form_a.beneficial_owner_date_of_birth",
                    "form_a.beneficial_owner_nationality", "form_a.beneficial_owner_address",
                    "proof_of_address.name", "proof_of_address.address", "proof_of_address.issue_date"}
-RESULTS = Path(__file__).resolve().parent.parent / "results" / "eval"  # committed: anyone can check comparison.md
+# Committed, so anyone can check comparison.md. KYC_RESULTS points elsewhere for runs that must not mix with
+# these (results/linux: the standard and hard suites as rendered off macOS).
+RESULTS = Path(os.getenv("KYC_RESULTS") or Path(__file__).resolve().parent.parent / "results" / "eval")
 
 
 def case_dirs(cases: Path, tier: str, limit: int | None = None, suite: str = "standard") -> list[Path]:
@@ -73,6 +80,7 @@ def score_case(truth: dict, result: dict) -> dict:
     expected = set(truth["expected_flags"])
     return {
         "case": truth["case"], "tier": truth["tier"], "defects": truth["defects"], "traps": truth["traps"],
+        "trap_guards": truth.get("trap_guards", {}),
         "layouts": truth["layouts"], "decision": result["decision"], "raised": sorted(raised),
         "expected": sorted(expected), "expected_checks": truth.get("expected_checks", []),
         "failed_checks": sorted(c["name"] for c in result["checks"] if c["passed"] is False), "fields": fields,
@@ -110,12 +118,22 @@ def run_eval(cases: Path, spec: str, tiers: list[str], as_of: date | None = None
     name = spec + (f"+{second}" if second else "") + (f"#{reader}" if reader != "auto" else "")
     if os.getenv("KYC_MODEL_INJECTION_DETECTOR", "on") == "off":
         name += "#regex-only-injection"
-    report = {"extractor": name, "suite": suite, "as_of": ", ".join(sorted(dates)),
+    report = {"extractor": name, "suite": suite, "as_of": ", ".join(sorted(dates)), "platform": platform_name(),
               "tiers": {t: summarise(rs) for t, rs in out.items()}, "cases": out}
     RESULTS.mkdir(parents=True, exist_ok=True)
     (RESULTS / f"{slug(name)}{'' if suite == 'standard' else '.' + suite}.json").write_text(
         json.dumps(report, indent=1, ensure_ascii=False))
     return report
+
+
+def platform_name() -> str:
+    """Where a report was made. The standard and hard suites render differently on macOS (Bradley Hand) and
+    elsewhere (Kalam), and Tesseract versions read differently, so a number is only comparable on its platform."""
+    try:
+        tess = subprocess.run(["tesseract", "--version"], capture_output=True, text=True).stdout.split()[1]
+    except (OSError, IndexError):
+        tess = "?"
+    return f"{'macOS' if sys.platform == 'darwin' else sys.platform}, tesseract {tess}"
 
 
 def slug(name: str) -> str:
@@ -151,8 +169,8 @@ def summarise(rows: list[dict]) -> dict:
             right[0] += check in r.get("failed_checks", [])
             right[1] += 1
         for trap in r["traps"]:
-            guard = TRAP_GUARDS[trap]
-            if guard not in expected:
+            guard = (r.get("trap_guards") or {}).get(trap) or TRAP_GUARDS.get(trap)
+            if guard and guard not in expected:
                 trap_hits[trap][0] += guard in raised
                 trap_hits[trap][1] += 1
         process_flags += len(set(r["raised"]) - DEFECT_CODES)
@@ -183,6 +201,8 @@ def summarise(rows: list[dict]) -> dict:
         "defect_files": sum(1 for r in rows if r["expected"]),
         "errors": errors,
         "straight_through_rate": ratio(straight, clean_files),
+        "straight_through_ci": wilson(straight, clean_files),
+        "clean_files": clean_files,
         "routing_accuracy": ratio(routed_ok, len(rows)),
         "trap_false_alarm_rate": ratio(sum(h for h, _ in trap_hits.values()), sum(n for _, n in trap_hits.values())),
         "process_flags_per_file": round(process_flags / len(rows), 2),
@@ -195,13 +215,13 @@ def summarise(rows: list[dict]) -> dict:
     }
 
 
-METRICS = [("field_accuracy", "Field accuracy", "%"), ("critical_field_accuracy", "Critical-field accuracy", "%"),
+METRICS = [("files", "Files", "n"), ("field_accuracy", "Field accuracy", "%"), ("critical_field_accuracy", "Critical-field accuracy", "%"),
            ("defect_recall", "Defect recall (95% interval)", "recall"),
            ("defects_not_flagged", "Defects not flagged", "n"),
            ("right_check_rate", "Defects caught by the right check", "%"),
            ("defect_precision", "Defect precision", "%"),
            ("missed_defect_files", "Defect files sent to the quick queue", "n"),
-           ("straight_through_rate", "Straight-through (clean files)", "%"),
+           ("straight_through_rate", "Straight-through (clean files, 95% interval)", "stp"),
            ("trap_false_alarm_rate", "Trap false-alarm rate", "%"),
            ("process_flags_per_file", "Process flags per file", "n"), ("errors", "Errors", "n"),
            ("seconds_per_file", "Model seconds per file", "n"), ("cost_per_file_usd", "$ per file", "$")]
@@ -211,8 +231,8 @@ def _fmt(summary: dict, key: str, kind: str) -> str:
     v = summary.get(key)
     if v is None:
         return "-"
-    if kind == "recall":
-        lo, hi = summary.get("defect_recall_ci") or (None, None)
+    if kind in ("recall", "stp"):
+        lo, hi = summary.get("defect_recall_ci" if kind == "recall" else "straight_through_ci") or (None, None)
         return f"{v:.0%} ({lo:.0%}-{hi:.0%})" if lo is not None else f"{v:.0%}"
     return f"{v:.0%}" if kind == "%" else f"${v:.4f}" if kind == "$" else str(v)
 
@@ -222,16 +242,21 @@ def comparison_markdown(reports: list[dict]) -> str:
              "Synthetic files. The standard suite shows the system working; the hard suite is built to break it "
              "(defects inside traps, thresholds at their edge, one-digit changes, new injection wordings, Form A "
              "cases the standard suite lacks, and held-out names and places the normaliser was never tuned on). "
-             "Intervals are 95% Wilson intervals: with this few defects, 100% recall is not a proof.", ""]
-    for suite in ("standard", "hard"):
+             "The blind suite was written by someone who never saw the rules, tables or prompt, and is scored once, "
+             "on code frozen before it existed. `oracle` is not a model: it reads the true values from truth.json, "
+             "so its column is the ceiling OCR, grounding and the rules put on every model. "
+             "Intervals are 95% Wilson intervals: with this few cases, 100% is not a proof.", ""]
+    for suite in ("standard", "hard", "blind", "real"):
         group = [r for r in reports if r.get("suite", "standard") == suite]
-        for tier in [t for t in ("clean", "scan", "photo") if any(t in r["tiers"] for r in group)]:
+        for tier in [t for t in ("clean", "scan", "photo", "real") if any(t in r["tiers"] for r in group)]:
             rs = [r for r in group if r["tiers"].get(tier)]
-            lines += [f"## {suite} suite, {tier} ({rs[0]['tiers'][tier]['files']} files)", "",
+            lines += [f"## {suite} suite, {tier}", "",
                       "| Metric | " + " | ".join(f"`{r['extractor']}`" for r in rs) + " |",
                       "| --- |" + " --- |" * len(rs)]
             for key, label, kind in METRICS:
                 lines.append(f"| {label} | " + " | ".join(_fmt(r["tiers"][tier], key, kind) for r in rs) + " |")
+            # Reports from before this field existed were all made on macOS (see README).
+            lines.append("| Run on | " + " | ".join(r.get("platform", "macOS") for r in rs) + " |")
             lines.append("")
     return "\n".join(lines)
 

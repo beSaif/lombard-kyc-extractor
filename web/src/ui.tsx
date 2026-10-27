@@ -41,7 +41,7 @@ export function Badge({
 }
 
 export const statusTone = (s: string | undefined | null): Tone =>
-  s === "verified" ? "ok" : s === "corroborated" ? "info" : s === "unverified" ? "warn" : s === "dropped" ? "bad" : "neutral";
+  s === "verified" ? "ok" : s === "corroborated" ? "info" : s === "unverified" ? "warn" : s === "dropped" || s === "out_of_place" ? "bad" : "neutral";
 
 export function StatusBadge({ status }: { status: string | undefined | null }) {
   return <Badge tone={statusTone(status)}>{status ?? "–"}</Badge>;

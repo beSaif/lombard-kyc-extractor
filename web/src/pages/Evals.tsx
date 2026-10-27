@@ -224,7 +224,7 @@ function CaseTable({ report, tier }: { report: EvalReport; tier: Tier }) {
 export function EvalsPage({ route }: { route: Route }) {
   const evals = useFetch<EvalReport[]>("evals", api.evals, false);
   const tier = (TIERS.includes(route.params.tier as Tier) ? route.params.tier : "scan") as Tier;
-  const suite = (route.params.suite === "hard" ? "hard" : "standard") as Suite;
+  const suite = (["hard", "blind"].includes(route.params.suite ?? "") ? route.params.suite : "standard") as Suite;
   useEffect(() => {
     const i = window.setInterval(() => evals.reload(), 60000);
     return () => window.clearInterval(i);
@@ -246,6 +246,7 @@ export function EvalsPage({ route }: { route: Route }) {
           tabs={[
             { id: "standard" as Suite, label: "standard suite", title: "case_NNN: shows the system working" },
             { id: "hard" as Suite, label: "hard suite", title: "hard_NNN: built to break it" },
+            { id: "blind" as Suite, label: "blind suite", title: "blind_NNN: written without seeing the rules, scored once" },
           ]}
           value={suite}
           onChange={(v) => setParams({ suite: v, ex: null }, false)}
@@ -253,8 +254,10 @@ export function EvalsPage({ route }: { route: Route }) {
         <Tabs tabs={TIERS.map((t) => ({ id: t, label: t }))} value={tier} onChange={(t) => setParams({ tier: t }, false)} />
         <span className="text-[12px] text-muted">
           {suite === "hard"
-            ? "Defects inside traps, thresholds at their edge, one-digit changes, new injection wordings, Form A cases the standard suite lacks, and two held-out cases expected to fail."
-            : TIER_INFO[tier]}
+            ? "Defects inside traps, thresholds at their edge, one-digit changes, new injection wordings, Form A cases the standard suite lacks, decoys, and two held-out cases expected to fail."
+            : suite === "blind"
+              ? "Written by an agent that never saw the rules, tables or prompt: new layouts, hands, names, towns and traps. Scored once, on frozen code."
+              : TIER_INFO[tier]}
         </span>
         <span className="ml-auto text-[12px] text-muted">
           {evals.data ? `${evals.data.length} eval report(s)` : ""} · refreshes every 60 s
@@ -267,7 +270,7 @@ export function EvalsPage({ route }: { route: Route }) {
         {evals.error && <ErrorBox>{evals.error}</ErrorBox>}
         {evals.data && reports.length === 0 && (
           <Empty>
-            No {suite} eval reports for this tier yet{suite === "hard" ? ": python -m kyc_demo eval --suite hard -e <extractor>" : ""}.
+            No {suite} eval reports for this tier yet{suite !== "standard" ? `: python -m kyc_demo eval --suite ${suite} -e <extractor>` : ""}.
           </Empty>
         )}
         {reports.length > 0 && (

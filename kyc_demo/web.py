@@ -39,7 +39,7 @@ UPLOADS = ROOT / "runs" / "uploads"
 DIST = ROOT / "web" / "dist"
 TIERS = ("clean", "scan", "photo")
 UPLOAD = "upload"  # the "tier" of uploaded files
-CASE_ID = re.compile(r"(case|hard)_\d{3}")
+CASE_ID = re.compile(r"(case|hard|blind)_\d{3}")
 UPLOAD_ID = re.compile(r"up_[0-9a-f]{12}")
 RUN_ID = re.compile(r"\d{8}-\d{6}-[0-9a-f]{6}")
 UPLOAD_TYPES = {".pdf", ".jpg", ".jpeg", ".png"}
@@ -303,8 +303,9 @@ def review_decision(run_id: str, d: Decision):
 
 
 @app.get("/api/audit/verify")
-def verify_audit():
-    return AUDIT.verify()
+def verify_audit(seq: int | None = None, head: str | None = None):
+    """Check the chain; with ?seq=&head= (a head saved elsewhere earlier), also check it is still there."""
+    return AUDIT.verify({"seq": seq, "hash": head} if seq and head else None)
 
 
 @app.get("/api/corrections")

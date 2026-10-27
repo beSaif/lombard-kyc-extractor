@@ -10,6 +10,7 @@ Every word keeps its bounding box (fractions of the page, 0-1) so evidence can b
 
 import hashlib
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -171,8 +172,11 @@ def _tesseract(img: np.ndarray, args: list[str]) -> str:
     if not shutil.which("tesseract"):
         raise RuntimeError("tesseract is not installed (brew install tesseract tesseract-lang)")
     ok, png = cv2.imencode(".png", img)
+    # One thread per Tesseract: evals run several files in parallel, and OpenMP threads on top of that
+    # oversubscribe the CPU so badly that a page can take minutes instead of a second.
+    env = {**os.environ, "OMP_THREAD_LIMIT": os.environ.get("OMP_THREAD_LIMIT", "1")}
     return subprocess.run(["tesseract", "stdin", "stdout", *args], input=png.tobytes(),
-                          capture_output=True, check=True).stdout.decode()
+                          capture_output=True, check=True, env=env).stdout.decode()
 
 
 def _tsv_words(gray: np.ndarray, langs: str, psm: str) -> list[Word]:

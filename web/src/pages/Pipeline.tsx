@@ -129,9 +129,9 @@ function CasePicker({ cases, value, onChange }: { cases: CaseSummary[]; value: s
               >
                 <span className="mono w-20 shrink-0 pt-0.5 font-medium">{c.case}</span>
                 <span className="flex-1">
-                  {c.suite === "hard" && (
-                    <Badge tone="accent" className="mr-1" title="Hard suite: built to break the system">
-                      hard
+                  {(c.suite === "hard" || c.suite === "blind") && (
+                    <Badge tone="accent" className="mr-1" title={c.suite === "hard" ? "Hard suite: built to break the system" : "Blind suite: written without seeing the rules"}>
+                      {c.suite}
                     </Badge>
                   )}
                   <CaseBadges c={c} />
