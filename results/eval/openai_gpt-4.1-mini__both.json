@@ -27,15 +27,15 @@
    ],
    "defect_files": 16,
    "errors": 0,
-   "straight_through_rate": 0.786,
+   "straight_through_rate": 1.0,
    "straight_through_ci": [
-    0.524,
-    0.924
+    0.785,
+    1.0
    ],
    "clean_files": 14,
-   "routing_accuracy": 0.9,
+   "routing_accuracy": 1.0,
    "trap_false_alarm_rate": 0.0,
-   "process_flags_per_file": 0.17,
+   "process_flags_per_file": 0.07,
    "seconds_per_file": 8.19,
    "cost_per_file_usd": 0.00473,
    "fields": {
@@ -103,15 +103,15 @@
    ],
    "defect_files": 16,
    "errors": 0,
-   "straight_through_rate": 0.714,
+   "straight_through_rate": 0.857,
    "straight_through_ci": [
-    0.454,
-    0.883
+    0.601,
+    0.96
    ],
    "clean_files": 14,
-   "routing_accuracy": 0.867,
+   "routing_accuracy": 0.933,
    "trap_false_alarm_rate": 0.0,
-   "process_flags_per_file": 0.43,
+   "process_flags_per_file": 0.37,
    "seconds_per_file": 8.64,
    "cost_per_file_usd": 0.00479,
    "fields": {
@@ -179,15 +179,15 @@
    ],
    "defect_files": 16,
    "errors": 0,
-   "straight_through_rate": 0.571,
+   "straight_through_rate": 0.643,
    "straight_through_ci": [
-    0.326,
-    0.786
+    0.388,
+    0.837
    ],
    "clean_files": 14,
-   "routing_accuracy": 0.8,
+   "routing_accuracy": 0.833,
    "trap_false_alarm_rate": 0.022,
-   "process_flags_per_file": 0.33,
+   "process_flags_per_file": 0.3,
    "seconds_per_file": 8.38,
    "cost_per_file_usd": 0.005,
    "fields": {
@@ -373,7 +373,7 @@
      }
     },
     "totals": {
-     "seconds": 1.72,
+     "seconds": 1.75,
      "model_seconds": 7.72,
      "input_tokens": 9642,
      "output_tokens": 542,
@@ -516,7 +516,7 @@
      }
     },
     "totals": {
-     "seconds": 1.74,
+     "seconds": 2.04,
      "model_seconds": 8.8,
      "input_tokens": 9680,
      "output_tokens": 573,
@@ -659,7 +659,7 @@
      }
     },
     "totals": {
-     "seconds": 1.7,
+     "seconds": 1.88,
      "model_seconds": 8.11,
      "input_tokens": 9656,
      "output_tokens": 535,
@@ -678,15 +678,11 @@
      "form_a": "it/lines",
      "proof_of_address": "de/table"
     },
-    "decision": "manual_review",
-    "raised": [
-     "EVIDENCE_OUT_OF_PLACE"
-    ],
+    "decision": "pre_filled_review",
+    "raised": [],
     "expected": [],
     "expected_checks": [],
-    "failed_checks": [
-     "proof_of_address.evidence_place"
-    ],
+    "failed_checks": [],
     "fields": {
      "passport.surname": {
       "ok": true,
@@ -801,12 +797,12 @@
      "proof_of_address": {
       "name": "verified",
       "address": "verified",
-      "issue_date": "out_of_place",
+      "issue_date": "verified",
       "issuer": "verified"
      }
     },
     "totals": {
-     "seconds": 1.72,
+     "seconds": 1.93,
      "model_seconds": 7.99,
      "input_tokens": 9657,
      "output_tokens": 518,
@@ -950,7 +946,7 @@
      }
     },
     "totals": {
-     "seconds": 1.54,
+     "seconds": 2.06,
      "model_seconds": 8.41,
      "input_tokens": 9676,
      "output_tokens": 543,
@@ -1093,7 +1089,7 @@
      }
     },
     "totals": {
-     "seconds": 1.97,
+     "seconds": 1.68,
      "model_seconds": 8.6,
      "input_tokens": 9650,
      "output_tokens": 535,
@@ -1112,15 +1108,11 @@
      "form_a": "en/lines",
      "proof_of_address": "en/table"
     },
-    "decision": "manual_review",
-    "raised": [
-     "EVIDENCE_OUT_OF_PLACE"
-    ],
+    "decision": "pre_filled_review",
+    "raised": [],
     "expected": [],
     "expected_checks": [],
-    "failed_checks": [
-     "proof_of_address.evidence_place"
-    ],
+    "failed_checks": [],
     "fields": {
      "passport.surname": {
       "ok": true,
@@ -1235,12 +1227,12 @@
      "proof_of_address": {
       "name": "verified",
       "address": "verified",
-      "issue_date": "out_of_place",
+      "issue_date": "verified",
       "issuer": "verified"
      }
     },
     "totals": {
-     "seconds": 2.03,
+     "seconds": 2.08,
      "model_seconds": 8.72,
      "input_tokens": 9575,
      "output_tokens": 534,
@@ -1383,7 +1375,7 @@
      }
     },
     "totals": {
-     "seconds": 1.9,
+     "seconds": 1.63,
      "model_seconds": 9.01,
      "input_tokens": 9688,
      "output_tokens": 595,
@@ -1536,7 +1528,7 @@
      }
     },
     "totals": {
-     "seconds": 1.86,
+     "seconds": 2.05,
      "model_seconds": 7.95,
      "input_tokens": 9708,
      "output_tokens": 556,
@@ -1691,7 +1683,7 @@
      }
     },
     "totals": {
-     "seconds": 1.69,
+     "seconds": 1.88,
      "model_seconds": 7.14,
      "input_tokens": 9601,
      "output_tokens": 524,
@@ -1845,7 +1837,7 @@
      }
     },
     "totals": {
-     "seconds": 1.65,
+     "seconds": 1.69,
      "model_seconds": 7.57,
      "input_tokens": 9663,
      "output_tokens": 550,
@@ -2000,7 +1992,7 @@
      }
     },
     "totals": {
-     "seconds": 1.95,
+     "seconds": 1.85,
      "model_seconds": 7.25,
      "input_tokens": 9640,
      "output_tokens": 533,
@@ -2154,7 +2146,7 @@
      }
     },
     "totals": {
-     "seconds": 1.86,
+     "seconds": 2.37,
      "model_seconds": 8.73,
      "input_tokens": 9635,
      "output_tokens": 532,
@@ -2305,7 +2297,7 @@
      }
     },
     "totals": {
-     "seconds": 1.91,
+     "seconds": 1.93,
      "model_seconds": 8.11,
      "input_tokens": 9638,
      "output_tokens": 528,
@@ -2459,7 +2451,7 @@
      }
     },
     "totals": {
-     "seconds": 1.6,
+     "seconds": 1.9,
      "model_seconds": 8.41,
      "input_tokens": 9646,
      "output_tokens": 550,
@@ -2616,7 +2608,7 @@
      }
     },
     "totals": {
-     "seconds": 1.62,
+     "seconds": 1.8,
      "model_seconds": 8.23,
      "input_tokens": 9650,
      "output_tokens": 537,
@@ -2770,7 +2762,7 @@
      }
     },
     "totals": {
-     "seconds": 1.79,
+     "seconds": 1.82,
      "model_seconds": 8.44,
      "input_tokens": 9651,
      "output_tokens": 562,
@@ -2921,7 +2913,7 @@
      }
     },
     "totals": {
-     "seconds": 1.8,
+     "seconds": 1.92,
      "model_seconds": 8.07,
      "input_tokens": 9679,
      "output_tokens": 536,
@@ -3074,7 +3066,7 @@
      }
     },
     "totals": {
-     "seconds": 1.66,
+     "seconds": 2.07,
      "model_seconds": 7.95,
      "input_tokens": 9651,
      "output_tokens": 531,
@@ -3228,7 +3220,7 @@
      }
     },
     "totals": {
-     "seconds": 1.87,
+     "seconds": 1.85,
      "model_seconds": 8.18,
      "input_tokens": 9617,
      "output_tokens": 567,
@@ -3381,7 +3373,7 @@
      }
     },
     "totals": {
-     "seconds": 1.85,
+     "seconds": 1.59,
      "model_seconds": 9.19,
      "input_tokens": 9638,
      "output_tokens": 563,
@@ -3544,7 +3536,7 @@
      }
     },
     "totals": {
-     "seconds": 1.72,
+     "seconds": 1.95,
      "model_seconds": 9.49,
      "input_tokens": 9684,
      "output_tokens": 534,
@@ -3700,7 +3692,7 @@
      }
     },
     "totals": {
-     "seconds": 1.66,
+     "seconds": 1.85,
      "model_seconds": 7.72,
      "input_tokens": 9628,
      "output_tokens": 534,
@@ -3859,7 +3851,7 @@
      }
     },
     "totals": {
-     "seconds": 1.78,
+     "seconds": 1.81,
      "model_seconds": 7.85,
      "input_tokens": 9609,
      "output_tokens": 562,
@@ -4002,7 +3994,7 @@
      }
     },
     "totals": {
-     "seconds": 1.95,
+     "seconds": 1.68,
      "model_seconds": 7.9,
      "input_tokens": 9586,
      "output_tokens": 534,
@@ -4019,15 +4011,11 @@
      "form_a": "en/table",
      "proof_of_address": "de/table"
     },
-    "decision": "manual_review",
-    "raised": [
-     "EVIDENCE_OUT_OF_PLACE"
-    ],
+    "decision": "pre_filled_review",
+    "raised": [],
     "expected": [],
     "expected_checks": [],
-    "failed_checks": [
-     "proof_of_address.evidence_place"
-    ],
+    "failed_checks": [],
     "fields": {
      "passport.surname": {
       "ok": true,
@@ -4142,12 +4130,12 @@
      "proof_of_address": {
       "name": "verified",
       "address": "verified",
-      "issue_date": "out_of_place",
+      "issue_date": "verified",
       "issuer": "verified"
      }
     },
     "totals": {
-     "seconds": 1.81,
+     "seconds": 1.85,
      "model_seconds": 8.16,
      "input_tokens": 9589,
      "output_tokens": 515,
@@ -4291,7 +4279,7 @@
      }
     },
     "totals": {
-     "seconds": 1.8,
+     "seconds": 1.69,
      "model_seconds": 7.95,
      "input_tokens": 9608,
      "output_tokens": 530,
@@ -4436,7 +4424,7 @@
      }
     },
     "totals": {
-     "seconds": 1.66,
+     "seconds": 1.75,
      "model_seconds": 8.05,
      "input_tokens": 9611,
      "output_tokens": 532,
@@ -4581,7 +4569,7 @@
      }
     },
     "totals": {
-     "seconds": 1.63,
+     "seconds": 1.6,
      "model_seconds": 7.84,
      "input_tokens": 9646,
      "output_tokens": 551,
@@ -4725,7 +4713,7 @@
      }
     },
     "totals": {
-     "seconds": 1.57,
+     "seconds": 1.75,
      "model_seconds": 8.29,
      "input_tokens": 9702,
      "output_tokens": 537,
@@ -4872,7 +4860,7 @@
      }
     },
     "totals": {
-     "seconds": 1.77,
+     "seconds": 1.94,
      "model_seconds": 8.7,
      "input_tokens": 9843,
      "output_tokens": 537,
@@ -5015,7 +5003,7 @@
      }
     },
     "totals": {
-     "seconds": 1.88,
+     "seconds": 1.95,
      "model_seconds": 9.11,
      "input_tokens": 9921,
      "output_tokens": 616,
@@ -5158,7 +5146,7 @@
      }
     },
     "totals": {
-     "seconds": 2.23,
+     "seconds": 1.81,
      "model_seconds": 7.99,
      "input_tokens": 9721,
      "output_tokens": 535,
@@ -5301,7 +5289,7 @@
      }
     },
     "totals": {
-     "seconds": 1.84,
+     "seconds": 1.88,
      "model_seconds": 8.14,
      "input_tokens": 9874,
      "output_tokens": 515,
@@ -5321,15 +5309,11 @@
      "form_a": "de/lines",
      "proof_of_address": "de/table"
     },
-    "decision": "manual_review",
-    "raised": [
-     "EVIDENCE_OUT_OF_PLACE"
-    ],
+    "decision": "pre_filled_review",
+    "raised": [],
     "expected": [],
     "expected_checks": [],
-    "failed_checks": [
-     "proof_of_address.evidence_place"
-    ],
+    "failed_checks": [],
     "fields": {
      "passport.surname": {
       "ok": true,
@@ -5444,12 +5428,12 @@
      "proof_of_address": {
       "name": "verified",
       "address": "verified",
-      "issue_date": "out_of_place",
+      "issue_date": "verified",
       "issuer": "verified"
      }
     },
     "totals": {
-     "seconds": 1.94,
+     "seconds": 1.79,
      "model_seconds": 8.61,
      "input_tokens": 9887,
      "output_tokens": 562,
@@ -5592,7 +5576,7 @@
      }
     },
     "totals": {
-     "seconds": 1.86,
+     "seconds": 1.78,
      "model_seconds": 8.72,
      "input_tokens": 9838,
      "output_tokens": 544,
@@ -5739,7 +5723,7 @@
      }
     },
     "totals": {
-     "seconds": 2.15,
+     "seconds": 2.01,
      "model_seconds": 8.0,
      "input_tokens": 9814,
      "output_tokens": 537,
@@ -5882,7 +5866,7 @@
      }
     },
     "totals": {
-     "seconds": 2.03,
+     "seconds": 2.1,
      "model_seconds": 10.26,
      "input_tokens": 9858,
      "output_tokens": 642,
@@ -6035,7 +6019,7 @@
      }
     },
     "totals": {
-     "seconds": 2.02,
+     "seconds": 2.14,
      "model_seconds": 11.79,
      "input_tokens": 9806,
      "output_tokens": 553,
@@ -6190,7 +6174,7 @@
      }
     },
     "totals": {
-     "seconds": 1.9,
+     "seconds": 1.8,
      "model_seconds": 8.29,
      "input_tokens": 9691,
      "output_tokens": 528,
@@ -6344,7 +6328,7 @@
      }
     },
     "totals": {
-     "seconds": 1.74,
+     "seconds": 1.86,
      "model_seconds": 8.24,
      "input_tokens": 9835,
      "output_tokens": 547,
@@ -6501,7 +6485,7 @@
      }
     },
     "totals": {
-     "seconds": 2.03,
+     "seconds": 1.92,
      "model_seconds": 7.84,
      "input_tokens": 9742,
      "output_tokens": 538,
@@ -6655,7 +6639,7 @@
      }
     },
     "totals": {
-     "seconds": 2.18,
+     "seconds": 2.01,
      "model_seconds": 9.01,
      "input_tokens": 9745,
      "output_tokens": 527,
@@ -6806,7 +6790,7 @@
      }
     },
     "totals": {
-     "seconds": 1.94,
+     "seconds": 1.8,
      "model_seconds": 9.42,
      "input_tokens": 9743,
      "output_tokens": 532,
@@ -6960,7 +6944,7 @@
      }
     },
     "totals": {
-     "seconds": 1.88,
+     "seconds": 1.76,
      "model_seconds": 11.1,
      "input_tokens": 9772,
      "output_tokens": 550,
@@ -7121,7 +7105,7 @@
      }
     },
     "totals": {
-     "seconds": 2.27,
+     "seconds": 2.19,
      "model_seconds": 8.12,
      "input_tokens": 9839,
      "output_tokens": 535,
@@ -7430,7 +7414,7 @@
      }
     },
     "totals": {
-     "seconds": 1.96,
+     "seconds": 1.68,
      "model_seconds": 8.18,
      "input_tokens": 9932,
      "output_tokens": 542,
@@ -7583,7 +7567,7 @@
      }
     },
     "totals": {
-     "seconds": 2.06,
+     "seconds": 2.1,
      "model_seconds": 7.65,
      "input_tokens": 9819,
      "output_tokens": 531,
@@ -7737,7 +7721,7 @@
      }
     },
     "totals": {
-     "seconds": 2.04,
+     "seconds": 2.03,
      "model_seconds": 9.22,
      "input_tokens": 9760,
      "output_tokens": 541,
@@ -7890,7 +7874,7 @@
      }
     },
     "totals": {
-     "seconds": 1.94,
+     "seconds": 1.95,
      "model_seconds": 8.28,
      "input_tokens": 9776,
      "output_tokens": 564,
@@ -8046,7 +8030,7 @@
      }
     },
     "totals": {
-     "seconds": 1.97,
+     "seconds": 1.78,
      "model_seconds": 8.32,
      "input_tokens": 9900,
      "output_tokens": 534,
@@ -8205,7 +8189,7 @@
      }
     },
     "totals": {
-     "seconds": 2.13,
+     "seconds": 1.83,
      "model_seconds": 7.5,
      "input_tokens": 9729,
      "output_tokens": 544,
@@ -8372,7 +8356,7 @@
      }
     },
     "totals": {
-     "seconds": 2.13,
+     "seconds": 1.96,
      "model_seconds": 9.21,
      "input_tokens": 9656,
      "output_tokens": 568,
@@ -8515,7 +8499,7 @@
      }
     },
     "totals": {
-     "seconds": 2.06,
+     "seconds": 2.0,
      "model_seconds": 8.16,
      "input_tokens": 9751,
      "output_tokens": 537,
@@ -8532,15 +8516,11 @@
      "form_a": "en/table",
      "proof_of_address": "de/table"
     },
-    "decision": "manual_review",
-    "raised": [
-     "EVIDENCE_OUT_OF_PLACE"
-    ],
+    "decision": "pre_filled_review",
+    "raised": [],
     "expected": [],
     "expected_checks": [],
-    "failed_checks": [
-     "proof_of_address.evidence_place"
-    ],
+    "failed_checks": [],
     "fields": {
      "passport.surname": {
       "ok": true,
@@ -8655,12 +8635,12 @@
      "proof_of_address": {
       "name": "verified",
       "address": "verified",
-      "issue_date": "out_of_place",
+      "issue_date": "verified",
       "issuer": "verified"
      }
     },
     "totals": {
-     "seconds": 1.98,
+     "seconds": 1.74,
      "model_seconds": 6.74,
      "input_tokens": 9657,
      "output_tokens": 515,
@@ -8804,7 +8784,7 @@
      }
     },
     "totals": {
-     "seconds": 1.9,
+     "seconds": 1.81,
      "model_seconds": 8.01,
      "input_tokens": 9692,
      "output_tokens": 529,
@@ -8949,7 +8929,7 @@
      }
     },
     "totals": {
-     "seconds": 1.94,
+     "seconds": 1.74,
      "model_seconds": 7.76,
      "input_tokens": 9709,
      "output_tokens": 538,
@@ -9098,7 +9078,7 @@
      }
     },
     "totals": {
-     "seconds": 1.88,
+     "seconds": 1.83,
      "model_seconds": 7.92,
      "input_tokens": 9926,
      "output_tokens": 555,
@@ -9242,7 +9222,7 @@
      }
     },
     "totals": {
-     "seconds": 1.79,
+     "seconds": 1.76,
      "model_seconds": 9.71,
      "input_tokens": 9838,
      "output_tokens": 535,
@@ -9389,7 +9369,7 @@
      }
     },
     "totals": {
-     "seconds": 1.36,
+     "seconds": 1.63,
      "model_seconds": 8.63,
      "input_tokens": 9784,
      "output_tokens": 539,
@@ -9532,7 +9512,7 @@
      }
     },
     "totals": {
-     "seconds": 1.44,
+     "seconds": 1.41,
      "model_seconds": 8.39,
      "input_tokens": 10322,
      "output_tokens": 578,
@@ -9675,7 +9655,7 @@
      }
     },
     "totals": {
-     "seconds": 1.48,
+     "seconds": 1.25,
      "model_seconds": 7.77,
      "input_tokens": 9484,
      "output_tokens": 541,
@@ -9822,7 +9802,7 @@
      }
     },
     "totals": {
-     "seconds": 1.32,
+     "seconds": 1.38,
      "model_seconds": 8.56,
      "input_tokens": 10181,
      "output_tokens": 518,
@@ -9966,7 +9946,7 @@
      }
     },
     "totals": {
-     "seconds": 1.5,
+     "seconds": 1.3,
      "model_seconds": 8.71,
      "input_tokens": 9330,
      "output_tokens": 542,
@@ -10109,7 +10089,7 @@
      }
     },
     "totals": {
-     "seconds": 1.49,
+     "seconds": 1.52,
      "model_seconds": 7.87,
      "input_tokens": 11235,
      "output_tokens": 539,
@@ -10256,7 +10236,7 @@
      }
     },
     "totals": {
-     "seconds": 1.61,
+     "seconds": 1.21,
      "model_seconds": 7.97,
      "input_tokens": 9927,
      "output_tokens": 533,
@@ -10405,7 +10385,7 @@
      }
     },
     "totals": {
-     "seconds": 1.49,
+     "seconds": 1.61,
      "model_seconds": 8.23,
      "input_tokens": 10547,
      "output_tokens": 596,
@@ -10558,7 +10538,7 @@
      }
     },
     "totals": {
-     "seconds": 1.47,
+     "seconds": 1.56,
      "model_seconds": 12.15,
      "input_tokens": 10893,
      "output_tokens": 553,
@@ -10713,7 +10693,7 @@
      }
     },
     "totals": {
-     "seconds": 1.52,
+     "seconds": 1.59,
      "model_seconds": 9.07,
      "input_tokens": 10273,
      "output_tokens": 526,
@@ -10869,7 +10849,7 @@
      }
     },
     "totals": {
-     "seconds": 1.38,
+     "seconds": 1.47,
      "model_seconds": 9.65,
      "input_tokens": 10261,
      "output_tokens": 555,
@@ -11026,7 +11006,7 @@
      }
     },
     "totals": {
-     "seconds": 1.55,
+     "seconds": 1.29,
      "model_seconds": 9.72,
      "input_tokens": 9609,
      "output_tokens": 538,
@@ -11180,7 +11160,7 @@
      }
     },
     "totals": {
-     "seconds": 1.71,
+     "seconds": 1.23,
      "model_seconds": 7.87,
      "input_tokens": 10241,
      "output_tokens": 533,
@@ -11331,7 +11311,7 @@
      }
     },
     "totals": {
-     "seconds": 1.51,
+     "seconds": 1.5,
      "model_seconds": 8.03,
      "input_tokens": 10771,
      "output_tokens": 538,
@@ -11485,7 +11465,7 @@
      }
     },
     "totals": {
-     "seconds": 1.48,
+     "seconds": 1.6,
      "model_seconds": 7.99,
      "input_tokens": 10757,
      "output_tokens": 546,
@@ -11644,7 +11624,7 @@
      }
     },
     "totals": {
-     "seconds": 1.65,
+     "seconds": 1.53,
      "model_seconds": 7.56,
      "input_tokens": 10059,
      "output_tokens": 541,
@@ -11800,7 +11780,7 @@
      }
     },
     "totals": {
-     "seconds": 1.53,
+     "seconds": 1.44,
      "model_seconds": 7.95,
      "input_tokens": 10535,
      "output_tokens": 563,
@@ -11953,7 +11933,7 @@
      }
     },
     "totals": {
-     "seconds": 1.56,
+     "seconds": 1.4,
      "model_seconds": 7.95,
      "input_tokens": 10698,
      "output_tokens": 543,
@@ -12106,7 +12086,7 @@
      }
     },
     "totals": {
-     "seconds": 1.72,
+     "seconds": 1.17,
      "model_seconds": 8.68,
      "input_tokens": 10872,
      "output_tokens": 531,
@@ -12260,7 +12240,7 @@
      }
     },
     "totals": {
-     "seconds": 1.76,
+     "seconds": 1.26,
      "model_seconds": 7.86,
      "input_tokens": 10797,
      "output_tokens": 567,
@@ -12413,7 +12393,7 @@
      }
     },
     "totals": {
-     "seconds": 1.56,
+     "seconds": 1.35,
      "model_seconds": 8.62,
      "input_tokens": 10498,
      "output_tokens": 564,
@@ -12569,7 +12549,7 @@
      }
     },
     "totals": {
-     "seconds": 1.69,
+     "seconds": 1.32,
      "model_seconds": 8.33,
      "input_tokens": 10453,
      "output_tokens": 535,
@@ -12725,7 +12705,7 @@
      }
     },
     "totals": {
-     "seconds": 1.63,
+     "seconds": 1.38,
      "model_seconds": 8.32,
      "input_tokens": 11384,
      "output_tokens": 537,
@@ -12884,7 +12864,7 @@
      }
     },
     "totals": {
-     "seconds": 1.46,
+     "seconds": 1.18,
      "model_seconds": 8.56,
      "input_tokens": 10212,
      "output_tokens": 562,
@@ -13027,7 +13007,7 @@
      }
     },
     "totals": {
-     "seconds": 1.7,
+     "seconds": 1.31,
      "model_seconds": 7.65,
      "input_tokens": 9525,
      "output_tokens": 534,
@@ -13044,15 +13024,11 @@
      "form_a": "en/table",
      "proof_of_address": "de/table"
     },
-    "decision": "manual_review",
-    "raised": [
-     "EVIDENCE_OUT_OF_PLACE"
-    ],
+    "decision": "pre_filled_review",
+    "raised": [],
     "expected": [],
     "expected_checks": [],
-    "failed_checks": [
-     "proof_of_address.evidence_place"
-    ],
+    "failed_checks": [],
     "fields": {
      "passport.surname": {
       "ok": true,
@@ -13167,12 +13143,12 @@
      "proof_of_address": {
       "name": "verified",
       "address": "verified",
-      "issue_date": "out_of_place",
+      "issue_date": "verified",
       "issuer": "verified"
      }
     },
     "totals": {
-     "seconds": 1.63,
+     "seconds": 1.28,
      "model_seconds": 6.74,
      "input_tokens": 9834,
      "output_tokens": 513,
@@ -13320,7 +13296,7 @@
      }
     },
     "totals": {
-     "seconds": 1.54,
+     "seconds": 1.3,
      "model_seconds": 7.28,
      "input_tokens": 10165,
      "output_tokens": 527,
@@ -13465,7 +13441,7 @@
      }
     },
     "totals": {
-     "seconds": 1.61,
+     "seconds": 1.22,
      "model_seconds": 8.23,
      "input_tokens": 10574,
      "output_tokens": 531,
@@ -13614,7 +13590,7 @@
      }
     },
     "totals": {
-     "seconds": 1.69,
+     "seconds": 1.28,
      "model_seconds": 9.6,
      "input_tokens": 10728,
      "output_tokens": 555,
@@ -13758,7 +13734,7 @@
      }
     },
     "totals": {
-     "seconds": 1.48,
+     "seconds": 1.12,
      "model_seconds": 7.32,
      "input_tokens": 9525,
      "output_tokens": 530,

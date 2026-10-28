@@ -230,9 +230,15 @@ def place(doc_type: str, field: str, bbox, page: Page) -> Place:
         if w.bbox[0] >= row[2] - 0.002 and w.bbox[0] - row[2] <= 1.5 * h * aspect:
             row[2] = w.bbox[2]
     near = []  # (distance, label) for every label that stands before the quote with nothing in between
+    opening = None  # a label the quote itself starts with
     for lab in labels:
         lx0, ly0, lx1, ly1 = lab.bbox
         if _inside(lab.bbox, bbox):  # a label inside the quote itself ('Payable by Anna Müller')
+            # Models often quote a value with its label ('Rechnungsdatum 16.09.2026'). A label that opens the
+            # quote's first line is the one printed right before the value, so it decides on its own. Skipping
+            # it let the label of the row above ('Rechnungsnummer') decide.
+            if lx0 <= line[0] + 0.002 and min(ly1, line[3]) - max(ly0, line[1]) > 0:
+                opening = opening or lab
             continue
         d = None
         overlap = min(ly1, line[3]) - max(ly0, line[1])
@@ -250,6 +256,8 @@ def place(doc_type: str, field: str, bbox, page: Page) -> Place:
                 d = max(0.0, line[1] - ly1) * aspect
         if d is not None:
             near.append((d, lab))
+    if opening:
+        near = [(0.0, opening)]
     if not near:
         return Place("no_label", height_ratio=ratio)
     # Its own label anywhere in reach is enough: rows sit close, so the label of the row above can be nearer

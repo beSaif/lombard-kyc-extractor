@@ -141,7 +141,7 @@
      }
     },
     "totals": {
-     "seconds": 0.69,
+     "seconds": 0.61,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -226,7 +226,7 @@
      }
     },
     "totals": {
-     "seconds": 0.3,
+     "seconds": 0.31,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -319,7 +319,7 @@
      }
     },
     "totals": {
-     "seconds": 0.26,
+     "seconds": 0.25,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -404,7 +404,7 @@
      }
     },
     "totals": {
-     "seconds": 3.3,
+     "seconds": 0.24,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -489,7 +489,7 @@
      }
     },
     "totals": {
-     "seconds": 3.83,
+     "seconds": 0.24,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -576,7 +576,7 @@
      }
     },
     "totals": {
-     "seconds": 3.03,
+     "seconds": 0.24,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -667,7 +667,7 @@
      }
     },
     "totals": {
-     "seconds": 2.29,
+     "seconds": 0.22,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -750,7 +750,7 @@
      }
     },
     "totals": {
-     "seconds": 3.92,
+     "seconds": 0.36,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -841,7 +841,7 @@
      }
     },
     "totals": {
-     "seconds": 3.56,
+     "seconds": 0.24,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -934,7 +934,7 @@
      }
     },
     "totals": {
-     "seconds": 4.39,
+     "seconds": 0.23,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1017,7 +1017,7 @@
      }
     },
     "totals": {
-     "seconds": 3.86,
+     "seconds": 0.41,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1100,7 +1100,7 @@
      }
     },
     "totals": {
-     "seconds": 5.38,
+     "seconds": 0.93,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1191,7 +1191,7 @@
      }
     },
     "totals": {
-     "seconds": 4.36,
+     "seconds": 0.26,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1282,7 +1282,7 @@
      }
     },
     "totals": {
-     "seconds": 4.57,
+     "seconds": 0.33,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1373,7 +1373,7 @@
      }
     },
     "totals": {
-     "seconds": 6.33,
+     "seconds": 0.58,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1456,7 +1456,7 @@
      }
     },
     "totals": {
-     "seconds": 2.96,
+     "seconds": 0.25,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,

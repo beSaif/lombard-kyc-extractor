@@ -285,6 +285,22 @@ class LocationTests(unittest.TestCase):
         self.assertEqual(ev["issue_date"]["status"], "out_of_place")
         self.assertEqual(ev["issue_date"]["place"]["verdict"], "other_section")
 
+    def test_a_label_quoted_with_its_value_anchors_it(self):
+        # gpt-4.1-mini quotes 'Rechnungsdatum 16.09.2026': the label inside the quote is the value's own, and
+        # the label of the row above ('Rechnungsnummer') must not decide.
+        w = lambda t, x, y: (t, (x, y, x + 0.012 * len(t), y + 0.02))
+        page = Page(1, np.zeros((297, 210, 3), np.uint8), [Word(t, b, 90.0) for t, b in [
+            w("Invoice", 0.1, 0.27), w("number", 0.19, 0.27), w("4711", 0.4, 0.27),
+            w("Invoice", 0.1, 0.30), w("date", 0.19, 0.30), w("16.09.2026", 0.4, 0.30),
+            w("Zahlbar", 0.1, 0.33), w("bis", 0.2, 0.33), w("30.09.2026", 0.4, 0.33)]], "", "text_layer")
+        ground = lambda v, q: ground_fields("proof_of_address", DOC_SCHEMAS["proof_of_address"](
+            issue_date=FieldValue(value=v, quote=q, page=1)), _doc(page))["issue_date"]
+        ev = ground("2026-09-16", "Invoice date 16.09.2026")
+        self.assertEqual((ev["status"], ev["place"]["verdict"]), ("verified", "anchored"))
+        # A due date quoted with its own label stays out of place, though the issue date's label is just above.
+        ev = ground("2026-09-30", "Zahlbar bis 30.09.2026")
+        self.assertEqual((ev["status"], ev["place"]["verdict"]), ("out_of_place", "other_section"))
+
     def test_a_decoy_in_fine_print_is_out_of_place(self):
         ev = self.ground(address=("Bahnhofstrasse 1, 8001 Zürich", "Bahnhofstrasse 1, 8001 Zürich"))
         self.assertEqual((ev["address"]["status"], ev["address"]["place"]["verdict"]), ("out_of_place", "fine_print"))

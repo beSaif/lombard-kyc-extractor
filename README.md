@@ -89,7 +89,11 @@ it, it raised 11 false EVIDENCE_OUT_OF_PLACE: 6 on gpt-4.1-mini, which cost it 6
 the label with the value ("Rechnungsdatum 16.09.2026", "Verbrauchsadresse: Musterweg 49, 4051 Basel").
 `place()` skips any label that sits inside the quote, so the field's own label was ignored, and the label
 on the row above ("Rechnungsnummer", "Abrechnungsperiode") decided the verdict. The oracle never quotes
-a label, so tuning on it couldn't show this. gpt-5.4-mini quotes only the value and wasn't affected.
+a label, so tuning on it couldn't show this. gpt-5.4-mini quotes only the value and wasn't affected. It's
+fixed now (with a test): a label that opens the quote is the one printed right before the value, so it
+decides. Its own label anchors the value, and a due date quoted as "Zahlbar bis 30.09.2026" is still out of
+place. Replayed from the cache, all 11 false alarms are gone, gpt-4.1-mini gets its 6 files back, and no
+other routing or defect flag changed on any suite, the decoys included.
 
 Each verified value also says what it rests on. `text_layer` means the PDF's own text. `ocr` means Tesseract
 read the same thing, but in `text` and `both` mode the model was shown that OCR text, so this is agreement
@@ -293,8 +297,9 @@ committed: a two-digit year now gets the MRZ's century, an expiry in this centur
 past. **From that commit on, the blind suite is no longer blind for this bug.** Re-scored with the fix,
 the perfect reader flags 24 of 26 (`blind_022` is now caught) and sends 2 of 9 clean files straight
 through, and the rules baseline doesn't change. In `results/comparison.md`, the blind rules and oracle
-columns include the fix. The model columns don't: they stay as scored on the frozen code. The real suite
-above was scored before the fix too.
+columns include the fix. The model columns don't: they stay as scored on the frozen code. The standard,
+hard and real suites are re-scored with it from the cache. It changes nothing on my own suites (they print
+four-digit years), and on the real passports it's described below.
 The rest is what the critique of this project said would happen: tables written for my generator don't
 reach other people's documents.
 
@@ -306,7 +311,7 @@ falsely flagged. 8 of the 16 have expired, which is the one planted defect.
 
 | | rules | oracle (perfect reader) | gpt-5.4-mini, both | qwen2.5vl:7b, both |
 | --- | --- | --- | --- | --- |
-| Field accuracy | 11% | 97% | 81% | 66% (14 files; 2 failed) |
+| Field accuracy | 11% | 99% | 82% | 67% (14 files; 2 failed) |
 | Expired passports flagged | 7 of 8 | 8 of 8 | 8 of 8 | 8 of 8 |
 | Specimens with no false flag | 0 of 16 | 8 of 16 | 1 of 16 (Switzerland) | 1 of 14 (Switzerland) |
 
@@ -319,8 +324,10 @@ something my synthetic passports never had:
   OESTERGAARD, AEVARSDOTTIR and OESTENBYEN in the MRZ. The name comparison doesn't know that, so all three get
   MRZ_VISUAL_MISMATCH even from the perfect reader. "What it doesn't do" listed this; now it's measured.
 - **Two-digit years, again.** Iceland prints "12 DES /DEC 12" (with the Icelandic month), Norway
-  "15 APR /APR 30", Denmark "09 06 85". The parser drops the first two, so the perfect reader loses those
-  dates (MISSING_FIELD). qwen's Icelandic dates came out as the years 12 and 29 AD.
+  "15 APR /APR 30", Denmark "09 06 85". Before the year fix (end of the blind section), the parser dropped
+  Iceland's and Norway's dates, and qwen's Icelandic dates came out as the years 12 and 29 AD. With the fix,
+  Norway's expiry is read. Iceland's birth date is still lost, for the next reason. Denmark's all-numeric
+  "09 06 85" isn't parsed at all, so the quote check can't judge it either way.
 - **Born before 1926.** Slovakia's holder was born 11.11.1911, and Iceland's in 1912. The passport was issued in
   2007, and the last digit of her national number (9) means the 1900s. The MRZ has no century, and the
   parser reads 111111 and 121212 as 2011 and 2012. So both get MRZ_VISUAL_MISMATCH.

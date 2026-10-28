@@ -14,9 +14,9 @@ Synthetic files. The standard suite shows the system working; the hard suite is 
 | Defects caught by the right check | 100% | 100% | 100% | 84% | 100% | 100% | 100% | 37% |
 | Defect precision | 90% | 100% | 100% | 38% | 90% | 90% | 100% | 32% |
 | Defect files sent to the quick queue | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Straight-through (clean files, 95% interval) | 79% (52%-92%) | 100% (78%-100%) | 100% (78%-100%) | 21% (8%-48%) | 86% (60%-96%) | 93% (68%-99%) | 100% (78%-100%) | 0% (0%-22%) |
+| Straight-through (clean files, 95% interval) | 100% (78%-100%) | 100% (78%-100%) | 100% (78%-100%) | 21% (8%-48%) | 86% (60%-96%) | 93% (68%-99%) | 100% (78%-100%) | 0% (0%-22%) |
 | Trap false-alarm rate | 0% | 0% | 0% | 17% | 4% | 6% | 0% | 4% |
-| Process flags per file | 0.17 | 0.1 | 0.07 | 1.13 | 0.1 | 0.1 | 0.07 | 2.27 |
+| Process flags per file | 0.07 | 0.1 | 0.07 | 1.13 | 0.1 | 0.1 | 0.07 | 2.23 |
 | Errors | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Model seconds per file | 8.19 | 16.3 | 8.11 | 8.78 | 9.77 | 9.23 | 0.0 | 0.0 |
 | $ per file | $0.0047 | $0.0149 | $0.0102 | $0.0071 | $0.0100 | $0.0565 | $0.0000 | $0.0000 |
@@ -34,9 +34,9 @@ Synthetic files. The standard suite shows the system working; the hard suite is 
 | Defects caught by the right check | 95% | 100% | 100% | 68% | 100% | 100% | 100% | 26% |
 | Defect precision | 86% | 95% | 95% | 31% | 95% | 90% | 100% | 40% |
 | Defect files sent to the quick queue | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Straight-through (clean files, 95% interval) | 71% (45%-88%) | 86% (60%-96%) | 86% (60%-96%) | 0% (0%-22%) | 93% (68%-99%) | 79% (52%-92%) | 93% (68%-99%) | 0% (0%-22%) |
+| Straight-through (clean files, 95% interval) | 86% (60%-96%) | 86% (60%-96%) | 86% (60%-96%) | 0% (0%-22%) | 93% (68%-99%) | 79% (52%-92%) | 93% (68%-99%) | 0% (0%-22%) |
 | Trap false-alarm rate | 0% | 0% | 0% | 22% | 0% | 0% | 0% | 0% |
-| Process flags per file | 0.43 | 0.3 | 0.2 | 1.7 | 0.2 | 0.23 | 0.2 | 2.27 |
+| Process flags per file | 0.37 | 0.3 | 0.2 | 1.7 | 0.2 | 0.23 | 0.2 | 2.27 |
 | Errors | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Model seconds per file | 8.64 | 18.0 | 9.36 | 10.11 | 10.96 | 9.53 | 0.0 | 0.0 |
 | $ per file | $0.0048 | $0.0159 | $0.0111 | $0.0081 | $0.0108 | $0.0574 | $0.0000 | $0.0000 |
@@ -54,9 +54,9 @@ Synthetic files. The standard suite shows the system working; the hard suite is 
 | Defects caught by the right check | 42% | 100% | 95% | 100% | 100% | 100% | 79% | 100% | 100% | 100% | 32% |
 | Defect precision | 29% | 48% | 78% | 86% | 90% | 90% | 44% | 90% | 90% | 100% | 50% |
 | Defect files sent to the quick queue | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Straight-through (clean files, 95% interval) | 0% (0%-22%) | 36% (16%-61%) | 71% (45%-88%) | 57% (33%-79%) | 79% (52%-92%) | 86% (60%-96%) | 0% (0%-22%) | 93% (68%-99%) | 86% (60%-96%) | 100% (78%-100%) | 0% (0%-22%) |
+| Straight-through (clean files, 95% interval) | 0% (0%-22%) | 36% (16%-61%) | 71% (45%-88%) | 64% (39%-84%) | 79% (52%-92%) | 86% (60%-96%) | 0% (0%-22%) | 93% (68%-99%) | 86% (60%-96%) | 100% (78%-100%) | 0% (0%-22%) |
 | Trap false-alarm rate | 13% | 6% | 6% | 2% | 0% | 0% | 11% | 0% | 2% | 0% | 2% |
-| Process flags per file | 2.97 | 0.2 | 0.2 | 0.33 | 0.23 | 0.13 | 2.07 | 0.13 | 0.17 | 0.1 | 2.17 |
+| Process flags per file | 2.8 | 0.2 | 0.2 | 0.3 | 0.23 | 0.13 | 2.07 | 0.13 | 0.17 | 0.1 | 2.17 |
 | Errors | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Model seconds per file | 38.79 | 76.14 | 76.14 | 8.38 | 16.74 | 8.36 | 9.28 | 9.32 | 9.21 | 0.0 | 0.0 |
 | $ per file | $0.0000 | $0.0000 | $0.0000 | $0.0050 | $0.0157 | $0.0106 | $0.0074 | $0.0105 | $0.0595 | $0.0000 | $0.0000 |
@@ -187,8 +187,8 @@ Synthetic files. The standard suite shows the system working; the hard suite is 
 | Metric | `ollama:qwen2.5vl:7b@both` | `openai:gpt-5.4-mini@both` | `oracle` | `rules` |
 | --- | --- | --- | --- | --- |
 | Files | 14 | 16 | 16 | 16 |
-| Field accuracy | 66% | 81% | 97% | 11% |
-| Critical-field accuracy | 64% | 86% | 96% | 0% |
+| Field accuracy | 67% | 82% | 99% | 11% |
+| Critical-field accuracy | 66% | 88% | 99% | 0% |
 | Defect recall (95% interval) | 100% (68%-100%) | 100% (68%-100%) | 100% (68%-100%) | 88% (53%-98%) |
 | Defects not flagged | 0 | 0 | 0 | 1 |
 | Defects caught by the right check | 100% | 100% | 100% | 88% |
@@ -196,7 +196,7 @@ Synthetic files. The standard suite shows the system working; the hard suite is 
 | Defect files sent to the quick queue | 0 | 0 | 0 | 0 |
 | Straight-through (clean files, 95% interval) | 0% (0%-39%) | 0% (0%-32%) | 0% (0%-32%) | 0% (0%-32%) |
 | Trap false-alarm rate | - | - | - | - |
-| Process flags per file | 3.07 | 2.75 | 2.56 | 3.06 |
+| Process flags per file | 3.0 | 2.69 | 2.5 | 3.06 |
 | Errors | 2 | 0 | 0 | 0 |
 | Model seconds per file | 70.4 | 4.4 | 0.0 | 0.0 |
 | $ per file | $0.0000 | $0.0051 | $0.0000 | $0.0000 |

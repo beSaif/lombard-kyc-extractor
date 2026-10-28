@@ -221,7 +221,7 @@
      }
     },
     "totals": {
-     "seconds": 1.16,
+     "seconds": 1.21,
      "model_seconds": 77.05,
      "input_tokens": 5851,
      "output_tokens": 979,
@@ -364,7 +364,7 @@
      }
     },
     "totals": {
-     "seconds": 1.27,
+     "seconds": 1.13,
      "model_seconds": 78.44,
      "input_tokens": 5890,
      "output_tokens": 1022,
@@ -507,7 +507,7 @@
      }
     },
     "totals": {
-     "seconds": 1.3,
+     "seconds": 1.21,
      "model_seconds": 72.89,
      "input_tokens": 5790,
      "output_tokens": 888,
@@ -650,7 +650,7 @@
      }
     },
     "totals": {
-     "seconds": 1.26,
+     "seconds": 1.25,
      "model_seconds": 72.72,
      "input_tokens": 5781,
      "output_tokens": 892,
@@ -800,7 +800,7 @@
      }
     },
     "totals": {
-     "seconds": 1.06,
+     "seconds": 1.25,
      "model_seconds": 77.05,
      "input_tokens": 5798,
      "output_tokens": 1006,
@@ -943,7 +943,7 @@
      }
     },
     "totals": {
-     "seconds": 1.18,
+     "seconds": 1.29,
      "model_seconds": 73.54,
      "input_tokens": 5837,
      "output_tokens": 907,
@@ -1092,7 +1092,7 @@
      }
     },
     "totals": {
-     "seconds": 1.32,
+     "seconds": 1.2,
      "model_seconds": 74.2,
      "input_tokens": 5729,
      "output_tokens": 901,
@@ -1235,7 +1235,7 @@
      }
     },
     "totals": {
-     "seconds": 1.42,
+     "seconds": 1.3,
      "model_seconds": 77.47,
      "input_tokens": 5952,
      "output_tokens": 974,
@@ -1388,7 +1388,7 @@
      }
     },
     "totals": {
-     "seconds": 1.31,
+     "seconds": 1.25,
      "model_seconds": 75.69,
      "input_tokens": 5793,
      "output_tokens": 927,
@@ -1543,7 +1543,7 @@
      }
     },
     "totals": {
-     "seconds": 1.18,
+     "seconds": 1.25,
      "model_seconds": 76.14,
      "input_tokens": 5788,
      "output_tokens": 940,
@@ -1697,7 +1697,7 @@
      }
     },
     "totals": {
-     "seconds": 1.28,
+     "seconds": 1.17,
      "model_seconds": 77.91,
      "input_tokens": 5874,
      "output_tokens": 1004,
@@ -1852,7 +1852,7 @@
      }
     },
     "totals": {
-     "seconds": 1.16,
+     "seconds": 1.11,
      "model_seconds": 73.05,
      "input_tokens": 5799,
      "output_tokens": 909,
@@ -2006,7 +2006,7 @@
      }
     },
     "totals": {
-     "seconds": 1.55,
+     "seconds": 1.44,
      "model_seconds": 77.66,
      "input_tokens": 5825,
      "output_tokens": 992,
@@ -2157,7 +2157,7 @@
      }
     },
     "totals": {
-     "seconds": 1.42,
+     "seconds": 1.38,
      "model_seconds": 78.86,
      "input_tokens": 5850,
      "output_tokens": 1022,
@@ -2311,7 +2311,7 @@
      }
     },
     "totals": {
-     "seconds": 1.5,
+     "seconds": 1.32,
      "model_seconds": 73.07,
      "input_tokens": 5779,
      "output_tokens": 933,
@@ -2468,7 +2468,7 @@
      }
     },
     "totals": {
-     "seconds": 1.4,
+     "seconds": 1.28,
      "model_seconds": 79.85,
      "input_tokens": 5884,
      "output_tokens": 999,
@@ -2624,7 +2624,7 @@
      }
     },
     "totals": {
-     "seconds": 1.36,
+     "seconds": 1.13,
      "model_seconds": 80.24,
      "input_tokens": 5789,
      "output_tokens": 1011,
@@ -2777,7 +2777,7 @@
      }
     },
     "totals": {
-     "seconds": 1.26,
+     "seconds": 1.11,
      "model_seconds": 81.52,
      "input_tokens": 5862,
      "output_tokens": 993,
@@ -2930,7 +2930,7 @@
      }
     },
     "totals": {
-     "seconds": 1.24,
+     "seconds": 1.32,
      "model_seconds": 82.34,
      "input_tokens": 5935,
      "output_tokens": 994,
@@ -3080,7 +3080,7 @@
      }
     },
     "totals": {
-     "seconds": 1.28,
+     "seconds": 1.31,
      "model_seconds": 75.18,
      "input_tokens": 5754,
      "output_tokens": 947,
@@ -3233,7 +3233,7 @@
      }
     },
     "totals": {
-     "seconds": 1.39,
+     "seconds": 1.25,
      "model_seconds": 74.04,
      "input_tokens": 5811,
      "output_tokens": 944,
@@ -3389,7 +3389,7 @@
      }
     },
     "totals": {
-     "seconds": 1.34,
+     "seconds": 1.14,
      "model_seconds": 75.31,
      "input_tokens": 5961,
      "output_tokens": 965,
@@ -3545,7 +3545,7 @@
      }
     },
     "totals": {
-     "seconds": 1.2,
+     "seconds": 1.26,
      "model_seconds": 74.21,
      "input_tokens": 5846,
      "output_tokens": 924,
@@ -3704,7 +3704,7 @@
      }
     },
     "totals": {
-     "seconds": 1.31,
+     "seconds": 1.27,
      "model_seconds": 75.65,
      "input_tokens": 5762,
      "output_tokens": 951,
@@ -3847,7 +3847,7 @@
      }
     },
     "totals": {
-     "seconds": 1.41,
+     "seconds": 1.21,
      "model_seconds": 76.82,
      "input_tokens": 5704,
      "output_tokens": 968,
@@ -3988,7 +3988,7 @@
      }
     },
     "totals": {
-     "seconds": 1.3,
+     "seconds": 1.19,
      "model_seconds": 74.34,
      "input_tokens": 5706,
      "output_tokens": 942,
@@ -4136,7 +4136,7 @@
      }
     },
     "totals": {
-     "seconds": 1.36,
+     "seconds": 1.21,
      "model_seconds": 73.07,
      "input_tokens": 5790,
      "output_tokens": 892,
@@ -4281,7 +4281,7 @@
      }
     },
     "totals": {
-     "seconds": 1.27,
+     "seconds": 1.14,
      "model_seconds": 72.39,
      "input_tokens": 5763,
      "output_tokens": 886,
@@ -4436,7 +4436,7 @@
      }
     },
     "totals": {
-     "seconds": 1.35,
+     "seconds": 1.24,
      "model_seconds": 76.85,
      "input_tokens": 5877,
      "output_tokens": 983,
@@ -4580,7 +4580,7 @@
      }
     },
     "totals": {
-     "seconds": 1.22,
+     "seconds": 1.09,
      "model_seconds": 76.51,
      "input_tokens": 5841,
      "output_tokens": 979,
