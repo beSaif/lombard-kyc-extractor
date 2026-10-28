@@ -12,11 +12,17 @@ run -e rules -e openai:gpt-4.1-mini@both -e openai:gpt-5.4-mini@both -e openai:g
     -e openai:gpt-5.4-mini@vision -e openai:gpt-5.5@both
 run -e openai:gpt-5.4-mini@both --second openai:gpt-4.1-mini@both
 run -e ollama:qwen2.5:7b@text -e ollama:qwen2.5vl:7b@both --tiers photo --workers 6
-KYC_MODEL_INJECTION_DETECTOR=off run -e ollama:qwen2.5vl:7b@both --tiers photo --workers 6
+# In a subshell: macOS's /bin/sh (bash 3.2 in POSIX mode) keeps 'VAR=x function' set after the call, which
+# turned the detector off for every line below and saved them under the wrong name.
+(export KYC_MODEL_INJECTION_DETECTOR=off; run -e ollama:qwen2.5vl:7b@both --tiers photo --workers 6)
 # hard_017 and hard_018 (the decoys) were added later and have no cached responses: replay the first 16.
 run -e ollama:qwen2.5vl:7b@both --suite hard --tiers photo --limit 16 --workers 6
 # No model at all: the oracle (the true values) on both suites; oracle:decoy quotes the hard decoys.
 run -e oracle --workers 4
 run -e rules -e oracle -e oracle:decoy --suite hard --workers 4
+run -e openai:gpt-5.4-mini@both --suite hard
+# The real specimens (python -m kyc_demo fetch-real first). Not the blind suite: its model runs stay as scored
+# on the frozen code (see README), and re-scoring them would overwrite that.
+run -e rules -e oracle -e openai:gpt-5.4-mini@both -e ollama:qwen2.5vl:7b@both --suite real --tiers real
 $PY -m kyc_demo compare > /dev/null
 echo "results/comparison.md updated"
