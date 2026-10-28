@@ -78,7 +78,7 @@ def postprocess(doc_type: str, data: BaseModel) -> dict:
             continue
         before = fv.value
         if name in DATE_FIELDS:
-            fv.value = iso_date(fv.value) or fv.value
+            fv.value = iso_date(fv.value, birth="birth" in name) or fv.value
         elif name in COUNTRY_FIELDS:
             fv.value = country_code(fv.value) or fv.value
         elif name in {"mrz_line1", "mrz_line2"}:

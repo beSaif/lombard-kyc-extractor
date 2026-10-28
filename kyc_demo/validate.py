@@ -74,7 +74,7 @@ def quote_says(name: str, value: str, quote: str | None) -> str | None:
     if not quote or name.startswith("mrz_line"):  # MRZ lines are chosen by check digits, see reconcile
         return None
     if name in DATE_FIELDS:
-        d = find_date(quote)
+        d = find_date(quote, birth="birth" in name)
         return None if d is None else "yes" if d.isoformat() == value else "no"
     if name in COUNTRY_FIELDS:
         code = country_code(quote)

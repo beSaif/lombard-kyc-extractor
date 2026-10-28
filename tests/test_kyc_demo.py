@@ -88,6 +88,18 @@ class NormaliseTests(unittest.TestCase):
                   "19 giugno 1961", "19 juin 1961", "1961-06-19"]:
             self.assertEqual(iso_date(s), "1961-06-19", s)
 
+    def test_two_digit_passport_years_get_the_mrz_century(self):
+        # Found by the blind suite: '12 MAR 25' came back as 12 March of the year 25 AD.
+        self.assertEqual(iso_date("12 MAR 25"), "2025-03-12")
+        self.assertEqual(iso_date("17 MAY/MAI 29"), "2029-05-17")  # an expiry is in this century
+        self.assertEqual(iso_date("19 JUN/JUIN 61", birth=True), "1961-06-19")  # a birth date in the past
+        self.assertEqual(iso_date("05 JAN/JANV 03", birth=True), "2003-01-05")
+        self.assertEqual(find_date("07 AUG/AOÛT 31").isoformat(), "2031-08-07")
+        mrz = parse_td3(*build_td3(issuing_state="UTO", surname="X", given_names="Y", document_number="K1",
+                                   nationality="UTO", birth=date(1961, 6, 19), sex="F", expiry=date(2029, 5, 17)))
+        self.assertEqual((mrz["date_of_birth"], mrz["expiry_date"]),
+                         (iso_date("19 JUN/JUIN 61", birth=True), iso_date("17 MAY/MAI 29")))
+
     def test_address_traps_compare_equal(self):
         base = "Avenue Fictive 7, 1204 Genève"
         for variant in ["Av. Fictive 7, 1204 Genève", "7, avenue Fictive, 1204 Genève",

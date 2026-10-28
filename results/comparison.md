@@ -127,16 +127,16 @@ Synthetic files. The standard suite shows the system working; the hard suite is 
 | Metric | `openai:gpt-5.4-mini@both` | `oracle` | `rules` |
 | --- | --- | --- | --- |
 | Files | 24 | 24 | 24 |
-| Field accuracy | 92% | 99% | 16% |
-| Critical-field accuracy | 91% | 98% | 0% |
-| Defect recall (95% interval) | 96% (81%-99%) | 88% (71%-96%) | 27% (14%-46%) |
-| Defects not flagged | 1 | 3 | 19 |
-| Defects caught by the right check | 96% | 88% | 27% |
-| Defect precision | 35% | 51% | 41% |
+| Field accuracy | 92% | 100% | 16% |
+| Critical-field accuracy | 91% | 100% | 0% |
+| Defect recall (95% interval) | 96% (81%-99%) | 92% (76%-98%) | 27% (14%-46%) |
+| Defects not flagged | 1 | 2 | 19 |
+| Defects caught by the right check | 96% | 92% | 27% |
+| Defect precision | 35% | 52% | 41% |
 | Defect files sent to the quick queue | 0 | 0 | 0 |
-| Straight-through (clean files, 95% interval) | 0% (0%-30%) | 11% (2%-44%) | 0% (0%-30%) |
+| Straight-through (clean files, 95% interval) | 0% (0%-30%) | 22% (6%-55%) | 0% (0%-30%) |
 | Trap false-alarm rate | 40% | 34% | 0% |
-| Process flags per file | 1.04 | 0.96 | 2.08 |
+| Process flags per file | 1.04 | 0.62 | 2.08 |
 | Errors | 0 | 0 | 0 |
 | Model seconds per file | 8.98 | 0.0 | 0.0 |
 | $ per file | $0.0110 | $0.0000 | $0.0000 |
@@ -147,16 +147,16 @@ Synthetic files. The standard suite shows the system working; the hard suite is 
 | Metric | `openai:gpt-5.4-mini@both` | `oracle` | `rules` |
 | --- | --- | --- | --- |
 | Files | 24 | 24 | 24 |
-| Field accuracy | 91% | 99% | 16% |
-| Critical-field accuracy | 90% | 98% | 1% |
-| Defect recall (95% interval) | 92% (76%-98%) | 88% (71%-96%) | 27% (14%-46%) |
-| Defects not flagged | 2 | 3 | 19 |
-| Defects caught by the right check | 92% | 88% | 27% |
-| Defect precision | 34% | 56% | 47% |
+| Field accuracy | 91% | 100% | 16% |
+| Critical-field accuracy | 90% | 100% | 1% |
+| Defect recall (95% interval) | 92% (76%-98%) | 92% (76%-98%) | 27% (14%-46%) |
+| Defects not flagged | 2 | 2 | 19 |
+| Defects caught by the right check | 92% | 92% | 27% |
+| Defect precision | 34% | 57% | 47% |
 | Defect files sent to the quick queue | 0 | 0 | 0 |
-| Straight-through (clean files, 95% interval) | 0% (0%-30%) | 11% (2%-44%) | 0% (0%-30%) |
+| Straight-through (clean files, 95% interval) | 0% (0%-30%) | 22% (6%-55%) | 0% (0%-30%) |
 | Trap false-alarm rate | 40% | 34% | 0% |
-| Process flags per file | 1.17 | 1.04 | 2.12 |
+| Process flags per file | 1.17 | 0.71 | 2.12 |
 | Errors | 0 | 0 | 0 |
 | Model seconds per file | 8.51 | 0.0 | 0.0 |
 | $ per file | $0.0109 | $0.0000 | $0.0000 |
@@ -167,16 +167,16 @@ Synthetic files. The standard suite shows the system working; the hard suite is 
 | Metric | `ollama:qwen2.5vl:7b@both` | `openai:gpt-5.4-mini@both` | `oracle` | `rules` |
 | --- | --- | --- | --- | --- |
 | Files | 24 | 24 | 24 | 24 |
-| Field accuracy | 88% | 90% | 99% | 16% |
-| Critical-field accuracy | 86% | 88% | 98% | 0% |
-| Defect recall (95% interval) | 88% (71%-96%) | 92% (76%-98%) | 88% (71%-96%) | 27% (14%-46%) |
-| Defects not flagged | 3 | 2 | 3 | 19 |
-| Defects caught by the right check | 88% | 92% | 88% | 27% |
-| Defect precision | 23% | 31% | 45% | 32% |
+| Field accuracy | 88% | 90% | 100% | 16% |
+| Critical-field accuracy | 86% | 88% | 100% | 0% |
+| Defect recall (95% interval) | 88% (71%-96%) | 92% (76%-98%) | 92% (76%-98%) | 27% (14%-46%) |
+| Defects not flagged | 3 | 2 | 2 | 19 |
+| Defects caught by the right check | 88% | 92% | 92% | 27% |
+| Defect precision | 23% | 31% | 46% | 32% |
 | Defect files sent to the quick queue | 0 | 0 | 0 | 0 |
-| Straight-through (clean files, 95% interval) | 0% (0%-30%) | 0% (0%-30%) | 11% (2%-44%) | 0% (0%-30%) |
+| Straight-through (clean files, 95% interval) | 0% (0%-30%) | 0% (0%-30%) | 22% (6%-55%) | 0% (0%-30%) |
 | Trap false-alarm rate | 36% | 42% | 34% | 0% |
-| Process flags per file | 1.38 | 0.88 | 0.75 | 2.08 |
+| Process flags per file | 1.38 | 0.88 | 0.42 | 2.08 |
 | Errors | 0 | 0 | 0 | 0 |
 | Model seconds per file | 116.77 | 8.63 | 0.0 | 0.0 |
 | $ per file | $0.0000 | $0.0114 | $0.0000 | $0.0000 |

@@ -6,20 +6,20 @@
  "tiers": {
   "clean": {
    "files": 24,
-   "field_accuracy": 0.988,
-   "critical_field_accuracy": 0.983,
-   "defect_recall": 0.885,
+   "field_accuracy": 1.0,
+   "critical_field_accuracy": 1.0,
+   "defect_recall": 0.923,
    "defect_recall_ci": [
-    0.71,
-    0.96
+    0.759,
+    0.979
    ],
    "defect_recall_n": [
-    23,
+    24,
     26
    ],
-   "defects_not_flagged": 3,
-   "right_check_rate": 0.885,
-   "defect_precision": 0.511,
+   "defects_not_flagged": 2,
+   "right_check_rate": 0.923,
+   "defect_precision": 0.522,
    "missed_defect_files": 0,
    "missed_defect_files_ci": [
     0.0,
@@ -27,15 +27,15 @@
    ],
    "defect_files": 15,
    "errors": 0,
-   "straight_through_rate": 0.111,
+   "straight_through_rate": 0.222,
    "straight_through_ci": [
-    0.02,
-    0.435
+    0.063,
+    0.547
    ],
    "clean_files": 9,
-   "routing_accuracy": 0.667,
+   "routing_accuracy": 0.708,
    "trap_false_alarm_rate": 0.34,
-   "process_flags_per_file": 0.96,
+   "process_flags_per_file": 0.62,
    "seconds_per_file": 0.0,
    "cost_per_file_usd": 0.0,
    "fields": {
@@ -46,7 +46,7 @@
     "form_a.contracting_partner": 1.0,
     "passport.date_of_birth": 1.0,
     "passport.document_number": 1.0,
-    "passport.expiry_date": 0.792,
+    "passport.expiry_date": 1.0,
     "passport.given_names": 1.0,
     "passport.mrz_line1": 1.0,
     "passport.mrz_line2": 1.0,
@@ -64,7 +64,7 @@
     "FORM_A_UNSIGNED": 1.0,
     "IMPLAUSIBLE_DATE": 1.0,
     "MRZ_CHECK_FAILED": 1.0,
-    "MRZ_VISUAL_MISMATCH": 0.5,
+    "MRZ_VISUAL_MISMATCH": 1.0,
     "NAME_MISMATCH": 1.0,
     "NATIONALITY_MISMATCH": 1.0,
     "PASSPORT_EXPIRED": 1.0,
@@ -107,20 +107,20 @@
   },
   "scan": {
    "files": 24,
-   "field_accuracy": 0.988,
-   "critical_field_accuracy": 0.983,
-   "defect_recall": 0.885,
+   "field_accuracy": 1.0,
+   "critical_field_accuracy": 1.0,
+   "defect_recall": 0.923,
    "defect_recall_ci": [
-    0.71,
-    0.96
+    0.759,
+    0.979
    ],
    "defect_recall_n": [
-    23,
+    24,
     26
    ],
-   "defects_not_flagged": 3,
-   "right_check_rate": 0.885,
-   "defect_precision": 0.561,
+   "defects_not_flagged": 2,
+   "right_check_rate": 0.923,
+   "defect_precision": 0.571,
    "missed_defect_files": 0,
    "missed_defect_files_ci": [
     0.0,
@@ -128,15 +128,15 @@
    ],
    "defect_files": 15,
    "errors": 0,
-   "straight_through_rate": 0.111,
+   "straight_through_rate": 0.222,
    "straight_through_ci": [
-    0.02,
-    0.435
+    0.063,
+    0.547
    ],
    "clean_files": 9,
-   "routing_accuracy": 0.667,
+   "routing_accuracy": 0.708,
    "trap_false_alarm_rate": 0.34,
-   "process_flags_per_file": 1.04,
+   "process_flags_per_file": 0.71,
    "seconds_per_file": 0.0,
    "cost_per_file_usd": 0.0,
    "fields": {
@@ -147,7 +147,7 @@
     "form_a.contracting_partner": 1.0,
     "passport.date_of_birth": 1.0,
     "passport.document_number": 1.0,
-    "passport.expiry_date": 0.792,
+    "passport.expiry_date": 1.0,
     "passport.given_names": 1.0,
     "passport.mrz_line1": 1.0,
     "passport.mrz_line2": 1.0,
@@ -165,7 +165,7 @@
     "FORM_A_UNSIGNED": 1.0,
     "IMPLAUSIBLE_DATE": 1.0,
     "MRZ_CHECK_FAILED": 1.0,
-    "MRZ_VISUAL_MISMATCH": 0.5,
+    "MRZ_VISUAL_MISMATCH": 1.0,
     "NAME_MISMATCH": 1.0,
     "NATIONALITY_MISMATCH": 1.0,
     "PASSPORT_EXPIRED": 1.0,
@@ -208,20 +208,20 @@
   },
   "photo": {
    "files": 24,
-   "field_accuracy": 0.986,
-   "critical_field_accuracy": 0.983,
-   "defect_recall": 0.885,
+   "field_accuracy": 0.998,
+   "critical_field_accuracy": 1.0,
+   "defect_recall": 0.923,
    "defect_recall_ci": [
-    0.71,
-    0.96
+    0.759,
+    0.979
    ],
    "defect_recall_n": [
-    23,
+    24,
     26
    ],
-   "defects_not_flagged": 3,
-   "right_check_rate": 0.885,
-   "defect_precision": 0.451,
+   "defects_not_flagged": 2,
+   "right_check_rate": 0.923,
+   "defect_precision": 0.462,
    "missed_defect_files": 0,
    "missed_defect_files_ci": [
     0.0,
@@ -229,15 +229,15 @@
    ],
    "defect_files": 15,
    "errors": 0,
-   "straight_through_rate": 0.111,
+   "straight_through_rate": 0.222,
    "straight_through_ci": [
-    0.02,
-    0.435
+    0.063,
+    0.547
    ],
    "clean_files": 9,
-   "routing_accuracy": 0.667,
+   "routing_accuracy": 0.708,
    "trap_false_alarm_rate": 0.34,
-   "process_flags_per_file": 0.75,
+   "process_flags_per_file": 0.42,
    "seconds_per_file": 0.0,
    "cost_per_file_usd": 0.0,
    "fields": {
@@ -248,7 +248,7 @@
     "form_a.contracting_partner": 1.0,
     "passport.date_of_birth": 1.0,
     "passport.document_number": 1.0,
-    "passport.expiry_date": 0.792,
+    "passport.expiry_date": 1.0,
     "passport.given_names": 1.0,
     "passport.mrz_line1": 1.0,
     "passport.mrz_line2": 0.958,
@@ -266,7 +266,7 @@
     "FORM_A_UNSIGNED": 1.0,
     "IMPLAUSIBLE_DATE": 1.0,
     "MRZ_CHECK_FAILED": 1.0,
-    "MRZ_VISUAL_MISMATCH": 0.5,
+    "MRZ_VISUAL_MISMATCH": 1.0,
     "NAME_MISMATCH": 1.0,
     "NATIONALITY_MISMATCH": 1.0,
     "PASSPORT_EXPIRED": 1.0,
@@ -327,17 +327,11 @@
      "form_a": "en/numbered",
      "proof_of_address": "de/electricity-right-window-qrbill"
     },
-    "decision": "manual_review",
-    "raised": [
-     "EVIDENCE_NOT_FOUND",
-     "MISSING_FIELD"
-    ],
+    "decision": "pre_filled_review",
+    "raised": [],
     "expected": [],
     "expected_checks": [],
-    "failed_checks": [
-     "passport.evidence",
-     "passport.required"
-    ],
+    "failed_checks": [],
     "fields": {
      "passport.surname": {
       "ok": true,
@@ -370,8 +364,8 @@
       "want": "AW6547540"
      },
      "passport.expiry_date": {
-      "ok": false,
-      "got": null,
+      "ok": true,
+      "got": "2029-05-17",
       "want": "2029-05-17"
      },
      "passport.mrz_line1": {
@@ -438,7 +432,7 @@
       "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
-      "expiry_date": "dropped",
+      "expiry_date": "verified",
       "mrz_line1": "verified",
       "mrz_line2": "verified"
      },
@@ -457,7 +451,7 @@
      }
     },
     "totals": {
-     "seconds": 6.42,
+     "seconds": 1.55,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -618,7 +612,7 @@
      }
     },
     "totals": {
-     "seconds": 7.28,
+     "seconds": 1.42,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -768,7 +762,7 @@
      }
     },
     "totals": {
-     "seconds": 6.69,
+     "seconds": 1.28,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -796,9 +790,7 @@
     },
     "decision": "manual_review",
     "raised": [
-     "EVIDENCE_NOT_FOUND",
      "FORM_A_UNSIGNED",
-     "MISSING_FIELD",
      "NAME_MISMATCH",
      "PASSPORT_EXPIRED"
     ],
@@ -811,9 +803,7 @@
     "failed_checks": [
      "cross.name_passport_bill",
      "form_a.signed",
-     "passport.evidence",
-     "passport.not_expired",
-     "passport.required"
+     "passport.not_expired"
     ],
     "fields": {
      "passport.surname": {
@@ -847,8 +837,8 @@
       "want": "BK7811862"
      },
      "passport.expiry_date": {
-      "ok": false,
-      "got": null,
+      "ok": true,
+      "got": "2026-10-20",
       "want": "2026-10-20"
      },
      "passport.mrz_line1": {
@@ -915,7 +905,7 @@
       "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
-      "expiry_date": "dropped",
+      "expiry_date": "verified",
       "mrz_line1": "verified",
       "mrz_line2": "verified"
      },
@@ -934,7 +924,7 @@
      }
     },
     "totals": {
-     "seconds": 5.7,
+     "seconds": 1.43,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1096,7 +1086,7 @@
      }
     },
     "totals": {
-     "seconds": 5.2,
+     "seconds": 1.73,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1258,7 +1248,7 @@
      }
     },
     "totals": {
-     "seconds": 5.23,
+     "seconds": 1.24,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1414,7 +1404,7 @@
      }
     },
     "totals": {
-     "seconds": 6.09,
+     "seconds": 1.54,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1577,7 +1567,7 @@
      }
     },
     "totals": {
-     "seconds": 4.99,
+     "seconds": 1.48,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1740,7 +1730,7 @@
      }
     },
     "totals": {
-     "seconds": 3.84,
+     "seconds": 1.76,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1773,7 +1763,6 @@
      "ADDRESS_MISMATCH",
      "CHECK_SKIPPED",
      "EVIDENCE_NOT_FOUND",
-     "MISSING_FIELD",
      "NAME_MISMATCH"
     ],
     "expected": [],
@@ -1781,9 +1770,7 @@
     "failed_checks": [
      "cross.address",
      "cross.name_passport_bill",
-     "form_a.evidence",
-     "passport.evidence",
-     "passport.required"
+     "form_a.evidence"
     ],
     "fields": {
      "passport.surname": {
@@ -1817,8 +1804,8 @@
       "want": "WL4832464"
      },
      "passport.expiry_date": {
-      "ok": false,
-      "got": null,
+      "ok": true,
+      "got": "2026-10-21",
       "want": "2026-10-21"
      },
      "passport.mrz_line1": {
@@ -1885,7 +1872,7 @@
       "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
-      "expiry_date": "dropped",
+      "expiry_date": "verified",
       "mrz_line1": "verified",
       "mrz_line2": "verified"
      },
@@ -1904,7 +1891,7 @@
      }
     },
     "totals": {
-     "seconds": 7.8,
+     "seconds": 1.32,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2069,7 +2056,7 @@
      }
     },
     "totals": {
-     "seconds": 4.98,
+     "seconds": 1.47,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2221,7 +2208,7 @@
      }
     },
     "totals": {
-     "seconds": 4.53,
+     "seconds": 1.29,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2248,8 +2235,6 @@
     },
     "decision": "manual_review",
     "raised": [
-     "EVIDENCE_NOT_FOUND",
-     "MISSING_FIELD",
      "NATIONALITY_MISMATCH"
     ],
     "expected": [
@@ -2261,9 +2246,7 @@
      "proof_of_address.injection"
     ],
     "failed_checks": [
-     "cross.nationality",
-     "passport.evidence",
-     "passport.required"
+     "cross.nationality"
     ],
     "fields": {
      "passport.surname": {
@@ -2297,8 +2280,8 @@
       "want": "YF2155930"
      },
      "passport.expiry_date": {
-      "ok": false,
-      "got": null,
+      "ok": true,
+      "got": "2029-08-25",
       "want": "2029-08-25"
      },
      "passport.mrz_line1": {
@@ -2365,7 +2348,7 @@
       "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
-      "expiry_date": "dropped",
+      "expiry_date": "verified",
       "mrz_line1": "verified",
       "mrz_line2": "verified"
      },
@@ -2384,7 +2367,7 @@
      }
     },
     "totals": {
-     "seconds": 6.49,
+     "seconds": 1.46,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2540,7 +2523,7 @@
      }
     },
     "totals": {
-     "seconds": 7.04,
+     "seconds": 1.66,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2703,7 +2686,7 @@
      }
     },
     "totals": {
-     "seconds": 5.89,
+     "seconds": 1.49,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2868,7 +2851,7 @@
      }
     },
     "totals": {
-     "seconds": 4.86,
+     "seconds": 1.44,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3026,7 +3009,7 @@
      }
     },
     "totals": {
-     "seconds": 4.75,
+     "seconds": 1.66,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3189,7 +3172,7 @@
      }
     },
     "totals": {
-     "seconds": 6.39,
+     "seconds": 1.45,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3341,7 +3324,7 @@
      }
     },
     "totals": {
-     "seconds": 4.87,
+     "seconds": 1.27,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3504,7 +3487,7 @@
      }
     },
     "totals": {
-     "seconds": 4.41,
+     "seconds": 1.41,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3673,7 +3656,7 @@
      }
     },
     "totals": {
-     "seconds": 6.85,
+     "seconds": 1.62,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3705,7 +3688,7 @@
      "ADDRESS_MISMATCH",
      "EVIDENCE_NOT_FOUND",
      "FORM_A_UNSIGNED",
-     "MISSING_FIELD",
+     "MRZ_VISUAL_MISMATCH",
      "NATIONALITY_MISMATCH"
     ],
     "expected": [
@@ -3721,8 +3704,7 @@
      "cross.nationality",
      "form_a.evidence",
      "form_a.signed",
-     "passport.evidence",
-     "passport.required"
+     "passport.mrz_vs_visual"
     ],
     "fields": {
      "passport.surname": {
@@ -3756,8 +3738,8 @@
       "want": "EG1931098"
      },
      "passport.expiry_date": {
-      "ok": false,
-      "got": null,
+      "ok": true,
+      "got": "2031-08-07",
       "want": "2031-08-07"
      },
      "passport.mrz_line1": {
@@ -3824,7 +3806,7 @@
       "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
-      "expiry_date": "dropped",
+      "expiry_date": "verified",
       "mrz_line1": "verified",
       "mrz_line2": "verified"
      },
@@ -3843,7 +3825,7 @@
      }
     },
     "totals": {
-     "seconds": 6.37,
+     "seconds": 1.32,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4005,7 +3987,7 @@
      }
     },
     "totals": {
-     "seconds": 5.61,
+     "seconds": 1.54,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4169,7 +4151,7 @@
      }
     },
     "totals": {
-     "seconds": 4.33,
+     "seconds": 1.46,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4195,17 +4177,11 @@
      "form_a": "en/numbered",
      "proof_of_address": "de/electricity-right-window-qrbill"
     },
-    "decision": "manual_review",
-    "raised": [
-     "EVIDENCE_NOT_FOUND",
-     "MISSING_FIELD"
-    ],
+    "decision": "pre_filled_review",
+    "raised": [],
     "expected": [],
     "expected_checks": [],
-    "failed_checks": [
-     "passport.evidence",
-     "passport.required"
-    ],
+    "failed_checks": [],
     "fields": {
      "passport.surname": {
       "ok": true,
@@ -4238,8 +4214,8 @@
       "want": "AW6547540"
      },
      "passport.expiry_date": {
-      "ok": false,
-      "got": null,
+      "ok": true,
+      "got": "2029-05-17",
       "want": "2029-05-17"
      },
      "passport.mrz_line1": {
@@ -4306,7 +4282,7 @@
       "date_of_birth": "corroborated",
       "sex": "verified",
       "document_number": "verified",
-      "expiry_date": "dropped",
+      "expiry_date": "verified",
       "mrz_line1": "verified",
       "mrz_line2": "verified"
      },
@@ -4325,7 +4301,7 @@
      }
     },
     "totals": {
-     "seconds": 5.79,
+     "seconds": 1.62,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4486,7 +4462,7 @@
      }
     },
     "totals": {
-     "seconds": 4.59,
+     "seconds": 1.6,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4636,7 +4612,7 @@
      }
     },
     "totals": {
-     "seconds": 5.24,
+     "seconds": 1.62,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4664,9 +4640,7 @@
     },
     "decision": "manual_review",
     "raised": [
-     "EVIDENCE_NOT_FOUND",
      "FORM_A_UNSIGNED",
-     "MISSING_FIELD",
      "NAME_MISMATCH",
      "PASSPORT_EXPIRED"
     ],
@@ -4679,9 +4653,7 @@
     "failed_checks": [
      "cross.name_passport_bill",
      "form_a.signed",
-     "passport.evidence",
-     "passport.not_expired",
-     "passport.required"
+     "passport.not_expired"
     ],
     "fields": {
      "passport.surname": {
@@ -4715,8 +4687,8 @@
       "want": "BK7811862"
      },
      "passport.expiry_date": {
-      "ok": false,
-      "got": null,
+      "ok": true,
+      "got": "2026-10-20",
       "want": "2026-10-20"
      },
      "passport.mrz_line1": {
@@ -4783,7 +4755,7 @@
       "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
-      "expiry_date": "dropped",
+      "expiry_date": "verified",
       "mrz_line1": "verified",
       "mrz_line2": "verified"
      },
@@ -4802,7 +4774,7 @@
      }
     },
     "totals": {
-     "seconds": 4.85,
+     "seconds": 1.66,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4964,7 +4936,7 @@
      }
     },
     "totals": {
-     "seconds": 7.27,
+     "seconds": 1.56,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5126,7 +5098,7 @@
      }
     },
     "totals": {
-     "seconds": 5.62,
+     "seconds": 1.42,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5278,7 +5250,7 @@
      }
     },
     "totals": {
-     "seconds": 5.83,
+     "seconds": 1.75,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5441,7 +5413,7 @@
      }
     },
     "totals": {
-     "seconds": 5.91,
+     "seconds": 1.73,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5604,7 +5576,7 @@
      }
     },
     "totals": {
-     "seconds": 6.04,
+     "seconds": 1.74,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5637,7 +5609,6 @@
      "ADDRESS_MISMATCH",
      "CHECK_SKIPPED",
      "EVIDENCE_NOT_FOUND",
-     "MISSING_FIELD",
      "NAME_MISMATCH"
     ],
     "expected": [],
@@ -5645,9 +5616,7 @@
     "failed_checks": [
      "cross.address",
      "cross.name_passport_bill",
-     "form_a.evidence",
-     "passport.evidence",
-     "passport.required"
+     "form_a.evidence"
     ],
     "fields": {
      "passport.surname": {
@@ -5681,8 +5650,8 @@
       "want": "WL4832464"
      },
      "passport.expiry_date": {
-      "ok": false,
-      "got": null,
+      "ok": true,
+      "got": "2026-10-21",
       "want": "2026-10-21"
      },
      "passport.mrz_line1": {
@@ -5749,7 +5718,7 @@
       "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
-      "expiry_date": "dropped",
+      "expiry_date": "verified",
       "mrz_line1": "verified",
       "mrz_line2": "verified"
      },
@@ -5768,7 +5737,7 @@
      }
     },
     "totals": {
-     "seconds": 5.72,
+     "seconds": 1.67,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5933,7 +5902,7 @@
      }
     },
     "totals": {
-     "seconds": 4.64,
+     "seconds": 1.39,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6089,7 +6058,7 @@
      }
     },
     "totals": {
-     "seconds": 5.65,
+     "seconds": 1.33,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6116,8 +6085,6 @@
     },
     "decision": "manual_review",
     "raised": [
-     "EVIDENCE_NOT_FOUND",
-     "MISSING_FIELD",
      "NATIONALITY_MISMATCH"
     ],
     "expected": [
@@ -6129,9 +6096,7 @@
      "proof_of_address.injection"
     ],
     "failed_checks": [
-     "cross.nationality",
-     "passport.evidence",
-     "passport.required"
+     "cross.nationality"
     ],
     "fields": {
      "passport.surname": {
@@ -6165,8 +6130,8 @@
       "want": "YF2155930"
      },
      "passport.expiry_date": {
-      "ok": false,
-      "got": null,
+      "ok": true,
+      "got": "2029-08-25",
       "want": "2029-08-25"
      },
      "passport.mrz_line1": {
@@ -6233,7 +6198,7 @@
       "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
-      "expiry_date": "dropped",
+      "expiry_date": "verified",
       "mrz_line1": "verified",
       "mrz_line2": "verified"
      },
@@ -6252,7 +6217,7 @@
      }
     },
     "totals": {
-     "seconds": 6.94,
+     "seconds": 1.64,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6410,7 +6375,7 @@
      }
     },
     "totals": {
-     "seconds": 6.78,
+     "seconds": 1.54,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6573,7 +6538,7 @@
      }
     },
     "totals": {
-     "seconds": 5.61,
+     "seconds": 1.55,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6738,7 +6703,7 @@
      }
     },
     "totals": {
-     "seconds": 4.44,
+     "seconds": 1.26,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6894,7 +6859,7 @@
      }
     },
     "totals": {
-     "seconds": 6.6,
+     "seconds": 1.75,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7058,7 +7023,7 @@
      }
     },
     "totals": {
-     "seconds": 6.42,
+     "seconds": 1.44,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7212,7 +7177,7 @@
      }
     },
     "totals": {
-     "seconds": 6.29,
+     "seconds": 1.36,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7373,7 +7338,7 @@
      }
     },
     "totals": {
-     "seconds": 6.04,
+     "seconds": 1.4,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7541,7 +7506,7 @@
      }
     },
     "totals": {
-     "seconds": 5.64,
+     "seconds": 1.34,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7572,7 +7537,7 @@
     "raised": [
      "ADDRESS_MISMATCH",
      "EVIDENCE_NOT_FOUND",
-     "MISSING_FIELD",
+     "MRZ_VISUAL_MISMATCH",
      "NATIONALITY_MISMATCH"
     ],
     "expected": [
@@ -7587,8 +7552,7 @@
      "cross.address",
      "cross.nationality",
      "form_a.evidence",
-     "passport.evidence",
-     "passport.required"
+     "passport.mrz_vs_visual"
     ],
     "fields": {
      "passport.surname": {
@@ -7622,8 +7586,8 @@
       "want": "EG1931098"
      },
      "passport.expiry_date": {
-      "ok": false,
-      "got": null,
+      "ok": true,
+      "got": "2031-08-07",
       "want": "2031-08-07"
      },
      "passport.mrz_line1": {
@@ -7690,7 +7654,7 @@
       "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
-      "expiry_date": "dropped",
+      "expiry_date": "verified",
       "mrz_line1": "verified",
       "mrz_line2": "verified"
      },
@@ -7709,7 +7673,7 @@
      }
     },
     "totals": {
-     "seconds": 5.92,
+     "seconds": 1.43,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7871,7 +7835,7 @@
      }
     },
     "totals": {
-     "seconds": 5.95,
+     "seconds": 1.43,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8035,7 +7999,7 @@
      }
     },
     "totals": {
-     "seconds": 5.58,
+     "seconds": 1.47,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8061,17 +8025,11 @@
      "form_a": "en/numbered",
      "proof_of_address": "de/electricity-right-window-qrbill"
     },
-    "decision": "manual_review",
-    "raised": [
-     "EVIDENCE_NOT_FOUND",
-     "MISSING_FIELD"
-    ],
+    "decision": "pre_filled_review",
+    "raised": [],
     "expected": [],
     "expected_checks": [],
-    "failed_checks": [
-     "passport.evidence",
-     "passport.required"
-    ],
+    "failed_checks": [],
     "fields": {
      "passport.surname": {
       "ok": true,
@@ -8104,8 +8062,8 @@
       "want": "AW6547540"
      },
      "passport.expiry_date": {
-      "ok": false,
-      "got": null,
+      "ok": true,
+      "got": "2029-05-17",
       "want": "2029-05-17"
      },
      "passport.mrz_line1": {
@@ -8172,7 +8130,7 @@
       "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
-      "expiry_date": "dropped",
+      "expiry_date": "verified",
       "mrz_line1": "verified",
       "mrz_line2": "verified"
      },
@@ -8191,7 +8149,7 @@
      }
     },
     "totals": {
-     "seconds": 4.88,
+     "seconds": 1.22,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8353,7 +8311,7 @@
      }
     },
     "totals": {
-     "seconds": 4.02,
+     "seconds": 1.18,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8507,7 +8465,7 @@
      }
     },
     "totals": {
-     "seconds": 4.53,
+     "seconds": 1.18,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8535,9 +8493,7 @@
     },
     "decision": "manual_review",
     "raised": [
-     "EVIDENCE_NOT_FOUND",
      "FORM_A_UNSIGNED",
-     "MISSING_FIELD",
      "NAME_MISMATCH",
      "PASSPORT_EXPIRED"
     ],
@@ -8550,9 +8506,7 @@
     "failed_checks": [
      "cross.name_passport_bill",
      "form_a.signed",
-     "passport.evidence",
-     "passport.not_expired",
-     "passport.required"
+     "passport.not_expired"
     ],
     "fields": {
      "passport.surname": {
@@ -8586,8 +8540,8 @@
       "want": "BK7811862"
      },
      "passport.expiry_date": {
-      "ok": false,
-      "got": null,
+      "ok": true,
+      "got": "2026-10-20",
       "want": "2026-10-20"
      },
      "passport.mrz_line1": {
@@ -8654,7 +8608,7 @@
       "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
-      "expiry_date": "dropped",
+      "expiry_date": "verified",
       "mrz_line1": "verified",
       "mrz_line2": "verified"
      },
@@ -8673,7 +8627,7 @@
      }
     },
     "totals": {
-     "seconds": 3.4,
+     "seconds": 1.26,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8835,7 +8789,7 @@
      }
     },
     "totals": {
-     "seconds": 5.46,
+     "seconds": 1.24,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8998,7 +8952,7 @@
      }
     },
     "totals": {
-     "seconds": 5.32,
+     "seconds": 1.35,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9154,7 +9108,7 @@
      }
     },
     "totals": {
-     "seconds": 5.81,
+     "seconds": 1.42,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9317,7 +9271,7 @@
      }
     },
     "totals": {
-     "seconds": 5.71,
+     "seconds": 1.4,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9481,7 +9435,7 @@
      }
     },
     "totals": {
-     "seconds": 5.17,
+     "seconds": 1.37,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9514,7 +9468,6 @@
      "ADDRESS_MISMATCH",
      "EVIDENCE_NOT_FOUND",
      "FORM_A_UNSIGNED",
-     "MISSING_FIELD",
      "NAME_MISMATCH"
     ],
     "expected": [],
@@ -9523,9 +9476,7 @@
      "cross.address",
      "cross.name_passport_bill",
      "form_a.evidence",
-     "form_a.signed",
-     "passport.evidence",
-     "passport.required"
+     "form_a.signed"
     ],
     "fields": {
      "passport.surname": {
@@ -9559,8 +9510,8 @@
       "want": "WL4832464"
      },
      "passport.expiry_date": {
-      "ok": false,
-      "got": null,
+      "ok": true,
+      "got": "2026-10-21",
       "want": "2026-10-21"
      },
      "passport.mrz_line1": {
@@ -9627,7 +9578,7 @@
       "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
-      "expiry_date": "dropped",
+      "expiry_date": "verified",
       "mrz_line1": "verified",
       "mrz_line2": "verified"
      },
@@ -9646,7 +9597,7 @@
      }
     },
     "totals": {
-     "seconds": 5.17,
+     "seconds": 1.52,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9811,7 +9762,7 @@
      }
     },
     "totals": {
-     "seconds": 4.65,
+     "seconds": 1.74,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9963,7 +9914,7 @@
      }
     },
     "totals": {
-     "seconds": 5.17,
+     "seconds": 1.43,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9990,8 +9941,6 @@
     },
     "decision": "manual_review",
     "raised": [
-     "EVIDENCE_NOT_FOUND",
-     "MISSING_FIELD",
      "NATIONALITY_MISMATCH"
     ],
     "expected": [
@@ -10003,9 +9952,7 @@
      "proof_of_address.injection"
     ],
     "failed_checks": [
-     "cross.nationality",
-     "passport.evidence",
-     "passport.required"
+     "cross.nationality"
     ],
     "fields": {
      "passport.surname": {
@@ -10039,8 +9986,8 @@
       "want": "YF2155930"
      },
      "passport.expiry_date": {
-      "ok": false,
-      "got": null,
+      "ok": true,
+      "got": "2029-08-25",
       "want": "2029-08-25"
      },
      "passport.mrz_line1": {
@@ -10107,7 +10054,7 @@
       "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
-      "expiry_date": "dropped",
+      "expiry_date": "verified",
       "mrz_line1": "verified",
       "mrz_line2": "verified"
      },
@@ -10126,7 +10073,7 @@
      }
     },
     "totals": {
-     "seconds": 5.44,
+     "seconds": 1.71,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10284,7 +10231,7 @@
      }
     },
     "totals": {
-     "seconds": 5.64,
+     "seconds": 1.4,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10447,7 +10394,7 @@
      }
     },
     "totals": {
-     "seconds": 4.06,
+     "seconds": 1.45,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10612,7 +10559,7 @@
      }
     },
     "totals": {
-     "seconds": 4.75,
+     "seconds": 1.58,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10770,7 +10717,7 @@
      }
     },
     "totals": {
-     "seconds": 4.86,
+     "seconds": 1.34,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10934,7 +10881,7 @@
      }
     },
     "totals": {
-     "seconds": 4.82,
+     "seconds": 1.34,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -11088,7 +11035,7 @@
      }
     },
     "totals": {
-     "seconds": 4.85,
+     "seconds": 1.31,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -11249,7 +11196,7 @@
      }
     },
     "totals": {
-     "seconds": 5.12,
+     "seconds": 1.32,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -11418,7 +11365,7 @@
      }
     },
     "totals": {
-     "seconds": 4.56,
+     "seconds": 1.17,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -11450,7 +11397,7 @@
      "ADDRESS_MISMATCH",
      "EVIDENCE_NOT_FOUND",
      "FORM_A_UNSIGNED",
-     "MISSING_FIELD",
+     "MRZ_VISUAL_MISMATCH",
      "NATIONALITY_MISMATCH"
     ],
     "expected": [
@@ -11466,8 +11413,7 @@
      "cross.nationality",
      "form_a.evidence",
      "form_a.signed",
-     "passport.evidence",
-     "passport.required"
+     "passport.mrz_vs_visual"
     ],
     "fields": {
      "passport.surname": {
@@ -11501,8 +11447,8 @@
       "want": "EG1931098"
      },
      "passport.expiry_date": {
-      "ok": false,
-      "got": null,
+      "ok": true,
+      "got": "2031-08-07",
       "want": "2031-08-07"
      },
      "passport.mrz_line1": {
@@ -11569,7 +11515,7 @@
       "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
-      "expiry_date": "dropped",
+      "expiry_date": "verified",
       "mrz_line1": "verified",
       "mrz_line2": "verified"
      },
@@ -11588,7 +11534,7 @@
      }
     },
     "totals": {
-     "seconds": 4.74,
+     "seconds": 1.31,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -11750,7 +11696,7 @@
      }
     },
     "totals": {
-     "seconds": 4.69,
+     "seconds": 1.17,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -11914,7 +11860,7 @@
      }
     },
     "totals": {
-     "seconds": 4.53,
+     "seconds": 1.19,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,

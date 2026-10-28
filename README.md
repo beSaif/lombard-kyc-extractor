@@ -287,8 +287,14 @@ person. What broke:
 
 Nothing went to the quick queue with a defect in it. But that's mostly because almost nothing went to the
 quick queue at all. Read the way the README tells you to read the rules baseline, this is a system that
-saves very little time on paperwork it wasn't written for. I haven't fixed any of it, on purpose. The
-two-digit year is a plain bug I'll fix in its own commit, and from then on the suite isn't blind for it.
+saves very little time on paperwork it wasn't written for. I haven't fixed any of it, on purpose, except
+the two-digit year, which was a plain bug. It's fixed in its own commit, after the blind runs above were
+committed: a two-digit year now gets the MRZ's century, an expiry in this century and a birth date in the
+past. **From that commit on, the blind suite is no longer blind for this bug.** Re-scored with the fix,
+the perfect reader flags 24 of 26 (`blind_022` is now caught) and sends 2 of 9 clean files straight
+through, and the rules baseline doesn't change. In `results/comparison.md`, the blind rules and oracle
+columns include the fix. The model columns don't: they stay as scored on the frozen code. The real suite
+above was scored before the fix too.
 The rest is what the critique of this project said would happen: tables written for my generator don't
 reach other people's documents.
 

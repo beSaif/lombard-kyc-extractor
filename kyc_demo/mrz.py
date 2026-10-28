@@ -4,6 +4,8 @@ import re
 import unicodedata
 from datetime import date
 
+from .normalise import full_year
+
 WEIGHTS = (7, 3, 1)
 ISSUING_STATES = {"UTO", "CHE", "FRA", "ITA", "DEU", "AUT", "GBR", "ESP", "PRT", "NLD", "BEL", "SWE", "HRV",
                   "IND", "NGA", "BRA", "LBN", "USA", "D<<"}  # a demo subset of ICAO codes
@@ -59,8 +61,7 @@ def _safe_check(field: str, digit: str) -> bool:
 def _yymmdd(s: str, *, birth: bool, today: date) -> str | None:
     try:
         yy, mm, dd = int(s[0:2]), int(s[2:4]), int(s[4:6])
-        century = 1900 if birth and yy > today.year % 100 else 2000
-        return date(century + yy, mm, dd).isoformat()
+        return date(full_year(yy, birth=birth, today=today), mm, dd).isoformat()
     except ValueError:
         return None
 

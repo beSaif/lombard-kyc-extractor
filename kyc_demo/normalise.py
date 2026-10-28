@@ -114,9 +114,17 @@ def digits(s: str | None) -> str:
     return re.sub(r"\D", "", s or "")
 
 
-def parse_date(s: str | None) -> date | None:
+def full_year(yy: int, *, birth: bool, today: date | None = None) -> int:
+    """The century of a two-digit year, as ICAO passports print it: a birth year is in the past, anything
+    else (an expiry) in this century. Shared with the MRZ, so the printed page and the MRZ agree."""
+    today = today or date.today()
+    return (1900 if birth and yy > today.year % 100 else 2000) + yy
+
+
+def parse_date(s: str | None, *, birth: bool = False, today: date | None = None) -> date | None:
     """Every date style in the corpus: 21.07.1969, 21/07/1969, 1969-07-21, 21 July 1969, July 21, 1969,
-    21. Juli 1969, 21 luglio 1969, and the passport's bilingual '21 JUL/JUIL 1969'."""
+    21. Juli 1969, 21 luglio 1969, and the passport's bilingual '21 JUL/JUIL 1969' or '21 JUL/JUIL 69'
+    (`birth` picks the century of a two-digit year)."""
     if not s:
         return None
     s = " ".join(s.strip().split())
@@ -129,7 +137,10 @@ def parse_date(s: str | None) -> date | None:
     nums = [w for w in words if w.isdigit()]
     months = [MONTH_LOOKUP[w] for w in words if w in MONTH_LOOKUP]
     if len(nums) == 2 and months:
-        day, year = (int(nums[0]), int(nums[1])) if len(nums[1]) == 4 else (int(nums[1]), int(nums[0]))
+        if len(nums[0]) <= 2 and len(nums[1]) <= 2:  # '17 MAY/MAI 29': day, month, two-digit year
+            day, year = int(nums[0]), full_year(int(nums[1]), birth=birth, today=today)
+        else:
+            day, year = (int(nums[0]), int(nums[1])) if len(nums[1]) == 4 else (int(nums[1]), int(nums[0]))
         try:
             return date(year, months[0], day)
         except ValueError:
@@ -140,9 +151,9 @@ def parse_date(s: str | None) -> date | None:
 NUMERIC_DATE = re.compile(r"\b(\d{1,2})[./-](\d{1,2})[./-](\d{4})\b")
 
 
-def find_date(s: str | None) -> date | None:
+def find_date(s: str | None, *, birth: bool = False) -> date | None:
     """A date that is the whole string, or one written inside it ('Bern, 12.10.2026')."""
-    d = parse_date(s)
+    d = parse_date(s, birth=birth)
     if d or not s:
         return d
     m = NUMERIC_DATE.search(s)
@@ -154,8 +165,8 @@ def find_date(s: str | None) -> date | None:
     return None
 
 
-def iso_date(s: str | None) -> str | None:
-    d = parse_date(s)
+def iso_date(s: str | None, *, birth: bool = False) -> str | None:
+    d = parse_date(s, birth=birth)
     return d.isoformat() if d else None
 
 
