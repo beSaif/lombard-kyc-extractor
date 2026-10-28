@@ -83,6 +83,14 @@ it was made to match then corroborates it. Print size can only be judged from a 
 Tesseract's boxes for the same 9 pt type vary by a factor of two on a photo. That's a real hole: the check
 can only judge text that OCR can see.
 
+Zero false alarms held for the oracle, not for the models. When I replayed the cached model answers through
+it, it raised 11 false EVIDENCE_OUT_OF_PLACE: 6 on gpt-4.1-mini, which cost it 6 straight-through files, and
+5 on qwen2.5:7b. Every one of those values was right and printed in the right place. The models had quoted
+the label with the value ("Rechnungsdatum 16.09.2026", "Verbrauchsadresse: Musterweg 49, 4051 Basel").
+`place()` skips any label that sits inside the quote, so the field's own label was ignored, and the label
+on the row above ("Rechnungsnummer", "Abrechnungsperiode") decided the verdict. The oracle never quotes
+a label, so tuning on it couldn't show this. gpt-5.4-mini quotes only the value and wasn't affected.
+
 Each verified value also says what it rests on. `text_layer` means the PDF's own text. `ocr` means Tesseract
 read the same thing, but in `text` and `both` mode the model was shown that OCR text, so this is agreement
 with OCR, not two independent readings. `checksum` means the MRZ check digits pass, and that's the one check
@@ -135,9 +143,10 @@ The **real suite** (`real_NNN`, `kyc_demo/real.py`) is public specimen passports
 real states' sample data pages, with real security printing, fonts and layouts, photographed by someone
 else. I read their values off by hand and checked every MRZ against its check digits. The images aren't in
 the repository; `python -m kyc_demo fetch-real` downloads them. It only tests the passport path, because
-nobody publishes real Form As or bills. So far it's 3 passports (Bulgaria, Cyprus, Liechtenstein).
-Wikimedia rate-limited the machine I worked on, so the other 14 candidates I'd picked are left as a to-do.
-Even three found a real bug: Liechtenstein prints its passport number in groups ("R 00000"), and the quote
+nobody publishes real Form As or bills. It's 16 passports: Bulgaria, Cyprus, Denmark, France, Greece,
+Iceland, Latvia, Liechtenstein, Malta, the Netherlands, Norway, Portugal, Slovakia, Slovenia, Spain and
+Switzerland. Each one's licence (public domain, CC0 or CC BY-SA 4.0) and author is in `real.py`. Every MRZ
+passes all five check digits. The first three alone found a real bug: Liechtenstein prints its passport number in groups ("R 00000"), and the quote
 check dropped the correct value because "R 00000" didn't "say" R00000. That's fixed now, with a test.
 
 The hard suite has its own random seed, so adding it didn't change a single page of the standard 30.
@@ -171,36 +180,56 @@ thrown away. No model can get that file right with the rules as they stand. The 
 expected, and the edge cases (a bill exactly 90 days old, a passport expiring today) passed. Qwen also
 reports the forms' legal notices as injections, which costs review time but not safety.
 
-### What's still missing
+Hard suite, all 18 cases, with gpt-5.4-mini (the first 16 from the response cache, the two decoys new):
 
-The model runs on the hard, blind and real suites, and the Azure comparison, need API keys I didn't have
-where I made these changes. `scripts/pending.sh` has every one of them as a ready command (under $1 for
-gpt-5.4-mini on the hard suite, by my earlier estimate). Until they're run, the tables below have no model
-column, and I'm not going to guess what it would say.
+| | gpt-5.4-mini, both | oracle (perfect reader) | rules |
+| --- | --- | --- | --- |
+| Defects flagged | 14/14 clean, 13/14 scan and photo | the same | 4/14 clean, 3/14 scan, 2/14 photo |
+| Defect files sent to the quick queue | 0 clean, 1 scan and photo (`hard_009`) | the same | 0 |
+| Clean files straight through | 2 of 4 at every quality | 3 of 4 | 0 of 4 |
+
+It misses exactly what the perfect reader misses: `hard_009`, for the reason above. It wasn't fooled by
+either decoy. It quoted the real address both times, so the planted ADDRESS_MISMATCH was flagged by name.
+Of the 4 clean files, two are the held-out cases, which fail as expected (the Canadian nationality and
+Lucerne). Its other false flags are its own misreads, all safe: "Belspielstrasse" for a handwritten
+"Beispielstrasse", a dropped last MRZ character, a handwritten 21 read as 24. Each was caught by a
+cross-check and sent the file to a person.
+
+### What I've now run
+
+The hard, blind and real runs that were waiting for keys are done, on the Mac that made the published
+numbers. They cost about $0.95 in OpenAI calls, and the local Qwen runs cost nothing but time (about two
+minutes a file). The model columns below come from those runs. Only the Azure comparison is still pending:
+I don't have an Azure key. `scripts/pending.sh` now holds just those lines.
 
 ### The ceiling: a perfect reader
 
 `-e oracle` is not a model. It reads the true values from truth.json and quotes exactly what's printed for
 each one. So everything after the model (OCR, grounding, the location check, the rules, routing) is
 measured as if the model made no mistakes. It's free, runs anywhere, and it's the most any model can
-score here. These numbers are on Linux (`results/linux/`). Handwriting renders in Kalam there instead of
-Bradley Hand, so they sit next to the macOS model numbers, not on top of them. Same code, other font: the
-rules baseline gets 52% field accuracy on clean Linux pages against 54% on the Mac.
+score here, except on injections: the oracle only reports an injection when truth.json records its text.
 
-| Linux | oracle, standard | oracle, hard | `oracle:decoy`, hard |
+I first measured it on Linux (`results/linux/`), where handwriting renders in Kalam instead of Bradley Hand
+and Tesseract is 5.3.4. On the Mac (Tesseract 5.5.1) it differs in two places, so here are both:
+
+| | oracle, standard | oracle, hard | `oracle:decoy`, hard |
 | --- | --- | --- | --- |
 | Defects flagged | 19/19 at every quality | 14/14 clean, 13/14 scan and photo (`hard_009`) | see below |
-| Defect files sent to the quick queue | 0 | 0 clean, 1 scan and photo | 0 clean, 2 scan, 1 photo |
-| Clean files straight through | 100% clean, 93% scan, 93% photo | 75% (the held-out cases) | 75% |
+| Defect files sent to the quick queue | 0 | 0 clean, 1 scan and photo | Mac: 0 clean, 1 scan, 1 photo. Linux: 0, 2, 1 |
+| Clean files straight through | Mac: 100% clean, 93% scan, 100% photo. Linux: 100%, 93%, 93% | 75% (the held-out cases) | 75% |
 
-So on photos, gpt-5.4-mini's 86% straight-through (on the Mac's pages) is about 7 points under this
-ceiling, not 14 under perfect. The rest of the gap is OCR losing handwriting that nothing can corroborate.
+So on the Mac's pages, gpt-5.4-mini's 86% straight-through on photos is 14 points under the ceiling, not 7
+as I first wrote from the Linux numbers, and on scans it's 7 under. The photo gap is the model, not OCR: on
+two Form As it misread handwritten digits (postcode 8001 as 2001, a 14 as 17). The cross-checks caught
+both, so they cost review time, not safety.
 
 `oracle:decoy` is a perfectly *fooled* reader: on the two decoy cases it quotes the decoy, as a steered
 model would. On clean files both get stopped by the location check (flagged EVIDENCE_OUT_OF_PLACE, not
 ADDRESS_MISMATCH: the file is stopped and the reviewer is told why, but the defect itself isn't named). On
 scans and photos the remarks decoy is still stopped. The footer decoy gets through to the quick queue on the
-scan, for the reason given above. Before and after the location check, the rules baseline routes every file the
+Linux scan, for the reason given above. On the Mac it doesn't, but only by luck: Tesseract didn't read the
+handwritten address on the Form A, so nothing was there to corroborate the decoy, and the file went to a
+person as EVIDENCE_NOT_FOUND. The hole is the same. Before and after the location check, the rules baseline routes every file the
 same way and flags the same defects (`results/linux/comparison.md` has both columns). Two of the 90
 standard files pick up an extra EVIDENCE_NOT_FOUND, because a value found only under another field's label
 is now unverified.
@@ -208,19 +237,24 @@ is now unverified.
 ### The blind suite
 
 This is the number I'd trust most, and it's bad. I scored it once, on the code as frozen in commit
-`12579ff`, with no model, only the rules baseline and the perfect reader (24 files, the same at every
-quality):
+`12579ff`: first with only the rules baseline and the perfect reader, then with the two models (24 files):
 
-| | rules | oracle (perfect reader) |
-| --- | --- | --- |
-| Defects flagged | 7 of 26 (27%) | 23 of 26 (88%, 95% interval 71-96%) |
-| Defect files sent to the quick queue | 0 of 15 | 0 of 15 |
-| Clean files straight through | 0 of 9 | 1 of 9 |
-| Trap false alarms | 0% | 34% |
+| | rules | oracle (perfect reader) | gpt-5.4-mini, both | qwen2.5vl:7b, both (photos only) |
+| --- | --- | --- | --- | --- |
+| Defects flagged | 7 of 26 (27%) | 23 of 26 (88%, 95% interval 71-96%) | 25 of 26 clean, 24 of 26 scan and photo | 23 of 26 |
+| Defect files sent to the quick queue | 0 of 15 | 0 of 15 | 0 of 15 | 0 of 15 |
+| Clean files straight through | 0 of 9 | 1 of 9 | 0 of 9 | 0 of 9 |
+| Trap false alarms | 0% | 34% | 40-42% | 36% |
+
+Rules and oracle are the same at every quality. Their first run was on Linux with Tesseract 5.3.4
+(`results/linux/`). I re-scored them on the Mac (5.5.1) so they sit on the same pages as the models: some
+individual flags moved, but every total and every routing decision came out the same.
 
 Even with every value read perfectly, the system catches 88% of the defects and sends 8 of 9 clean files to
 manual review. That's the rules and tables failing on someone else's paperwork. The numbers are identical
-on clean, scan and photo, so OCR isn't the cause. What broke:
+on clean, scan and photo, so OCR isn't the cause. The models make it no better for clean files: gpt-5.4-mini
+flags more defects than the perfect reader (it reports injections, below), but sends every clean file to a
+person. What broke:
 
 - **The tables.** Towns written in another national language (Biel/Bienne, Sion/Sitten, Delémont/Delsberg,
   Neuchâtel/Neuenburg) aren't in the alias table: 5 false ADDRESS_MISMATCH. Names with a middle initial,
@@ -232,9 +266,24 @@ on clean, scan and photo, so OCR isn't the cause. What broke:
 - **Two-digit years.** Two passport layouts print "17 MAY/MAI 29". The date parser reads that as 17 May of
   the year 29 AD (literally), the quote then doesn't "say" the value, and the expiry is dropped. That's how
   a printed expiry one year off the MRZ (`blind_022`) got through.
+  Both models hit the same bug: gpt-5.4-mini read `blind_022`'s expiry right, and the quote was still dropped.
 - **Injections.** The blind truth doesn't record the injections' text, so the oracle didn't report them,
   and this is the regex alone: it caught the Italian one and missed a handwritten English one and a French
-  footer. With a model reporting them, the result could be better. That's one of the pending runs.
+  footer. The models do better. gpt-5.4-mini reported all three on the clean pages, but missed the French
+  one (`blind_013`) on the scan and the photo. qwen reported all three on the photos, but it also calls
+  something on 19 of the 24 files an injection (mostly the forms' legal notices), so its reports cost a
+  lot of review time.
+- **Nationality, which only a model shows.** The models report nationality as written: 'brésilien',
+  'japanisch', 'SOUTH KOREAN', 'Schweizer', 'italiana'. The country table knows a few names and codes, not
+  adjectives in four languages, so every model run gets 16 false NATIONALITY_MISMATCH per quality and 7-8
+  false MRZ_VISUAL_MISMATCH (the passport's printed nationality "disagrees" with its MRZ). The perfect
+  reader hides this completely, because it hands over the ISO code. That's the limit of the ceiling: it
+  measures everything after the model, but not the step that turns what a model reads into what the
+  rules compare.
+- **Model mistakes.** Fewer than the table problems. qwen missed two address mismatches that gpt-5.4-mini
+  caught: its quote didn't back up the address it reported, so the address was dropped and the comparison
+  couldn't run (the file still went to a person, flagged CHECK_SKIPPED). One qwen run on `blind_008` failed
+  when Ollama's runner crashed (I had two evals sharing it), and the re-run is what's counted.
 
 Nothing went to the quick queue with a defect in it. But that's mostly because almost nothing went to the
 quick queue at all. Read the way the README tells you to read the rules baseline, this is a system that
@@ -245,15 +294,60 @@ reach other people's documents.
 
 ### Real passports
 
-Three specimens, so these are anecdotes, not rates:
+Sixteen specimens, still more anecdotes than rates. Each is a passport on its own, so every file goes to
+manual review (MISSING_DOCUMENT) and routing says nothing here. What counts is what's read and what's
+falsely flagged. 8 of the 16 have expired, which is the one planted defect.
 
-- The perfect reader gets every field right.
+| | rules | oracle (perfect reader) | gpt-5.4-mini, both | qwen2.5vl:7b, both |
+| --- | --- | --- | --- | --- |
+| Field accuracy | 11% | 97% | 81% | 66% (14 files; 2 failed) |
+| Expired passports flagged | 7 of 8 | 8 of 8 | 8 of 8 | 8 of 8 |
+| Specimens with no false flag | 0 of 16 | 8 of 16 | 1 of 16 (Switzerland) | 1 of 14 (Switzerland) |
+
+Even the perfect reader raises false alarms on half of them. Three are OCR on small photos: most of these
+images are 600 pixels wide, and on Cyprus, France and Greece Tesseract doesn't find one printed value (a
+given name, or the sex and MRZ line 1), so it stays unverified (EVIDENCE_NOT_FOUND). Every other cause is
+something my synthetic passports never had:
+
+- **Nordic letters.** Denmark, Iceland and Norway print ØSTERGÅRD, ÆVARSDÓTTIR and ØSTENBYEN. ICAO writes those
+  OESTERGAARD, AEVARSDOTTIR and OESTENBYEN in the MRZ. The name comparison doesn't know that, so all three get
+  MRZ_VISUAL_MISMATCH even from the perfect reader. "What it doesn't do" listed this; now it's measured.
+- **Two-digit years, again.** Iceland prints "12 DES /DEC 12" (with the Icelandic month), Norway
+  "15 APR /APR 30", Denmark "09 06 85". The parser drops the first two, so the perfect reader loses those
+  dates (MISSING_FIELD). qwen's Icelandic dates came out as the years 12 and 29 AD.
+- **Born before 1926.** Slovakia's holder was born 11.11.1911, and Iceland's in 1912. The passport was issued in
+  2007, and the last digit of her national number (9) means the 1900s. The MRZ has no century, and the
+  parser reads 111111 and 121212 as 2011 and 2012. So both get MRZ_VISUAL_MISMATCH.
+- **Sex as "Ž".** Slovenia prints Ž (ženski) for F, which the quote check doesn't accept. Slovenia also prints
+  no passport number in the visual zone at all, so there's nothing to quote for it.
+- **Nationality in words.** Same as the blind suite: gpt-5.4-mini reports 'HELLENIC', 'LATVIJAS',
+  'Nederlandse', 'Slovenská republika', and the country table doesn't know them. That's most of its false
+  MRZ_VISUAL_MISMATCH. (The oracle hands over the ISO code, so it never sees this.)
+- **A half-fixed bug.** The quote check now accepts "R 00000" for R00000 (below), but the value itself isn't
+  normalised. A model that reports "R 00000", as both did, still gets a false MRZ_VISUAL_MISMATCH on
+  Liechtenstein.
+
+The models' own mistakes were all stopped before they could do harm:
+
+- gpt-5.4-mini read Portugal's "I700044" as 1700044 and added the check digit to Slovenia's number. It
+  wrote Cyprus's MRZ with one '<' too many (45 characters, which the filler repair doesn't cover). It quoted
+  Bulgaria's given names in Cyrillic, which the quote check rightly doesn't accept as "MARITSA RADNEVA".
+- qwen made up a surname. It reported "LÓPEZ" for Spain's ESPAÑOLA ESPAÑOLA, and "LÓPEZ" isn't on the page,
+  so the quote check stopped it. It shifted Norway's fields by one (surname "NOR"), returned the whole MRZ
+  as the Dutch passport number, and read Cyprus's expiry as 2020, a false PASSPORT_EXPIRED.
+- qwen failed outright on Latvia and Slovenia. It started repeating '<' in MRZ line 1 and never closed the
+  JSON. At temperature 0 it fails the same way every time. These two count as errors and are left out of
+  its numbers.
+- The rules baseline missed Switzerland's expiry: OCR lost the first MRZ character, so the check digits
+  failed and the expiry check couldn't run. The file still went to a person.
+
+From the first three specimens:
+
 - The MRZ OCR pass reads line 2 with valid check digits on Bulgaria and Liechtenstein. On Cyprus it reads
   the zeros in "L00000000" as O, Q and D. So the rules baseline, which has only the OCR, flags a valid
   passport as MRZ_CHECK_FAILED. That's a false alarm, but a safe one.
-- The rules baseline reads none of the visual zone (11% field accuracy). Its patterns only know my own
-  layout.
-- The suite found two bugs, both fixed with tests. The grouped passport number above was one. The other:
+- The rules baseline reads almost none of the visual zone. Its patterns only know my own layout.
+- They found two bugs, both fixed with tests. The grouped passport number above was one. The other:
   OCR read Liechtenstein's MRZ number "R00000" as "ROOOOO", and that passes the check digit too (five O's
   add 24 x 15 = 360, which is 0 mod 10). Because the OCR reading won ties, the system reported a false
   MRZ_VISUAL_MISMATCH. Now, when the model's reading also passes and the two differ only in look-alike
@@ -339,7 +433,7 @@ python -m kyc_demo eval -e rules -e oracle -e openai:gpt-5.4-mini@both --tiers p
 python -m kyc_demo eval -e ollama:qwen2.5vl:7b@both --suite hard
 python -m kyc_demo eval -e oracle --suite real --tiers real
 python -m pytest
-scripts/pending.sh                         # the runs that need keys (see "What's still missing")
+scripts/pending.sh                         # the Azure runs, which need a key I don't have
 
 python -m kyc_demo serve                   # API on :8000
 cd web && pnpm install && pnpm dev         # web UI on :5173

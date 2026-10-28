@@ -2,7 +2,7 @@
  "extractor": "oracle",
  "suite": "blind",
  "as_of": "2026-10-21",
- "platform": "linux, tesseract 5.3.4",
+ "platform": "macOS, tesseract 5.5.1",
  "tiers": {
   "clean": {
    "files": 24,
@@ -107,7 +107,7 @@
   },
   "scan": {
    "files": 24,
-   "field_accuracy": 0.986,
+   "field_accuracy": 0.988,
    "critical_field_accuracy": 0.983,
    "defect_recall": 0.885,
    "defect_recall_ci": [
@@ -120,7 +120,7 @@
    ],
    "defects_not_flagged": 3,
    "right_check_rate": 0.885,
-   "defect_precision": 0.548,
+   "defect_precision": 0.561,
    "missed_defect_files": 0,
    "missed_defect_files_ci": [
     0.0,
@@ -150,7 +150,7 @@
     "passport.expiry_date": 0.792,
     "passport.given_names": 1.0,
     "passport.mrz_line1": 1.0,
-    "passport.mrz_line2": 0.958,
+    "passport.mrz_line2": 1.0,
     "passport.nationality": 1.0,
     "passport.sex": 1.0,
     "passport.surname": 1.0,
@@ -443,7 +443,7 @@
       "mrz_line2": "verified"
      },
      "form_a": {
-      "contracting_partner": "verified",
+      "contracting_partner": "corroborated",
       "beneficial_owner_name": "verified",
       "beneficial_owner_date_of_birth": "corroborated",
       "beneficial_owner_nationality": "verified",
@@ -457,7 +457,7 @@
      }
     },
     "totals": {
-     "seconds": 1.06,
+     "seconds": 6.42,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -618,7 +618,7 @@
      }
     },
     "totals": {
-     "seconds": 1.49,
+     "seconds": 7.28,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -768,7 +768,7 @@
      }
     },
     "totals": {
-     "seconds": 1.41,
+     "seconds": 6.69,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -934,7 +934,7 @@
      }
     },
     "totals": {
-     "seconds": 1.22,
+     "seconds": 5.7,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1084,7 +1084,7 @@
      "form_a": {
       "contracting_partner": "verified",
       "beneficial_owner_name": "verified",
-      "beneficial_owner_date_of_birth": "corroborated",
+      "beneficial_owner_date_of_birth": "verified",
       "beneficial_owner_nationality": "verified",
       "beneficial_owner_address": "verified"
      },
@@ -1096,7 +1096,7 @@
      }
     },
     "totals": {
-     "seconds": 1.35,
+     "seconds": 5.2,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1246,7 +1246,7 @@
      "form_a": {
       "contracting_partner": "verified",
       "beneficial_owner_name": "verified",
-      "beneficial_owner_date_of_birth": "verified",
+      "beneficial_owner_date_of_birth": "corroborated",
       "beneficial_owner_nationality": "verified",
       "beneficial_owner_address": "verified"
      },
@@ -1258,7 +1258,7 @@
      }
     },
     "totals": {
-     "seconds": 1.44,
+     "seconds": 5.23,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1414,7 +1414,7 @@
      }
     },
     "totals": {
-     "seconds": 1.53,
+     "seconds": 6.09,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1577,7 +1577,7 @@
      }
     },
     "totals": {
-     "seconds": 1.34,
+     "seconds": 4.99,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1740,7 +1740,7 @@
      }
     },
     "totals": {
-     "seconds": 1.2,
+     "seconds": 3.84,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1904,7 +1904,7 @@
      }
     },
     "totals": {
-     "seconds": 1.97,
+     "seconds": 7.8,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2069,7 +2069,7 @@
      }
     },
     "totals": {
-     "seconds": 1.44,
+     "seconds": 4.98,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2221,7 +2221,7 @@
      }
     },
     "totals": {
-     "seconds": 1.67,
+     "seconds": 4.53,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2384,7 +2384,7 @@
      }
     },
     "totals": {
-     "seconds": 1.39,
+     "seconds": 6.49,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2540,7 +2540,7 @@
      }
     },
     "totals": {
-     "seconds": 1.79,
+     "seconds": 7.04,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2703,7 +2703,7 @@
      }
     },
     "totals": {
-     "seconds": 1.09,
+     "seconds": 5.89,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2868,7 +2868,7 @@
      }
     },
     "totals": {
-     "seconds": 1.33,
+     "seconds": 4.86,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3026,7 +3026,7 @@
      }
     },
     "totals": {
-     "seconds": 1.35,
+     "seconds": 4.75,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3189,7 +3189,7 @@
      }
     },
     "totals": {
-     "seconds": 1.6,
+     "seconds": 6.39,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3341,7 +3341,7 @@
      }
     },
     "totals": {
-     "seconds": 1.26,
+     "seconds": 4.87,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3504,7 +3504,7 @@
      }
     },
     "totals": {
-     "seconds": 1.33,
+     "seconds": 4.41,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3673,7 +3673,7 @@
      }
     },
     "totals": {
-     "seconds": 1.28,
+     "seconds": 6.85,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3843,7 +3843,7 @@
      }
     },
     "totals": {
-     "seconds": 1.23,
+     "seconds": 6.37,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4005,7 +4005,7 @@
      }
     },
     "totals": {
-     "seconds": 1.13,
+     "seconds": 5.61,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4169,7 +4169,7 @@
      }
     },
     "totals": {
-     "seconds": 0.85,
+     "seconds": 4.33,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4325,7 +4325,7 @@
      }
     },
     "totals": {
-     "seconds": 1.2,
+     "seconds": 5.79,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4472,10 +4472,10 @@
       "mrz_line2": "verified"
      },
      "form_a": {
-      "contracting_partner": "corroborated",
+      "contracting_partner": "verified",
       "beneficial_owner_name": "verified",
       "beneficial_owner_date_of_birth": "corroborated",
-      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_nationality": "corroborated",
       "beneficial_owner_address": "unverified"
      },
      "proof_of_address": {
@@ -4486,7 +4486,7 @@
      }
     },
     "totals": {
-     "seconds": 1.32,
+     "seconds": 4.59,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4512,14 +4512,11 @@
     },
     "decision": "manual_review",
     "raised": [
-     "CHECK_SKIPPED",
-     "MRZ_VISUAL_MISMATCH"
+     "CHECK_SKIPPED"
     ],
     "expected": [],
     "expected_checks": [],
-    "failed_checks": [
-     "passport.mrz_vs_visual"
-    ],
+    "failed_checks": [],
     "fields": {
      "passport.surname": {
       "ok": true,
@@ -4562,8 +4559,8 @@
       "want": "P<UTOTANAKA<<HARUKI<<<<<<<<<<<<<<<<<<<<<<<<<"
      },
      "passport.mrz_line2": {
-      "ok": false,
-      "got": "DA844386733PN9204155M2611136<<<<<<<<<<<<<<<6",
+      "ok": true,
+      "got": "DA84438673JPN9204155M2611136<<<<<<<<<<<<<<<6",
       "want": "DA84438673JPN9204155M2611136<<<<<<<<<<<<<<<6"
      },
      "form_a.contracting_partner": {
@@ -4639,7 +4636,7 @@
      }
     },
     "totals": {
-     "seconds": 1.51,
+     "seconds": 5.24,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4805,7 +4802,7 @@
      }
     },
     "totals": {
-     "seconds": 1.41,
+     "seconds": 4.85,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4967,7 +4964,7 @@
      }
     },
     "totals": {
-     "seconds": 1.51,
+     "seconds": 7.27,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5105,7 +5102,7 @@
     "evidence": {
      "passport": {
       "surname": "verified",
-      "given_names": "verified",
+      "given_names": "corroborated",
       "nationality": "verified",
       "date_of_birth": "verified",
       "sex": "verified",
@@ -5129,7 +5126,7 @@
      }
     },
     "totals": {
-     "seconds": 1.27,
+     "seconds": 5.62,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5259,7 +5256,7 @@
       "surname": "verified",
       "given_names": "verified",
       "nationality": "verified",
-      "date_of_birth": "verified",
+      "date_of_birth": "corroborated",
       "sex": "verified",
       "document_number": "verified",
       "expiry_date": "verified",
@@ -5281,7 +5278,7 @@
      }
     },
     "totals": {
-     "seconds": 1.44,
+     "seconds": 5.83,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5444,7 +5441,7 @@
      }
     },
     "totals": {
-     "seconds": 1.41,
+     "seconds": 5.91,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5593,7 +5590,7 @@
       "mrz_line2": "verified"
      },
      "form_a": {
-      "contracting_partner": "verified",
+      "contracting_partner": "corroborated",
       "beneficial_owner_name": "verified",
       "beneficial_owner_date_of_birth": "unverified",
       "beneficial_owner_nationality": "verified",
@@ -5607,7 +5604,7 @@
      }
     },
     "totals": {
-     "seconds": 1.67,
+     "seconds": 6.04,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5771,7 +5768,7 @@
      }
     },
     "totals": {
-     "seconds": 1.68,
+     "seconds": 5.72,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5914,7 +5911,7 @@
       "surname": "verified",
       "given_names": "verified",
       "nationality": "verified",
-      "date_of_birth": "verified",
+      "date_of_birth": "corroborated",
       "sex": "verified",
       "document_number": "verified",
       "expiry_date": "verified",
@@ -5936,7 +5933,7 @@
      }
     },
     "totals": {
-     "seconds": 1.24,
+     "seconds": 4.64,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6081,8 +6078,8 @@
       "contracting_partner": "corroborated",
       "beneficial_owner_name": "verified",
       "beneficial_owner_date_of_birth": "verified",
-      "beneficial_owner_nationality": "corroborated",
-      "beneficial_owner_address": "corroborated"
+      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_address": "verified"
      },
      "proof_of_address": {
       "name": "verified",
@@ -6092,7 +6089,7 @@
      }
     },
     "totals": {
-     "seconds": 1.45,
+     "seconds": 5.65,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6232,7 +6229,7 @@
      "passport": {
       "surname": "verified",
       "given_names": "verified",
-      "nationality": "corroborated",
+      "nationality": "verified",
       "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
@@ -6255,7 +6252,7 @@
      }
     },
     "totals": {
-     "seconds": 1.42,
+     "seconds": 6.94,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6413,7 +6410,7 @@
      }
     },
     "totals": {
-     "seconds": 1.55,
+     "seconds": 6.78,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6576,7 +6573,7 @@
      }
     },
     "totals": {
-     "seconds": 1.41,
+     "seconds": 5.61,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6741,7 +6738,7 @@
      }
     },
     "totals": {
-     "seconds": 1.27,
+     "seconds": 4.44,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6897,7 +6894,7 @@
      }
     },
     "totals": {
-     "seconds": 1.75,
+     "seconds": 6.6,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7051,7 +7048,7 @@
       "beneficial_owner_name": "verified",
       "beneficial_owner_date_of_birth": "unverified",
       "beneficial_owner_nationality": "unverified",
-      "beneficial_owner_address": "unverified"
+      "beneficial_owner_address": "verified"
      },
      "proof_of_address": {
       "name": "verified",
@@ -7061,7 +7058,7 @@
      }
     },
     "totals": {
-     "seconds": 1.44,
+     "seconds": 6.42,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7215,7 +7212,7 @@
      }
     },
     "totals": {
-     "seconds": 1.48,
+     "seconds": 6.29,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7376,7 +7373,7 @@
      }
     },
     "totals": {
-     "seconds": 1.16,
+     "seconds": 6.04,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7544,7 +7541,7 @@
      }
     },
     "totals": {
-     "seconds": 1.42,
+     "seconds": 5.64,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7699,7 +7696,7 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "corroborated",
+      "beneficial_owner_name": "verified",
       "beneficial_owner_date_of_birth": "corroborated",
       "beneficial_owner_nationality": "unverified",
       "beneficial_owner_address": "unverified"
@@ -7712,7 +7709,7 @@
      }
     },
     "totals": {
-     "seconds": 1.45,
+     "seconds": 5.92,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7874,7 +7871,7 @@
      }
     },
     "totals": {
-     "seconds": 1.46,
+     "seconds": 5.95,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8038,7 +8035,7 @@
      }
     },
     "totals": {
-     "seconds": 1.39,
+     "seconds": 5.58,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8194,7 +8191,7 @@
      }
     },
     "totals": {
-     "seconds": 1.16,
+     "seconds": 4.88,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8356,7 +8353,7 @@
      }
     },
     "totals": {
-     "seconds": 1.09,
+     "seconds": 4.02,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8498,7 +8495,7 @@
      "form_a": {
       "contracting_partner": "corroborated",
       "beneficial_owner_name": "verified",
-      "beneficial_owner_date_of_birth": "verified",
+      "beneficial_owner_date_of_birth": "corroborated",
       "beneficial_owner_nationality": "verified",
       "beneficial_owner_address": "corroborated"
      },
@@ -8510,7 +8507,7 @@
      }
     },
     "totals": {
-     "seconds": 1.01,
+     "seconds": 4.53,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8676,7 +8673,7 @@
      }
     },
     "totals": {
-     "seconds": 0.77,
+     "seconds": 3.4,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8838,7 +8835,7 @@
      }
     },
     "totals": {
-     "seconds": 1.4,
+     "seconds": 5.46,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9001,7 +8998,7 @@
      }
     },
     "totals": {
-     "seconds": 1.14,
+     "seconds": 5.32,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9146,7 +9143,7 @@
       "contracting_partner": "verified",
       "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "verified",
-      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_nationality": "corroborated",
       "beneficial_owner_address": "corroborated"
      },
      "proof_of_address": {
@@ -9157,7 +9154,7 @@
      }
     },
     "totals": {
-     "seconds": 1.25,
+     "seconds": 5.81,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9320,7 +9317,7 @@
      }
     },
     "totals": {
-     "seconds": 0.95,
+     "seconds": 5.71,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9484,7 +9481,7 @@
      }
     },
     "totals": {
-     "seconds": 1.01,
+     "seconds": 5.17,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9649,7 +9646,7 @@
      }
     },
     "totals": {
-     "seconds": 1.21,
+     "seconds": 5.17,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9814,7 +9811,7 @@
      }
     },
     "totals": {
-     "seconds": 0.87,
+     "seconds": 4.65,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9955,7 +9952,7 @@
       "contracting_partner": "verified",
       "beneficial_owner_name": "verified",
       "beneficial_owner_date_of_birth": "verified",
-      "beneficial_owner_nationality": "corroborated",
+      "beneficial_owner_nationality": "verified",
       "beneficial_owner_address": "verified"
      },
      "proof_of_address": {
@@ -9966,7 +9963,7 @@
      }
     },
     "totals": {
-     "seconds": 1.0,
+     "seconds": 5.17,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10129,7 +10126,7 @@
      }
     },
     "totals": {
-     "seconds": 1.0,
+     "seconds": 5.44,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10159,12 +10156,14 @@
     },
     "decision": "manual_review",
     "raised": [
-     "ADDRESS_MISMATCH"
+     "ADDRESS_MISMATCH",
+     "EVIDENCE_NOT_FOUND"
     ],
     "expected": [],
     "expected_checks": [],
     "failed_checks": [
-     "cross.address"
+     "cross.address",
+     "proof_of_address.evidence"
     ],
     "fields": {
      "passport.surname": {
@@ -10279,13 +10278,13 @@
      },
      "proof_of_address": {
       "name": "verified",
-      "address": "verified",
+      "address": "unverified",
       "issue_date": "verified",
       "issuer": "verified"
      }
     },
     "totals": {
-     "seconds": 1.14,
+     "seconds": 5.64,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10448,7 +10447,7 @@
      }
     },
     "totals": {
-     "seconds": 1.06,
+     "seconds": 4.06,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10613,7 +10612,7 @@
      }
     },
     "totals": {
-     "seconds": 0.93,
+     "seconds": 4.75,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10760,7 +10759,7 @@
       "contracting_partner": "verified",
       "beneficial_owner_name": "verified",
       "beneficial_owner_date_of_birth": "verified",
-      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_nationality": "corroborated",
       "beneficial_owner_address": "verified"
      },
      "proof_of_address": {
@@ -10771,7 +10770,7 @@
      }
     },
     "totals": {
-     "seconds": 1.05,
+     "seconds": 4.86,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10935,7 +10934,7 @@
      }
     },
     "totals": {
-     "seconds": 1.08,
+     "seconds": 4.82,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -11089,7 +11088,7 @@
      }
     },
     "totals": {
-     "seconds": 1.04,
+     "seconds": 4.85,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -11250,7 +11249,7 @@
      }
     },
     "totals": {
-     "seconds": 1.03,
+     "seconds": 5.12,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -11281,7 +11280,6 @@
     "raised": [
      "ADDRESS_MISMATCH",
      "EVIDENCE_NOT_FOUND",
-     "EVIDENCE_OUT_OF_PLACE",
      "FORM_A_UNSIGNED",
      "NAME_MISMATCH",
      "PROOF_OF_ADDRESS_TOO_OLD"
@@ -11299,7 +11297,6 @@
      "cross.name_passport_bill",
      "form_a.evidence",
      "form_a.signed",
-     "passport.evidence_place",
      "poa.age"
     ],
     "fields": {
@@ -11399,10 +11396,10 @@
       "surname": "verified",
       "given_names": "verified",
       "nationality": "verified",
-      "date_of_birth": "corroborated",
+      "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
-      "expiry_date": "out_of_place",
+      "expiry_date": "verified",
       "mrz_line1": "verified",
       "mrz_line2": "verified"
      },
@@ -11421,7 +11418,7 @@
      }
     },
     "totals": {
-     "seconds": 0.95,
+     "seconds": 4.56,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -11568,7 +11565,7 @@
      "passport": {
       "surname": "verified",
       "given_names": "verified",
-      "nationality": "corroborated",
+      "nationality": "verified",
       "date_of_birth": "verified",
       "sex": "verified",
       "document_number": "verified",
@@ -11591,7 +11588,7 @@
      }
     },
     "totals": {
-     "seconds": 1.05,
+     "seconds": 4.74,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -11741,7 +11738,7 @@
      "form_a": {
       "contracting_partner": "verified",
       "beneficial_owner_name": "verified",
-      "beneficial_owner_date_of_birth": "verified",
+      "beneficial_owner_date_of_birth": "corroborated",
       "beneficial_owner_nationality": "verified",
       "beneficial_owner_address": "corroborated"
      },
@@ -11753,7 +11750,7 @@
      }
     },
     "totals": {
-     "seconds": 0.95,
+     "seconds": 4.69,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -11917,7 +11914,7 @@
      }
     },
     "totals": {
-     "seconds": 1.0,
+     "seconds": 4.53,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,

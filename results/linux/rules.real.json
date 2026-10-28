@@ -1,0 +1,329 @@
+{
+ "extractor": "rules",
+ "suite": "real",
+ "as_of": "2026-10-21",
+ "platform": "linux, tesseract 5.3.4",
+ "tiers": {
+  "real": {
+   "files": 3,
+   "field_accuracy": 0.111,
+   "critical_field_accuracy": 0.0,
+   "defect_recall": 1.0,
+   "defect_recall_ci": [
+    0.342,
+    1.0
+   ],
+   "defect_recall_n": [
+    2,
+    2
+   ],
+   "defects_not_flagged": 0,
+   "right_check_rate": 1.0,
+   "defect_precision": 0.667,
+   "missed_defect_files": 0,
+   "missed_defect_files_ci": [
+    0.0,
+    0.658
+   ],
+   "defect_files": 2,
+   "errors": 0,
+   "straight_through_rate": 0.0,
+   "straight_through_ci": [
+    0.0,
+    0.793
+   ],
+   "clean_files": 1,
+   "routing_accuracy": 0.667,
+   "trap_false_alarm_rate": null,
+   "process_flags_per_file": 3.0,
+   "seconds_per_file": 0.0,
+   "cost_per_file_usd": 0.0,
+   "fields": {
+    "passport.date_of_birth": 0.0,
+    "passport.document_number": 0.0,
+    "passport.expiry_date": 0.0,
+    "passport.given_names": 0.0,
+    "passport.mrz_line1": 0.667,
+    "passport.mrz_line2": 0.333,
+    "passport.nationality": 0.0,
+    "passport.sex": 0.0,
+    "passport.surname": 0.0
+   },
+   "per_defect": {
+    "PASSPORT_EXPIRED": 1.0
+   },
+   "per_trap": {}
+  }
+ },
+ "cases": {
+  "real": [
+   {
+    "case": "real_001",
+    "tier": "real",
+    "defects": [
+     "PASSPORT_EXPIRED"
+    ],
+    "traps": [],
+    "trap_guards": {},
+    "layouts": {
+     "passport": "Bulgaria"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_DOCUMENT",
+     "MISSING_FIELD",
+     "PASSPORT_EXPIRED"
+    ],
+    "expected": [
+     "PASSPORT_EXPIRED"
+    ],
+    "expected_checks": [
+     "passport.not_expired"
+    ],
+    "failed_checks": [
+     "form_a.present",
+     "passport.not_expired",
+     "passport.required",
+     "proof_of_address.present"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "IVANOVA"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "MARITSA RADNEVA"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "BGR"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1985-08-01"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "300000000"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2015-03-20"
+     },
+     "passport.mrz_line1": {
+      "ok": false,
+      "got": "P<BGRIVANOVASKMARITSA<RADNEVA<<<<<<<<<<<<<<<",
+      "want": "P<BGRIVANOVA<<MARITSA<RADNEVA<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "3000000001BGR8508018F15032098508010133<<<<54",
+      "want": "3000000001BGR8508018F15032098508010133<<<<54"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.57,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "real_002",
+    "tier": "real",
+    "defects": [],
+    "traps": [],
+    "trap_guards": {},
+    "layouts": {
+     "passport": "Cypriot"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_DOCUMENT",
+     "MISSING_FIELD",
+     "MRZ_CHECK_FAILED"
+    ],
+    "expected": [],
+    "expected_checks": [],
+    "failed_checks": [
+     "form_a.present",
+     "passport.mrz_check_digits",
+     "passport.required",
+     "proof_of_address.present"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "POLITIS"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "ZINONAS"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "CYP"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1980-12-14"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "L00000000"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2030-06-15"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<CYPPOLITIS<<ZINONAS<<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<CYPPOLITIS<<ZINONAS<<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": false,
+      "got": "LOOQOODO007CYP8012148M3006151<<<<<<<<<<<<<<0",
+      "want": "L000000007CYP8012148M3006151<<<<<<<<<<<<<<08"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.24,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "real_003",
+    "tier": "real",
+    "defects": [
+     "PASSPORT_EXPIRED"
+    ],
+    "traps": [],
+    "trap_guards": {},
+    "layouts": {
+     "passport": "Liechtenstein"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_DOCUMENT",
+     "MISSING_FIELD",
+     "PASSPORT_EXPIRED"
+    ],
+    "expected": [
+     "PASSPORT_EXPIRED"
+    ],
+    "expected_checks": [
+     "passport.not_expired"
+    ],
+    "failed_checks": [
+     "form_a.present",
+     "passport.not_expired",
+     "passport.required",
+     "proof_of_address.present"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "WALCH"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "HANS PETER"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "LIE"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1953-09-05"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "R00000"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2016-12-26"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<LIEWALCH<<HANS<PETER<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<LIEWALCH<<HANS<PETER<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": false,
+      "got": "ROOOOO<<<9LIE5309052M1612262<<<<<<<<<<<<<<<0",
+      "want": "R00000<<<9LIE5309052M1612262<<<<<<<<<<<<<<<0"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.25,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   }
+  ]
+ }
+}

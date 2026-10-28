@@ -2,55 +2,61 @@
  "extractor": "rules",
  "suite": "hard",
  "as_of": "2026-10-21",
+ "platform": "macOS, tesseract 5.5.1",
  "tiers": {
   "clean": {
-   "files": 16,
-   "field_accuracy": 0.542,
-   "critical_field_accuracy": 0.479,
-   "defect_recall": 0.333,
+   "files": 18,
+   "field_accuracy": 0.54,
+   "critical_field_accuracy": 0.481,
+   "defect_recall": 0.286,
    "defect_recall_ci": [
-    0.138,
-    0.609
+    0.117,
+    0.546
    ],
    "defect_recall_n": [
     4,
-    12
+    14
    ],
-   "defects_not_flagged": 8,
-   "right_check_rate": 0.333,
-   "defect_precision": 0.25,
+   "defects_not_flagged": 10,
+   "right_check_rate": 0.286,
+   "defect_precision": 0.235,
    "missed_defect_files": 0,
    "missed_defect_files_ci": [
     0.0,
-    0.243
+    0.215
    ],
-   "defect_files": 12,
+   "defect_files": 14,
    "errors": 0,
    "straight_through_rate": 0.0,
-   "routing_accuracy": 0.75,
+   "straight_through_ci": [
+    0.0,
+    0.49
+   ],
+   "clean_files": 4,
+   "routing_accuracy": 0.778,
    "trap_false_alarm_rate": 0.25,
-   "process_flags_per_file": 2.19,
+   "process_flags_per_file": 2.17,
    "seconds_per_file": 0.0,
    "cost_per_file_usd": 0.0,
    "fields": {
-    "form_a.beneficial_owner_address": 0.125,
-    "form_a.beneficial_owner_date_of_birth": 0.125,
-    "form_a.beneficial_owner_name": 0.25,
-    "form_a.beneficial_owner_nationality": 0.062,
-    "form_a.contracting_partner": 0.188,
-    "passport.date_of_birth": 0.938,
+    "form_a.beneficial_owner_address": 0.111,
+    "form_a.beneficial_owner_date_of_birth": 0.111,
+    "form_a.beneficial_owner_name": 0.278,
+    "form_a.beneficial_owner_nationality": 0.111,
+    "form_a.contracting_partner": 0.167,
+    "passport.date_of_birth": 0.944,
     "passport.document_number": 1.0,
-    "passport.expiry_date": 0.938,
+    "passport.expiry_date": 0.944,
     "passport.given_names": 1.0,
     "passport.mrz_line1": 1.0,
-    "passport.mrz_line2": 0.875,
-    "passport.nationality": 0.938,
+    "passport.mrz_line2": 0.889,
+    "passport.nationality": 0.889,
     "passport.sex": 0.0,
     "passport.surname": 1.0,
-    "proof_of_address.address": 0.062,
-    "proof_of_address.issue_date": 0.125,
+    "proof_of_address.address": 0.056,
+    "proof_of_address.issue_date": 0.111,
     "proof_of_address.issuer": 1.0,
-    "proof_of_address.name": 0.125
+    "proof_of_address.name": 0.111
    },
    "per_defect": {
     "ADDRESS_MISMATCH": 0.0,
@@ -72,52 +78,57 @@
    }
   },
   "scan": {
-   "files": 16,
-   "field_accuracy": 0.181,
-   "critical_field_accuracy": 0.036,
-   "defect_recall": 0.25,
+   "files": 18,
+   "field_accuracy": 0.185,
+   "critical_field_accuracy": 0.042,
+   "defect_recall": 0.214,
    "defect_recall_ci": [
-    0.089,
-    0.532
+    0.076,
+    0.476
    ],
    "defect_recall_n": [
     3,
-    12
+    14
    ],
-   "defects_not_flagged": 9,
-   "right_check_rate": 0.25,
-   "defect_precision": 0.333,
+   "defects_not_flagged": 11,
+   "right_check_rate": 0.214,
+   "defect_precision": 0.3,
    "missed_defect_files": 0,
    "missed_defect_files_ci": [
     0.0,
-    0.243
+    0.215
    ],
-   "defect_files": 12,
+   "defect_files": 14,
    "errors": 0,
    "straight_through_rate": 0.0,
-   "routing_accuracy": 0.75,
+   "straight_through_ci": [
+    0.0,
+    0.49
+   ],
+   "clean_files": 4,
+   "routing_accuracy": 0.778,
    "trap_false_alarm_rate": 0.0,
-   "process_flags_per_file": 2.25,
+   "process_flags_per_file": 2.28,
    "seconds_per_file": 0.0,
    "cost_per_file_usd": 0.0,
    "fields": {
-    "form_a.beneficial_owner_address": 0.062,
-    "form_a.beneficial_owner_date_of_birth": 0.125,
+    "form_a.beneficial_owner_address": 0.056,
+    "form_a.beneficial_owner_date_of_birth": 0.167,
     "form_a.beneficial_owner_name": 0.0,
     "form_a.beneficial_owner_nationality": 0.0,
-    "form_a.contracting_partner": 0.25,
+    "form_a.contracting_partner": 0.278,
     "passport.date_of_birth": 0.0,
-    "passport.document_number": 0.062,
+    "passport.document_number": 0.056,
     "passport.expiry_date": 0.0,
-    "passport.given_names": 0.0,
-    "passport.mrz_line1": 0.812,
-    "passport.mrz_line2": 0.812,
+    "passport.given_names": 0.056,
+    "passport.mrz_line1": 0.778,
+    "passport.mrz_line2": 0.833,
     "passport.nationality": 0.0,
-    "passport.sex": 0.188,
+    "passport.sex": 0.167,
     "passport.surname": 0.0,
-    "proof_of_address.address": 0.062,
-    "proof_of_address.issue_date": 0.125,
-    "proof_of_address.issuer": 0.75,
+    "proof_of_address.address": 0.056,
+    "proof_of_address.issue_date": 0.111,
+    "proof_of_address.issuer": 0.778,
     "proof_of_address.name": 0.0
    },
    "per_defect": {
@@ -140,52 +151,57 @@
    }
   },
   "photo": {
-   "files": 16,
-   "field_accuracy": 0.33,
-   "critical_field_accuracy": 0.229,
-   "defect_recall": 0.167,
+   "files": 18,
+   "field_accuracy": 0.327,
+   "critical_field_accuracy": 0.222,
+   "defect_recall": 0.143,
    "defect_recall_ci": [
-    0.047,
-    0.448
+    0.04,
+    0.399
    ],
    "defect_recall_n": [
     2,
-    12
+    14
    ],
-   "defects_not_flagged": 10,
-   "right_check_rate": 0.167,
-   "defect_precision": 0.222,
+   "defects_not_flagged": 12,
+   "right_check_rate": 0.143,
+   "defect_precision": 0.2,
    "missed_defect_files": 0,
    "missed_defect_files_ci": [
     0.0,
-    0.243
+    0.215
    ],
-   "defect_files": 12,
+   "defect_files": 14,
    "errors": 0,
    "straight_through_rate": 0.0,
-   "routing_accuracy": 0.75,
+   "straight_through_ci": [
+    0.0,
+    0.49
+   ],
+   "clean_files": 4,
+   "routing_accuracy": 0.778,
    "trap_false_alarm_rate": 0.0,
-   "process_flags_per_file": 2.12,
+   "process_flags_per_file": 2.11,
    "seconds_per_file": 0.0,
    "cost_per_file_usd": 0.0,
    "fields": {
-    "form_a.beneficial_owner_address": 0.062,
+    "form_a.beneficial_owner_address": 0.056,
     "form_a.beneficial_owner_date_of_birth": 0.0,
-    "form_a.beneficial_owner_name": 0.062,
-    "form_a.beneficial_owner_nationality": 0.062,
-    "form_a.contracting_partner": 0.25,
-    "passport.date_of_birth": 0.562,
-    "passport.document_number": 0.188,
+    "form_a.beneficial_owner_name": 0.056,
+    "form_a.beneficial_owner_nationality": 0.056,
+    "form_a.contracting_partner": 0.278,
+    "passport.date_of_birth": 0.556,
+    "passport.document_number": 0.167,
     "passport.expiry_date": 0.5,
-    "passport.given_names": 0.688,
-    "passport.mrz_line1": 0.938,
-    "passport.mrz_line2": 0.938,
-    "passport.nationality": 0.188,
-    "passport.sex": 0.25,
+    "passport.given_names": 0.667,
+    "passport.mrz_line1": 0.944,
+    "passport.mrz_line2": 0.889,
+    "passport.nationality": 0.167,
+    "passport.sex": 0.278,
     "passport.surname": 0.5,
-    "proof_of_address.address": 0.062,
-    "proof_of_address.issue_date": 0.062,
-    "proof_of_address.issuer": 0.625,
+    "proof_of_address.address": 0.056,
+    "proof_of_address.issue_date": 0.056,
+    "proof_of_address.issuer": 0.667,
     "proof_of_address.name": 0.0
    },
    "per_defect": {
@@ -219,6 +235,7 @@
     "traps": [
      "ADDR_ABBREVIATED"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "fr/letter"
@@ -347,7 +364,7 @@
      }
     },
     "totals": {
-     "seconds": 0.46,
+     "seconds": 0.99,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -363,6 +380,7 @@
     "traps": [
      "NAME_SURNAME_FIRST"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/table",
      "proof_of_address": "fr/letter"
@@ -490,7 +508,7 @@
      }
     },
     "totals": {
-     "seconds": 0.45,
+     "seconds": 1.06,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -504,6 +522,7 @@
     "traps": [
      "POA_AT_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/table",
      "proof_of_address": "de/letter"
@@ -628,7 +647,7 @@
      }
     },
     "totals": {
-     "seconds": 0.47,
+     "seconds": 1.09,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -642,6 +661,7 @@
      "PROOF_OF_ADDRESS_TOO_OLD"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/table",
      "proof_of_address": "fr/letter"
@@ -770,7 +790,7 @@
      }
     },
     "totals": {
-     "seconds": 0.47,
+     "seconds": 1.04,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -784,6 +804,7 @@
     "traps": [
      "PASSPORT_EXPIRES_TODAY"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "de/table"
@@ -912,7 +933,7 @@
      }
     },
     "totals": {
-     "seconds": 0.46,
+     "seconds": 0.97,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -926,6 +947,7 @@
      "PASSPORT_EXPIRED"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/lines",
      "proof_of_address": "de/table"
@@ -1056,7 +1078,7 @@
      }
     },
     "totals": {
-     "seconds": 0.46,
+     "seconds": 1.03,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1070,6 +1092,7 @@
      "DOB_MISMATCH"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/lines",
      "proof_of_address": "de/letter"
@@ -1209,7 +1232,7 @@
      }
     },
     "totals": {
-     "seconds": 0.46,
+     "seconds": 1.06,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1223,6 +1246,7 @@
      "MRZ_VISUAL_MISMATCH"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/table",
      "proof_of_address": "fr/table"
@@ -1353,7 +1377,7 @@
      }
     },
     "totals": {
-     "seconds": 0.46,
+     "seconds": 0.92,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1367,6 +1391,7 @@
      "SUSPICIOUS_INSTRUCTIONS"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "de/table"
@@ -1504,7 +1529,7 @@
      }
     },
     "totals": {
-     "seconds": 0.46,
+     "seconds": 1.04,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1518,6 +1543,7 @@
      "SUSPICIOUS_INSTRUCTIONS"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/table",
      "proof_of_address": "de/letter"
@@ -1646,7 +1672,7 @@
      }
     },
     "totals": {
-     "seconds": 0.46,
+     "seconds": 1.09,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1660,6 +1686,7 @@
      "THIRD_PARTY_OWNER"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "en/letter"
@@ -1790,7 +1817,7 @@
      }
     },
     "totals": {
-     "seconds": 0.53,
+     "seconds": 0.99,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1804,6 +1831,7 @@
      "FORM_A_UNSIGNED"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/lines",
      "proof_of_address": "de/table"
@@ -1934,7 +1962,7 @@
      }
     },
     "totals": {
-     "seconds": 0.49,
+     "seconds": 1.03,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1948,6 +1976,7 @@
      "NAME_MISMATCH"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/table",
      "proof_of_address": "de/letter"
@@ -2080,7 +2109,7 @@
      }
     },
     "totals": {
-     "seconds": 0.44,
+     "seconds": 1.25,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2094,6 +2123,7 @@
      "IMPLAUSIBLE_DATE"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "en/table"
@@ -2233,7 +2263,7 @@
      }
     },
     "totals": {
-     "seconds": 0.48,
+     "seconds": 1.52,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2247,6 +2277,7 @@
     "traps": [
      "UNSEEN_NATIONALITY"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/lines",
      "proof_of_address": "fr/letter"
@@ -2382,7 +2413,7 @@
      }
     },
     "totals": {
-     "seconds": 0.47,
+     "seconds": 1.45,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2396,6 +2427,7 @@
     "traps": [
      "UNSEEN_CITY_ALIAS"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "de/letter"
@@ -2529,7 +2561,300 @@
      }
     },
     "totals": {
-     "seconds": 0.51,
+     "seconds": 1.41,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_017",
+    "tier": "clean",
+    "defects": [
+     "ADDRESS_MISMATCH"
+    ],
+    "traps": [],
+    "trap_guards": {},
+    "layouts": {
+     "form_a": "it/lines",
+     "proof_of_address": "fr/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "ADDRESS_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.address"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "DE ALMEIDA",
+      "want": "DE ALMEIDA"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "JOAO PEDRO",
+      "want": "JOÃO PEDRO"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "BRA"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "1955-09-12",
+      "want": "1955-09-12"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "K4745078",
+      "want": "K4745078"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2032-05-06",
+      "want": "2032-05-06"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTODE<ALMEIDA<<JOAO<PEDRO<<<<<<<<<<<<<<<<<",
+      "want": "P<UTODE<ALMEIDA<<JOAO<PEDRO<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "K4745078<5BRA5509128M3205068<<<<<<<<<<<<<<<4",
+      "want": "K4745078<5BRA5509128M3205068<<<<<<<<<<<<<<<4"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "João Pedro de Almeida"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "de Almeida, João Pedro"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1955-09-12"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "BRA"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Avenue Fictive 104, 1204 Genève"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "João Pedro de Almeida"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Chemin du Test 111, 1003 Lausanne"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-08-25"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Services Industriels Fictifs SA",
+      "want": "Services Industriels Fictifs SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 1.04,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_018",
+    "tier": "clean",
+    "defects": [
+     "ADDRESS_MISMATCH"
+    ],
+    "traps": [],
+    "trap_guards": {},
+    "layouts": {
+     "form_a": "en/table",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "NAME_MISMATCH"
+    ],
+    "expected": [
+     "ADDRESS_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.address"
+    ],
+    "failed_checks": [
+     "cross.name_passport_partner",
+     "form_a.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "LEFEVRE",
+      "want": "LEFÈVRE"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "MATHILDE",
+      "want": "MATHILDE"
+     },
+     "passport.nationality": {
+      "ok": true,
+      "got": "BEL",
+      "want": "BEL"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "2001-07-07",
+      "want": "2001-07-07"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": true,
+      "got": "E4780676",
+      "want": "E4780676"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2031-04-05",
+      "want": "2031-04-05"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOLEFEVRE<<MATHILDE<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOLEFEVRE<<MATHILDE<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "E4780676<6BEL0107079F3104057<<<<<<<<<<<<<<<2",
+      "want": "E4780676<6BEL0107079F3104057<<<<<<<<<<<<<<<2"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": "partner: Mathilde Lefèvre",
+      "want": "Mathilde Lefèvre"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": true,
+      "got": "Lefèvre, Mathilde",
+      "want": "Lefèvre, Mathilde"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2001-07-07"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": true,
+      "got": "BEL",
+      "want": "BEL"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": "Chemin du Test 26, 1204 Genève, Switzerland",
+      "want": "Chemin du Test 86, 1204 Genève"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Mathilde Lefèvre"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Chemin du Test 107, 1204 Genève"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-19"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Telekom Muster AG",
+      "want": "Telekom Muster AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "nationality": "verified",
+      "date_of_birth": "verified",
+      "document_number": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified",
+      "beneficial_owner_name": "verified",
+      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_address": "verified"
+     },
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.77,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2547,6 +2872,7 @@
     "traps": [
      "ADDR_ABBREVIATED"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "fr/letter"
@@ -2673,7 +2999,7 @@
      }
     },
     "totals": {
-     "seconds": 4.33,
+     "seconds": 0.89,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2689,6 +3015,7 @@
     "traps": [
      "NAME_SURNAME_FIRST"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/table",
      "proof_of_address": "fr/letter"
@@ -2812,7 +3139,7 @@
      }
     },
     "totals": {
-     "seconds": 4.31,
+     "seconds": 0.99,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2826,6 +3153,7 @@
     "traps": [
      "POA_AT_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/table",
      "proof_of_address": "de/letter"
@@ -2947,7 +3275,7 @@
      }
     },
     "totals": {
-     "seconds": 4.74,
+     "seconds": 0.95,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2961,6 +3289,7 @@
      "PROOF_OF_ADDRESS_TOO_OLD"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/table",
      "proof_of_address": "fr/letter"
@@ -3084,7 +3413,7 @@
      }
     },
     "totals": {
-     "seconds": 5.27,
+     "seconds": 0.9,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3098,6 +3427,7 @@
     "traps": [
      "PASSPORT_EXPIRES_TODAY"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "de/table"
@@ -3217,7 +3547,7 @@
      }
     },
     "totals": {
-     "seconds": 5.31,
+     "seconds": 1.19,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3231,6 +3561,7 @@
      "PASSPORT_EXPIRED"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/lines",
      "proof_of_address": "de/table"
@@ -3356,7 +3687,7 @@
      }
     },
     "totals": {
-     "seconds": 5.0,
+     "seconds": 1.07,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3370,6 +3701,7 @@
      "DOB_MISMATCH"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/lines",
      "proof_of_address": "de/letter"
@@ -3500,7 +3832,7 @@
      }
     },
     "totals": {
-     "seconds": 4.82,
+     "seconds": 1.11,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3514,6 +3846,7 @@
      "MRZ_VISUAL_MISMATCH"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/table",
      "proof_of_address": "fr/table"
@@ -3637,7 +3970,7 @@
      }
     },
     "totals": {
-     "seconds": 4.86,
+     "seconds": 1.06,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3651,6 +3984,7 @@
      "SUSPICIOUS_INSTRUCTIONS"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "de/table"
@@ -3781,7 +4115,7 @@
      }
     },
     "totals": {
-     "seconds": 4.62,
+     "seconds": 1.0,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3795,6 +4129,7 @@
      "SUSPICIOUS_INSTRUCTIONS"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/table",
      "proof_of_address": "de/letter"
@@ -3918,7 +4253,7 @@
      "proof_of_address": {}
     },
     "totals": {
-     "seconds": 4.6,
+     "seconds": 0.99,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3932,6 +4267,7 @@
      "THIRD_PARTY_OWNER"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "en/letter"
@@ -4057,7 +4393,7 @@
      }
     },
     "totals": {
-     "seconds": 4.95,
+     "seconds": 1.01,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4071,6 +4407,7 @@
      "FORM_A_UNSIGNED"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/lines",
      "proof_of_address": "de/table"
@@ -4198,7 +4535,7 @@
      }
     },
     "totals": {
-     "seconds": 5.16,
+     "seconds": 0.99,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4212,6 +4549,7 @@
      "NAME_MISMATCH"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/table",
      "proof_of_address": "de/letter"
@@ -4336,7 +4674,7 @@
      "proof_of_address": {}
     },
     "totals": {
-     "seconds": 4.39,
+     "seconds": 1.05,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4350,6 +4688,7 @@
      "IMPLAUSIBLE_DATE"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "en/table"
@@ -4485,7 +4824,7 @@
      }
     },
     "totals": {
-     "seconds": 4.94,
+     "seconds": 1.08,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4499,6 +4838,7 @@
     "traps": [
      "UNSEEN_NATIONALITY"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/lines",
      "proof_of_address": "fr/letter"
@@ -4627,7 +4967,7 @@
      }
     },
     "totals": {
-     "seconds": 4.48,
+     "seconds": 1.04,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4641,6 +4981,7 @@
     "traps": [
      "UNSEEN_CITY_ALIAS"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "de/letter"
@@ -4648,11 +4989,13 @@
     "decision": "manual_review",
     "raised": [
      "CHECK_SKIPPED",
+     "EVIDENCE_NOT_FOUND",
      "MISSING_FIELD"
     ],
     "expected": [],
     "expected_checks": [],
     "failed_checks": [
+     "form_a.evidence",
      "form_a.required",
      "passport.required",
      "proof_of_address.required"
@@ -4756,7 +5099,7 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_nationality": "unverified",
       "beneficial_owner_address": "verified"
      },
      "proof_of_address": {
@@ -4764,7 +5107,290 @@
      }
     },
     "totals": {
-     "seconds": 4.31,
+     "seconds": 1.05,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_017",
+    "tier": "scan",
+    "defects": [
+     "ADDRESS_MISMATCH"
+    ],
+    "traps": [],
+    "trap_guards": {},
+    "layouts": {
+     "form_a": "it/lines",
+     "proof_of_address": "fr/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "ADDRESS_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.address"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "DE ALMEIDA"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "JOÃO PEDRO"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "BRA"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1955-09-12"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "K4745078"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2032-05-06"
+     },
+     "passport.mrz_line1": {
+      "ok": false,
+      "got": "P<UTODE<ALMEIDA<<JOA0<PEDRO<<<<<<<<<<<<<<<<<",
+      "want": "P<UTODE<ALMEIDA<<JOAO<PEDRO<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "K4745078<5BRA5509128M3205068<<<<<<<<<<<<<<<4",
+      "want": "K4745078<5BRA5509128M3205068<<<<<<<<<<<<<<<4"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "João Pedro de Almeida"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "de Almeida, João Pedro"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1955-09-12"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "BRA"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Avenue Fictive 104, 1204 Genève"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "João Pedro de Almeida"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Chemin du Test 111, 1003 Lausanne"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-08-25"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Services Industriels Fictifs SA",
+      "want": "Services Industriels Fictifs SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.75,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_018",
+    "tier": "scan",
+    "defects": [
+     "ADDRESS_MISMATCH"
+    ],
+    "traps": [],
+    "trap_guards": {},
+    "layouts": {
+     "form_a": "en/table",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "NAME_MISMATCH"
+    ],
+    "expected": [
+     "ADDRESS_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.address"
+    ],
+    "failed_checks": [
+     "cross.name_passport_partner",
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "LEFÈVRE"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "MATHILDE",
+      "want": "MATHILDE"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "BEL"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2001-07-07"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "E4780676"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2031-04-05"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOLEFEVRE<<MATHILDE<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOLEFEVRE<<MATHILDE<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "E4780676<6BEL0107079F3104057<<<<<<<<<<<<<<<2",
+      "want": "E4780676<6BEL0107079F3104057<<<<<<<<<<<<<<<2"
+     },
+     "form_a.contracting_partner": {
+      "ok": true,
+      "got": "Mathilde Lefèvre",
+      "want": "Mathilde Lefèvre"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Lefèvre, Mathilde"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": true,
+      "got": "2001-07-07",
+      "want": "2001-07-07"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "BEL"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": "Chemin du Test 86, 1204 Genève, Switzerla",
+      "want": "Chemin du Test 86, 1204 Genève"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Mathilde Lefèvre"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Chemin du Test 107, 1204 Genève"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-19"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Telekom Muster AG",
+      "want": "Telekom Muster AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "given_names": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified",
+      "beneficial_owner_date_of_birth": "verified",
+      "beneficial_owner_address": "verified"
+     },
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.71,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4782,6 +5408,7 @@
     "traps": [
      "ADDR_ABBREVIATED"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "fr/letter"
@@ -4909,7 +5536,7 @@
      }
     },
     "totals": {
-     "seconds": 3.95,
+     "seconds": 0.78,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4925,6 +5552,7 @@
     "traps": [
      "NAME_SURNAME_FIRST"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/table",
      "proof_of_address": "fr/letter"
@@ -5056,7 +5684,7 @@
      }
     },
     "totals": {
-     "seconds": 4.15,
+     "seconds": 0.79,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5070,6 +5698,7 @@
     "traps": [
      "POA_AT_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/table",
      "proof_of_address": "de/letter"
@@ -5190,7 +5819,7 @@
      "proof_of_address": {}
     },
     "totals": {
-     "seconds": 4.18,
+     "seconds": 0.82,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5204,6 +5833,7 @@
      "PROOF_OF_ADDRESS_TOO_OLD"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/table",
      "proof_of_address": "fr/letter"
@@ -5332,7 +5962,7 @@
      }
     },
     "totals": {
-     "seconds": 3.77,
+     "seconds": 0.8,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5346,6 +5976,7 @@
     "traps": [
      "PASSPORT_EXPIRES_TODAY"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "de/table"
@@ -5463,7 +6094,7 @@
      "proof_of_address": {}
     },
     "totals": {
-     "seconds": 4.45,
+     "seconds": 0.75,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5477,6 +6108,7 @@
      "PASSPORT_EXPIRED"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/lines",
      "proof_of_address": "de/table"
@@ -5605,7 +6237,7 @@
      }
     },
     "totals": {
-     "seconds": 4.22,
+     "seconds": 0.74,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5619,6 +6251,7 @@
      "DOB_MISMATCH"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/lines",
      "proof_of_address": "de/letter"
@@ -5752,7 +6385,7 @@
      }
     },
     "totals": {
-     "seconds": 4.12,
+     "seconds": 0.74,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5766,6 +6399,7 @@
      "MRZ_VISUAL_MISMATCH"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/table",
      "proof_of_address": "fr/table"
@@ -5892,7 +6526,7 @@
      }
     },
     "totals": {
-     "seconds": 4.03,
+     "seconds": 0.88,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5906,6 +6540,7 @@
      "SUSPICIOUS_INSTRUCTIONS"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "de/table"
@@ -6031,7 +6666,7 @@
      }
     },
     "totals": {
-     "seconds": 4.04,
+     "seconds": 0.76,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6045,6 +6680,7 @@
      "SUSPICIOUS_INSTRUCTIONS"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/table",
      "proof_of_address": "de/letter"
@@ -6174,7 +6810,7 @@
      }
     },
     "totals": {
-     "seconds": 4.14,
+     "seconds": 0.91,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6188,6 +6824,7 @@
      "THIRD_PARTY_OWNER"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "en/letter"
@@ -6318,7 +6955,7 @@
      }
     },
     "totals": {
-     "seconds": 3.85,
+     "seconds": 0.79,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6332,6 +6969,7 @@
      "FORM_A_UNSIGNED"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/lines",
      "proof_of_address": "de/table"
@@ -6464,7 +7102,7 @@
      }
     },
     "totals": {
-     "seconds": 3.57,
+     "seconds": 0.81,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6478,6 +7116,7 @@
      "NAME_MISMATCH"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/table",
      "proof_of_address": "de/letter"
@@ -6606,7 +7245,7 @@
      }
     },
     "totals": {
-     "seconds": 4.02,
+     "seconds": 0.86,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6620,6 +7259,7 @@
      "IMPLAUSIBLE_DATE"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "en/table"
@@ -6748,7 +7388,7 @@
      }
     },
     "totals": {
-     "seconds": 4.21,
+     "seconds": 0.88,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6762,6 +7402,7 @@
     "traps": [
      "UNSEEN_NATIONALITY"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/lines",
      "proof_of_address": "fr/letter"
@@ -6886,7 +7527,7 @@
      }
     },
     "totals": {
-     "seconds": 3.9,
+     "seconds": 0.91,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6900,6 +7541,7 @@
     "traps": [
      "UNSEEN_CITY_ALIAS"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "de/letter"
@@ -7028,7 +7670,292 @@
      }
     },
     "totals": {
-     "seconds": 4.03,
+     "seconds": 0.8,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_017",
+    "tier": "photo",
+    "defects": [
+     "ADDRESS_MISMATCH"
+    ],
+    "traps": [],
+    "trap_guards": {},
+    "layouts": {
+     "form_a": "it/lines",
+     "proof_of_address": "fr/table"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD",
+     "MRZ_CHECK_FAILED"
+    ],
+    "expected": [
+     "ADDRESS_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.address"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.mrz_check_digits",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": false,
+      "got": null,
+      "want": "DE ALMEIDA"
+     },
+     "passport.given_names": {
+      "ok": false,
+      "got": null,
+      "want": "JOÃO PEDRO"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "BRA"
+     },
+     "passport.date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1955-09-12"
+     },
+     "passport.sex": {
+      "ok": false,
+      "got": null,
+      "want": "M"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "K4745078"
+     },
+     "passport.expiry_date": {
+      "ok": false,
+      "got": null,
+      "want": "2032-05-06"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTODE<ALMEIDA<<JOAO<PEDRO<<<<<<<<<<<<<<<<<",
+      "want": "P<UTODE<ALMEIDA<<JOAO<PEDRO<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": false,
+      "got": "K4745078<55BRA55509128M3205068<<<<<<<<<<<<<<",
+      "want": "K4745078<5BRA5509128M3205068<<<<<<<<<<<<<<<4"
+     },
+     "form_a.contracting_partner": {
+      "ok": false,
+      "got": null,
+      "want": "João Pedro de Almeida"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "de Almeida, João Pedro"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "1955-09-12"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "BRA"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Avenue Fictive 104, 1204 Genève"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "João Pedro de Almeida"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Chemin du Test 111, 1003 Lausanne"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-08-25"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Services Industriels Fictifs SA",
+      "want": "Services Industriels Fictifs SA"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {},
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.58,
+     "model_seconds": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    }
+   },
+   {
+    "case": "hard_018",
+    "tier": "photo",
+    "defects": [
+     "ADDRESS_MISMATCH"
+    ],
+    "traps": [],
+    "trap_guards": {},
+    "layouts": {
+     "form_a": "en/table",
+     "proof_of_address": "de/letter"
+    },
+    "decision": "manual_review",
+    "raised": [
+     "CHECK_SKIPPED",
+     "MISSING_FIELD"
+    ],
+    "expected": [
+     "ADDRESS_MISMATCH"
+    ],
+    "expected_checks": [
+     "cross.address"
+    ],
+    "failed_checks": [
+     "form_a.required",
+     "passport.required",
+     "proof_of_address.required"
+    ],
+    "fields": {
+     "passport.surname": {
+      "ok": true,
+      "got": "LEFEVRE",
+      "want": "LEFÈVRE"
+     },
+     "passport.given_names": {
+      "ok": true,
+      "got": "MATHILDE",
+      "want": "MATHILDE"
+     },
+     "passport.nationality": {
+      "ok": false,
+      "got": null,
+      "want": "BEL"
+     },
+     "passport.date_of_birth": {
+      "ok": true,
+      "got": "2001-07-07",
+      "want": "2001-07-07"
+     },
+     "passport.sex": {
+      "ok": true,
+      "got": "F",
+      "want": "F"
+     },
+     "passport.document_number": {
+      "ok": false,
+      "got": null,
+      "want": "E4780676"
+     },
+     "passport.expiry_date": {
+      "ok": true,
+      "got": "2031-04-05",
+      "want": "2031-04-05"
+     },
+     "passport.mrz_line1": {
+      "ok": true,
+      "got": "P<UTOLEFEVRE<<MATHILDE<<<<<<<<<<<<<<<<<<<<<<",
+      "want": "P<UTOLEFEVRE<<MATHILDE<<<<<<<<<<<<<<<<<<<<<<"
+     },
+     "passport.mrz_line2": {
+      "ok": true,
+      "got": "E4780676<6BEL0107079F3104057<<<<<<<<<<<<<<<2",
+      "want": "E4780676<6BEL0107079F3104057<<<<<<<<<<<<<<<2"
+     },
+     "form_a.contracting_partner": {
+      "ok": true,
+      "got": "Mathilde Lefevre",
+      "want": "Mathilde Lefèvre"
+     },
+     "form_a.beneficial_owner_name": {
+      "ok": false,
+      "got": null,
+      "want": "Lefèvre, Mathilde"
+     },
+     "form_a.beneficial_owner_date_of_birth": {
+      "ok": false,
+      "got": null,
+      "want": "2001-07-07"
+     },
+     "form_a.beneficial_owner_nationality": {
+      "ok": false,
+      "got": null,
+      "want": "BEL"
+     },
+     "form_a.beneficial_owner_address": {
+      "ok": false,
+      "got": null,
+      "want": "Chemin du Test 86, 1204 Genève"
+     },
+     "proof_of_address.name": {
+      "ok": false,
+      "got": null,
+      "want": "Mathilde Lefèvre"
+     },
+     "proof_of_address.address": {
+      "ok": false,
+      "got": null,
+      "want": "Chemin du Test 107, 1204 Genève"
+     },
+     "proof_of_address.issue_date": {
+      "ok": false,
+      "got": null,
+      "want": "2026-09-19"
+     },
+     "proof_of_address.issuer": {
+      "ok": true,
+      "got": "Telekom Muster AG",
+      "want": "Telekom Muster AG"
+     }
+    },
+    "evidence": {
+     "passport": {
+      "surname": "verified",
+      "given_names": "verified",
+      "date_of_birth": "verified",
+      "sex": "verified",
+      "expiry_date": "verified",
+      "mrz_line1": "verified",
+      "mrz_line2": "verified"
+     },
+     "form_a": {
+      "contracting_partner": "verified"
+     },
+     "proof_of_address": {
+      "issuer": "verified"
+     }
+    },
+    "totals": {
+     "seconds": 0.73,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,

@@ -2,6 +2,7 @@
  "extractor": "ollama:qwen2.5vl:7b@both#regex-only-injection",
  "suite": "standard",
  "as_of": "2026-10-21",
+ "platform": "macOS, tesseract 5.5.1",
  "tiers": {
   "photo": {
    "files": 30,
@@ -27,9 +28,14 @@
    "defect_files": 16,
    "errors": 0,
    "straight_through_rate": 0.714,
+   "straight_through_ci": [
+    0.454,
+    0.883
+   ],
+   "clean_files": 14,
    "routing_accuracy": 0.833,
    "trap_false_alarm_rate": 0.065,
-   "process_flags_per_file": 0.17,
+   "process_flags_per_file": 0.2,
    "seconds_per_file": 76.14,
    "cost_per_file_usd": 0.0,
    "fields": {
@@ -86,6 +92,7 @@
      "NAME_NO_MIDDLE",
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/lines",
      "proof_of_address": "de/letter"
@@ -201,7 +208,7 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "verified",
+      "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "corroborated",
       "beneficial_owner_nationality": "verified",
       "beneficial_owner_address": "verified"
@@ -214,7 +221,7 @@
      }
     },
     "totals": {
-     "seconds": 0.67,
+     "seconds": 1.16,
      "model_seconds": 77.05,
      "input_tokens": 5851,
      "output_tokens": 979,
@@ -228,6 +235,7 @@
     "traps": [
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/lines",
      "proof_of_address": "fr/letter"
@@ -356,7 +364,7 @@
      }
     },
     "totals": {
-     "seconds": 0.7,
+     "seconds": 1.27,
      "model_seconds": 78.44,
      "input_tokens": 5890,
      "output_tokens": 1022,
@@ -370,6 +378,7 @@
     "traps": [
      "POA_NEAR_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/table",
      "proof_of_address": "de/letter"
@@ -485,7 +494,7 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "verified",
+      "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "corroborated",
       "beneficial_owner_nationality": "corroborated",
       "beneficial_owner_address": "verified"
@@ -498,7 +507,7 @@
      }
     },
     "totals": {
-     "seconds": 0.75,
+     "seconds": 1.3,
      "model_seconds": 72.89,
      "input_tokens": 5790,
      "output_tokens": 888,
@@ -512,6 +521,7 @@
     "traps": [
      "POA_NEAR_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/lines",
      "proof_of_address": "de/table"
@@ -640,7 +650,7 @@
      }
     },
     "totals": {
-     "seconds": 0.74,
+     "seconds": 1.26,
      "model_seconds": 72.72,
      "input_tokens": 5781,
      "output_tokens": 892,
@@ -655,6 +665,7 @@
      "ADDR_CITY_ALIAS",
      "NAME_NO_ACCENT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "de/table"
@@ -776,7 +787,7 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "verified",
+      "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "verified",
       "beneficial_owner_nationality": "verified",
       "beneficial_owner_address": "unverified"
@@ -789,7 +800,7 @@
      }
     },
     "totals": {
-     "seconds": 0.67,
+     "seconds": 1.06,
      "model_seconds": 77.05,
      "input_tokens": 5798,
      "output_tokens": 1006,
@@ -803,6 +814,7 @@
     "traps": [
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/lines",
      "proof_of_address": "fr/letter"
@@ -918,7 +930,7 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "verified",
+      "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "verified",
       "beneficial_owner_nationality": "corroborated",
       "beneficial_owner_address": "verified"
@@ -931,7 +943,7 @@
      }
     },
     "totals": {
-     "seconds": 0.74,
+     "seconds": 1.18,
      "model_seconds": 73.54,
      "input_tokens": 5837,
      "output_tokens": 907,
@@ -945,6 +957,7 @@
     "traps": [
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/lines",
      "proof_of_address": "en/table"
@@ -1068,7 +1081,7 @@
       "contracting_partner": "verified",
       "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "verified",
-      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_nationality": "corroborated",
       "beneficial_owner_address": "corroborated"
      },
      "proof_of_address": {
@@ -1079,7 +1092,7 @@
      }
     },
     "totals": {
-     "seconds": 0.84,
+     "seconds": 1.32,
      "model_seconds": 74.2,
      "input_tokens": 5729,
      "output_tokens": 901,
@@ -1093,6 +1106,7 @@
     "traps": [
      "ADDR_NUMBER_FIRST"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/lines",
      "proof_of_address": "fr/letter"
@@ -1208,7 +1222,7 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "verified",
+      "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "corroborated",
       "beneficial_owner_nationality": "corroborated",
       "beneficial_owner_address": "corroborated"
@@ -1221,7 +1235,7 @@
      }
     },
     "totals": {
-     "seconds": 0.84,
+     "seconds": 1.42,
      "model_seconds": 77.47,
      "input_tokens": 5952,
      "output_tokens": 974,
@@ -1237,6 +1251,7 @@
     "traps": [
      "NAME_SURNAME_FIRST"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/lines",
      "proof_of_address": "de/letter"
@@ -1373,7 +1388,7 @@
      }
     },
     "totals": {
-     "seconds": 0.81,
+     "seconds": 1.31,
      "model_seconds": 75.69,
      "input_tokens": 5793,
      "output_tokens": 927,
@@ -1391,6 +1406,7 @@
      "NAME_NO_ACCENT",
      "NAME_SURNAME_FIRST"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "de/letter"
@@ -1527,7 +1543,7 @@
      }
     },
     "totals": {
-     "seconds": 0.78,
+     "seconds": 1.18,
      "model_seconds": 76.14,
      "input_tokens": 5788,
      "output_tokens": 940,
@@ -1544,6 +1560,7 @@
      "ADDR_CITY_ALIAS",
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "en/letter"
@@ -1680,7 +1697,7 @@
      }
     },
     "totals": {
-     "seconds": 0.78,
+     "seconds": 1.28,
      "model_seconds": 77.91,
      "input_tokens": 5874,
      "output_tokens": 1004,
@@ -1698,6 +1715,7 @@
      "ADDR_NUMBER_FIRST",
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/table",
      "proof_of_address": "fr/letter"
@@ -1821,7 +1839,7 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "verified",
+      "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "corroborated",
       "beneficial_owner_nationality": "corroborated",
       "beneficial_owner_address": "corroborated"
@@ -1834,7 +1852,7 @@
      }
     },
     "totals": {
-     "seconds": 0.76,
+     "seconds": 1.16,
      "model_seconds": 73.05,
      "input_tokens": 5799,
      "output_tokens": 909,
@@ -1851,6 +1869,7 @@
      "ADDR_ABBREVIATED",
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/table",
      "proof_of_address": "fr/letter"
@@ -1974,7 +1993,7 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "verified",
+      "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "corroborated",
       "beneficial_owner_nationality": "corroborated",
       "beneficial_owner_address": "corroborated"
@@ -1987,7 +2006,7 @@
      }
     },
     "totals": {
-     "seconds": 0.81,
+     "seconds": 1.55,
      "model_seconds": 77.66,
      "input_tokens": 5825,
      "output_tokens": 992,
@@ -2001,6 +2020,7 @@
      "ADDRESS_MISMATCH"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/table",
      "proof_of_address": "fr/letter"
@@ -2137,7 +2157,7 @@
      }
     },
     "totals": {
-     "seconds": 0.8,
+     "seconds": 1.42,
      "model_seconds": 78.86,
      "input_tokens": 5850,
      "output_tokens": 1022,
@@ -2154,6 +2174,7 @@
      "NAME_SURNAME_FIRST",
      "POA_NEAR_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/table",
      "proof_of_address": "fr/letter"
@@ -2277,7 +2298,7 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "verified",
+      "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "corroborated",
       "beneficial_owner_nationality": "corroborated",
       "beneficial_owner_address": "verified"
@@ -2290,7 +2311,7 @@
      }
     },
     "totals": {
-     "seconds": 0.78,
+     "seconds": 1.5,
      "model_seconds": 73.07,
      "input_tokens": 5779,
      "output_tokens": 933,
@@ -2308,6 +2329,7 @@
      "NAME_NO_ACCENT",
      "NAME_SURNAME_FIRST"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/lines",
      "proof_of_address": "fr/letter"
@@ -2433,7 +2455,7 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "verified",
+      "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "unverified",
       "beneficial_owner_nationality": "verified",
       "beneficial_owner_address": "corroborated"
@@ -2446,7 +2468,7 @@
      }
     },
     "totals": {
-     "seconds": 0.79,
+     "seconds": 1.4,
      "model_seconds": 79.85,
      "input_tokens": 5884,
      "output_tokens": 999,
@@ -2463,6 +2485,7 @@
      "NAME_SURNAME_FIRST",
      "POA_NEAR_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/lines",
      "proof_of_address": "en/letter"
@@ -2588,7 +2611,7 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "verified",
+      "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "unverified",
       "beneficial_owner_nationality": "verified",
       "beneficial_owner_address": "corroborated"
@@ -2601,7 +2624,7 @@
      }
     },
     "totals": {
-     "seconds": 0.77,
+     "seconds": 1.36,
      "model_seconds": 80.24,
      "input_tokens": 5789,
      "output_tokens": 1011,
@@ -2615,6 +2638,7 @@
      "NATIONALITY_MISMATCH"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "de/letter"
@@ -2740,7 +2764,7 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "verified",
+      "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "verified",
       "beneficial_owner_nationality": "unverified",
       "beneficial_owner_address": "verified"
@@ -2753,7 +2777,7 @@
      }
     },
     "totals": {
-     "seconds": 0.77,
+     "seconds": 1.26,
      "model_seconds": 81.52,
      "input_tokens": 5862,
      "output_tokens": 993,
@@ -2769,6 +2793,7 @@
     "traps": [
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "de/letter"
@@ -2892,9 +2917,9 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "verified",
+      "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "verified",
-      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_nationality": "corroborated",
       "beneficial_owner_address": "corroborated"
      },
      "proof_of_address": {
@@ -2905,7 +2930,7 @@
      }
     },
     "totals": {
-     "seconds": 0.8,
+     "seconds": 1.24,
      "model_seconds": 82.34,
      "input_tokens": 5935,
      "output_tokens": 994,
@@ -2922,6 +2947,7 @@
      "NAME_SURNAME_FIRST",
      "POA_NEAR_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "fr/table"
@@ -3054,7 +3080,7 @@
      }
     },
     "totals": {
-     "seconds": 0.8,
+     "seconds": 1.28,
      "model_seconds": 75.18,
      "input_tokens": 5754,
      "output_tokens": 947,
@@ -3070,6 +3096,7 @@
     "traps": [
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/table",
      "proof_of_address": "it/table"
@@ -3193,7 +3220,7 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "verified",
+      "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "corroborated",
       "beneficial_owner_nationality": "corroborated",
       "beneficial_owner_address": "corroborated"
@@ -3206,7 +3233,7 @@
      }
     },
     "totals": {
-     "seconds": 0.79,
+     "seconds": 1.39,
      "model_seconds": 74.04,
      "input_tokens": 5811,
      "output_tokens": 944,
@@ -3221,6 +3248,7 @@
      "ADDRESS_MISMATCH"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/lines",
      "proof_of_address": "de/letter"
@@ -3348,9 +3376,9 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "verified",
+      "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "corroborated",
-      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_nationality": "corroborated",
       "beneficial_owner_address": "verified"
      },
      "proof_of_address": {
@@ -3361,7 +3389,7 @@
      }
     },
     "totals": {
-     "seconds": 0.78,
+     "seconds": 1.34,
      "model_seconds": 75.31,
      "input_tokens": 5961,
      "output_tokens": 965,
@@ -3376,6 +3404,7 @@
      "PROOF_OF_ADDRESS_TOO_OLD"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/table",
      "proof_of_address": "de/table"
@@ -3503,7 +3532,7 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "verified",
+      "beneficial_owner_name": "corroborated",
       "beneficial_owner_date_of_birth": "verified",
       "beneficial_owner_nationality": "corroborated",
       "beneficial_owner_address": "corroborated"
@@ -3516,7 +3545,7 @@
      }
     },
     "totals": {
-     "seconds": 0.8,
+     "seconds": 1.2,
      "model_seconds": 74.21,
      "input_tokens": 5846,
      "output_tokens": 924,
@@ -3534,6 +3563,7 @@
      "ADDR_ABBREVIATED",
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "fr/table"
@@ -3674,7 +3704,7 @@
      }
     },
     "totals": {
-     "seconds": 0.78,
+     "seconds": 1.31,
      "model_seconds": 75.65,
      "input_tokens": 5762,
      "output_tokens": 951,
@@ -3688,6 +3718,7 @@
     "traps": [
      "ADDR_CITY_ALIAS"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "fr/table"
@@ -3816,7 +3847,7 @@
      }
     },
     "totals": {
-     "seconds": 0.8,
+     "seconds": 1.41,
      "model_seconds": 76.82,
      "input_tokens": 5704,
      "output_tokens": 968,
@@ -3828,6 +3859,7 @@
     "tier": "photo",
     "defects": [],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "de/table"
@@ -3956,7 +3988,7 @@
      }
     },
     "totals": {
-     "seconds": 0.78,
+     "seconds": 1.3,
      "model_seconds": 74.34,
      "input_tokens": 5706,
      "output_tokens": 942,
@@ -3971,6 +4003,7 @@
      "ADDR_CITY_ALIAS",
      "POA_NEAR_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "fr/letter"
@@ -4103,7 +4136,7 @@
      }
     },
     "totals": {
-     "seconds": 0.81,
+     "seconds": 1.36,
      "model_seconds": 73.07,
      "input_tokens": 5790,
      "output_tokens": 892,
@@ -4119,6 +4152,7 @@
      "ADDR_NUMBER_FIRST",
      "NAME_SURNAME_FIRST"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "it/letter"
@@ -4247,7 +4281,7 @@
      }
     },
     "totals": {
-     "seconds": 0.8,
+     "seconds": 1.27,
      "model_seconds": 72.39,
      "input_tokens": 5763,
      "output_tokens": 886,
@@ -4263,12 +4297,14 @@
      "NAME_NO_ACCENT",
      "NAME_SURNAME_FIRST"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/lines",
      "proof_of_address": "fr/table"
     },
     "decision": "manual_review",
     "raised": [
+     "EVIDENCE_NOT_FOUND",
      "MRZ_VISUAL_MISMATCH",
      "NAME_MISMATCH"
     ],
@@ -4278,6 +4314,7 @@
      "cross.name_passport_bill",
      "cross.name_passport_form_a",
      "cross.name_passport_partner",
+     "form_a.evidence",
      "passport.mrz_vs_visual"
     ],
     "fields": {
@@ -4386,7 +4423,7 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_name": "verified",
+      "beneficial_owner_name": "unverified",
       "beneficial_owner_date_of_birth": "corroborated",
       "beneficial_owner_nationality": "verified",
       "beneficial_owner_address": "corroborated"
@@ -4399,7 +4436,7 @@
      }
     },
     "totals": {
-     "seconds": 0.8,
+     "seconds": 1.35,
      "model_seconds": 76.85,
      "input_tokens": 5877,
      "output_tokens": 983,
@@ -4414,6 +4451,7 @@
      "NAME_NO_ACCENT",
      "POA_NEAR_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "de/letter"
@@ -4542,7 +4580,7 @@
      }
     },
     "totals": {
-     "seconds": 0.78,
+     "seconds": 1.22,
      "model_seconds": 76.51,
      "input_tokens": 5841,
      "output_tokens": 979,

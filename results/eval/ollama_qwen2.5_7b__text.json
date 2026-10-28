@@ -2,6 +2,7 @@
  "extractor": "ollama:qwen2.5:7b@text",
  "suite": "standard",
  "as_of": "2026-10-21",
+ "platform": "macOS, tesseract 5.5.1",
  "tiers": {
   "photo": {
    "files": 30,
@@ -27,9 +28,14 @@
    "defect_files": 16,
    "errors": 0,
    "straight_through_rate": 0.0,
+   "straight_through_ci": [
+    0.0,
+    0.215
+   ],
+   "clean_files": 14,
    "routing_accuracy": 0.533,
    "trap_false_alarm_rate": 0.13,
-   "process_flags_per_file": 2.8,
+   "process_flags_per_file": 2.97,
    "seconds_per_file": 38.79,
    "cost_per_file_usd": 0.0,
    "fields": {
@@ -86,6 +92,7 @@
      "NAME_NO_MIDDLE",
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/lines",
      "proof_of_address": "de/letter"
@@ -224,7 +231,7 @@
      }
     },
     "totals": {
-     "seconds": 0.73,
+     "seconds": 1.25,
      "model_seconds": 46.98,
      "input_tokens": 2022,
      "output_tokens": 933,
@@ -238,6 +245,7 @@
     "traps": [
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/lines",
      "proof_of_address": "fr/letter"
@@ -247,6 +255,7 @@
      "ADDRESS_MISMATCH",
      "CHECK_SKIPPED",
      "EVIDENCE_NOT_FOUND",
+     "EVIDENCE_OUT_OF_PLACE",
      "MISSING_FIELD",
      "NAME_MISMATCH"
     ],
@@ -258,6 +267,7 @@
      "form_a.evidence",
      "form_a.required",
      "passport.evidence",
+     "proof_of_address.evidence_place",
      "proof_of_address.required"
     ],
     "fields": {
@@ -370,13 +380,13 @@
       "beneficial_owner_address": "verified"
      },
      "proof_of_address": {
-      "address": "verified",
+      "address": "out_of_place",
       "issue_date": "verified",
       "issuer": "verified"
      }
     },
     "totals": {
-     "seconds": 0.74,
+     "seconds": 1.12,
      "model_seconds": 40.1,
      "input_tokens": 2033,
      "output_tokens": 975,
@@ -390,6 +400,7 @@
     "traps": [
      "POA_NEAR_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/table",
      "proof_of_address": "de/letter"
@@ -521,7 +532,7 @@
      }
     },
     "totals": {
-     "seconds": 0.73,
+     "seconds": 1.14,
      "model_seconds": 38.14,
      "input_tokens": 1940,
      "output_tokens": 931,
@@ -535,6 +546,7 @@
     "traps": [
      "POA_NEAR_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/lines",
      "proof_of_address": "de/table"
@@ -653,7 +665,7 @@
       "given_names": "unverified",
       "nationality": "verified",
       "date_of_birth": "verified",
-      "sex": "verified",
+      "sex": "corroborated",
       "document_number": "verified",
       "expiry_date": "verified",
       "mrz_line1": "verified",
@@ -670,7 +682,7 @@
      }
     },
     "totals": {
-     "seconds": 0.73,
+     "seconds": 1.21,
      "model_seconds": 36.98,
      "input_tokens": 1923,
      "output_tokens": 898,
@@ -685,6 +697,7 @@
      "ADDR_CITY_ALIAS",
      "NAME_NO_ACCENT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "de/table"
@@ -820,7 +833,7 @@
      }
     },
     "totals": {
-     "seconds": 0.72,
+     "seconds": 1.17,
      "model_seconds": 41.89,
      "input_tokens": 2015,
      "output_tokens": 1023,
@@ -834,6 +847,7 @@
     "traps": [
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/lines",
      "proof_of_address": "fr/letter"
@@ -966,7 +980,7 @@
      }
     },
     "totals": {
-     "seconds": 0.74,
+     "seconds": 1.24,
      "model_seconds": 40.78,
      "input_tokens": 1981,
      "output_tokens": 1001,
@@ -980,6 +994,7 @@
     "traps": [
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/lines",
      "proof_of_address": "en/table"
@@ -1108,7 +1123,7 @@
       "contracting_partner": "verified",
       "beneficial_owner_name": "unverified",
       "beneficial_owner_date_of_birth": "verified",
-      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_nationality": "unverified",
       "beneficial_owner_address": "unverified"
      },
      "proof_of_address": {
@@ -1117,7 +1132,7 @@
      }
     },
     "totals": {
-     "seconds": 0.97,
+     "seconds": 1.09,
      "model_seconds": 37.13,
      "input_tokens": 1876,
      "output_tokens": 909,
@@ -1131,6 +1146,7 @@
     "traps": [
      "ADDR_NUMBER_FIRST"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/lines",
      "proof_of_address": "fr/letter"
@@ -1266,7 +1282,7 @@
      }
     },
     "totals": {
-     "seconds": 0.97,
+     "seconds": 1.06,
      "model_seconds": 40.77,
      "input_tokens": 2059,
      "output_tokens": 991,
@@ -1282,6 +1298,7 @@
     "traps": [
      "NAME_SURNAME_FIRST"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/lines",
      "proof_of_address": "de/letter"
@@ -1290,6 +1307,7 @@
     "raised": [
      "CHECK_SKIPPED",
      "EVIDENCE_NOT_FOUND",
+     "EVIDENCE_OUT_OF_PLACE",
      "MISSING_FIELD",
      "PASSPORT_EXPIRED"
     ],
@@ -1300,9 +1318,11 @@
      "passport.not_expired"
     ],
     "failed_checks": [
+     "form_a.evidence",
      "form_a.required",
      "passport.evidence",
      "passport.not_expired",
+     "proof_of_address.evidence_place",
      "proof_of_address.required"
     ],
     "fields": {
@@ -1411,15 +1431,15 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_address": "corroborated"
+      "beneficial_owner_address": "unverified"
      },
      "proof_of_address": {
-      "address": "verified",
+      "address": "out_of_place",
       "issuer": "verified"
      }
     },
     "totals": {
-     "seconds": 0.8,
+     "seconds": 1.05,
      "model_seconds": 37.54,
      "input_tokens": 1952,
      "output_tokens": 910,
@@ -1437,6 +1457,7 @@
      "NAME_NO_ACCENT",
      "NAME_SURNAME_FIRST"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "de/letter"
@@ -1569,7 +1590,7 @@
      }
     },
     "totals": {
-     "seconds": 0.77,
+     "seconds": 1.11,
      "model_seconds": 32.73,
      "input_tokens": 1903,
      "output_tokens": 785,
@@ -1586,6 +1607,7 @@
      "ADDR_CITY_ALIAS",
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "en/letter"
@@ -1728,7 +1750,7 @@
      }
     },
     "totals": {
-     "seconds": 0.78,
+     "seconds": 1.07,
      "model_seconds": 39.57,
      "input_tokens": 2034,
      "output_tokens": 962,
@@ -1746,6 +1768,7 @@
      "ADDR_NUMBER_FIRST",
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/table",
      "proof_of_address": "fr/letter"
@@ -1883,7 +1906,7 @@
      }
     },
     "totals": {
-     "seconds": 0.78,
+     "seconds": 1.12,
      "model_seconds": 34.93,
      "input_tokens": 1926,
      "output_tokens": 845,
@@ -1900,6 +1923,7 @@
      "ADDR_ABBREVIATED",
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/table",
      "proof_of_address": "fr/letter"
@@ -2035,7 +2059,7 @@
      }
     },
     "totals": {
-     "seconds": 0.93,
+     "seconds": 1.23,
      "model_seconds": 38.56,
      "input_tokens": 1922,
      "output_tokens": 943,
@@ -2049,6 +2073,7 @@
      "ADDRESS_MISMATCH"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/table",
      "proof_of_address": "fr/letter"
@@ -2185,7 +2210,7 @@
      }
     },
     "totals": {
-     "seconds": 0.99,
+     "seconds": 1.16,
      "model_seconds": 39.26,
      "input_tokens": 2025,
      "output_tokens": 952,
@@ -2202,6 +2227,7 @@
      "NAME_SURNAME_FIRST",
      "POA_NEAR_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/table",
      "proof_of_address": "fr/letter"
@@ -2338,7 +2364,7 @@
      }
     },
     "totals": {
-     "seconds": 0.99,
+     "seconds": 1.15,
      "model_seconds": 38.93,
      "input_tokens": 1982,
      "output_tokens": 946,
@@ -2356,6 +2382,7 @@
      "NAME_NO_ACCENT",
      "NAME_SURNAME_FIRST"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/lines",
      "proof_of_address": "fr/letter"
@@ -2499,7 +2526,7 @@
      }
     },
     "totals": {
-     "seconds": 0.98,
+     "seconds": 1.27,
      "model_seconds": 42.85,
      "input_tokens": 2068,
      "output_tokens": 1046,
@@ -2516,6 +2543,7 @@
      "NAME_SURNAME_FIRST",
      "POA_NEAR_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "fr/lines",
      "proof_of_address": "en/letter"
@@ -2654,7 +2682,7 @@
      }
     },
     "totals": {
-     "seconds": 1.0,
+     "seconds": 1.26,
      "model_seconds": 42.4,
      "input_tokens": 1992,
      "output_tokens": 1040,
@@ -2668,6 +2696,7 @@
      "NATIONALITY_MISMATCH"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "de/letter"
@@ -2676,6 +2705,7 @@
     "raised": [
      "CHECK_SKIPPED",
      "EVIDENCE_NOT_FOUND",
+     "EVIDENCE_OUT_OF_PLACE",
      "MISSING_FIELD",
      "THIRD_PARTY_OWNER"
     ],
@@ -2686,9 +2716,11 @@
      "cross.nationality"
     ],
     "failed_checks": [
+     "form_a.evidence",
      "form_a.owner_is_client",
      "form_a.required",
      "passport.evidence",
+     "proof_of_address.evidence_place",
      "proof_of_address.required"
     ],
     "fields": {
@@ -2798,15 +2830,15 @@
      "form_a": {
       "contracting_partner": "verified",
       "beneficial_owner_name": "verified",
-      "beneficial_owner_address": "verified"
+      "beneficial_owner_address": "unverified"
      },
      "proof_of_address": {
-      "address": "verified",
+      "address": "out_of_place",
       "issuer": "verified"
      }
     },
     "totals": {
-     "seconds": 0.8,
+     "seconds": 1.19,
      "model_seconds": 41.25,
      "input_tokens": 2041,
      "output_tokens": 1004,
@@ -2822,6 +2854,7 @@
     "traps": [
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "de/letter"
@@ -2830,6 +2863,7 @@
     "raised": [
      "CHECK_SKIPPED",
      "EVIDENCE_NOT_FOUND",
+     "EVIDENCE_OUT_OF_PLACE",
      "MISSING_FIELD"
     ],
     "expected": [
@@ -2841,6 +2875,7 @@
     "failed_checks": [
      "form_a.evidence",
      "form_a.required",
+     "proof_of_address.evidence_place",
      "proof_of_address.required"
     ],
     "fields": {
@@ -2949,16 +2984,16 @@
      },
      "form_a": {
       "contracting_partner": "verified",
-      "beneficial_owner_nationality": "verified",
+      "beneficial_owner_nationality": "corroborated",
       "beneficial_owner_address": "dropped"
      },
      "proof_of_address": {
-      "address": "verified",
+      "address": "out_of_place",
       "issuer": "verified"
      }
     },
     "totals": {
-     "seconds": 0.98,
+     "seconds": 1.23,
      "model_seconds": 40.17,
      "input_tokens": 2071,
      "output_tokens": 970,
@@ -2975,6 +3010,7 @@
      "NAME_SURNAME_FIRST",
      "POA_NEAR_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "fr/table"
@@ -3109,7 +3145,7 @@
      }
     },
     "totals": {
-     "seconds": 1.0,
+     "seconds": 1.14,
      "model_seconds": 38.35,
      "input_tokens": 1884,
      "output_tokens": 937,
@@ -3125,6 +3161,7 @@
     "traps": [
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/table",
      "proof_of_address": "it/table"
@@ -3261,7 +3298,7 @@
      }
     },
     "totals": {
-     "seconds": 0.91,
+     "seconds": 1.16,
      "model_seconds": 36.43,
      "input_tokens": 1941,
      "output_tokens": 875,
@@ -3276,6 +3313,7 @@
      "ADDRESS_MISMATCH"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/lines",
      "proof_of_address": "de/letter"
@@ -3419,7 +3457,7 @@
      }
     },
     "totals": {
-     "seconds": 0.95,
+     "seconds": 1.05,
      "model_seconds": 42.43,
      "input_tokens": 2105,
      "output_tokens": 1025,
@@ -3434,6 +3472,7 @@
      "PROOF_OF_ADDRESS_TOO_OLD"
     ],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/table",
      "proof_of_address": "de/table"
@@ -3575,7 +3614,7 @@
      }
     },
     "totals": {
-     "seconds": 0.91,
+     "seconds": 1.01,
      "model_seconds": 37.69,
      "input_tokens": 2018,
      "output_tokens": 907,
@@ -3593,6 +3632,7 @@
      "ADDR_ABBREVIATED",
      "PASSPORT_EXPIRES_SOON"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "fr/table"
@@ -3729,7 +3769,7 @@
      }
     },
     "totals": {
-     "seconds": 0.99,
+     "seconds": 1.08,
      "model_seconds": 35.09,
      "input_tokens": 1921,
      "output_tokens": 845,
@@ -3743,6 +3783,7 @@
     "traps": [
      "ADDR_CITY_ALIAS"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "fr/table"
@@ -3874,7 +3915,7 @@
      }
     },
     "totals": {
-     "seconds": 0.92,
+     "seconds": 1.24,
      "model_seconds": 34.97,
      "input_tokens": 1838,
      "output_tokens": 849,
@@ -3886,6 +3927,7 @@
     "tier": "photo",
     "defects": [],
     "traps": [],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "de/table"
@@ -3894,6 +3936,7 @@
     "raised": [
      "CHECK_SKIPPED",
      "EVIDENCE_NOT_FOUND",
+     "EVIDENCE_OUT_OF_PLACE",
      "MISSING_FIELD",
      "MRZ_VISUAL_MISMATCH"
     ],
@@ -3903,6 +3946,7 @@
      "form_a.required",
      "passport.evidence",
      "passport.mrz_vs_visual",
+     "proof_of_address.evidence_place",
      "proof_of_address.required"
     ],
     "fields": {
@@ -4014,12 +4058,12 @@
      },
      "proof_of_address": {
       "address": "verified",
-      "issue_date": "verified",
+      "issue_date": "out_of_place",
       "issuer": "verified"
      }
     },
     "totals": {
-     "seconds": 0.94,
+     "seconds": 1.27,
      "model_seconds": 35.46,
      "input_tokens": 1865,
      "output_tokens": 863,
@@ -4034,6 +4078,7 @@
      "ADDR_CITY_ALIAS",
      "POA_NEAR_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "fr/letter"
@@ -4166,7 +4211,7 @@
      }
     },
     "totals": {
-     "seconds": 0.9,
+     "seconds": 1.33,
      "model_seconds": 37.5,
      "input_tokens": 1902,
      "output_tokens": 911,
@@ -4182,6 +4227,7 @@
      "ADDR_NUMBER_FIRST",
      "NAME_SURNAME_FIRST"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "en/table",
      "proof_of_address": "it/letter"
@@ -4320,7 +4366,7 @@
      }
     },
     "totals": {
-     "seconds": 0.92,
+     "seconds": 1.17,
      "model_seconds": 37.72,
      "input_tokens": 1937,
      "output_tokens": 919,
@@ -4336,6 +4382,7 @@
      "NAME_NO_ACCENT",
      "NAME_SURNAME_FIRST"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "it/lines",
      "proof_of_address": "fr/table"
@@ -4472,7 +4519,7 @@
      }
     },
     "totals": {
-     "seconds": 0.86,
+     "seconds": 1.2,
      "model_seconds": 39.0,
      "input_tokens": 1990,
      "output_tokens": 948,
@@ -4487,6 +4534,7 @@
      "NAME_NO_ACCENT",
      "POA_NEAR_LIMIT"
     ],
+    "trap_guards": {},
     "layouts": {
      "form_a": "de/lines",
      "proof_of_address": "de/letter"
@@ -4619,7 +4667,7 @@
      }
     },
     "totals": {
-     "seconds": 0.76,
+     "seconds": 1.11,
      "model_seconds": 38.13,
      "input_tokens": 1990,
      "output_tokens": 923,

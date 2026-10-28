@@ -2,211 +2,9 @@
  "extractor": "rules",
  "suite": "blind",
  "as_of": "2026-10-21",
- "platform": "linux, tesseract 5.3.4",
+ "platform": "macOS, tesseract 5.5.1",
  "tiers": {
   "clean": {
-   "files": 24,
-   "field_accuracy": 0.164,
-   "critical_field_accuracy": 0.003,
-   "defect_recall": 0.269,
-   "defect_recall_ci": [
-    0.137,
-    0.461
-   ],
-   "defect_recall_n": [
-    7,
-    26
-   ],
-   "defects_not_flagged": 19,
-   "right_check_rate": 0.269,
-   "defect_precision": 0.438,
-   "missed_defect_files": 0,
-   "missed_defect_files_ci": [
-    0.0,
-    0.204
-   ],
-   "defect_files": 15,
-   "errors": 0,
-   "straight_through_rate": 0.0,
-   "straight_through_ci": [
-    0.0,
-    0.299
-   ],
-   "clean_files": 9,
-   "routing_accuracy": 0.625,
-   "trap_false_alarm_rate": 0.0,
-   "process_flags_per_file": 2.12,
-   "seconds_per_file": 0.0,
-   "cost_per_file_usd": 0.0,
-   "fields": {
-    "form_a.beneficial_owner_address": 0.0,
-    "form_a.beneficial_owner_date_of_birth": 0.0,
-    "form_a.beneficial_owner_name": 0.0,
-    "form_a.beneficial_owner_nationality": 0.0,
-    "form_a.contracting_partner": 0.0,
-    "passport.date_of_birth": 0.0,
-    "passport.document_number": 0.0,
-    "passport.expiry_date": 0.0,
-    "passport.given_names": 0.0,
-    "passport.mrz_line1": 0.958,
-    "passport.mrz_line2": 0.958,
-    "passport.nationality": 0.0,
-    "passport.sex": 0.0,
-    "passport.surname": 0.0,
-    "proof_of_address.address": 0.0,
-    "proof_of_address.issue_date": 0.042,
-    "proof_of_address.issuer": 1.0,
-    "proof_of_address.name": 0.0
-   },
-   "per_defect": {
-    "ADDRESS_MISMATCH": 0.0,
-    "DOB_MISMATCH": 0.0,
-    "FORM_A_UNSIGNED": 1.0,
-    "IMPLAUSIBLE_DATE": 0.0,
-    "MRZ_CHECK_FAILED": 1.0,
-    "MRZ_VISUAL_MISMATCH": 0.0,
-    "NAME_MISMATCH": 0.0,
-    "NATIONALITY_MISMATCH": 0.0,
-    "PASSPORT_EXPIRED": 1.0,
-    "PROOF_OF_ADDRESS_TOO_OLD": 0.0,
-    "SUSPICIOUS_INSTRUCTIONS": 0.333,
-    "THIRD_PARTY_OWNER": 0.0
-   },
-   "per_trap": {
-    "BILLING_PERIOD_STARTS_LONG_AGO": 0.0,
-    "BILL_AGE_80_TO_89_DAYS": 0.0,
-    "BILL_DUE_DATE_AFTER_AS_OF": 0.0,
-    "BILL_EXACTLY_90_DAYS_OLD": 0.0,
-    "BILL_FIRST_SURNAME_ONLY": 0.0,
-    "BILL_HYPHEN_AS_SPACE": 0.0,
-    "BILL_JOINT_HOLDERS": 0.0,
-    "BILL_MENTIONS_PREVIOUS_ADDRESS": 0.0,
-    "BILL_MIDDLE_NAME_INITIAL": 0.0,
-    "BILL_MIDDLE_NAME_OMITTED": 0.0,
-    "BILL_NAME_UMLAUT_AS_UE": 0.0,
-    "BILL_NAME_WITHOUT_ACCENTS": 0.0,
-    "BILL_SURNAME_FIRST": 0.0,
-    "BILL_USES_SECOND_GIVEN_NAME": 0.0,
-    "CARE_OF_LINE": 0.0,
-    "FORM_A_CORRECTED_HOUSE_NUMBER": 0.0,
-    "FORM_A_DATE_NO_LEADING_ZEROS": 0.0,
-    "FORM_A_DATE_WRITTEN_OUT": 0.0,
-    "FORM_A_NATIONALITY_AS_COUNTRY_NAME": 0.0,
-    "FORM_A_OWNER_SURNAME_FIRST_IN_CAPS": 0.0,
-    "HOUSE_NUMBER_FIRST": 0.0,
-    "MRZ_APOSTROPHE_DROPPED": 0.0,
-    "MRZ_NAME_TRUNCATED": 0.0,
-    "MRZ_UMLAUT_AS_UE": 0.0,
-    "PASSPORT_EXPIRES_ON_AS_OF": 0.0,
-    "PASSPORT_EXPIRES_WITHIN_WEEKS": 0.0,
-    "POSTCODE_CH_PREFIX": 0.0,
-    "STREET_ABBREVIATED": 0.0,
-    "STREET_NAME_OTHER_LANGUAGE": 0.0,
-    "TOWN_NAME_OTHER_LANGUAGE": 0.0
-   }
-  },
-  "scan": {
-   "files": 24,
-   "field_accuracy": 0.157,
-   "critical_field_accuracy": 0.003,
-   "defect_recall": 0.269,
-   "defect_recall_ci": [
-    0.137,
-    0.461
-   ],
-   "defect_recall_n": [
-    7,
-    26
-   ],
-   "defects_not_flagged": 19,
-   "right_check_rate": 0.269,
-   "defect_precision": 0.5,
-   "missed_defect_files": 0,
-   "missed_defect_files_ci": [
-    0.0,
-    0.204
-   ],
-   "defect_files": 15,
-   "errors": 0,
-   "straight_through_rate": 0.0,
-   "straight_through_ci": [
-    0.0,
-    0.299
-   ],
-   "clean_files": 9,
-   "routing_accuracy": 0.625,
-   "trap_false_alarm_rate": 0.0,
-   "process_flags_per_file": 2.12,
-   "seconds_per_file": 0.0,
-   "cost_per_file_usd": 0.0,
-   "fields": {
-    "form_a.beneficial_owner_address": 0.0,
-    "form_a.beneficial_owner_date_of_birth": 0.0,
-    "form_a.beneficial_owner_name": 0.0,
-    "form_a.beneficial_owner_nationality": 0.0,
-    "form_a.contracting_partner": 0.0,
-    "passport.date_of_birth": 0.0,
-    "passport.document_number": 0.0,
-    "passport.expiry_date": 0.0,
-    "passport.given_names": 0.0,
-    "passport.mrz_line1": 1.0,
-    "passport.mrz_line2": 0.833,
-    "passport.nationality": 0.0,
-    "passport.sex": 0.0,
-    "passport.surname": 0.0,
-    "proof_of_address.address": 0.0,
-    "proof_of_address.issue_date": 0.042,
-    "proof_of_address.issuer": 0.958,
-    "proof_of_address.name": 0.0
-   },
-   "per_defect": {
-    "ADDRESS_MISMATCH": 0.0,
-    "DOB_MISMATCH": 0.0,
-    "FORM_A_UNSIGNED": 1.0,
-    "IMPLAUSIBLE_DATE": 0.0,
-    "MRZ_CHECK_FAILED": 1.0,
-    "MRZ_VISUAL_MISMATCH": 0.0,
-    "NAME_MISMATCH": 0.0,
-    "NATIONALITY_MISMATCH": 0.0,
-    "PASSPORT_EXPIRED": 1.0,
-    "PROOF_OF_ADDRESS_TOO_OLD": 0.0,
-    "SUSPICIOUS_INSTRUCTIONS": 0.333,
-    "THIRD_PARTY_OWNER": 0.0
-   },
-   "per_trap": {
-    "BILLING_PERIOD_STARTS_LONG_AGO": 0.0,
-    "BILL_AGE_80_TO_89_DAYS": 0.0,
-    "BILL_DUE_DATE_AFTER_AS_OF": 0.0,
-    "BILL_EXACTLY_90_DAYS_OLD": 0.0,
-    "BILL_FIRST_SURNAME_ONLY": 0.0,
-    "BILL_HYPHEN_AS_SPACE": 0.0,
-    "BILL_JOINT_HOLDERS": 0.0,
-    "BILL_MENTIONS_PREVIOUS_ADDRESS": 0.0,
-    "BILL_MIDDLE_NAME_INITIAL": 0.0,
-    "BILL_MIDDLE_NAME_OMITTED": 0.0,
-    "BILL_NAME_UMLAUT_AS_UE": 0.0,
-    "BILL_NAME_WITHOUT_ACCENTS": 0.0,
-    "BILL_SURNAME_FIRST": 0.0,
-    "BILL_USES_SECOND_GIVEN_NAME": 0.0,
-    "CARE_OF_LINE": 0.0,
-    "FORM_A_CORRECTED_HOUSE_NUMBER": 0.0,
-    "FORM_A_DATE_NO_LEADING_ZEROS": 0.0,
-    "FORM_A_DATE_WRITTEN_OUT": 0.0,
-    "FORM_A_NATIONALITY_AS_COUNTRY_NAME": 0.0,
-    "FORM_A_OWNER_SURNAME_FIRST_IN_CAPS": 0.0,
-    "HOUSE_NUMBER_FIRST": 0.0,
-    "MRZ_APOSTROPHE_DROPPED": 0.0,
-    "MRZ_NAME_TRUNCATED": 0.0,
-    "MRZ_UMLAUT_AS_UE": 0.0,
-    "PASSPORT_EXPIRES_ON_AS_OF": 0.0,
-    "PASSPORT_EXPIRES_WITHIN_WEEKS": 0.0,
-    "POSTCODE_CH_PREFIX": 0.0,
-    "STREET_ABBREVIATED": 0.0,
-    "STREET_NAME_OTHER_LANGUAGE": 0.0,
-    "TOWN_NAME_OTHER_LANGUAGE": 0.0
-   }
-  },
-  "photo": {
    "files": 24,
    "field_accuracy": 0.162,
    "critical_field_accuracy": 0.003,
@@ -221,7 +19,7 @@
    ],
    "defects_not_flagged": 19,
    "right_check_rate": 0.269,
-   "defect_precision": 0.318,
+   "defect_precision": 0.412,
    "missed_defect_files": 0,
    "missed_defect_files_ci": [
     0.0,
@@ -306,6 +104,208 @@
     "STREET_NAME_OTHER_LANGUAGE": 0.0,
     "TOWN_NAME_OTHER_LANGUAGE": 0.0
    }
+  },
+  "scan": {
+   "files": 24,
+   "field_accuracy": 0.157,
+   "critical_field_accuracy": 0.007,
+   "defect_recall": 0.269,
+   "defect_recall_ci": [
+    0.137,
+    0.461
+   ],
+   "defect_recall_n": [
+    7,
+    26
+   ],
+   "defects_not_flagged": 19,
+   "right_check_rate": 0.269,
+   "defect_precision": 0.467,
+   "missed_defect_files": 0,
+   "missed_defect_files_ci": [
+    0.0,
+    0.204
+   ],
+   "defect_files": 15,
+   "errors": 0,
+   "straight_through_rate": 0.0,
+   "straight_through_ci": [
+    0.0,
+    0.299
+   ],
+   "clean_files": 9,
+   "routing_accuracy": 0.625,
+   "trap_false_alarm_rate": 0.0,
+   "process_flags_per_file": 2.12,
+   "seconds_per_file": 0.0,
+   "cost_per_file_usd": 0.0,
+   "fields": {
+    "form_a.beneficial_owner_address": 0.0,
+    "form_a.beneficial_owner_date_of_birth": 0.0,
+    "form_a.beneficial_owner_name": 0.0,
+    "form_a.beneficial_owner_nationality": 0.0,
+    "form_a.contracting_partner": 0.0,
+    "passport.date_of_birth": 0.0,
+    "passport.document_number": 0.0,
+    "passport.expiry_date": 0.0,
+    "passport.given_names": 0.0,
+    "passport.mrz_line1": 1.0,
+    "passport.mrz_line2": 0.833,
+    "passport.nationality": 0.0,
+    "passport.sex": 0.0,
+    "passport.surname": 0.0,
+    "proof_of_address.address": 0.0,
+    "proof_of_address.issue_date": 0.083,
+    "proof_of_address.issuer": 0.917,
+    "proof_of_address.name": 0.0
+   },
+   "per_defect": {
+    "ADDRESS_MISMATCH": 0.0,
+    "DOB_MISMATCH": 0.0,
+    "FORM_A_UNSIGNED": 1.0,
+    "IMPLAUSIBLE_DATE": 0.0,
+    "MRZ_CHECK_FAILED": 1.0,
+    "MRZ_VISUAL_MISMATCH": 0.0,
+    "NAME_MISMATCH": 0.0,
+    "NATIONALITY_MISMATCH": 0.0,
+    "PASSPORT_EXPIRED": 1.0,
+    "PROOF_OF_ADDRESS_TOO_OLD": 0.0,
+    "SUSPICIOUS_INSTRUCTIONS": 0.333,
+    "THIRD_PARTY_OWNER": 0.0
+   },
+   "per_trap": {
+    "BILLING_PERIOD_STARTS_LONG_AGO": 0.0,
+    "BILL_AGE_80_TO_89_DAYS": 0.0,
+    "BILL_DUE_DATE_AFTER_AS_OF": 0.0,
+    "BILL_EXACTLY_90_DAYS_OLD": 0.0,
+    "BILL_FIRST_SURNAME_ONLY": 0.0,
+    "BILL_HYPHEN_AS_SPACE": 0.0,
+    "BILL_JOINT_HOLDERS": 0.0,
+    "BILL_MENTIONS_PREVIOUS_ADDRESS": 0.0,
+    "BILL_MIDDLE_NAME_INITIAL": 0.0,
+    "BILL_MIDDLE_NAME_OMITTED": 0.0,
+    "BILL_NAME_UMLAUT_AS_UE": 0.0,
+    "BILL_NAME_WITHOUT_ACCENTS": 0.0,
+    "BILL_SURNAME_FIRST": 0.0,
+    "BILL_USES_SECOND_GIVEN_NAME": 0.0,
+    "CARE_OF_LINE": 0.0,
+    "FORM_A_CORRECTED_HOUSE_NUMBER": 0.0,
+    "FORM_A_DATE_NO_LEADING_ZEROS": 0.0,
+    "FORM_A_DATE_WRITTEN_OUT": 0.0,
+    "FORM_A_NATIONALITY_AS_COUNTRY_NAME": 0.0,
+    "FORM_A_OWNER_SURNAME_FIRST_IN_CAPS": 0.0,
+    "HOUSE_NUMBER_FIRST": 0.0,
+    "MRZ_APOSTROPHE_DROPPED": 0.0,
+    "MRZ_NAME_TRUNCATED": 0.0,
+    "MRZ_UMLAUT_AS_UE": 0.0,
+    "PASSPORT_EXPIRES_ON_AS_OF": 0.0,
+    "PASSPORT_EXPIRES_WITHIN_WEEKS": 0.0,
+    "POSTCODE_CH_PREFIX": 0.0,
+    "STREET_ABBREVIATED": 0.0,
+    "STREET_NAME_OTHER_LANGUAGE": 0.0,
+    "TOWN_NAME_OTHER_LANGUAGE": 0.0
+   }
+  },
+  "photo": {
+   "files": 24,
+   "field_accuracy": 0.164,
+   "critical_field_accuracy": 0.003,
+   "defect_recall": 0.269,
+   "defect_recall_ci": [
+    0.137,
+    0.461
+   ],
+   "defect_recall_n": [
+    7,
+    26
+   ],
+   "defects_not_flagged": 19,
+   "right_check_rate": 0.269,
+   "defect_precision": 0.318,
+   "missed_defect_files": 0,
+   "missed_defect_files_ci": [
+    0.0,
+    0.204
+   ],
+   "defect_files": 15,
+   "errors": 0,
+   "straight_through_rate": 0.0,
+   "straight_through_ci": [
+    0.0,
+    0.299
+   ],
+   "clean_files": 9,
+   "routing_accuracy": 0.625,
+   "trap_false_alarm_rate": 0.0,
+   "process_flags_per_file": 2.08,
+   "seconds_per_file": 0.0,
+   "cost_per_file_usd": 0.0,
+   "fields": {
+    "form_a.beneficial_owner_address": 0.0,
+    "form_a.beneficial_owner_date_of_birth": 0.0,
+    "form_a.beneficial_owner_name": 0.0,
+    "form_a.beneficial_owner_nationality": 0.0,
+    "form_a.contracting_partner": 0.0,
+    "passport.date_of_birth": 0.0,
+    "passport.document_number": 0.0,
+    "passport.expiry_date": 0.0,
+    "passport.given_names": 0.0,
+    "passport.mrz_line1": 1.0,
+    "passport.mrz_line2": 0.917,
+    "passport.nationality": 0.0,
+    "passport.sex": 0.0,
+    "passport.surname": 0.0,
+    "proof_of_address.address": 0.0,
+    "proof_of_address.issue_date": 0.042,
+    "proof_of_address.issuer": 1.0,
+    "proof_of_address.name": 0.0
+   },
+   "per_defect": {
+    "ADDRESS_MISMATCH": 0.0,
+    "DOB_MISMATCH": 0.0,
+    "FORM_A_UNSIGNED": 1.0,
+    "IMPLAUSIBLE_DATE": 0.0,
+    "MRZ_CHECK_FAILED": 1.0,
+    "MRZ_VISUAL_MISMATCH": 0.0,
+    "NAME_MISMATCH": 0.0,
+    "NATIONALITY_MISMATCH": 0.0,
+    "PASSPORT_EXPIRED": 1.0,
+    "PROOF_OF_ADDRESS_TOO_OLD": 0.0,
+    "SUSPICIOUS_INSTRUCTIONS": 0.333,
+    "THIRD_PARTY_OWNER": 0.0
+   },
+   "per_trap": {
+    "BILLING_PERIOD_STARTS_LONG_AGO": 0.0,
+    "BILL_AGE_80_TO_89_DAYS": 0.0,
+    "BILL_DUE_DATE_AFTER_AS_OF": 0.0,
+    "BILL_EXACTLY_90_DAYS_OLD": 0.0,
+    "BILL_FIRST_SURNAME_ONLY": 0.0,
+    "BILL_HYPHEN_AS_SPACE": 0.0,
+    "BILL_JOINT_HOLDERS": 0.0,
+    "BILL_MENTIONS_PREVIOUS_ADDRESS": 0.0,
+    "BILL_MIDDLE_NAME_INITIAL": 0.0,
+    "BILL_MIDDLE_NAME_OMITTED": 0.0,
+    "BILL_NAME_UMLAUT_AS_UE": 0.0,
+    "BILL_NAME_WITHOUT_ACCENTS": 0.0,
+    "BILL_SURNAME_FIRST": 0.0,
+    "BILL_USES_SECOND_GIVEN_NAME": 0.0,
+    "CARE_OF_LINE": 0.0,
+    "FORM_A_CORRECTED_HOUSE_NUMBER": 0.0,
+    "FORM_A_DATE_NO_LEADING_ZEROS": 0.0,
+    "FORM_A_DATE_WRITTEN_OUT": 0.0,
+    "FORM_A_NATIONALITY_AS_COUNTRY_NAME": 0.0,
+    "FORM_A_OWNER_SURNAME_FIRST_IN_CAPS": 0.0,
+    "HOUSE_NUMBER_FIRST": 0.0,
+    "MRZ_APOSTROPHE_DROPPED": 0.0,
+    "MRZ_NAME_TRUNCATED": 0.0,
+    "MRZ_UMLAUT_AS_UE": 0.0,
+    "PASSPORT_EXPIRES_ON_AS_OF": 0.0,
+    "PASSPORT_EXPIRES_WITHIN_WEEKS": 0.0,
+    "POSTCODE_CH_PREFIX": 0.0,
+    "STREET_ABBREVIATED": 0.0,
+    "STREET_NAME_OTHER_LANGUAGE": 0.0,
+    "TOWN_NAME_OTHER_LANGUAGE": 0.0
+   }
   }
  },
  "cases": {
@@ -330,13 +330,11 @@
     "decision": "manual_review",
     "raised": [
      "CHECK_SKIPPED",
-     "EVIDENCE_NOT_FOUND",
      "MISSING_FIELD"
     ],
     "expected": [],
     "expected_checks": [],
     "failed_checks": [
-     "form_a.evidence",
      "form_a.required",
      "passport.required",
      "proof_of_address.required"
@@ -404,12 +402,12 @@
      },
      "form_a.beneficial_owner_nationality": {
       "ok": false,
-      "got": "23/01/1488 22/0 1NA88 Nigerian",
+      "got": "22/0 11288 Nigerian",
       "want": "NGA"
      },
      "form_a.beneficial_owner_address": {
       "ok": false,
-      "got": "Seeteldetrasse 41",
+      "got": "Ceefeldctracse 41",
       "want": "Seefeldstrasse 47, 8008 Zürich"
      },
      "proof_of_address.name": {
@@ -439,7 +437,7 @@
       "mrz_line2": "verified"
      },
      "form_a": {
-      "beneficial_owner_nationality": "unverified",
+      "beneficial_owner_nationality": "verified",
       "beneficial_owner_address": "verified"
      },
      "proof_of_address": {
@@ -447,7 +445,7 @@
      }
     },
     "totals": {
-     "seconds": 5.42,
+     "seconds": 5.12,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -592,7 +590,7 @@
      }
     },
     "totals": {
-     "seconds": 3.95,
+     "seconds": 4.3,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -619,12 +617,14 @@
     "decision": "manual_review",
     "raised": [
      "CHECK_SKIPPED",
-     "MISSING_FIELD"
+     "MISSING_FIELD",
+     "MRZ_CHECK_FAILED"
     ],
     "expected": [],
     "expected_checks": [],
     "failed_checks": [
      "form_a.required",
+     "passport.mrz_check_digits",
      "passport.required",
      "proof_of_address.required"
     ],
@@ -670,8 +670,8 @@
       "want": "P<UTOTANAKA<<HARUKI<<<<<<<<<<<<<<<<<<<<<<<<<"
      },
      "passport.mrz_line2": {
-      "ok": true,
-      "got": "DA84438673JPN9204155M2611136<<<<<<<<<<<<<<<6",
+      "ok": false,
+      "got": "DA844386733JPN9204155M2611136<<<<<<<<<<<<<<<",
       "want": "DA84438673JPN9204155M2611136<<<<<<<<<<<<<<<6"
      },
      "form_a.contracting_partner": {
@@ -731,7 +731,7 @@
      }
     },
     "totals": {
-     "seconds": 4.5,
+     "seconds": 4.66,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -883,7 +883,7 @@
      }
     },
     "totals": {
-     "seconds": 5.25,
+     "seconds": 4.86,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1030,7 +1030,7 @@
      }
     },
     "totals": {
-     "seconds": 4.14,
+     "seconds": 4.79,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1176,7 +1176,7 @@
      }
     },
     "totals": {
-     "seconds": 4.19,
+     "seconds": 4.62,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1321,7 +1321,7 @@
      }
     },
     "totals": {
-     "seconds": 4.92,
+     "seconds": 5.23,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1469,7 +1469,7 @@
      }
     },
     "totals": {
-     "seconds": 4.39,
+     "seconds": 4.57,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1584,7 +1584,7 @@
      },
      "form_a.beneficial_owner_address": {
       "ok": false,
-      "got": "Kıttingerstrasse 2",
+      "got": "Kıttingerstrasse IZ",
       "want": "Hottingerstrasse 12, 8032 Zürich"
      },
      "proof_of_address.name": {
@@ -1623,7 +1623,7 @@
      }
     },
     "totals": {
-     "seconds": 4.86,
+     "seconds": 5.09,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1766,7 +1766,7 @@
      }
     },
     "totals": {
-     "seconds": 4.66,
+     "seconds": 4.57,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -1914,7 +1914,7 @@
      }
     },
     "totals": {
-     "seconds": 4.14,
+     "seconds": 4.53,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2019,7 +2019,7 @@
      },
      "form_a.beneficial_owner_nationality": {
       "ok": false,
-      "got": "29/05/1982 I Trich ri ich",
+      "got": "29/05/1982 I Trich Fi ich",
       "want": "IRL"
      },
      "form_a.beneficial_owner_address": {
@@ -2062,7 +2062,7 @@
      }
     },
     "totals": {
-     "seconds": 4.81,
+     "seconds": 4.46,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2208,7 +2208,7 @@
      }
     },
     "totals": {
-     "seconds": 4.35,
+     "seconds": 4.74,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2351,7 +2351,7 @@
      }
     },
     "totals": {
-     "seconds": 4.27,
+     "seconds": 4.49,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2504,7 +2504,7 @@
      }
     },
     "totals": {
-     "seconds": 4.4,
+     "seconds": 4.34,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2657,7 +2657,7 @@
      }
     },
     "totals": {
-     "seconds": 4.6,
+     "seconds": 4.78,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2802,7 +2802,7 @@
      }
     },
     "totals": {
-     "seconds": 4.36,
+     "seconds": 4.47,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -2951,7 +2951,7 @@
      }
     },
     "totals": {
-     "seconds": 4.15,
+     "seconds": 4.18,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3092,7 +3092,7 @@
      }
     },
     "totals": {
-     "seconds": 4.26,
+     "seconds": 4.37,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3243,7 +3243,7 @@
      }
     },
     "totals": {
-     "seconds": 3.86,
+     "seconds": 3.88,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3393,7 +3393,7 @@
      }
     },
     "totals": {
-     "seconds": 4.44,
+     "seconds": 4.42,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3543,7 +3543,7 @@
      }
     },
     "totals": {
-     "seconds": 4.74,
+     "seconds": 4.6,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3695,7 +3695,7 @@
      }
     },
     "totals": {
-     "seconds": 4.12,
+     "seconds": 3.93,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3840,7 +3840,7 @@
      }
     },
     "totals": {
-     "seconds": 4.46,
+     "seconds": 4.45,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -3870,13 +3870,15 @@
     "raised": [
      "CHECK_SKIPPED",
      "EVIDENCE_NOT_FOUND",
-     "MISSING_FIELD"
+     "MISSING_FIELD",
+     "MRZ_CHECK_FAILED"
     ],
     "expected": [],
     "expected_checks": [],
     "failed_checks": [
      "form_a.evidence",
      "form_a.required",
+     "passport.mrz_check_digits",
      "passport.required",
      "proof_of_address.required"
     ],
@@ -3922,8 +3924,8 @@
       "want": "P<UTOOKONKWO<ADEYEMI<<CHIAMAKA<NGOZI<<<<<<<<"
      },
      "passport.mrz_line2": {
-      "ok": true,
-      "got": "AW65475403NGA8807238F2905176<<<<<<<<<<<<<<<8",
+      "ok": false,
+      "got": "AW65475403NGA8807238F2905176<<<<<<<<<<<<<<<<",
       "want": "AW65475403NGA8807238F2905176<<<<<<<<<<<<<<<8"
      },
      "form_a.contracting_partner": {
@@ -3943,12 +3945,12 @@
      },
      "form_a.beneficial_owner_nationality": {
       "ok": false,
-      "got": "13/01/1488 Niaerian Nige vian",
+      "got": "13/01/1488 Nigevian Nige vian",
       "want": "NGA"
      },
      "form_a.beneficial_owner_address": {
       "ok": false,
-      "got": "Seefeldstrasse 47",
+      "got": "Ceefeldstracce 47",
       "want": "Seefeldstrasse 47, 8008 Zürich"
      },
      "proof_of_address.name": {
@@ -3986,7 +3988,7 @@
      }
     },
     "totals": {
-     "seconds": 8.47,
+     "seconds": 9.58,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4131,7 +4133,7 @@
      }
     },
     "totals": {
-     "seconds": 7.81,
+     "seconds": 8.16,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4209,8 +4211,8 @@
       "want": "P<UTOTANAKA<<HARUKI<<<<<<<<<<<<<<<<<<<<<<<<<"
      },
      "passport.mrz_line2": {
-      "ok": false,
-      "got": "DA844386733PN9204155M2611136<<<<<<<<<<<<<<<6",
+      "ok": true,
+      "got": "DA84438673JPN9204155M2611136<<<<<<<<<<<<<<<6",
       "want": "DA84438673JPN9204155M2611136<<<<<<<<<<<<<<<6"
      },
      "form_a.contracting_partner": {
@@ -4270,7 +4272,7 @@
      }
     },
     "totals": {
-     "seconds": 7.87,
+     "seconds": 8.42,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4419,7 +4421,7 @@
      }
     },
     "totals": {
-     "seconds": 6.8,
+     "seconds": 6.93,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4568,7 +4570,7 @@
      }
     },
     "totals": {
-     "seconds": 8.18,
+     "seconds": 8.78,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4714,7 +4716,7 @@
      }
     },
     "totals": {
-     "seconds": 7.66,
+     "seconds": 8.23,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -4857,7 +4859,7 @@
      }
     },
     "totals": {
-     "seconds": 8.11,
+     "seconds": 8.63,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5005,7 +5007,7 @@
      }
     },
     "totals": {
-     "seconds": 8.16,
+     "seconds": 8.56,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5116,7 +5118,7 @@
      },
      "form_a.beneficial_owner_address": {
       "ok": false,
-      "got": "rat Bottin pus 2",
+      "got": "rad Bottin eaten 2",
       "want": "Hottingerstrasse 12, 8032 Zürich"
      },
      "proof_of_address.name": {
@@ -5130,8 +5132,8 @@
       "want": "Hottingerstrasse 12, 8032 Zürich"
      },
      "proof_of_address.issue_date": {
-      "ok": false,
-      "got": "7 October 2026 Hottingerstrasse 12",
+      "ok": true,
+      "got": "2026-10-07",
       "want": "2026-10-07"
      },
      "proof_of_address.issuer": {
@@ -5154,7 +5156,7 @@
      }
     },
     "totals": {
-     "seconds": 7.43,
+     "seconds": 7.84,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5297,7 +5299,7 @@
      }
     },
     "totals": {
-     "seconds": 8.52,
+     "seconds": 8.96,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5445,7 +5447,7 @@
      }
     },
     "totals": {
-     "seconds": 8.38,
+     "seconds": 8.84,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5550,12 +5552,12 @@
      },
      "form_a.beneficial_owner_nationality": {
       "ok": false,
-      "got": "Date Date of birth birth",
+      "got": "vos LI = 29/05/1982 ED. re Irish",
       "want": "IRL"
      },
      "form_a.beneficial_owner_address": {
       "ok": false,
-      "got": ";",
+      "got": "a",
       "want": "Rue du Marché 18, 1204 Geneva"
      },
      "proof_of_address.name": {
@@ -5574,8 +5576,8 @@
       "want": "2026-08-23"
      },
      "proof_of_address.issuer": {
-      "ok": true,
-      "got": "Muster Mobilfunk AG",
+      "ok": false,
+      "got": "Muster Mobilfunk nk AG",
       "want": "Muster Mobilfunk AG"
      }
     },
@@ -5586,14 +5588,14 @@
      },
      "form_a": {
       "beneficial_owner_nationality": "unverified",
-      "beneficial_owner_address": "unverified"
+      "beneficial_owner_address": "verified"
      },
      "proof_of_address": {
       "issuer": "verified"
      }
     },
     "totals": {
-     "seconds": 8.88,
+     "seconds": 9.37,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5739,7 +5741,7 @@
      }
     },
     "totals": {
-     "seconds": 8.37,
+     "seconds": 9.24,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -5824,7 +5826,7 @@
      },
      "passport.mrz_line2": {
       "ok": false,
-      "got": "CHO1770192I1TA9601178F3301100<<<<<<<<<<<<<<<",
+      "got": "CHO01770192I1TA9601178F3301100<<<<<<<<<<<<<<",
       "want": "CH01770192ITA9601178F3301100<<<<<<<<<<<<<<<8"
      },
      "form_a.contracting_partner": {
@@ -5884,7 +5886,7 @@
      }
     },
     "totals": {
-     "seconds": 7.99,
+     "seconds": 9.03,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6034,7 +6036,7 @@
      }
     },
     "totals": {
-     "seconds": 8.73,
+     "seconds": 9.61,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6184,7 +6186,7 @@
      }
     },
     "totals": {
-     "seconds": 8.63,
+     "seconds": 10.06,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6327,7 +6329,7 @@
      }
     },
     "totals": {
-     "seconds": 7.92,
+     "seconds": 8.88,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6476,7 +6478,7 @@
      }
     },
     "totals": {
-     "seconds": 7.75,
+     "seconds": 8.38,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6619,7 +6621,7 @@
      }
     },
     "totals": {
-     "seconds": 8.6,
+     "seconds": 8.95,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6729,7 +6731,7 @@
      },
      "form_a.beneficial_owner_nationality": {
       "ok": false,
-      "got": "|",
+      "got": "‘",
       "want": "SGP"
      },
      "form_a.beneficial_owner_address": {
@@ -6772,7 +6774,7 @@
      }
     },
     "totals": {
-     "seconds": 8.05,
+     "seconds": 8.85,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -6920,7 +6922,7 @@
      }
     },
     "totals": {
-     "seconds": 7.68,
+     "seconds": 8.21,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7068,7 +7070,7 @@
      }
     },
     "totals": {
-     "seconds": 8.07,
+     "seconds": 8.88,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7177,7 +7179,7 @@
      },
      "form_a.beneficial_owner_nationality": {
       "ok": false,
-      "got": "oe =",
+      "got": "oes =",
       "want": "NZL"
      },
      "form_a.beneficial_owner_address": {
@@ -7219,7 +7221,7 @@
      }
     },
     "totals": {
-     "seconds": 7.55,
+     "seconds": 8.27,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7349,7 +7351,7 @@
      },
      "proof_of_address.issuer": {
       "ok": false,
-      "got": "f (© \\ Muster Elektrizitätswerk AG",
+      "got": "{© f ) Muster Elektrizitàtswerk AG",
       "want": "Muster Elektrizitätswerk AG"
      }
     },
@@ -7364,7 +7366,7 @@
      }
     },
     "totals": {
-     "seconds": 8.53,
+     "seconds": 9.14,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7465,7 +7467,7 @@
      },
      "form_a.beneficial_owner_nationality": {
       "ok": false,
-      "got": "23/07/1488 Nigerian",
+      "got": "13/0 1A Nigerian",
       "want": "NGA"
      },
      "form_a.beneficial_owner_address": {
@@ -7507,7 +7509,7 @@
      }
     },
     "totals": {
-     "seconds": 8.21,
+     "seconds": 9.18,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7654,7 +7656,7 @@
      }
     },
     "totals": {
-     "seconds": 7.05,
+     "seconds": 7.5,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7795,7 +7797,7 @@
      }
     },
     "totals": {
-     "seconds": 7.7,
+     "seconds": 8.23,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -7944,7 +7946,7 @@
      }
     },
     "totals": {
-     "seconds": 6.68,
+     "seconds": 7.79,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8091,7 +8093,7 @@
      }
     },
     "totals": {
-     "seconds": 7.49,
+     "seconds": 7.8,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8239,7 +8241,7 @@
      }
     },
     "totals": {
-     "seconds": 8.51,
+     "seconds": 8.99,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8318,8 +8320,8 @@
       "want": "2032-09-07"
      },
      "passport.mrz_line1": {
-      "ok": false,
-      "got": "P<UTOLINDOQVIST<<ASA<ELIN<<<<<<<<<<<<<<<<<<<",
+      "ok": true,
+      "got": "P<UTOLINDQVIST<<ASA<ELIN<<<<<<<<<<<<<<<<<<<<",
       "want": "P<UTOLINDQVIST<<ASA<ELIN<<<<<<<<<<<<<<<<<<<<"
      },
      "passport.mrz_line2": {
@@ -8384,7 +8386,7 @@
      }
     },
     "totals": {
-     "seconds": 8.69,
+     "seconds": 9.24,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8532,7 +8534,7 @@
      }
     },
     "totals": {
-     "seconds": 7.93,
+     "seconds": 8.57,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8643,7 +8645,7 @@
      },
      "form_a.beneficial_owner_nationality": {
       "ok": false,
-      "got": "ar: South Korean",
+      "got": "a: Couth Korean",
       "want": "KOR"
      },
      "form_a.beneficial_owner_address": {
@@ -8687,7 +8689,7 @@
      }
     },
     "totals": {
-     "seconds": 6.78,
+     "seconds": 7.25,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8832,7 +8834,7 @@
      }
     },
     "totals": {
-     "seconds": 9.32,
+     "seconds": 10.5,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -8980,7 +8982,7 @@
      }
     },
     "totals": {
-     "seconds": 7.35,
+     "seconds": 8.13,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9083,7 +9085,7 @@
      },
      "form_a.beneficial_owner_nationality": {
       "ok": false,
-      "got": "29/05/1982 Trish",
+      "got": "29/05/1982 Irish",
       "want": "IRL"
      },
      "form_a.beneficial_owner_address": {
@@ -9125,7 +9127,7 @@
      }
     },
     "totals": {
-     "seconds": 7.89,
+     "seconds": 8.68,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9271,7 +9273,7 @@
      }
     },
     "totals": {
-     "seconds": 8.16,
+     "seconds": 9.03,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9416,7 +9418,7 @@
      }
     },
     "totals": {
-     "seconds": 6.88,
+     "seconds": 8.48,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9566,7 +9568,7 @@
      }
     },
     "totals": {
-     "seconds": 8.23,
+     "seconds": 9.83,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9716,7 +9718,7 @@
      }
     },
     "totals": {
-     "seconds": 8.8,
+     "seconds": 10.29,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -9861,7 +9863,7 @@
      }
     },
     "totals": {
-     "seconds": 7.94,
+     "seconds": 9.56,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10012,7 +10014,7 @@
      }
     },
     "totals": {
-     "seconds": 6.93,
+     "seconds": 8.33,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10155,7 +10157,7 @@
      }
     },
     "totals": {
-     "seconds": 8.22,
+     "seconds": 23.07,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10305,7 +10307,7 @@
      }
     },
     "totals": {
-     "seconds": 7.72,
+     "seconds": 25.03,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10455,7 +10457,7 @@
      }
     },
     "totals": {
-     "seconds": 7.08,
+     "seconds": 32.7,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10605,7 +10607,7 @@
      }
     },
     "totals": {
-     "seconds": 8.39,
+     "seconds": 43.39,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10754,7 +10756,7 @@
      }
     },
     "totals": {
-     "seconds": 7.14,
+     "seconds": 35.63,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
@@ -10884,7 +10886,7 @@
      },
      "proof_of_address.issuer": {
       "ok": true,
-      "got": "Muster Elektrizitätswerk AG",
+      "got": "Muster Elektrizitatswerk AG",
       "want": "Muster Elektrizitätswerk AG"
      }
     },
@@ -10899,7 +10901,7 @@
      }
     },
     "totals": {
-     "seconds": 7.75,
+     "seconds": 36.27,
      "model_seconds": 0,
      "input_tokens": 0,
      "output_tokens": 0,
