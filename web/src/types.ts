@@ -296,3 +296,34 @@ export interface EvalReport {
   tiers: Partial<Record<Tier, Summary>>;
   cases: Partial<Record<Tier, (CaseScore | CaseError)[]>>;
 }
+
+/** One region of a page a reviewer should look at (kyc_demo/issues.py). bbox is in 0..1 page fractions. */
+export interface IssueRegion {
+  doc: DocType;
+  field: string | null;
+  label: string;
+  page: number;
+  bbox: [number, number, number, number] | null;
+  value: string | null;
+  status: EvidenceStatus | null;
+  note: string | null;
+  exact: boolean; // false: no box, or only the closest text OCR found
+}
+
+export interface Issue {
+  id: number;
+  code: string;
+  severity: string;
+  check: string;
+  title: string;
+  message: string;
+  missing_doc: DocType | null;
+  regions: IssueRegion[];
+}
+
+export interface RunIssues {
+  run_id: string;
+  decision: Decision;
+  issues: Issue[];
+  pages: Partial<Record<DocType, { page: number; image: string }[]>>;
+}

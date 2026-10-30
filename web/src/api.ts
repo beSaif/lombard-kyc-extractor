@@ -7,6 +7,7 @@ import type {
   Extractor,
   ModuleSource,
   ReviewState,
+  RunIssues,
   RunListItem,
   RunRequest,
   RunState,
@@ -50,6 +51,7 @@ export const api = {
     if (!r.ok) throw new Error((await r.json().catch(() => ({}))).detail ?? `${r.status} ${r.statusText}`);
     return r.json();
   },
+  issues: (runId: string) => getJSON<RunIssues>(`/api/runs/${runId}/issues`),
   review: (runId: string) => getJSON<ReviewState>(`/api/runs/${runId}/review`),
   reviewField: (runId: string, body: { reviewer: string; doc: string; field: string; action: string; value?: string; reason?: string }) =>
     send<ReviewState>(`/api/runs/${runId}/review/field`, body),

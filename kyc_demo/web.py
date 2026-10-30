@@ -28,6 +28,7 @@ from pydantic import BaseModel
 
 from .evaluate import load_reports
 from .extract import PRICES, make_extractor
+from .issues import locate_issues
 from .pipeline import DOC_TYPES, run_case
 from .review import AuditLog, corrections, provenance, refuse_decision, refuse_field, review_state
 from .trace import Trace
@@ -228,6 +229,12 @@ def get_run(run_id: str):
     out["steps"] = job["trace"].steps
     out["elapsed"] = round((job.get("finished") or time.time()) - job["started"], 1)
     return out
+
+
+@app.get("/api/runs/{run_id}/issues")
+def run_issues(run_id: str):
+    """Each reason for a manual review, with the page and box of every value it is about."""
+    return locate_issues(_result(run_id))
 
 
 @app.get("/api/runs")

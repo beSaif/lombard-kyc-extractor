@@ -11,14 +11,14 @@ import { SummaryView } from "../steps/SummaryView";
 import type { CaseSummary, CaseTier, Extractor, RunListItem, RunState, Step, Tier } from "../types";
 import { Badge, Empty, ErrorBox, Section, Spinner, Tabs } from "../ui";
 
-const LS_EXTRACTOR = "kyc.extractor";
+export const LS_EXTRACTOR = "kyc.extractor";
 
 export function extractorLabel(e: Extractor): string {
   const price = e.price ? ` · $${e.price[0]}/$${e.price[1]} per 1M` : e.local ? " · free, local" : "";
   return `${e.provider === "rules" ? "rules (regex baseline)" : `${e.model}`} · ${e.mode}${price}`;
 }
 
-function ExtractorSelect({
+export function ExtractorSelect({
   value,
   onChange,
   extractors,

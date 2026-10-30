@@ -22,6 +22,8 @@ is synthetic, and every case has a `truth.json` to score against.
   the beneficial owner and the bill's age. A check that can't run counts as a flag.
 - A reviewer accepts or corrects each value in the web UI. Approval takes two people, and every action goes
   into a hash-chained audit log.
+- The "Submit a file" tab is the client's side: upload the three documents and see the outcome. Each reason
+  for a manual review is cropped from the page it is about; a click shows it boxed on the whole document.
 
 ## Test suites
 

@@ -6,9 +6,11 @@ import { CodePage } from "./pages/CodePage";
 import { DatasetPage } from "./pages/Dataset";
 import { EvalsPage } from "./pages/Evals";
 import { PipelinePage } from "./pages/Pipeline";
+import { SubmitPage } from "./pages/Submit";
 import { href, useRoute } from "./router";
 
 const PAGES = [
+  { id: "submit", label: "Submit a file" },
   { id: "pipeline", label: "Pipeline" },
   { id: "evals", label: "Evals" },
   { id: "dataset", label: "Dataset" },
@@ -39,7 +41,9 @@ function App() {
         ))}
         <span className="mono ml-auto text-[11px] text-faint">api 127.0.0.1:8000</span>
       </nav>
-      {route.page === "evals" ? (
+      {route.page === "submit" ? (
+        <SubmitPage route={route} />
+      ) : route.page === "evals" ? (
         <EvalsPage route={route} />
       ) : route.page === "dataset" ? (
         <DatasetPage route={route} />

@@ -254,13 +254,16 @@ def check_injection(doc_type: str, doc: Document, model_reports: list[FieldValue
             model_quote = model_hit = quote
             break
     passed = not hit and not model_hit
+    found = None if passed else locate(hit or model_hit, doc.pages)  # where it is, for the reviewer to see
+    where = {"page": found.page, "bbox": found.bbox} if found and found.method != "not_found" else None
     detail = "no instruction-like text" if passed else "; ".join(
         x for x in [f"regex matched {hit!r}" if hit else "",
                     f"model reported {model_hit!r}" + ("" if grounded else " (not in the OCR text)") if model_hit
                     else ""] if x)
     return [Check(f"{doc_type}.injection", "No text addressed to an AI system", passed, detail,
                   "SUSPICIOUS_INSTRUCTIONS", "high",
-                  {"regex_match": hit, "model_report": model_quote, "model_report_grounded": grounded})]
+                  {"regex_match": hit, "model_report": model_quote, "model_report_grounded": grounded,
+                   "where": where})]
 
 
 def check_signature(doc: Document) -> list[Check]:
